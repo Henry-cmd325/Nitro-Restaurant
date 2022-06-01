@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "l0o+HH9KB+UqK7wZuVKrS3GGodDyF4f74hV2Z7+OGKUEiqO1t8Ch3S9OpPyvyGE5vwAQSTZUVUgOzhdEXv7aOQ==",
+  "success": true,
+  "projectFilePath": "D:\\Programacion\\Uni\\Nitro Restaurant\\AppMovil\\AppMovil.iOS\\AppMovil.iOS.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\henry\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
+    "C:\\Users\\henry\\.nuget\\packages\\xamarin.essentials\\1.7.0\\xamarin.essentials.1.7.0.nupkg.sha512",
+    "C:\\Users\\henry\\.nuget\\packages\\xamarin.forms\\5.0.0.2196\\xamarin.forms.5.0.0.2196.nupkg.sha512"
+  ],
+  "logs": []
+}
