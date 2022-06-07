@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "QBLNDki2hKMv9UEXXtNfibyGVc55wNkzjXYm/67v/wvnmhOsJfF44CdHqRv4ywwmUeV23EoyD6friCkYxL064w==",
+  "dgSpecHash": "OHxn24VTWp09cFHKQPffpHZZf75pYIsaVo9xNXOaiBDF4nTeZ/9ke02bnoPBW91ovbk+Pj/wKsv2JwmUKU2Rcw==",
   "success": true,
   "projectFilePath": "D:\\Programacion\\Uni\\Nitro Restaurant\\AppEscritorio\\AppEscritorio.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\henry\\.nuget\\packages\\materialdesigncolors\\2.0.6\\materialdesigncolors.2.0.6.nupkg.sha512",
+    "C:\\Users\\henry\\.nuget\\packages\\materialdesignthemes\\4.5.0\\materialdesignthemes.4.5.0.nupkg.sha512"
+  ],
   "logs": []
 }

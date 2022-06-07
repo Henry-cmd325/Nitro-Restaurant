@@ -1,0 +1,15 @@
+D:\Programacion\Uni\Nitro Restaurant\AppMovil\AppMovil\bin\Debug\netstandard2.0\AppMovil.deps.json
+D:\Programacion\Uni\Nitro Restaurant\AppMovil\AppMovil\bin\Debug\netstandard2.0\AppMovil.dll
+D:\Programacion\Uni\Nitro Restaurant\AppMovil\AppMovil\bin\Debug\netstandard2.0\AppMovil.pdb
+D:\Programacion\Uni\Nitro Restaurant\AppMovil\AppMovil\obj\Debug\netstandard2.0\AppMovil.csproj.AssemblyReference.cache
+D:\Programacion\Uni\Nitro Restaurant\AppMovil\AppMovil\obj\Debug\netstandard2.0\AppMovil.GeneratedMSBuildEditorConfig.editorconfig
+D:\Programacion\Uni\Nitro Restaurant\AppMovil\AppMovil\obj\Debug\netstandard2.0\App.xaml.g.cs
+D:\Programacion\Uni\Nitro Restaurant\AppMovil\AppMovil\obj\Debug\netstandard2.0\MainPage.xaml.g.cs
+D:\Programacion\Uni\Nitro Restaurant\AppMovil\AppMovil\obj\Debug\netstandard2.0\AppMovil.AssemblyInfoInputs.cache
+D:\Programacion\Uni\Nitro Restaurant\AppMovil\AppMovil\obj\Debug\netstandard2.0\AppMovil.AssemblyInfo.cs
+D:\Programacion\Uni\Nitro Restaurant\AppMovil\AppMovil\obj\Debug\netstandard2.0\AppMovil.csproj.CoreCompileInputs.cache
+D:\Programacion\Uni\Nitro Restaurant\AppMovil\AppMovil\obj\Debug\netstandard2.0\XamlC.stamp
+D:\Programacion\Uni\Nitro Restaurant\AppMovil\AppMovil\obj\Debug\netstandard2.0\AppMovil.dll
+D:\Programacion\Uni\Nitro Restaurant\AppMovil\AppMovil\obj\Debug\netstandard2.0\refint\AppMovil.dll
+D:\Programacion\Uni\Nitro Restaurant\AppMovil\AppMovil\obj\Debug\netstandard2.0\AppMovil.pdb
+D:\Programacion\Uni\Nitro Restaurant\AppMovil\AppMovil\obj\Debug\netstandard2.0\ref\AppMovil.dll
