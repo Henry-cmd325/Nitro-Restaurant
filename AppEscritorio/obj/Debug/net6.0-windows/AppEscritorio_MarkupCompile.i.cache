@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\obj\Debug\net6.0-windows\
+C:\Users\Admin\source\repos\Nitro-Restaurant\AppEscritorio\obj\Debug\net6.0-windows\
 AppEscritorio
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
-D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\App.xaml
-11407045341
+C:\Users\Admin\source\repos\Nitro-Restaurant\AppEscritorio\App.xaml
+3-1392918406
 
-52139765980
-1942030480316
-MainWindow.xaml;
+11386325024
+205-360333030
+MainWindow.xaml;Pages\LoginPage.xaml;Pages\SignUp.xaml;
 
-False
+True
 

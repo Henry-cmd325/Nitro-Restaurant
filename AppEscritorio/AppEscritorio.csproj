@@ -7,4 +7,48 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Recursos\food.jpg" />
+    <None Remove="Recursos\food2.jpg" />
+    <None Remove="Recursos\Logo Dark 2.gif" />
+    <None Remove="Recursos\Logo Dark 3.gif" />
+    <None Remove="Recursos\Logo Dark.gif" />
+    <None Remove="Recursos\Logo Light 2.gif" />
+    <None Remove="Recursos\Logo Light 2.mp4" />
+    <None Remove="Recursos\Logo Light 3.gif" />
+    <None Remove="Recursos\Logo Light.gif" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MaterialDesignThemes" Version="4.5.0" />
+    <PackageReference Include="MySql.Data" Version="8.0.29" />
+    <PackageReference Include="XamlAnimatedGif" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Recursos\food.jpg" />
+    <Resource Include="Recursos\food2.jpg" />
+    <Resource Include="Recursos\Logo Dark 2.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recursos\Logo Dark 3.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recursos\Logo Dark.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recursos\Logo Light 2.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recursos\Logo Light 2.mp4">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recursos\Logo Light 3.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recursos\Logo Light.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
 </Project>
