@@ -20,6 +20,6 @@ namespace ApiNitroRestaurant.Models.Request
 
     public class TipoEmpleadoRequest
     {
-        public string Nombre { get; set; } = null!
+        public string Nombre { get; set; } = null!;
     }
 }
