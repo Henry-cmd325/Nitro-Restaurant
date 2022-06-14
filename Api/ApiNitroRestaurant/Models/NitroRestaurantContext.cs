@@ -29,10 +29,6 @@ namespace ApiNitroRestaurant.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if (!optionsBuilder.IsConfigured)
-            { 
-                optionsBuilder.UseMySql("server=LAPTOP-R49ODFQA;database=NitroRestaurant;user=root;password=pene?", Microsoft.EntityFrameworkCore.ServerVersion.Parse("10.6.8-mariadb"));
-            }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -68,7 +64,7 @@ namespace ApiNitroRestaurant.Models
                     .HasColumnName("id_cuenta");
 
                 entity.Property(e => e.Password)
-                    .HasMaxLength(50)
+                    .HasMaxLength(64)
                     .HasColumnName("password")
                     .HasDefaultValueSql("''");
 

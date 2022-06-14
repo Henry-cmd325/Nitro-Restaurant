@@ -8,26 +8,26 @@ namespace ApiNitroRestaurant.Controllers
     [ApiController]
     public class EmpleadoController : ControllerBase
     {
+        private readonly NitroRestaurantContext _context;
+        public EmpleadoController(NitroRestaurantContext context)
+        {
+            _context = context;
+        }
+
         [HttpGet]
         public IActionResult Get()
         {
-            using (NitroRestaurantContext db = new())
-            {
-                var lst = db.Empleados.ToList();
+                var lst = _context.Empleados.ToList();
 
                 return Ok(lst);
-            }
         }
-
+        
         [HttpGet("{id}", Name = "GetEmpleadoById")]
         public IActionResult GetEmpleadoById(int id)
         {
-            using(NitroRestaurantContext db = new())
-            {
-                var empleado = db.Empleados.Find(id);
+                var empleado = _context.Empleados.Find(id);
 
                 return Ok(empleado);
-            }
         }
     }
 }

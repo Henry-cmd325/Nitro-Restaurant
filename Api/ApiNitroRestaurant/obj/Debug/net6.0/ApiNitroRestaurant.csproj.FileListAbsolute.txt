@@ -33,3 +33,5 @@ D:\Programacion\Uni\Nitro Restaurant\Api\ApiNitroRestaurant\obj\Debug\net6.0\ref
 D:\Programacion\Uni\Nitro Restaurant\Api\ApiNitroRestaurant\obj\Debug\net6.0\ApiNitroRestaurant.pdb
 D:\Programacion\Uni\Nitro Restaurant\Api\ApiNitroRestaurant\obj\Debug\net6.0\ApiNitroRestaurant.genruntimeconfig.cache
 D:\Programacion\Uni\Nitro Restaurant\Api\ApiNitroRestaurant\obj\Debug\net6.0\ref\ApiNitroRestaurant.dll
+D:\Programacion\Uni\Nitro Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\Microsoft.Practices.ServiceLocation.dll
+D:\Programacion\Uni\Nitro Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\XAct.Core.PCL.dll
