@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\Admin\source\repos\Nitro-Restaurant\AppEscritorio\App.xaml
-3-1392918406
+41474814973
 
-11386325024
+12431150425
 205-360333030
-MainWindow.xaml;Pages\LoginPage.xaml;Pages\SignUp.xaml;
+MainWindow.xaml;Pages\LoginPage.xaml;Pages\SignUp.xaml;UI\UI.xaml;
 
-True
+False
 

@@ -27,18 +27,10 @@ namespace AppEscritorio
         public SignUp()
         {
             InitializeComponent();
-            
             ITheme theme = paletteHelper.GetTheme();
             if (IsDarkTheme = theme.GetBaseTheme() == BaseTheme.Dark)
             {
-
-                IsDarkTheme = true;
-                theme.SetBaseTheme(Theme.Dark);
-
-                Logo2.Source = new BitmapImage(new Uri(@"/Recursos/Logo Dark 2.gif", UriKind.Relative));
-
-
-
+                Logo2.Source = new Uri(@"/Recursos/Logo Dark 3.gif", UriKind.Relative);
             }
 
         }
@@ -56,19 +48,13 @@ namespace AppEscritorio
             {
                 IsDarkTheme = false;
                 theme.SetBaseTheme(Theme.Light);
-                Logo2.Source = new BitmapImage(new Uri(@"/Recursos/Logo Light 2.gif", UriKind.Relative));
-                
+                Logo2.Source = new Uri(@"/Recursos/Logo Light 3.gif", UriKind.Relative);
             }
-
             else
             {
                 IsDarkTheme = true;
                 theme.SetBaseTheme(Theme.Dark);
-
-                Logo2.Source = new BitmapImage(new Uri(@"/Recursos/Logo Dark 2.gif", UriKind.Relative));
-               
-
-
+                Logo2.Source = new Uri(@"/Recursos/Logo Dark 3.gif", UriKind.Relative);
             }
 
             paletteHelper.SetTheme(theme);
@@ -82,6 +68,29 @@ namespace AppEscritorio
 
         private void signUpBtn_Click(object sender, RoutedEventArgs e)
         {
+            Usuarios usuario = new Usuarios();
+            usuario.Usuario = txtUsername.Text;
+            usuario.Password = txtPassword.Password;
+            usuario.ConPassword = txtConPassword.Password;
+            usuario.Nombre = txtName.Text;
+
+            try
+            {
+                Control control = new Control();
+                string respuesta = control.ctrlRegistro(usuario);
+
+                if (respuesta.Length > 0)
+                {
+                    MessageBox.Show(respuesta, "Aviso", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Usuario registrados", "Aviso", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+            }catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
         }
 

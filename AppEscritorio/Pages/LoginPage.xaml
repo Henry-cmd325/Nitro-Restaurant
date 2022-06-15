@@ -45,7 +45,7 @@
 
 
 
-                    <Image  Name="Logo" gif:AnimationBehavior.SourceUri="/Recursos/Logo Light 2.gif"  Height="234" Width="354" Margin="0,0,0,0" Visibility="Visible" />
+                    <MediaElement LoadedBehavior="Play" Name="Logo"  Source="/Recursos/Logo Light 3.gif"  Height="234" Width="354" Margin="0,0,0,0"  />
 
 
 
@@ -61,7 +61,7 @@
 
 
                     <PasswordBox  Margin="0,20,0,0" x:Name="txtPassword" Width="300" FontSize="18" materialDesign:HintAssist.Hint="Enter Password" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedPasswordBox}" Cursor="IBeam"/>
-                    <Label Name="Labelito" Margin="55,4,55,0" Background="Transparent" Foreground="red" Content="Label" Visibility="Collapsed"/>
+                    <Label Name="Error" Margin="55,4,55,0" Background="Transparent" Foreground="red" Content="Label" Visibility="Collapsed"/>
 
 
                     <Button  Margin="0,20,0,0" x:Name="loginBtn" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="53" Width="300" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="LOG IN" Click="loginBtn_Click" />

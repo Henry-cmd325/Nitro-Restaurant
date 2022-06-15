@@ -28,14 +28,8 @@ namespace AppEscritorio
             ITheme theme = paletteHelper.GetTheme();
             if (IsDarkTheme = theme.GetBaseTheme() == BaseTheme.Dark)
             {
-
-                IsDarkTheme = true;
-                theme.SetBaseTheme(Theme.Dark);
-
-                Logo.Source =new BitmapImage(new Uri(@"/Recursos/Logo Dark 2.gif", UriKind.Relative));
-
-
-
+                Logo.Source =new Uri(@"/Recursos/Logo Dark 3.gif", UriKind.Relative);
+                Error.Visibility = Visibility.Visible;
             }
         }
 
@@ -43,26 +37,20 @@ namespace AppEscritorio
         private readonly PaletteHelper paletteHelper = new();
         private void toggleTheme(object sender, RoutedEventArgs e)
         {
-
-
             ITheme theme = paletteHelper.GetTheme();
 
             if (IsDarkTheme = theme.GetBaseTheme() == BaseTheme.Dark)
             {
                 IsDarkTheme = false;
                 theme.SetBaseTheme(Theme.Light);
-                Logo.Source = new BitmapImage(new Uri(@"/Recursos/Logo Light 2.gif", UriKind.Relative));
+                Logo.Source = new Uri(@"/Recursos/Logo Light 3.gif", UriKind.Relative);
             }
 
             else
             {
                 IsDarkTheme = true;
                 theme.SetBaseTheme(Theme.Dark);
-
-                Logo.Source = new BitmapImage(new Uri(@"/Recursos/Logo Dark 2.gif", UriKind.Relative));
-
-                
-
+                Logo.Source = new Uri(@"/Recursos/Logo Dark 3.gif", UriKind.Relative);
             }
 
             paletteHelper.SetTheme(theme);
@@ -115,9 +103,5 @@ namespace AppEscritorio
 
         }
 
-        private void MediaElement_ManipulationCompleted(object sender, ManipulationCompletedEventArgs e)
-        {
-
-        }
     }
 }
