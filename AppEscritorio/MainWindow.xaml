@@ -6,6 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppEscritorio"
         mc:Ignorable="d"
+<<<<<<< HEAD
         AllowsTransparency="True"
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
@@ -18,4 +19,8 @@
     
 
 
+=======
+        Title="MainWindow" Height="450" Width="800">
+    <
+>>>>>>> f9a3cd49fa8876dcd511053b42c0b0a9a0fbb15e
 </Window>

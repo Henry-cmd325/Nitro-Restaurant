@@ -43,6 +43,7 @@
             "MaterialDesignThemes": {
               "target": "Package",
               "version": "[4.5.0, )"
+<<<<<<< HEAD
             },
             "MySql.Data": {
               "target": "Package",
@@ -51,6 +52,8 @@
             "XamlAnimatedGif": {
               "target": "Package",
               "version": "[2.0.0, )"
+=======
+>>>>>>> f9a3cd49fa8876dcd511053b42c0b0a9a0fbb15e
             }
           },
           "imports": [

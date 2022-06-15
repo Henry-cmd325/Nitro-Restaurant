@@ -1,5 +1,6 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "RPGhtptHZIIbfk4MBKp7M7PPCPjPWB/oDTtXxXMViucRtT4rLYYc3GmmscI/LanAuZqw9vO8Ez++KyeQIsixWQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Admin\\source\\repos\\Nitro-Restaurant\\AppEscritorio\\AppEscritorio.csproj",
@@ -26,6 +27,14 @@
     "C:\\Users\\Admin\\.nuget\\packages\\system.text.encoding.codepages\\4.4.0\\system.text.encoding.codepages.4.4.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\system.windows.extensions\\4.7.0\\system.windows.extensions.4.7.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\xamlanimatedgif\\2.0.0\\xamlanimatedgif.2.0.0.nupkg.sha512"
+=======
+  "dgSpecHash": "OHxn24VTWp09cFHKQPffpHZZf75pYIsaVo9xNXOaiBDF4nTeZ/9ke02bnoPBW91ovbk+Pj/wKsv2JwmUKU2Rcw==",
+  "success": true,
+  "projectFilePath": "D:\\Programacion\\Uni\\Nitro Restaurant\\AppEscritorio\\AppEscritorio.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\henry\\.nuget\\packages\\materialdesigncolors\\2.0.6\\materialdesigncolors.2.0.6.nupkg.sha512",
+    "C:\\Users\\henry\\.nuget\\packages\\materialdesignthemes\\4.5.0\\materialdesignthemes.4.5.0.nupkg.sha512"
+>>>>>>> f9a3cd49fa8876dcd511053b42c0b0a9a0fbb15e
   ],
   "logs": []
 }

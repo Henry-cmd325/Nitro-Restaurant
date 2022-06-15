@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+<<<<<<< HEAD
     <None Remove="Recursos\food.jpg" />
     <None Remove="Recursos\food2.jpg" />
     <None Remove="Recursos\Logo Dark 2.gif" />
@@ -49,6 +50,9 @@
     <Resource Include="Recursos\Logo Light.gif">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+=======
+    <PackageReference Include="MaterialDesignThemes" Version="4.5.0" />
+>>>>>>> f9a3cd49fa8876dcd511053b42c0b0a9a0fbb15e
   </ItemGroup>
 
 </Project>
