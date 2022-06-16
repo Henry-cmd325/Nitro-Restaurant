@@ -6,21 +6,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppEscritorio"
         mc:Ignorable="d"
-<<<<<<< HEAD
         AllowsTransparency="True"
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
-        Background="Transparent">
-
+        Background="Transparent"
+        Title="MainWindow"
+        Height="780"
+        Width="1188">
     <Grid>
         <Frame NavigationUIVisibility="Hidden" Name="FrameSign"  Margin="0,0,0,0" Source="Pages/LoginPage.xaml"/>
         
     </Grid>
     
-
-
-=======
-        Title="MainWindow" Height="450" Width="800">
-    <
->>>>>>> f9a3cd49fa8876dcd511053b42c0b0a9a0fbb15e
 </Window>

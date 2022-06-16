@@ -1,4 +1,5 @@
 ﻿using ApiNitroRestaurant.Models.Request;
+using ApiNitroRestaurant.Models.Response;
 using ApiNitroRestaurant.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -19,11 +20,16 @@ namespace ApiNitroRestaurant.Controllers
         [HttpGet("{id}", Name = "GetCuentaById")]
         public IActionResult GetCuentaById(int id)
         {
-            var response = _accountService.GetAccount(id);
+            var accountDb = _accountService.GetAccount(id);
 
-            if(response == null) return NotFound();
+            if (accountDb == null) return NotFound();
 
-            return Ok();
+            AccountResponse response = new()
+            {
+                Username = accountDb.Username
+            };
+
+            return Ok(response);
         }
 
         [HttpPost("login")]
@@ -36,14 +42,14 @@ namespace ApiNitroRestaurant.Controllers
             return Ok(response);
         }
 
-        [HttpPost]
+        [HttpPost("signin")]
         public IActionResult Registrarse([FromBody] SignInRequest model)
         {
             var employeeDb = _accountService.SignIn(model);
             
             if (employeeDb == null) return BadRequest("El usuario y la contraseña ya existen o te has equivocado en el nombre del tipo de empleado");
 
-            return Ok("La cuenta ha sido registrada correctamente");
+            return CreatedAtRoute(nameof(GetCuentaById), new { id = employeeDb.IdCuenta }, employeeDb);
         }
     }
 }

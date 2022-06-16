@@ -6,7 +6,6 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v6.0": {
-<<<<<<< HEAD
       "BouncyCastle.NetCore/1.8.5": {
         "runtime": {
           "lib/netstandard2.0/BouncyCastle.Crypto.dll": {
@@ -57,8 +56,6 @@
           }
         }
       },
-=======
->>>>>>> f9a3cd49fa8876dcd511053b42c0b0a9a0fbb15e
       "MaterialDesignColors/2.0.6": {
         "runtime": {
           "lib/netcoreapp3.1/MaterialDesignColors.dll": {
@@ -77,7 +74,6 @@
             "fileVersion": "4.5.0.0"
           }
         }
-<<<<<<< HEAD
       },
       "Microsoft.NETCore.Platforms/3.1.0": {},
       "Microsoft.Win32.SystemEvents/4.7.0": {
@@ -287,13 +283,10 @@
             "fileVersion": "2.0.0.0"
           }
         }
-=======
->>>>>>> f9a3cd49fa8876dcd511053b42c0b0a9a0fbb15e
       }
     }
   },
   "libraries": {
-<<<<<<< HEAD
     "BouncyCastle.NetCore/1.8.5": {
       "type": "package",
       "serviceable": true,
@@ -329,8 +322,6 @@
       "path": "k4os.hash.xxhash/1.0.6",
       "hashPath": "k4os.hash.xxhash.1.0.6.nupkg.sha512"
     },
-=======
->>>>>>> f9a3cd49fa8876dcd511053b42c0b0a9a0fbb15e
     "MaterialDesignColors/2.0.6": {
       "type": "package",
       "serviceable": true,
@@ -344,7 +335,6 @@
       "sha512": "sha512-G26hIGFwGH5q46CD59zGiAs4aLsASsKCCBqgnISPwIcq8pAfKRRAKxXfOQJgNDyIUnVm5Ug67gldsEgeWP6GoQ==",
       "path": "materialdesignthemes/4.5.0",
       "hashPath": "materialdesignthemes.4.5.0.nupkg.sha512"
-<<<<<<< HEAD
     },
     "Microsoft.NETCore.Platforms/3.1.0": {
       "type": "package",
@@ -450,8 +440,6 @@
       "sha512": "sha512-eZ9JmcL1pxJuvEkdmc0BTbuuGM/0HkFjHa28H2D2I8OXgpK65mmB1dXtr84wfbF3fYOoVKyLMNwGtGC168aIiQ==",
       "path": "xamlanimatedgif/2.0.0",
       "hashPath": "xamlanimatedgif.2.0.0.nupkg.sha512"
-=======
->>>>>>> f9a3cd49fa8876dcd511053b42c0b0a9a0fbb15e
     }
   }
 }

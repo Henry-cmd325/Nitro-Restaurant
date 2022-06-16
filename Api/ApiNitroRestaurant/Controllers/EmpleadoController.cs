@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ApiNitroRestaurant.Models;
+using ApiNitroRestaurant.Models.Response;
 
 namespace ApiNitroRestaurant.Controllers
 {
@@ -17,17 +18,49 @@ namespace ApiNitroRestaurant.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-                var lst = _context.Empleados.ToList();
+            var lst = _context.Empleados.ToList();
 
-                return Ok(lst);
+            List<EmpleadoResponse> lstResponse = new();
+
+            lst.ForEach(el =>
+            {
+                lstResponse.Add
+                (
+                    new EmpleadoResponse
+                    {
+                        IdCuenta = el.IdCuenta,
+                        IdTipoEmpleado = el.IdTipoEmpleado,
+                        Paterno = el.Paterno,
+                        Materno = el.Materno,
+                        Nombre = el.Nombre,
+                        Telefono = el.Telefono,
+                        IdEmpleado = el.IdEmpleado,
+                    }
+                ) ;
+            });
+
+            return Ok(lstResponse);
         }
         
         [HttpGet("{id}", Name = "GetEmpleadoById")]
         public IActionResult GetEmpleadoById(int id)
         {
-                var empleado = _context.Empleados.Find(id);
+            var empleadoDb = _context.Empleados.Find(id);
 
-                return Ok(empleado);
+            if (empleadoDb == null) return NotFound();
+
+            EmpleadoResponse empleado = new()
+            {
+                IdEmpleado = empleadoDb.IdEmpleado,
+                IdTipoEmpleado = empleadoDb.IdTipoEmpleado,
+                Paterno = empleadoDb.Paterno,
+                Materno = empleadoDb.Materno,
+                Nombre = empleadoDb.Nombre,
+                Telefono = empleadoDb.Telefono,
+                IdCuenta = empleadoDb.IdCuenta
+            };
+
+            return Ok(empleado);
         }
     }
 }
