@@ -45,7 +45,7 @@
 
 
 
-                    <MediaElement LoadedBehavior="Play" Name="Logo"  Source="/Recursos/Logo Light 3.gif"  Height="234" Width="354" Margin="0,0,0,0"  />
+                    <Image  Name="Logo" gif:AnimationBehavior.SourceUri="/Recursos/Logo Light 3.gif"  Height="234" Width="354" Margin="0,0,0,0"  />
 
 
 

@@ -20,7 +20,7 @@ namespace AppEscritorio
 {
     public partial class MainWindow : Window
     {
-        
+        public bool IsDarkTheme = false;
         public MainWindow()
         {
             InitializeComponent();

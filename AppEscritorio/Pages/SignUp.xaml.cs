@@ -23,38 +23,44 @@ namespace AppEscritorio
     /// </summary>
     public partial class SignUp : Page
     {
-        public bool IsDarkTheme { get; set; }
+        private readonly PaletteHelper paletteHelper = new();
+        MainWindow w = (MainWindow)Application.Current.MainWindow;
         public SignUp()
         {
             InitializeComponent();
             ITheme theme = paletteHelper.GetTheme();
-            if (IsDarkTheme = theme.GetBaseTheme() == BaseTheme.Dark)
+            if (w.IsDarkTheme = theme.GetBaseTheme() == BaseTheme.Dark)
             {
-                Logo2.Source = new Uri(@"/Recursos/Logo Dark 3.gif", UriKind.Relative);
+                Logo2.Source = new BitmapImage(new Uri(@"/Recursos/Logo Dark 3.gif", UriKind.Relative));
             }
+            else
+            {
+                Logo2.Source = new BitmapImage(new Uri(@"/Recursos/Logo Light 3.gif", UriKind.Relative));
+            }
+
 
         }
 
         
         
-        private readonly PaletteHelper paletteHelper = new();
+        
         private void toggleTheme(object sender, RoutedEventArgs e)
         {
 
 
             ITheme theme = paletteHelper.GetTheme();
 
-            if (IsDarkTheme = theme.GetBaseTheme() == BaseTheme.Dark)
+            if (w.IsDarkTheme = theme.GetBaseTheme() == BaseTheme.Dark)
             {
-                IsDarkTheme = false;
+                w.IsDarkTheme = false;
                 theme.SetBaseTheme(Theme.Light);
-                Logo2.Source = new Uri(@"/Recursos/Logo Light 3.gif", UriKind.Relative);
+                Logo2.Source = new BitmapImage(new Uri(@"/Recursos/Logo Light 3.gif", UriKind.Relative));
             }
             else
             {
-                IsDarkTheme = true;
+                w.IsDarkTheme = true;
                 theme.SetBaseTheme(Theme.Dark);
-                Logo2.Source = new Uri(@"/Recursos/Logo Dark 3.gif", UriKind.Relative);
+                Logo2.Source = new BitmapImage(new Uri(@"/Recursos/Logo Dark 3.gif", UriKind.Relative));
             }
 
             paletteHelper.SetTheme(theme);

@@ -42,7 +42,7 @@
 
 
 
-                    <MediaElement LoadedBehavior="Play" Name="Logo2" Source="/Recursos/Logo Light 3.gif" Height="159" Width="259" Margin="0,0,0,0"/>
+                    <Image Name="Logo2" gif:AnimationBehavior.SourceUri="/Recursos/Logo Light 3.gif" Height="159" Width="259" Margin="0,0,0,0"/>
 
 
 
