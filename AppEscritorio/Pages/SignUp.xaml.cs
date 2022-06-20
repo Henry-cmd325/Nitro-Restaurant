@@ -74,29 +74,7 @@ namespace AppEscritorio
 
         private void signUpBtn_Click(object sender, RoutedEventArgs e)
         {
-            Usuarios usuario = new Usuarios();
-            usuario.Usuario = txtUsername.Text;
-            usuario.Password = txtPassword.Password;
-            usuario.ConPassword = txtConPassword.Password;
-            usuario.Nombre = txtName.Text;
-
-            try
-            {
-                Control control = new Control();
-                string respuesta = control.ctrlRegistro(usuario);
-
-                if (respuesta.Length > 0)
-                {
-                    MessageBox.Show(respuesta, "Aviso", MessageBoxButton.OK, MessageBoxImage.Information);
-                }
-                else
-                {
-                    MessageBox.Show("Usuario registrados", "Aviso", MessageBoxButton.OK, MessageBoxImage.Information);
-                }
-            }catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+          
 
         }
 

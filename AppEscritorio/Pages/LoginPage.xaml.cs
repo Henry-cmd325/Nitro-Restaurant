@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Json;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,6 +15,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using AppEscritorio.Models.Response;
+using AppEscritorio.Tools;
+using AppEscritorio.UI;
 using MaterialDesignThemes.Wpf;
 using XamlAnimatedGif;
 
@@ -28,11 +34,6 @@ namespace AppEscritorio
         {
             InitializeComponent();
             ITheme theme = paletteHelper.GetTheme();
-
-            
-
-            
-
 
             if (w.IsDarkTheme = theme.GetBaseTheme() == BaseTheme.Dark)
             {
@@ -77,33 +78,29 @@ namespace AppEscritorio
            
         }
 
-        private void loginBtn_Click(object sender, RoutedEventArgs e)
+        private async void loginBtn_Click(object sender, RoutedEventArgs e)
         {
-            string usuario = txtUsername.Text;
-            string password = txtPassword.Password;
 
-            try
+            var cuenta = new AccountRequest { Username = txtUsername.Text, Password = txtPassword.Password};
+
+            var result = await Api.Post<AccountRequest, AccountResponse>("https://localhost:7214/api/Cuenta/login", cuenta);
+
+            if(result != null)
             {
-                Control ctrl = new Control();
-                string respuesta = ctrl.ctrlLogin(usuario, password);
-                if (respuesta.Length > 0)
+                if (result.username == txtUsername.Text)
                 {
-                    Label error = new Label();
-                    error.Margin = new Thickness(55, 4, 55, 0);
-                    error.Content = respuesta;
-
-
+                    MessageBox.Show(result.username);
                 }
                 else
                 {
-                    Application.Current.MainWindow.Close();
+                    MessageBox.Show("La constraseña es incorrecta");
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
 
+            }
+            else
+            {
+                MessageBox.Show("Ha ocurrido un error");
+            }
         }
 
         private void signupBtn_Click(object sender, RoutedEventArgs e)

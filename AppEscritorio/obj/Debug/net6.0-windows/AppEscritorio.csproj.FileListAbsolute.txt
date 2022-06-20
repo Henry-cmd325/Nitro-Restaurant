@@ -39,7 +39,6 @@ C:\Users\Admin\source\repos\Nitro-Restaurant\AppEscritorio\bin\Debug\net6.0-wind
 D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\obj\Debug\net6.0-windows\AppEscritorio.csproj.AssemblyReference.cache
 D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\obj\Debug\net6.0-windows\Pages\LoginPage.g.cs
 D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\obj\Debug\net6.0-windows\Pages\SignUp.g.cs
-D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\obj\Debug\net6.0-windows\UI\UI.g.cs
 D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\obj\Debug\net6.0-windows\App.g.cs
 D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\obj\Debug\net6.0-windows\AppEscritorio_MarkupCompile.cache
 D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\obj\Debug\net6.0-windows\AppEscritorio_MarkupCompile.lref
@@ -67,7 +66,6 @@ D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\obj\Debug\net6.0-windows\App.
 D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\obj\Debug\net6.0-windows\MainWindow.baml
 D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\obj\Debug\net6.0-windows\Pages\LoginPage.baml
 D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\obj\Debug\net6.0-windows\Pages\SignUp.baml
-D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\obj\Debug\net6.0-windows\UI\UI.baml
 D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\obj\Debug\net6.0-windows\AppEscritorio.g.resources
 D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\obj\Debug\net6.0-windows\AppEscritorio.GeneratedMSBuildEditorConfig.editorconfig
 D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\obj\Debug\net6.0-windows\AppEscritorio.AssemblyInfoInputs.cache
@@ -76,3 +74,5 @@ D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\obj\Debug\net6.0-windows\AppE
 D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\obj\Debug\net6.0-windows\AppEscritorio.csproj.CopyComplete
 D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\obj\Debug\net6.0-windows\AppEscritorio.genruntimeconfig.cache
 D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\obj\Debug\net6.0-windows\ref\AppEscritorio.dll
+D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\obj\Debug\net6.0-windows\UI\UI_window.g.cs
+D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\obj\Debug\net6.0-windows\UI\UI_window.baml

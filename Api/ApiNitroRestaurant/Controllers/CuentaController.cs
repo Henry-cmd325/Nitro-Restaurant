@@ -37,7 +37,7 @@ namespace ApiNitroRestaurant.Controllers
         {
             var response = _accountService.Auth(model);
 
-            if (response == null) return BadRequest("El usuario o la contraseña son incorrectos");
+            if (response == null) return BadRequest(new AccountResponse { Username = "El usuario o la contraseña son incorrectos" });
 
             return Ok(response);
         }

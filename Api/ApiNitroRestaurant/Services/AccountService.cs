@@ -15,12 +15,13 @@ namespace ApiNitroRestaurant.Services
 
          public AccountResponse Auth(AccountRequest model)
          {
+            
              AccountResponse response = null;
 
              var password = Encrypt.GetSha256(model.Password);
 
-             var account = _context.Cuentas.Where((acc) => acc.Password == password &&
-                                                 acc.Username == model.Username).FirstOrDefault();
+             var account = _context.Cuentas.Where((acc) => acc.Password == password && acc.Username == model.Username)
+                           .FirstOrDefault();
 
              if (account != null) response = new AccountResponse { Username = model.Username };
 

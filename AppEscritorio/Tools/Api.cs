@@ -1,7 +1,9 @@
-﻿using System;
+﻿using AppEscritorio.Models.Response;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Json;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -24,12 +26,9 @@ namespace AppEscritorio.Tools
 
         public static async Task<TResponse?> Post<TValue, TResponse>(string url, TValue obj)
         {
-            var json = JsonSerializer.Serialize(obj);
-            var data = new StringContent(json, Encoding.UTF8, "application/json");
-
             HttpClient client = new();
 
-            var response = await client.PostAsync(url, data);
+            var response = await client.PostAsJsonAsync(url, obj);
 
             var resultJson = await response.Content.ReadAsStringAsync();
 
