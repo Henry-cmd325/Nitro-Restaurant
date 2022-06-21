@@ -15,6 +15,9 @@ using System.Windows.Shapes;
 using MaterialDesignThemes.Wpf;
 using AppEscritorio;
 using XamlAnimatedGif;
+using AppEscritorio.Models.Response;
+using AppEscritorio.Tools;
+using AppEscritorio.UI;
 
 namespace AppEscritorio
 {
@@ -72,10 +75,43 @@ namespace AppEscritorio
             Application.Current.Shutdown();
         }
 
-        private void signUpBtn_Click(object sender, RoutedEventArgs e)
+        private async void signUpBtn_Click(object sender, RoutedEventArgs e)
         {
-          
+            if (txtPassword.Password == txtConPassword.Password)
+            {
+                var cuenta = new AccountRequest 
+                {
+                    Username = txtUsername.Text, 
+                    Password = txtPassword.Password 
+                };
 
+                var usuario = new Usuarios 
+                { 
+                    Nombre = txtName.Text,
+                    Paterno = txtFLastName.Text, 
+                    Materno = txtSLastName.Text, 
+                    Telefono = txtPhone.Text, 
+                    TipoEmpleado= new TipoEmpleadoRequest { nombre = "User"}, 
+                    Cuenta = cuenta
+                };
+
+                var result = await Api.Post<Usuarios, UsuarioResponse>("https://localhost:7214/api/Cuenta/signin", usuario);
+
+                if (result != null)
+                {
+                        UI_window ui = new UI_window();
+                        ui.Show();
+                    Application.Current.MainWindow.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Ha ocurrido un error");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Las contraseñas no coinciden");
+            }
         }
 
         private void loginBtn_Click(object sender, RoutedEventArgs e)
@@ -83,5 +119,7 @@ namespace AppEscritorio
             NavigationService.Navigate(new LoginPage());
            
         }
+
+       
     }
 }

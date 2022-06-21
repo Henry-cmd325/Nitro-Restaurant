@@ -37,11 +37,14 @@ namespace AppEscritorio
 
             if (w.IsDarkTheme = theme.GetBaseTheme() == BaseTheme.Dark)
             {
-                Logo.Source =new BitmapImage(new Uri(@"/Recursos/Logo Dark 3.gif", UriKind.Relative));  
+                Logo.Source =new BitmapImage(new Uri(@"/Recursos/Logo Dark 3.gif", UriKind.Relative));
+                AnimationBehavior.SetSourceUri(Logo, new Uri(@"/Recursos/Logo Dark 3.gif", UriKind.Relative));
             }
             else
             {
                 Logo.Source = new BitmapImage(new Uri(@"/Recursos/Logo Light 3.gif", UriKind.Relative));
+                AnimationBehavior.SetSourceUri(Logo, new Uri(@"/Recursos/Logo Light 3.gif", UriKind.Relative));
+
             }
         }
         
@@ -54,6 +57,7 @@ namespace AppEscritorio
                 w.IsDarkTheme = false;
                 theme.SetBaseTheme(Theme.Light);
                 Logo.Source = new BitmapImage(new Uri(@"/Recursos/Logo Light 3.gif", UriKind.Relative));
+                AnimationBehavior.SetSourceUri(Logo, new Uri(@"/Recursos/Logo Light 3.gif", UriKind.Relative));
             }
 
             else
@@ -61,6 +65,7 @@ namespace AppEscritorio
                 w.IsDarkTheme = true;
                 theme.SetBaseTheme(Theme.Dark);
                 Logo.Source = new BitmapImage(new Uri(@"/Recursos/Logo Dark 3.gif", UriKind.Relative));
+                AnimationBehavior.SetSourceUri(Logo, new Uri(@"/Recursos/Logo Dark 3.gif", UriKind.Relative));
             }
 
             paletteHelper.SetTheme(theme);
@@ -89,11 +94,14 @@ namespace AppEscritorio
             {
                 if (result.username == txtUsername.Text)
                 {
-                    MessageBox.Show(result.username);
+                     UI_window ui = new UI_window();
+                    ui.Show();
+                    Application.Current.MainWindow.Close();
+
                 }
                 else
                 {
-                    MessageBox.Show("La constraseña es incorrecta");
+                    MessageBox.Show("La constraseña o nombre de usuario son incorrectos");
                 }
 
             }

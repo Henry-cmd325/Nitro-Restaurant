@@ -28,8 +28,15 @@ namespace ApiNitroRestaurant.Services
              return response;
          }
 
-        public Empleado? SignIn(SignInRequest model)
-        { 
+        public Cuenta? GetAccount(int id)
+        {
+            var account = _context.Cuentas.Where((c) => c.IdCuenta == id).FirstOrDefault();
+
+            return account;
+        }
+
+        public EmpleadoResponse SignIn(SignInRequest model)
+        {
             model.Cuenta.Password = Encrypt.GetSha256(model.Cuenta.Password);
 
             var accountDb = _context.Cuentas.Where(d => d.Username == model.Cuenta.Username
@@ -65,15 +72,15 @@ namespace ApiNitroRestaurant.Services
 
             var employeeDb = _context.Empleados.Where(e => e.IdEmpleado == employee.IdEmpleado).FirstOrDefault();
 
-            return employeeDb;
+            var employeeResponse = new EmpleadoResponse();
+            employeeResponse.Nombre = employeeDb.Nombre;
+            employeeResponse.Materno = employeeDb.Materno;
+            employeeResponse.Paterno = employeeDb.Paterno;
+            employeeResponse.Telefono = employeeDb.Telefono;
+            employeeResponse.IdTipoEmpleado = employeeDb.IdTipoEmpleado;
+            employeeResponse.IdCuenta = employeeDb.IdCuenta;
 
-        }
-
-        public Cuenta? GetAccount(int id)
-        {
-            var account = _context.Cuentas.Where((c) => c.IdCuenta == id).FirstOrDefault();
-
-            return account;
+            return employeeResponse;
         }
     }
 }

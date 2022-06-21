@@ -9,16 +9,13 @@ namespace AppEscritorio
 {
     internal class Usuarios
     {
-        int id_tipo;
-        string conPassword;
-        string nombre;
-        string paterno;
-        string materno;
-        string telefono;
 
-        
-
-  
+        public string Nombre { get; set; } = null!;
+        public string Paterno { get; set; } = null!;
+        public string Materno { get; set; } = null!;
+        public string Telefono { get; set; } = null!;
+        public AccountRequest Cuenta { get; set; } = null!;
+        public TipoEmpleadoRequest TipoEmpleado { get; set; } = null!;
     }
 
     class AccountRequest
@@ -32,6 +29,7 @@ namespace AppEscritorio
 
     class TipoEmpleadoRequest
     {
-        string nombre;
+        public string nombre { get; set; } = null!;
+        
     }
 }
