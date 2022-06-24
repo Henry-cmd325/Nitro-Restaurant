@@ -9,7 +9,6 @@ namespace AppEscritorio.Models.Response
 {
     class AccountResponse
     {
-        [Required]
-        public string username { get; set; } = null!;
+        public string Username { get; set; } = null!;
     }
 }

@@ -6,8 +6,8 @@ namespace ApiNitroRestaurant.Services
 {
     public interface IAccountService
     {
-        public AccountResponse Auth(AccountRequest model);
-        public EmpleadoResponse SignIn(SignInRequest model);
-        public Cuenta? GetAccount(int id);
+        public ServerResponse<AccountResponse> Auth(AccountRequest model);
+        public ServerResponse<EmpleadoResponse> SignIn(SignInRequest model);
+        public ServerResponse<Cuenta> GetAccount(int id);
     }
 }

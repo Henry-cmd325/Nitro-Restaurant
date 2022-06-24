@@ -22,22 +22,13 @@ namespace ApiNitroRestaurant.Controllers
         {
             var accountDb = _accountService.GetAccount(id);
 
-            if (accountDb == null) return NotFound();
-
-            AccountResponse response = new()
-            {
-                Username = accountDb.Username
-            };
-
-            return Ok(response);
+            return Ok(accountDb);
         }
 
         [HttpPost("login")]
         public IActionResult Autentificar([FromBody] AccountRequest model)
         {
             var response = _accountService.Auth(model);
-
-            if (response == null) return BadRequest(new AccountResponse { Username = "El usuario o la contraseña son incorrectos" });
 
             return Ok(response);
         }
@@ -47,9 +38,9 @@ namespace ApiNitroRestaurant.Controllers
         {
             var employeeDb = _accountService.SignIn(model);
             
-            if (employeeDb == null) return BadRequest("El usuario y la contraseña ya existen o te has equivocado en el nombre del tipo de empleado");
+            if (!employeeDb.Success) return Ok(employeeDb);
 
-            return CreatedAtRoute(nameof(GetCuentaById), new { id = employeeDb.IdCuenta }, employeeDb);
+            return CreatedAtRoute(nameof(GetCuentaById), new { id = employeeDb.Data.IdCuenta }, employeeDb);
         }
     }
 }

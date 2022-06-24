@@ -88,22 +88,29 @@ namespace AppEscritorio
 
             var cuenta = new AccountRequest { Username = txtUsername.Text, Password = txtPassword.Password};
 
-            var result = await Api.Post<AccountRequest, AccountResponse>("https://localhost:7214/api/Cuenta/login", cuenta);
+            var result = await Api.Post<AccountRequest, ServerResponse<AccountResponse>>("https://localhost:7214/api/Cuenta/login", cuenta);
 
-            if(result != null)
+            if (result != null && result.Success)
             {
-                if (result.username == txtUsername.Text)
+                if(result.Data == null)
                 {
-                     UI_window ui = new UI_window();
+                    MessageBox.Show(JsonSerializer.Serialize(result));
+                }
+                else if (result.Data.Username == txtUsername.Text)
+                {
+                    UI_window ui = new UI_window();
                     ui.Show();
                     Application.Current.MainWindow.Close();
 
                 }
                 else
                 {
-                    MessageBox.Show("La constraseña o nombre de usuario son incorrectos");
-                }
+                    string error = "";
 
+                    if (result.Error != null) error = result.Error;
+
+                    MessageBox.Show("Ha ocurrido un error: " + error);
+                }
             }
             else
             {

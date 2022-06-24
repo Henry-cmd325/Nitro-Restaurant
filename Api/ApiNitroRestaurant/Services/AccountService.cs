@@ -13,30 +13,54 @@ namespace ApiNitroRestaurant.Services
              _context = context;
          }
 
-         public AccountResponse Auth(AccountRequest model)
+         public ServerResponse<AccountResponse> Auth(AccountRequest model)
          {
-            
-             AccountResponse response = null;
+            ServerResponse<AccountResponse> response = new();
 
              var password = Encrypt.GetSha256(model.Password);
 
              var account = _context.Cuentas.Where((acc) => acc.Password == password && acc.Username == model.Username)
                            .FirstOrDefault();
 
-             if (account != null) response = new AccountResponse { Username = model.Username };
+            if (account == null)
+            {
+                response.Error = "EL usuario o la contraseña son incorrectas";
+                response.Success = false;
 
-             return response;
+                return response;
+            }
+
+            var accountResponse = new AccountResponse();
+
+            accountResponse.Username = model.Username;
+
+            response.Data = accountResponse;
+
+            return response;
          }
 
-        public Cuenta? GetAccount(int id)
+        public ServerResponse<Cuenta> GetAccount(int id)
         {
             var account = _context.Cuentas.Where((c) => c.IdCuenta == id).FirstOrDefault();
 
-            return account;
+            ServerResponse<Cuenta> response = new();
+          
+            if (account == null)
+            {
+                response.Error = "El id se ha pasado del rango de datos disponible";
+                response.Success = false;
+
+                return response;
+            }
+
+            response.Data = account;
+            return response;
         }
 
-        public EmpleadoResponse SignIn(SignInRequest model)
+        public ServerResponse<EmpleadoResponse> SignIn(SignInRequest model)
         {
+            ServerResponse<EmpleadoResponse> serverResponse = new();
+
             model.Cuenta.Password = Encrypt.GetSha256(model.Cuenta.Password);
 
             var accountDb = _context.Cuentas.Where(d => d.Username == model.Cuenta.Username
@@ -60,7 +84,10 @@ namespace ApiNitroRestaurant.Services
             employee.Telefono = model.Telefono;
 
             if (attributeType == null)
-                return null;
+            {
+                serverResponse.Success = false;
+                serverResponse.Error = "El tipo de empleado elegido no existe";
+            }
             else
                 employee.IdTipoEmpleado = attributeType.IdTipoEmpleado;
 
@@ -80,7 +107,9 @@ namespace ApiNitroRestaurant.Services
             employeeResponse.IdTipoEmpleado = employeeDb.IdTipoEmpleado;
             employeeResponse.IdCuenta = employeeDb.IdCuenta;
 
-            return employeeResponse;
+            serverResponse.Data = employeeResponse;
+
+            return serverResponse;
         }
     }
 }

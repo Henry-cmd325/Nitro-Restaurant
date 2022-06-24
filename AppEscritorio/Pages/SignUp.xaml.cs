@@ -91,17 +91,25 @@ namespace AppEscritorio
                     Paterno = txtFLastName.Text, 
                     Materno = txtSLastName.Text, 
                     Telefono = txtPhone.Text, 
-                    TipoEmpleado= new TipoEmpleadoRequest { nombre = "User"}, 
+                    TipoEmpleado= new TipoEmpleadoRequest { Nombre = "User"}, 
                     Cuenta = cuenta
                 };
 
-                var result = await Api.Post<Usuarios, UsuarioResponse>("https://localhost:7214/api/Cuenta/signin", usuario);
+                var result = await Api.Post<Usuarios, ServerResponse<UsuarioResponse>>("https://localhost:7214/api/Cuenta/signin", usuario);
 
-                if (result != null)
+                if (result != null && result.Success)
                 {
-                        UI_window ui = new UI_window();
-                        ui.Show();
+                    UI_window ui = new UI_window();
+                    ui.Show();
                     Application.Current.MainWindow.Close();
+                }
+                else if (result != null)
+                {
+                    string error = "";
+
+                    error = result.Error;
+
+                    MessageBox.Show("Ha ocurrido un error: " + error);
                 }
                 else
                 {

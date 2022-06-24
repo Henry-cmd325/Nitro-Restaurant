@@ -24,7 +24,7 @@ namespace AppEscritorio.Tools
             return obj;
         }
 
-        public static async Task<TResponse?> Post<TValue, TResponse>(string url, TValue obj)
+        public static async Task<TResponse> Post<TValue, TResponse>(string url, TValue obj)
         {
             HttpClient client = new();
 
@@ -32,7 +32,10 @@ namespace AppEscritorio.Tools
 
             var resultJson = await response.Content.ReadAsStringAsync();
 
-            var result = JsonSerializer.Deserialize<TResponse>(resultJson);
+            var result = JsonSerializer.Deserialize<TResponse>(resultJson, new JsonSerializerOptions()
+            {
+                PropertyNameCaseInsensitive = true
+            });
 
             return result;
         }

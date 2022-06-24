@@ -29,7 +29,7 @@ namespace AppEscritorio
 
     class TipoEmpleadoRequest
     {
-        public string nombre { get; set; } = null!;
+        public string Nombre { get; set; } = null!;
         
     }
 }
