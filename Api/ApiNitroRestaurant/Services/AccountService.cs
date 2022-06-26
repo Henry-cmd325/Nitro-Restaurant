@@ -24,7 +24,7 @@ namespace ApiNitroRestaurant.Services
 
             if (account == null)
             {
-                response.Error = "EL usuario o la contraseña son incorrectas";
+                response.Error = "El usuario o la contraseña son incorrectas";
                 response.Success = false;
 
                 return response;
@@ -47,7 +47,7 @@ namespace ApiNitroRestaurant.Services
           
             if (account == null)
             {
-                response.Error = "El id se ha pasado del rango de datos disponible";
+                response.Error = "El id introducido no corresponde con el id de ninguna cuenta";
                 response.Success = false;
 
                 return response;
@@ -66,7 +66,13 @@ namespace ApiNitroRestaurant.Services
             var accountDb = _context.Cuentas.Where(d => d.Username == model.Cuenta.Username
                                     && d.Password == model.Cuenta.Password).FirstOrDefault();
 
-            if (accountDb != null) return null;
+            if (accountDb != null)
+            {
+                serverResponse.Success = false;
+                serverResponse.Error = "El nombre de usuario y la contraseña ya existen";
+
+                return serverResponse;
+            };
 
             var account = new Cuenta();
             account.Username = model.Cuenta.Username;
@@ -97,15 +103,13 @@ namespace ApiNitroRestaurant.Services
             _context.Empleados.Add(employee);
             _context.SaveChanges();
 
-            var employeeDb = _context.Empleados.Where(e => e.IdEmpleado == employee.IdEmpleado).FirstOrDefault();
-
             var employeeResponse = new EmpleadoResponse();
-            employeeResponse.Nombre = employeeDb.Nombre;
-            employeeResponse.Materno = employeeDb.Materno;
-            employeeResponse.Paterno = employeeDb.Paterno;
-            employeeResponse.Telefono = employeeDb.Telefono;
-            employeeResponse.IdTipoEmpleado = employeeDb.IdTipoEmpleado;
-            employeeResponse.IdCuenta = employeeDb.IdCuenta;
+            employeeResponse.Nombre = employee.Nombre;
+            employeeResponse.Materno = employee.Materno;
+            employeeResponse.Paterno = employee.Paterno;
+            employeeResponse.Telefono = employee.Telefono;
+            employeeResponse.IdTipoEmpleado = employee.IdTipoEmpleado;
+            employeeResponse.IdCuenta = employee.IdCuenta;
 
             serverResponse.Data = employeeResponse;
 

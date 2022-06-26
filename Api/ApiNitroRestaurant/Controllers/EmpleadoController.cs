@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using ApiNitroRestaurant.Models;
 using ApiNitroRestaurant.Models.Response;
+using ApiNitroRestaurant.Models.Request;
+using ApiNitroRestaurant.Services;
 
 namespace ApiNitroRestaurant.Controllers
 {
@@ -9,58 +11,40 @@ namespace ApiNitroRestaurant.Controllers
     [ApiController]
     public class EmpleadoController : ControllerBase
     {
-        private readonly NitroRestaurantContext _context;
-        public EmpleadoController(NitroRestaurantContext context)
+        private readonly IEmployeeService _employeeService;
+        public EmpleadoController(IEmployeeService employeeService)
         {
-            _context = context;
-        }
-
-        [HttpGet]
-        public IActionResult Get()
-        {
-            var lst = _context.Empleados.ToList();
-
-            List<EmpleadoResponse> lstResponse = new();
-
-            lst.ForEach(el =>
-            {
-                lstResponse.Add
-                (
-                    new EmpleadoResponse
-                    {
-                        IdCuenta = el.IdCuenta,
-                        IdTipoEmpleado = el.IdTipoEmpleado,
-                        Paterno = el.Paterno,
-                        Materno = el.Materno,
-                        Nombre = el.Nombre,
-                        Telefono = el.Telefono,
-                        IdEmpleado = el.IdEmpleado,
-                    }
-                ) ;
-            });
-
-            return Ok(lstResponse);
+            _employeeService = employeeService;
         }
         
         [HttpGet("{id}", Name = "GetEmpleadoById")]
         public IActionResult GetEmpleadoById(int id)
         {
-            var empleadoDb = _context.Empleados.Find(id);
+            var response = _employeeService.Get(id);
 
-            if (empleadoDb == null) return NotFound();
+            if (!response.Success) return NotFound(response);
 
-            EmpleadoResponse empleado = new()
-            {
-                IdEmpleado = empleadoDb.IdEmpleado,
-                IdTipoEmpleado = empleadoDb.IdTipoEmpleado,
-                Paterno = empleadoDb.Paterno,
-                Materno = empleadoDb.Materno,
-                Nombre = empleadoDb.Nombre,
-                Telefono = empleadoDb.Telefono,
-                IdCuenta = empleadoDb.IdCuenta
-            };
+            return Ok(response);
+        }
 
-            return Ok(empleado);
+        [HttpPost("login")]
+        public IActionResult EmpleadoLogin([FromBody] EmpleadoAuthRequest model)
+        {
+            var response = _employeeService.Auth(model);
+
+            if(!response.Success) return BadRequest(response);
+
+            return Ok(response);
+        }
+
+        [HttpPost("signin")]
+        public IActionResult EmpleadoSignIn([FromBody] EmpleadoRequest model)
+        {
+            var response = _employeeService.SignIn(model);
+
+            if (!response.Success) return BadRequest(response);
+
+            return CreatedAtRoute(nameof(GetEmpleadoById), new { id = response.Data.IdEmpleado }, response);
         }
     }
 }

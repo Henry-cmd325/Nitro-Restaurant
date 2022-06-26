@@ -36,11 +36,11 @@ namespace ApiNitroRestaurant.Controllers
         [HttpPost("signin")]
         public IActionResult Registrarse([FromBody] SignInRequest model)
         {
-            var employeeDb = _accountService.SignIn(model);
+            var response = _accountService.SignIn(model);
             
-            if (!employeeDb.Success) return Ok(employeeDb);
+            if (!response.Success) return BadRequest(response);
 
-            return CreatedAtRoute(nameof(GetCuentaById), new { id = employeeDb.Data.IdCuenta }, employeeDb);
+            return CreatedAtRoute(nameof(GetCuentaById), new { id = response.Data.IdCuenta }, response);
         }
     }
 }
