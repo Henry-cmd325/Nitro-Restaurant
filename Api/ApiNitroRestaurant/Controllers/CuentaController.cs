@@ -10,7 +10,7 @@ namespace ApiNitroRestaurant.Controllers
     [ApiController]
     public class CuentaController : ControllerBase
     {
-        private IAccountService _accountService;
+        private readonly IAccountService _accountService;
 
         public CuentaController(IAccountService accountService)
         {
@@ -29,6 +29,8 @@ namespace ApiNitroRestaurant.Controllers
         public IActionResult Autentificar([FromBody] AccountRequest model)
         {
             var response = _accountService.Auth(model);
+
+            if (!response.Success) return BadRequest(response);
 
             return Ok(response);
         }
