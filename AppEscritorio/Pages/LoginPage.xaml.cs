@@ -33,6 +33,9 @@ namespace AppEscritorio
         public LoginPage()
         {
             InitializeComponent();
+            w.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            w.Width = this.Width;
+            w.Height = this.Height;
             ITheme theme = paletteHelper.GetTheme();
 
             if (w.IsDarkTheme = theme.GetBaseTheme() == BaseTheme.Dark)

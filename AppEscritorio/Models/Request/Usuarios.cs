@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AppEscritorio
 {
-    internal class Usuarios
+    public class Usuarios
     {
 
         public string Nombre { get; set; } = null!;
@@ -18,7 +18,7 @@ namespace AppEscritorio
         public TipoEmpleadoRequest TipoEmpleado { get; set; } = null!;
     }
 
-    class AccountRequest
+    public class AccountRequest
     {
         [Required]
         public string Username { get; set; } = null!;
@@ -27,7 +27,7 @@ namespace AppEscritorio
         public string Password { get; set; } = null!;
     }
 
-    class TipoEmpleadoRequest
+    public class TipoEmpleadoRequest
     {
         public string Nombre { get; set; } = null!;
         

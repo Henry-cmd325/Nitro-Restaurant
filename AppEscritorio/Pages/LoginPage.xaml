@@ -7,9 +7,12 @@
       xmlns:local="clr-namespace:AppEscritorio"
       xmlns:gif ="https://github.com/XamlAnimatedGif/XamlAnimatedGif"
       mc:Ignorable="d"
-      Title="Login" Height="760" Width="1188"
+      Title="Login"
       TextElement.Foreground="{DynamicResource MaterialDesignBody}"
-      Background="{x:Null}">
+      Background="{x:Null}"
+      Width="1120"
+      Height="735"
+      >
 
 
     <Grid Margin="0,0,0,0">
@@ -17,11 +20,11 @@
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        
+
         <materialDesign:Card Grid.Column="0" Background="{DynamicResource MaterialDesignPaper}" Margin="0,0,0,0" materialDesign:ShadowAssist.ShadowDepth="Depth4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
 
 
-            <materialDesign:DialogHost  CloseOnClickAway="True" x:Name="DialogHost" Margin="10,0,10,0">
+            <materialDesign:DialogHost  CloseOnClickAway="True" x:Name="DialogHost" Margin="0,0,0,0">
 
                 <StackPanel HorizontalAlignment="Center" Width="554" Margin="0,0,0,0">
                     <materialDesign:PopupBox HorizontalAlignment="Right" Margin="0 20 20 0" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" Height="25">
@@ -75,7 +78,7 @@
             </materialDesign:DialogHost>
         </materialDesign:Card>
         <materialDesign:Card Margin="0,0,0,0" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{DynamicResource MaterialDesignPaper}">
-            <Image Source="/Recursos/food.jpg" Stretch="Fill" RenderTransformOrigin="0.5,0.5">
+            <Image Margin="0,0,0,-4" Source="/Recursos/food.jpg" Stretch="Fill" RenderTransformOrigin="0.5,0.5" Height="739">
                 <Image.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform ScaleX="-1"/>
