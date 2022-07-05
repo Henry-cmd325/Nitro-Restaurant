@@ -1,16 +1,20 @@
-﻿<Page x:Class="AppEscritorio.SignUp"
-      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+﻿<Window x:Class="AppEscritorio.Pages.SignUp"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:gif="https://github.com/XamlAnimatedGif/XamlAnimatedGif"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:gif="https://github.com/XamlAnimatedGif/XamlAnimatedGif"
-        xmlns:local="clr-namespace:AppEscritorio"
+        xmlns:local="clr-namespace:AppEscritorio.Pages"
         mc:Ignorable="d"
-        Title="SignUp" 
+        Height="800"
+        Title="SignUp2"  
+        AllowsTransparency="True"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         Background="{x:Null}">
-
+   
     <Grid Margin="0,0,0,0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="800"></ColumnDefinition>
@@ -139,5 +143,4 @@
 
         </materialDesign:Card>
     </Grid>
-
-</Page>
+</Window>

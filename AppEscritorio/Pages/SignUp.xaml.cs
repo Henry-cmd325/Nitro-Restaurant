@@ -10,37 +10,31 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-using MaterialDesignThemes.Wpf;
-using AppEscritorio;
 using XamlAnimatedGif;
 using AppEscritorio.Models.Response;
 using AppEscritorio.Tools;
 using AppEscritorio.UI;
+using MaterialDesignThemes.Wpf;
 
-namespace AppEscritorio
+namespace AppEscritorio.Pages
 {
     /// <summary>
-    /// Lógica de interacción para SignUp.xaml
+    /// Lógica de interacción para SignUp2.xaml
     /// </summary>
-    public partial class SignUp : Page
+    public partial class SignUp : Window
     {
+        public bool IsDarkTheme { set; get; }
         private readonly PaletteHelper paletteHelper = new();
-        MainWindow w = (MainWindow)Application.Current.MainWindow;
         public SignUp()
-        {
-            w.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            w.Top = 10;
-            w.Left = 70;
-            w.Height = 800;
-            w.Width = 1400;
+        { 
+ 
 
             InitializeComponent();
 
 
             ITheme theme = paletteHelper.GetTheme();
-            if (w.IsDarkTheme = theme.GetBaseTheme() == BaseTheme.Dark)
+            if (IsDarkTheme = theme.GetBaseTheme() == BaseTheme.Dark)
             {
                 Logo2.Source = new BitmapImage(new Uri(@"/Recursos/Logo Dark 3.gif", UriKind.Relative));
                 AnimationBehavior.SetSourceUri(Logo2, new Uri(@"/Recursos/Logo Dark 3.gif", UriKind.Relative));
@@ -51,12 +45,7 @@ namespace AppEscritorio
                 AnimationBehavior.SetSourceUri(Logo2, new Uri(@"/Recursos/Logo Light 3.gif", UriKind.Relative));
 
             }
-
-
         }
-
-
-
 
         private void toggleTheme(object sender, RoutedEventArgs e)
         {
@@ -64,9 +53,9 @@ namespace AppEscritorio
 
             ITheme theme = paletteHelper.GetTheme();
 
-            if (w.IsDarkTheme = theme.GetBaseTheme() == BaseTheme.Dark)
+            if (IsDarkTheme = theme.GetBaseTheme() == BaseTheme.Dark)
             {
-                w.IsDarkTheme = false;
+                IsDarkTheme = false;
                 theme.SetBaseTheme(Theme.Light);
                 Logo2.Source = new BitmapImage(new Uri(@"/Recursos/Logo Light 3.gif", UriKind.Relative));
                 AnimationBehavior.SetSourceUri(Logo2, new Uri(@"/Recursos/Logo Light 3.gif", UriKind.Relative));
@@ -74,7 +63,7 @@ namespace AppEscritorio
 
             else
             {
-                w.IsDarkTheme = true;
+                IsDarkTheme = true;
                 theme.SetBaseTheme(Theme.Dark);
                 Logo2.Source = new BitmapImage(new Uri(@"/Recursos/Logo Dark 3.gif", UriKind.Relative));
                 AnimationBehavior.SetSourceUri(Logo2, new Uri(@"/Recursos/Logo Dark 3.gif", UriKind.Relative));
@@ -91,52 +80,69 @@ namespace AppEscritorio
 
         private async void signUpBtn_Click(object sender, RoutedEventArgs e)
         {
-            var cuenta = new AccountRequest
+            signUpBtn.IsEnabled = false;
+
+            if (txtPassword.Password != txtConPassword.Password )
             {
-                Username = txtUsername.Text,
-                Password = txtPassword.Password
-            };
-
-            var usuario = new Usuarios
-            {
-                Nombre = txtName.Text,
-                Paterno = txtFLastName.Text,
-                Materno = txtSLastName.Text,
-                Telefono = txtPhone.Text,
-                TipoEmpleado = new TipoEmpleadoRequest { Nombre = "User" },
-                Cuenta = cuenta
-            };
-
-            ServerResponse<UsuarioResponse> result = null;
-
-            try
-            {
-                Validations.ValidarSignUp(usuario);
-
-                result = await Api.Post<Usuarios, ServerResponse<UsuarioResponse>>("https://localhost:7214/api/Cuenta/signin", usuario);
-
-                if (result == null) throw new Exception("Ha ocurrido un error");
+                MessageBox.Show("Las contraseñas no coinciden", "Aviso", MessageBoxButton.OK);
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message);
-            }
+                var cuenta = new AccountRequest
+                {
+                    Username = txtUsername.Text,
+                    Password = txtPassword.Password
+                };
 
-            if(result != null)
-            {
-                if(!result.Success)
-                    MessageBox.Show(result.Error);
-                else
-                    NavigationService.Navigate(new LoginPage());
-            }      
+                var usuario = new Usuarios
+                {
+                    Nombre = txtName.Text,
+                    Paterno = txtFLastName.Text,
+                    Materno = txtSLastName.Text,
+                    Telefono = txtPhone.Text,
+                    TipoEmpleado = new TipoEmpleadoRequest { Nombre = "User" },
+                    Cuenta = cuenta
+                };
+
+                ServerResponse<UsuarioResponse> result = null;
+
+                try
+                {
+                    Validations.ValidarSignUp(usuario);
+
+                    result = await Api.Post<Usuarios, ServerResponse<UsuarioResponse>>("https://localhost:7214/api/Cuenta/signin", usuario);
+
+                    if (result == null) throw new Exception("Ha ocurrido un error");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+                if (result != null)
+                {
+                    if (!result.Success)
+                        MessageBox.Show(result.Error);
+                    else
+                    {
+                        MessageBox.Show("¡Registro Exitoso!","El usuario se registró correctamente", MessageBoxButton.OK);
+                        MainWindow main = new MainWindow();
+                        main.Show();
+                        this.Close();
+                    }
+
+                }
+
+                signUpBtn.IsEnabled = true; 
+            }
         }
 
         private void loginBtn_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new LoginPage());
-
+            MainWindow main = new MainWindow();
+            this.Close();
+            main.Show();
+            
         }
-
-
     }
 }

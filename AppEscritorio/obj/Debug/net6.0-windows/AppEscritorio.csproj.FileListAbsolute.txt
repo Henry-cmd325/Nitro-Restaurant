@@ -37,7 +37,6 @@ C:\Users\Admin\source\repos\Nitro-Restaurant\AppEscritorio\obj\Debug\net6.0-wind
 C:\Users\Admin\source\repos\Nitro-Restaurant\AppEscritorio\obj\Debug\net6.0-windows\Pages\LoginPage.baml
 C:\Users\Admin\source\repos\Nitro-Restaurant\AppEscritorio\bin\Debug\net6.0-windows\XamlAnimatedGif.dll
 D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\obj\Debug\net6.0-windows\AppEscritorio.csproj.AssemblyReference.cache
-D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\obj\Debug\net6.0-windows\Pages\LoginPage.g.cs
 D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\obj\Debug\net6.0-windows\Pages\SignUp.g.cs
 D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\obj\Debug\net6.0-windows\App.g.cs
 D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\obj\Debug\net6.0-windows\AppEscritorio_MarkupCompile.cache
@@ -61,10 +60,7 @@ D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\bin\Debug\net6.0-windows\MySq
 D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\bin\Debug\net6.0-windows\Ubiety.Dns.Core.dll
 D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\bin\Debug\net6.0-windows\ZstdNet.dll
 D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\bin\Debug\net6.0-windows\XamlAnimatedGif.dll
-D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\obj\Debug\net6.0-windows\MainWindow.g.cs
 D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\obj\Debug\net6.0-windows\App.baml
-D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\obj\Debug\net6.0-windows\MainWindow.baml
-D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\obj\Debug\net6.0-windows\Pages\LoginPage.baml
 D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\obj\Debug\net6.0-windows\Pages\SignUp.baml
 D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\obj\Debug\net6.0-windows\AppEscritorio.g.resources
 D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\obj\Debug\net6.0-windows\AppEscritorio.GeneratedMSBuildEditorConfig.editorconfig
@@ -76,3 +72,5 @@ D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\obj\Debug\net6.0-windows\AppE
 D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\obj\Debug\net6.0-windows\ref\AppEscritorio.dll
 D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\obj\Debug\net6.0-windows\UI\UI_window.g.cs
 D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\obj\Debug\net6.0-windows\UI\UI_window.baml
+D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\obj\Debug\net6.0-windows\MainWindow.g.cs
+D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\obj\Debug\net6.0-windows\MainWindow.baml

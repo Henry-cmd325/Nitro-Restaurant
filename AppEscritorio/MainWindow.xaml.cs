@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
-using System.Net.Http.Json;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -16,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using AppEscritorio.Models.Response;
+using AppEscritorio.Pages;
 using AppEscritorio.Tools;
 using AppEscritorio.UI;
 using MaterialDesignThemes.Wpf;
@@ -23,24 +22,18 @@ using XamlAnimatedGif;
 
 namespace AppEscritorio
 {
-    /// <summary>
-    /// Lógica de interacción para LoginPage.xaml
-    /// </summary>
-    public partial class LoginPage : Page
+    public partial class MainWindow : Window
     {
         private readonly PaletteHelper paletteHelper = new();
-        MainWindow w = (MainWindow)Application.Current.MainWindow;
-        public LoginPage()
+        public bool IsDarkTheme { get; set; }
+        public MainWindow()
         {
             InitializeComponent();
-            w.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            w.Width = this.Width;
-            w.Height = this.Height;
             ITheme theme = paletteHelper.GetTheme();
 
-            if (w.IsDarkTheme = theme.GetBaseTheme() == BaseTheme.Dark)
+            if (IsDarkTheme = theme.GetBaseTheme() == BaseTheme.Dark)
             {
-                Logo.Source =new BitmapImage(new Uri(@"/Recursos/Logo Dark 3.gif", UriKind.Relative));
+                Logo.Source = new BitmapImage(new Uri(@"/Recursos/Logo Dark 3.gif", UriKind.Relative));
                 AnimationBehavior.SetSourceUri(Logo, new Uri(@"/Recursos/Logo Dark 3.gif", UriKind.Relative));
             }
             else
@@ -50,14 +43,14 @@ namespace AppEscritorio
 
             }
         }
-        
+
         private void toggleTheme(object sender, RoutedEventArgs e)
         {
             ITheme theme = paletteHelper.GetTheme();
 
-            if (w.IsDarkTheme = theme.GetBaseTheme() == BaseTheme.Dark)
+            if (IsDarkTheme = theme.GetBaseTheme() == BaseTheme.Dark)
             {
-                w.IsDarkTheme = false;
+                IsDarkTheme = false;
                 theme.SetBaseTheme(Theme.Light);
                 Logo.Source = new BitmapImage(new Uri(@"/Recursos/Logo Light 3.gif", UriKind.Relative));
                 AnimationBehavior.SetSourceUri(Logo, new Uri(@"/Recursos/Logo Light 3.gif", UriKind.Relative));
@@ -65,7 +58,7 @@ namespace AppEscritorio
 
             else
             {
-                w.IsDarkTheme = true;
+                IsDarkTheme = true;
                 theme.SetBaseTheme(Theme.Dark);
                 Logo.Source = new BitmapImage(new Uri(@"/Recursos/Logo Dark 3.gif", UriKind.Relative));
                 AnimationBehavior.SetSourceUri(Logo, new Uri(@"/Recursos/Logo Dark 3.gif", UriKind.Relative));
@@ -83,19 +76,19 @@ namespace AppEscritorio
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
         {
             base.OnMouseLeftButtonDown(e);
-           
+
         }
 
         private async void loginBtn_Click(object sender, RoutedEventArgs e)
         {
 
-            var cuenta = new AccountRequest { Username = txtUsername.Text, Password = txtPassword.Password};
+            var cuenta = new AccountRequest { Username = txtUsername.Text, Password = txtPassword.Password };
 
             var result = await Api.Post<AccountRequest, ServerResponse<AccountResponse>>("https://localhost:7214/api/Cuenta/login", cuenta);
 
             if (result != null && result.Success)
             {
-                if(result.Data == null)
+                if (result.Data == null)
                 {
                     MessageBox.Show(JsonSerializer.Serialize(result));
                 }
@@ -103,7 +96,7 @@ namespace AppEscritorio
                 {
                     UI_window ui = new UI_window();
                     ui.Show();
-                    Application.Current.MainWindow.Close();
+                    this.Close();
 
                 }
                 else
@@ -123,9 +116,13 @@ namespace AppEscritorio
 
         private void signupBtn_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new SignUp());
+            SignUp signWindow = new SignUp();
+            this.Close();
+
+            signWindow.Show();
 
         }
+
 
     }
 }
