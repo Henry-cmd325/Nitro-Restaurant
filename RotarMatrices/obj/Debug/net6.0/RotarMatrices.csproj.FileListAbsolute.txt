@@ -1,0 +1,15 @@
+D:\Programacion\Uni\Nitro Restaurant\RotarMatrices\obj\Debug\net6.0\RotarMatrices.csproj.AssemblyReference.cache
+D:\Programacion\Uni\Nitro Restaurant\RotarMatrices\obj\Debug\net6.0\RotarMatrices.GeneratedMSBuildEditorConfig.editorconfig
+D:\Programacion\Uni\Nitro Restaurant\RotarMatrices\obj\Debug\net6.0\RotarMatrices.AssemblyInfoInputs.cache
+D:\Programacion\Uni\Nitro Restaurant\RotarMatrices\obj\Debug\net6.0\RotarMatrices.AssemblyInfo.cs
+D:\Programacion\Uni\Nitro Restaurant\RotarMatrices\obj\Debug\net6.0\RotarMatrices.csproj.CoreCompileInputs.cache
+D:\Programacion\Uni\Nitro Restaurant\RotarMatrices\bin\Debug\net6.0\RotarMatrices.exe
+D:\Programacion\Uni\Nitro Restaurant\RotarMatrices\bin\Debug\net6.0\RotarMatrices.deps.json
+D:\Programacion\Uni\Nitro Restaurant\RotarMatrices\bin\Debug\net6.0\RotarMatrices.runtimeconfig.json
+D:\Programacion\Uni\Nitro Restaurant\RotarMatrices\bin\Debug\net6.0\RotarMatrices.dll
+D:\Programacion\Uni\Nitro Restaurant\RotarMatrices\bin\Debug\net6.0\RotarMatrices.pdb
+D:\Programacion\Uni\Nitro Restaurant\RotarMatrices\obj\Debug\net6.0\RotarMatrices.dll
+D:\Programacion\Uni\Nitro Restaurant\RotarMatrices\obj\Debug\net6.0\refint\RotarMatrices.dll
+D:\Programacion\Uni\Nitro Restaurant\RotarMatrices\obj\Debug\net6.0\RotarMatrices.pdb
+D:\Programacion\Uni\Nitro Restaurant\RotarMatrices\obj\Debug\net6.0\RotarMatrices.genruntimeconfig.cache
+D:\Programacion\Uni\Nitro Restaurant\RotarMatrices\obj\Debug\net6.0\ref\RotarMatrices.dll

@@ -17,8 +17,4 @@
     <PackageReference Include="XAct.Core.PCL" Version="0.0.5014" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Data\" />
-  </ItemGroup>
-
 </Project>

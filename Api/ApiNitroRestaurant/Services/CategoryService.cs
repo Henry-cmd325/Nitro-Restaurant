@@ -11,6 +11,31 @@ namespace ApiNitroRestaurant.Services
         {
             _context = context;
         }
+
+        public ServerResponse<List<CategoryResponse>> GetAll()
+        {
+            ServerResponse<List<CategoryResponse>> response = new();
+
+            var listResponse = new List<CategoryResponse>();
+
+
+            var listDb = _context.Categorias.ToList();
+
+            if (listDb.Count == 0)
+            {
+                response.Error = "No existe ningún elemento en categorias";
+                response.Success = false;
+
+                return response;
+            }
+
+            foreach (var item in listDb)
+                listResponse.Add(new CategoryResponse() { Nombre = item.Nombre, IdCategoria = item.IdCategoria });
+
+            response.Data = listResponse;
+
+            return response;
+        }
         public ServerResponse<CategoryResponse> DeleteCategory(int id)
         {
             var response = new ServerResponse<CategoryResponse>();
@@ -46,6 +71,14 @@ namespace ApiNitroRestaurant.Services
                 return response;
             }
 
+            var categoryResponse = new CategoryResponse()
+            {
+                IdCategoria = categoryDb.IdCategoria,
+                Nombre = categoryDb.Nombre
+            };
+
+            response.Data = categoryResponse;
+
             return response;
         }
 
@@ -76,6 +109,34 @@ namespace ApiNitroRestaurant.Services
             categoryResponse.Nombre = category.Nombre;
 
             response.Data = categoryResponse;
+
+            return response;
+        }
+
+        public ServerResponse<CategoryResponse> PutCategory(int id, CategoriaRequest model)
+        {
+            ServerResponse<CategoryResponse> response = new();
+
+            var categoryDb = _context.Categorias.Where(c => c.IdCategoria == id).FirstOrDefault();
+
+            if (categoryDb == null)
+            {
+                response.Error = "No existe ninguna categoria con el id introducido";
+                response.Success = false;
+
+                return response;
+            }
+
+            categoryDb.Nombre = model.Nombre;
+
+            _context.Entry(categoryDb).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            _context.SaveChanges();
+
+            response.Data = new CategoryResponse()
+            {
+                IdCategoria = categoryDb.IdCategoria,
+                Nombre = model.Nombre
+            };
 
             return response;
         }

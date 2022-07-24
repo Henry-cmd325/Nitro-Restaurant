@@ -16,6 +16,16 @@ namespace ApiNitroRestaurant.Controllers
             _categoryService = categoryService;
         }
 
+        [HttpGet]
+        public IActionResult CategoriaGetAll()
+        {
+            var response = _categoryService.GetAll();
+
+            if (!response.Success) return BadRequest(response);
+
+            return Ok(response);
+        }
+
         [HttpGet("{id}", Name = "CategoriaGet")]
         public IActionResult CategoriaGet(int id)
         {
@@ -44,6 +54,16 @@ namespace ApiNitroRestaurant.Controllers
             if (!response.Success) return BadRequest(response);
 
             return Ok(response);
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult CategoriaPut(int id, [FromBody] CategoriaRequest model)
+        {
+            var response = _categoryService.PutCategory(id, model);
+
+            if (!response.Success) return BadRequest(response);
+            
+            return NoContent();
         }
     }
 }
