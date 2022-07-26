@@ -5,14 +5,63 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppEscritorio.UI"
+ 
         mc:Ignorable="d"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         Background="{x:Null}"
         Title="UI_window"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
-        Height="450" Width="800">
+        Height="740" Width="1280">
     <materialDesign:Card Grid.Column="0" Background="{DynamicResource MaterialDesignPaper}" Margin="0,0,0,0" materialDesign:ShadowAssist.ShadowDepth="Depth4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-        
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Border Background="{DynamicResource MaterialDesignPaper}" CornerRadius="10 0 0 10">
+                <StackPanel>
+                    <!--UserName-->
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 35 0 0">
+                        <Border CornerRadius="10" Width="40" Height="40">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
+                                    <GradientStop Color="BlueViolet" Offset="0"/>
+                                    <GradientStop Color="White" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+
+                            <TextBlock Text="NR" Foreground="#ffffff" FontSize="22" FontWeight="SemiBold"
+                                       TextAlignment="Center" VerticalAlignment="Center" Margin="3 0 0 2"/>
+
+                        </Border>
+
+                        <StackPanel Margin="10 0 0 0" VerticalAlignment="Center">
+                            <TextBlock Text="Nitro Restaurant" FontSize="15" Margin="0 0 0 5" Foreground="#FF985ECC" />
+                            <TextBlock Text="Beta 1.0" FontSize="11" Foreground="#FFBF9FDC" />
+                        </StackPanel>
+                        
+                    </StackPanel>
+                    
+                    <Separator Height="0.8" Margin="20 30" Background="BlueViolet"/>
+                    
+                    <!--Menú Button-->
+                    <Button>
+                        <StackPanel Orientation="Horizontal">
+                            
+                            <TextBlock Text="Dashboard"/>
+
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+                
+
+            </Border>
+
+            <Border Background="{DynamicResource MaterialDesignPaper}" Grid.Column="1" CornerRadius="0 10 10 0" MouseDown="Border_MouseDown">
+                
+            </Border>
+        </Grid>   
     </materialDesign:Card>
 </Window>
