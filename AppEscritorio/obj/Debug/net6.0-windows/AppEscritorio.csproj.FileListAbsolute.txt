@@ -74,3 +74,4 @@ D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\obj\Debug\net6.0-windows\UI\U
 D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\obj\Debug\net6.0-windows\UI\UI_window.baml
 D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\obj\Debug\net6.0-windows\MainWindow.g.cs
 D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\obj\Debug\net6.0-windows\MainWindow.baml
+D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\bin\Debug\net6.0-windows\FontAwesome.Sharp.dll

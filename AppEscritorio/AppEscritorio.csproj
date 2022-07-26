@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="FontAwesome.Sharp" Version="6.1.1" />
     <PackageReference Include="MaterialDesignThemes" Version="4.5.0" />
     <PackageReference Include="MySql.Data" Version="8.0.29" />
     <PackageReference Include="XamlAnimatedGif" Version="2.0.0" />

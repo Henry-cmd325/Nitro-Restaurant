@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "Yw4BEpMjRq7M+25XUBcta6JkRgs8zbj64pw4jPbtuHBo8RP92WjMHsZhxgnV/5kMkaHKBcVEeBE8KQDo/ABxqg==",
+  "dgSpecHash": "RU7PS7rXDh+cU0e2auF30lH29byB//ZQkOW5JVt956EuInR6x3zRcmZzDh5yhBossVwbmhbizQUe4DVh7/3xxQ==",
   "success": true,
   "projectFilePath": "D:\\Programacion\\Uni\\Nitro Restaurant\\AppEscritorio\\AppEscritorio.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\henry\\.nuget\\packages\\bouncycastle.netcore\\1.8.5\\bouncycastle.netcore.1.8.5.nupkg.sha512",
+    "C:\\Users\\henry\\.nuget\\packages\\fontawesome.sharp\\6.1.1\\fontawesome.sharp.6.1.1.nupkg.sha512",
     "C:\\Users\\henry\\.nuget\\packages\\google.protobuf\\3.19.4\\google.protobuf.3.19.4.nupkg.sha512",
     "C:\\Users\\henry\\.nuget\\packages\\k4os.compression.lz4\\1.2.6\\k4os.compression.lz4.1.2.6.nupkg.sha512",
     "C:\\Users\\henry\\.nuget\\packages\\k4os.compression.lz4.streams\\1.2.6\\k4os.compression.lz4.streams.1.2.6.nupkg.sha512",
@@ -27,12 +28,5 @@
     "C:\\Users\\henry\\.nuget\\packages\\system.windows.extensions\\4.7.0\\system.windows.extensions.4.7.0.nupkg.sha512",
     "C:\\Users\\henry\\.nuget\\packages\\xamlanimatedgif\\2.0.0\\xamlanimatedgif.2.0.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problema al leer el archivo de caché D:\\Programacion\\Uni\\Nitro Restaurant\\AppEscritorio\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  "logs": []
 }
