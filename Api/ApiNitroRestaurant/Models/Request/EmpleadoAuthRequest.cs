@@ -2,6 +2,6 @@
 {
     public class EmpleadoAuthRequest
     {
-        public string Telefono { get; set; } = null!;
+        public string Telefono { get; set; } = null!;       
     }
 }

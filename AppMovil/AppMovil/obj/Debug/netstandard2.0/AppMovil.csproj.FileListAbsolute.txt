@@ -13,3 +13,5 @@ D:\Programacion\Uni\Nitro Restaurant\AppMovil\AppMovil\obj\Debug\netstandard2.0\
 D:\Programacion\Uni\Nitro Restaurant\AppMovil\AppMovil\obj\Debug\netstandard2.0\refint\AppMovil.dll
 D:\Programacion\Uni\Nitro Restaurant\AppMovil\AppMovil\obj\Debug\netstandard2.0\AppMovil.pdb
 D:\Programacion\Uni\Nitro Restaurant\AppMovil\AppMovil\obj\Debug\netstandard2.0\ref\AppMovil.dll
+D:\Programacion\Uni\Nitro Restaurant\AppMovil\AppMovil\obj\Debug\netstandard2.0\Views\Signin.xaml.g.cs
+D:\Programacion\Uni\Nitro Restaurant\AppMovil\AppMovil\obj\Debug\netstandard2.0\Views\Pedidos.xaml.g.cs

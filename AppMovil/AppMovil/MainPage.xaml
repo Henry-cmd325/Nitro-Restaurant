@@ -5,60 +5,70 @@
 
     <Grid>
         <StackLayout Padding="0" Margin="0">
-            <Frame BackgroundColor="LightPink" HeightRequest="130" HorizontalOptions="FillAndExpand">
-
+            <Frame BackgroundColor="LightBlue" HeightRequest="180" HorizontalOptions="FillAndExpand" Padding="0">
+                <Image Source="https://www.agoda.com/wp-content/uploads/2019/03/Best-restaurants-in-Seoul-Fine-dining-Jungsik-Seoul-Mingles-restaurant.jpg"
+                       Aspect="AspectFill"></Image>
             </Frame>
         </StackLayout>
         
         <StackLayout Margin="15, 110, 15, 0">
-            
-            <Frame BackgroundColor ="White" HasShadow="True" HeightRequest="400" HorizontalOptions="FillAndExpand">
+
+            <Frame BackgroundColor ="#f9f9f9" HasShadow="True" HeightRequest="580" HorizontalOptions="FillAndExpand">
                 <StackLayout>
                     <StackLayout HorizontalOptions="CenterAndExpand">
-                        <Label Text="Signin" TextColor="Black" FontSize="Medium" FontAttributes="Bold"></Label>
+                        <Image Margin="0,0,0,0" Source="Logo.jpg" WidthRequest="360"></Image>
                     </StackLayout>
 
-                    <StackLayout Margin="0,25,0,0">
-
-                        <Frame Padding="0" Margin="0" BackgroundColor="Transparent" BorderColor="DarkGray" CornerRadius="50" HorizontalOptions="FillAndExpand">
+                    <StackLayout Margin="0,-8,0,0">
+                        <Frame Padding="0" Margin="0,40,0,0" BackgroundColor="Transparent" BorderColor="DarkGray" CornerRadius="50" HorizontalOptions="FillAndExpand">
                             <StackLayout Orientation="Horizontal">
                                 <Frame BackgroundColor="AliceBlue" CornerRadius="50" HeightRequest="35" WidthRequest="35" Padding="0" Margin="7">
 
 
                                 </Frame>
-                                <Entry Placeholder="Nombre" TextColor="HotPink" HorizontalOptions="FillAndExpand" Margin="0,0,15,0"></Entry>
+                                <Entry x:Name="ENombre" Placeholder="Nombre" TextColor="Black" HorizontalOptions="FillAndExpand" Margin="0,0,15,-9"></Entry>
                             </StackLayout>
                         </Frame>
 
-                        <Frame Padding="0" Margin="0,20,0,0" BackgroundColor="Transparent" BorderColor="DarkGray" CornerRadius="50" HorizontalOptions="FillAndExpand">
+                        <Frame Padding="0" Margin="0,15,0,0" BackgroundColor="Transparent" BorderColor="DarkGray" CornerRadius="50" HorizontalOptions="FillAndExpand">
                             <StackLayout Orientation="Horizontal">
                                 <Frame BackgroundColor="AliceBlue" CornerRadius="50" HeightRequest="35" WidthRequest="35" Padding="0" Margin="7">
 
 
                                 </Frame>
-                                <Entry Placeholder="Apellido Paterno" TextColor="HotPink" HorizontalOptions="FillAndExpand" Margin="0,0,15,0"></Entry>
+                                <Entry x:Name="EPaterno" Placeholder="Apellido Paterno" TextColor="Black" HorizontalOptions="FillAndExpand" Margin="0,0,15,-9"></Entry>
                             </StackLayout>
                         </Frame>
 
-                        <Frame Padding="0" Margin="0,20,0,0" BackgroundColor="Transparent" BorderColor="DarkGray" CornerRadius="50" HorizontalOptions="FillAndExpand">
+                        <Frame Padding="0, 0, 0, 0" Margin="0,15,0,0" BackgroundColor="Transparent" BorderColor="DarkGray" CornerRadius="50" HorizontalOptions="FillAndExpand">
                             <StackLayout Orientation="Horizontal">
                                 <Frame BackgroundColor="AliceBlue" CornerRadius="50" HeightRequest="35" WidthRequest="35" Padding="0" Margin="7">
 
 
                                 </Frame>
-                                <Entry Placeholder="Apellido Materno" TextColor="HotPink" HorizontalOptions="FillAndExpand" Margin="0,0,15,0"></Entry>
+                                <Entry x:Name="EMaterno" Placeholder="Apellido Materno" TextColor="#167ef5" HorizontalOptions="FillAndExpand" Margin="0,0,15,-9"></Entry>
+                            </StackLayout>
+                        </Frame>
+
+                        <Frame Padding="0, 0, 0, 0" Margin="0,15,0,0" BackgroundColor="Transparent" BorderColor="DarkGray" CornerRadius="50" HorizontalOptions="FillAndExpand">
+                            <StackLayout Orientation="Horizontal">
+                                <Frame BackgroundColor="AliceBlue" CornerRadius="50" HeightRequest="35" WidthRequest="35" Padding="0" Margin="7">
+
+                                </Frame>
+                                <Entry x:Name="ETelefono" Placeholder="Telefono" TextColor="#167ef5" HorizontalOptions="FillAndExpand" Margin="0,0,15,-9"></Entry>
                             </StackLayout>
                         </Frame>
 
                     </StackLayout>
 
-                    <Button HorizontalOptions="Center" TextColor="White" CornerRadius="50" Margin="0,40,0,0" WidthRequest="300" Text="Signin" Background="#167ef5"/>
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" WidthRequest="300">
-                        <Label Text="Ya estas registrado?"></Label>
-                        <Button BackgroundColor="Transparent" Text="Entrar" TextColor="#167ef5" Padding="0" Margin="0,-10,0,0" HeightRequest="38"></Button>
+                    <Button x:Name="BtnSignin" HorizontalOptions="Center" TextColor="White" CornerRadius="50" Margin="0,30,0,0" WidthRequest="300" 
+                            Text="Sign in" Background="#167ef5" Clicked="BtnSignin_Clicked"/>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" WidthRequest="240">
+                        <Label Text="¿Ya estas registrado?"></Label>
+                        <Button x:Name="BtnLogin" BackgroundColor="Transparent" Text="Login" TextColor="#167ef5" Padding="0" Margin="-8,-8,0,0" HeightRequest="38"
+                                Clicked="BtnLogin_Clicked"></Button>
                     </StackLayout>
-
-
+                    
                 </StackLayout>
             </Frame>
             

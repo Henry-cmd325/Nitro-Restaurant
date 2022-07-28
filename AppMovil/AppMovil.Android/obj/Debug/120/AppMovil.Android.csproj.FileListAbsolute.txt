@@ -627,3 +627,7 @@ D:\Programacion\Uni\Nitro Restaurant\AppMovil\AppMovil.Android\obj\Debug\120\sta
 D:\Programacion\Uni\Nitro Restaurant\AppMovil\AppMovil.Android\obj\Debug\120\stamp\_GenerateJavaStubs.stamp
 D:\Programacion\Uni\Nitro Restaurant\AppMovil\AppMovil.Android\obj\Debug\120\stamp\_GeneratePackageManagerJava.stamp
 D:\Programacion\Uni\Nitro Restaurant\AppMovil\AppMovil.Android\obj\Debug\120\stamp\_ResolveLibraryProjectImports.stamp
+D:\Programacion\Uni\Nitro Restaurant\AppMovil\AppMovil.Android\obj\Debug\120\res\drawable\logolight3.gif
+D:\Programacion\Uni\Nitro Restaurant\AppMovil\AppMovil.Android\obj\Debug\120\res\drawable\logolight4.gif
+D:\Programacion\Uni\Nitro Restaurant\AppMovil\AppMovil.Android\obj\Debug\120\res\drawable\logo.png
+D:\Programacion\Uni\Nitro Restaurant\AppMovil\AppMovil.Android\obj\Debug\120\android\assets\Newtonsoft.Json.dll

@@ -4,3 +4,4 @@
     <application android:label="AppMovil.Android" android:theme="@style/MainTheme"></application>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 </manifest>
+
