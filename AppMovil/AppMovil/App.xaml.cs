@@ -2,6 +2,7 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xamarin.Essentials;
+using AppMovil.Views;
 
 namespace AppMovil
 {
@@ -11,7 +12,7 @@ namespace AppMovil
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new Pedidos();
         }
 
         protected override void OnStart()

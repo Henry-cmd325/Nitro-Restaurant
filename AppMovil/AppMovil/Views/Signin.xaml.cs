@@ -49,7 +49,7 @@ namespace AppMovil.Views
                         await DisplayAlert("Ha ocurrido un error de servidor", response.Error, "Ok");
                 }
                 else
-                    await DisplayAlert("Error de conexión", "Compruebe este conectado a internet", "Ok");
+                    await DisplayAlert("Error de conexión", "Compruebe que este conectado a internet", "Ok");
             }
             catch (NullReferenceException ex)
             {
