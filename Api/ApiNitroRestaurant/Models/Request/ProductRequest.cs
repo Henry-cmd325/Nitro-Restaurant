@@ -7,6 +7,6 @@
         public decimal Inversion { get; set; }
         public decimal Precio { get; set; }
         public bool Disponible { get; set; }
-        public byte[]? Imagen { get; set; }
+        public string? Imagen { get; set; }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using ApiNitroRestaurant.Models;
 using ApiNitroRestaurant.Models.Request;
 using ApiNitroRestaurant.Models.Response;
+using System.Text;
 
 namespace ApiNitroRestaurant.Services
 {
@@ -42,7 +43,7 @@ namespace ApiNitroRestaurant.Services
                 Inversion = model.Inversion,
                 Precio = model.Precio,
                 Disponible = model.Disponible ? Convert.ToInt16(1) : Convert.ToInt16(0),
-                Imagen = model.Imagen
+                Imagen = model.Imagen != null ? Encoding.ASCII.GetBytes(model.Imagen) : null
             };
 
             _context.Productos.Add(product);
@@ -55,8 +56,8 @@ namespace ApiNitroRestaurant.Services
                 Nombre = product.Nombre,
                 Inversion = product.Inversion,
                 Precio = product.Precio,
-                Disponible = product.Disponible,
-                Imagen = product.Imagen
+                Disponible = product.Disponible == 1 ? true : false,
+                Imagen = product.Imagen != null ? Encoding.UTF8.GetString(product.Imagen) : null
             };
 
             response.Data = productResponse;
@@ -85,8 +86,8 @@ namespace ApiNitroRestaurant.Services
                 Nombre = product.Nombre,
                 Inversion = product.Inversion,
                 Precio = product.Precio,
-                Disponible = product.Disponible,
-                Imagen = product.Imagen
+                Disponible = product.Disponible == 1 ? true : false,
+                Imagen = product.Imagen != null ? Encoding.UTF8.GetString(product.Imagen) : null
             };
 
             response.Data = productResponse;
@@ -119,8 +120,8 @@ namespace ApiNitroRestaurant.Services
             }
 
             productDb.Nombre = model.Nombre;
-            productDb.Disponible = model.Disponible? Convert.ToInt16(1): Convert.ToInt16(0);
-            productDb.Imagen = model.Imagen;
+            productDb.Disponible = model.Disponible? Convert.ToInt16(1) : Convert.ToInt16(0);
+            productDb.Imagen = model.Imagen != null ? Encoding.ASCII.GetBytes(model.Imagen) : null;
             productDb.IdCategoria = categoria.IdCategoria;
             productDb.Precio = model.Precio;
             productDb.Inversion = model.Inversion;
@@ -135,8 +136,8 @@ namespace ApiNitroRestaurant.Services
                 Nombre = productDb.Nombre,
                 Inversion = productDb.Inversion,
                 Precio = productDb.Precio,
-                Disponible = productDb.Disponible,
-                Imagen = productDb.Imagen
+                Disponible = productDb.Disponible == 1 ? true : false,
+                Imagen = productDb.Imagen != null ? Encoding.UTF8.GetString(productDb.Imagen) : null
             };
 
             return response;

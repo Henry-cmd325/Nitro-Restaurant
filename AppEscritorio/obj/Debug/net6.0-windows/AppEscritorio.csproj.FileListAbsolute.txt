@@ -33,8 +33,6 @@ C:\Users\Admin\source\repos\Nitro-Restaurant\AppEscritorio\obj\Debug\net6.0-wind
 C:\Users\Admin\source\repos\Nitro-Restaurant\AppEscritorio\obj\Debug\net6.0-windows\ref\AppEscritorio.dll
 C:\Users\Admin\source\repos\Nitro-Restaurant\AppEscritorio\obj\Debug\net6.0-windows\Pages\SignUp.g.cs
 C:\Users\Admin\source\repos\Nitro-Restaurant\AppEscritorio\obj\Debug\net6.0-windows\Pages\SignUp.baml
-C:\Users\Admin\source\repos\Nitro-Restaurant\AppEscritorio\obj\Debug\net6.0-windows\Pages\LoginPage.g.cs
-C:\Users\Admin\source\repos\Nitro-Restaurant\AppEscritorio\obj\Debug\net6.0-windows\Pages\LoginPage.baml
 C:\Users\Admin\source\repos\Nitro-Restaurant\AppEscritorio\bin\Debug\net6.0-windows\XamlAnimatedGif.dll
 D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\obj\Debug\net6.0-windows\AppEscritorio.csproj.AssemblyReference.cache
 D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\obj\Debug\net6.0-windows\Pages\SignUp.g.cs
@@ -74,3 +72,18 @@ D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\obj\Debug\net6.0-windows\UI\U
 D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\obj\Debug\net6.0-windows\UI\UI_window.baml
 D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\obj\Debug\net6.0-windows\MainWindow.g.cs
 D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\obj\Debug\net6.0-windows\MainWindow.baml
+D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\bin\Debug\net6.0-windows\FontAwesome.Sharp.dll
+C:\Users\Admin\source\repos\Nitro-Restaurant\AppEscritorio\bin\Debug\net6.0-windows\FontAwesome.Sharp.dll
+C:\Users\Admin\source\repos\Nitro-Restaurant\AppEscritorio\obj\Debug\net6.0-windows\UI\UI_window.g.cs
+C:\Users\Admin\source\repos\Nitro-Restaurant\AppEscritorio\obj\Debug\net6.0-windows\UI\UI_window.baml
+C:\Users\Admin\source\repos\Nitro-Restaurant\AppEscritorio\obj\Debug\net6.0-windows\UI\UserControls\Item.baml
+C:\Users\Admin\source\repos\Nitro-Restaurant\AppEscritorio\obj\Debug\net6.0-windows\UI\UserControls\Item.g.cs
+C:\Users\Admin\source\repos\Nitro-Restaurant\AppEscritorio\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs
+C:\Users\Admin\source\repos\Nitro-Restaurant\AppEscritorio\obj\Debug\net6.0-windows\UI\UserControls\InfoCard.baml
+C:\Users\Admin\source\repos\Nitro-Restaurant\AppEscritorio\obj\Debug\net6.0-windows\UI\UserControls\InfoCard.g.cs
+C:\Users\Admin\source\repos\Nitro-Restaurant\AppEscritorio\obj\Debug\net6.0-windows\UI\PagesUI\Orders.g.cs
+C:\Users\Admin\source\repos\Nitro-Restaurant\AppEscritorio\obj\Debug\net6.0-windows\UI\PagesUI\Orders.baml
+C:\Users\Admin\source\repos\Nitro-Restaurant\AppEscritorio\obj\Debug\net6.0-windows\UI\PagesUI\Products.g.cs
+C:\Users\Admin\source\repos\Nitro-Restaurant\AppEscritorio\obj\Debug\net6.0-windows\UI\PagesUI\Products.baml
+C:\Users\Admin\source\repos\Nitro-Restaurant\AppEscritorio\bin\Debug\net6.0-windows\MahApps.Metro.IconPacks.Core.dll
+C:\Users\Admin\source\repos\Nitro-Restaurant\AppEscritorio\bin\Debug\net6.0-windows\MahApps.Metro.IconPacks.Material.dll

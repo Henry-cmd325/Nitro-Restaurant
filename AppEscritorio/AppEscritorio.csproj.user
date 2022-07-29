@@ -10,7 +10,19 @@
     <Compile Update="Pages\SignUp.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="UI\PagesUI\Orders.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="UI\PagesUI\Products.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="UI\UI_window.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="UI\UserControls\InfoCard.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="UI\UserControls\Item.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -21,7 +33,19 @@
     <Page Update="Pages\SignUp.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="UI\PagesUI\Orders.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\PagesUI\Products.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="UI\UI_window.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\UserControls\InfoCard.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\UserControls\Item.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

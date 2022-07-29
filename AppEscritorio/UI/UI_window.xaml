@@ -5,7 +5,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppEscritorio.UI"
- 
+        xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
+        xmlns:uc="clr-namespace:AppEscritorio.UI.UserControls"
         mc:Ignorable="d"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         Background="{x:Null}"
@@ -17,7 +18,8 @@
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="250"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="303*"/>
+                <ColumnDefinition Width="212*"/>
             </Grid.ColumnDefinitions>
 
             <Border Background="{DynamicResource MaterialDesignPaper}" CornerRadius="10 0 0 10">
@@ -41,27 +43,78 @@
                             <TextBlock Text="Nitro Restaurant" FontSize="15" Margin="0 0 0 5" Foreground="#FF985ECC" />
                             <TextBlock Text="Beta 1.0" FontSize="11" Foreground="#FFBF9FDC" />
                         </StackPanel>
-                        
-                    </StackPanel>
-                    
-                    <Separator Height="0.8" Margin="20 30" Background="BlueViolet"/>
-                    
-                    <!--Menú Button-->
-                    <Button>
-                        <StackPanel Orientation="Horizontal">
-                            
-                            <TextBlock Text="Dashboard"/>
 
+                    </StackPanel>
+
+                    <Separator Height="0.8" Margin="20 30" Background="BlueViolet"/>
+
+                    <!--Menú Button-->
+
+
+                    <Button Style="{StaticResource menuButton}" Click="Button_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <fa:IconImage Icon="FileSignature" Style="{StaticResource menuButtonIcon}"/>
+                            <TextBlock Text="Orders" Style="{StaticResource menuButtonText}"/>
                         </StackPanel>
                     </Button>
+
+                    <Button Style="{StaticResource menuButton}" Click="Button_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <fa:IconImage Icon="FileSignature" Style="{StaticResource menuButtonIcon}"/>
+                            <TextBlock Text="Finished Orders" Style="{StaticResource menuButtonText}"/>
+                        </StackPanel>
+                    </Button>
+
+
+
+                    <Button Style="{StaticResource menuButton}" Click="Button_Click_2">
+                        <StackPanel Orientation="Horizontal">
+                            <fa:IconImage Icon="ShoppingCart" Style="{StaticResource menuButtonIcon}"/>
+                            <TextBlock Text="Products" Style="{StaticResource menuButtonText}"/>
+                        </StackPanel>
+                    </Button>
+
+
+                    <Button Style="{StaticResource menuButton}" Click="Button_Click_1">
+                        <StackPanel Orientation="Horizontal">
+                            <fa:IconImage Icon="Cog" Style="{StaticResource menuButtonIcon}"/>
+                            <TextBlock Text="Settings" Style="{StaticResource menuButtonText}"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Style="{StaticResource menuButton}" Click="Button_Click_3">
+                        <StackPanel Orientation="Horizontal">
+                            <fa:IconImage Icon="PowerOff" Style="{StaticResource menuButtonIcon}"/>
+                            <TextBlock Text="Logout" Style="{StaticResource menuButtonText}"/>
+                        </StackPanel>
+                    </Button>
+
                 </StackPanel>
-                
+
 
             </Border>
 
-            <Border Background="{DynamicResource MaterialDesignPaper}" Grid.Column="1" CornerRadius="0 10 10 0" MouseDown="Border_MouseDown">
-                
+            <Border Background="{DynamicResource MaterialDesignPaper}" Grid.Column="1" CornerRadius="0 10 10 0" MouseDown="Border_MouseDown" Grid.ColumnSpan="2">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <!--Top Menú-->
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0 20 40 20">
+                        <Button Name="b1"  Content="Add Category" Style="{StaticResource topMenuButton}"/>
+                        <Button Name="b2" Content="Add Product" Style="{StaticResource topMenuButton}"/>
+                           
+                    </StackPanel>
+                    <!--Title-->
+                    
+
+                    <Frame Name="FrameUI" Grid.Row="1" Content="Frame" NavigationUIVisibility="Hidden" Source="/UI/PagesUI/Orders.xaml" >
+                        
+                    </Frame>
+
+                </Grid>
             </Border>
-        </Grid>   
+        </Grid>
     </materialDesign:Card>
 </Window>
