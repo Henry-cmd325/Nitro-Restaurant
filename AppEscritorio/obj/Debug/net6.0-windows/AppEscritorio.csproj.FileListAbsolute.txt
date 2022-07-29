@@ -87,3 +87,14 @@ C:\Users\Admin\source\repos\Nitro-Restaurant\AppEscritorio\obj\Debug\net6.0-wind
 C:\Users\Admin\source\repos\Nitro-Restaurant\AppEscritorio\obj\Debug\net6.0-windows\UI\PagesUI\Products.baml
 C:\Users\Admin\source\repos\Nitro-Restaurant\AppEscritorio\bin\Debug\net6.0-windows\MahApps.Metro.IconPacks.Core.dll
 C:\Users\Admin\source\repos\Nitro-Restaurant\AppEscritorio\bin\Debug\net6.0-windows\MahApps.Metro.IconPacks.Material.dll
+D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\bin\Debug\net6.0-windows\MahApps.Metro.IconPacks.Core.dll
+D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\bin\Debug\net6.0-windows\MahApps.Metro.IconPacks.Material.dll
+D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\obj\Debug\net6.0-windows\UI\UserControls\InfoCard.baml
+D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\obj\Debug\net6.0-windows\UI\UserControls\Item.baml
+D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\obj\Debug\net6.0-windows\UI\PagesUI\Orders.g.cs
+D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\obj\Debug\net6.0-windows\UI\PagesUI\Products.g.cs
+D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\obj\Debug\net6.0-windows\UI\UserControls\InfoCard.g.cs
+D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\obj\Debug\net6.0-windows\UI\UserControls\Item.g.cs
+D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs
+D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\obj\Debug\net6.0-windows\UI\PagesUI\Orders.baml
+D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\obj\Debug\net6.0-windows\UI\PagesUI\Products.baml

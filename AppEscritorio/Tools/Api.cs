@@ -1,6 +1,7 @@
 ﻿using AppEscritorio.Models.Response;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Json;
@@ -19,12 +20,13 @@ namespace AppEscritorio.Tools
             HttpResponseMessage response = await client.GetAsync(url);
 
             var json = await response.Content.ReadAsStringAsync();
-            var obj = JsonSerializer.Deserialize<TValue>(json);
+            var obj = JsonSerializer.Deserialize<TValue>(json, new JsonSerializerOptions()
+            {
+                PropertyNameCaseInsensitive = true
+            });
 
             return obj;
         }
-
-        
 
         public static async Task<TResponse> Post<TValue, TResponse>(string url, TValue obj)
         {

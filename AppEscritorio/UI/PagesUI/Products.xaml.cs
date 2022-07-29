@@ -29,16 +29,19 @@ namespace AppEscritorio.UI.PagesUI
 
         private async void  Item_Loaded(object sender, RoutedEventArgs e)
         {
-            var result = await Api.Get<ServerResponse<List<CategoriaResponse>>>("http://manuwolf-001-site1.atempurl.com/api/Categoria");
-            
+            var result = await Api.Get<ServerResponse<CategoriaResponse[]>>("http://manuwolf-001-site1.atempurl.com/api/Categoria");
+
+            if (result != null)
+            {
                 if (result.Data == null)
                 {
                     addCategory.Visibility = Visibility.Collapsed;
                 }
                 else
                 {
-                   // addCategory.Visibility = Visibility.Collapsed;
+                    //addCategory.Visibility = Visibility.Collapsed;
                 }
+            }
           
         }
     }
