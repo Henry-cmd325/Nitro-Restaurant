@@ -19,12 +19,13 @@ namespace AppMovil.Views
         {
             InitializeComponent();
 
-            for (int i = 0; i < 20; i++)
+            for (int i = 1; i < 20; i++)
             {
                 productos.Add(new DetalleViewModel()
                 {
                     NombreProducto = "Producto 1",
-                    Cantidad = 1
+                    Cantidad = 1,
+                    Id = i
                 });
             }
 
