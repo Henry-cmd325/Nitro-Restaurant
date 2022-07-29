@@ -11,5 +11,6 @@
         public int Minuto { get; set; }
         public int Segundo { get; set; }
         public List<DetalleRequest> DetallesPedidos { get; set; } = null!;
+        public bool? Terminado { get; set; }
     }
 }

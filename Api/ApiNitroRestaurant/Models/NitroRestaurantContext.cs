@@ -29,6 +29,7 @@ namespace ApiNitroRestaurant.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -128,6 +129,8 @@ namespace ApiNitroRestaurant.Models
                 entity.Property(e => e.IdEmpleado)
                     .HasColumnType("int(11)")
                     .HasColumnName("id_empleado");
+
+                entity.Property(e => e.Completado).HasColumnName("completado");
 
                 entity.Property(e => e.IdCuenta)
                     .HasColumnType("int(11)")
@@ -241,6 +244,10 @@ namespace ApiNitroRestaurant.Models
                 entity.Property(e => e.NumeroMesa)
                     .HasMaxLength(3)
                     .HasColumnName("numero_mesa");
+
+                entity.Property(e => e.Terminado)
+                    .HasColumnType("bit(1)")
+                    .HasColumnName("terminado");
 
                 entity.HasOne(d => d.IdEmpleadoNavigation)
                     .WithMany(p => p.Pedidos)

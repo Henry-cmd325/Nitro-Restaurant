@@ -91,7 +91,8 @@ namespace ApiNitroRestaurant.Services
                 Hora = orderDb.FechaHora.Hour, 
                 Minuto = orderDb.FechaHora.Minute, 
                 Segundo = orderDb.FechaHora.Second,
-                DetallesPedidos = listDetalles
+                DetallesPedidos = listDetalles,
+                Terminado = orderDb.Terminado == 1 ? true : false
             };
 
             return response;
@@ -182,7 +183,8 @@ namespace ApiNitroRestaurant.Services
                 Hora = model.Hora,
                 Minuto = model.Minuto,
                 Segundo = model.Segundo,
-                DetallesPedidos = listDetalleResponse
+                DetallesPedidos = listDetalleResponse,
+                Terminado = model.Terminado
             };
             
             response.Data = orderResponse;
@@ -291,7 +293,8 @@ namespace ApiNitroRestaurant.Services
                 Hora = model.Hora,
                 Minuto = model.Minuto,
                 Segundo = model.Segundo,
-                DetallesPedidos = listDetalleResponse
+                DetallesPedidos = listDetalleResponse,
+                Terminado = model.Terminado,
             };
 
             return response;

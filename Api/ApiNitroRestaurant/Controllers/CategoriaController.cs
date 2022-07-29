@@ -43,7 +43,7 @@ namespace ApiNitroRestaurant.Controllers
 
             if (!response.Success) return BadRequest(response);
 
-            return Ok();
+            return Ok(response);
         }
 
         [HttpDelete("{id}")]
@@ -53,7 +53,7 @@ namespace ApiNitroRestaurant.Controllers
 
             if (!response.Success) return BadRequest(response);
 
-            return Ok(response);
+            return NoContent();
         }
 
         [HttpPut("{id}")]

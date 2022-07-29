@@ -14,6 +14,7 @@ namespace ApiNitroRestaurant.Models
         public int IdEmpleado { get; set; }
         public string NumeroMesa { get; set; } = null!;
         public DateTime FechaHora { get; set; }
+        public ulong? Terminado { get; set; }
 
         public virtual Empleado IdEmpleadoNavigation { get; set; } = null!;
         public virtual ICollection<DetallePedido> DetallePedidos { get; set; }
