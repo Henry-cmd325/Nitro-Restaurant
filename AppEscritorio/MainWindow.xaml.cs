@@ -84,7 +84,7 @@ namespace AppEscritorio
 
             var cuenta = new AccountRequest { Username = txtUsername.Text, Password = txtPassword.Password };
 
-            var result = await Api.Post<AccountRequest, ServerResponse<AccountResponse>>("https://localhost:7214/api/Cuenta/login", cuenta);
+            var result = await Api.Post<AccountRequest, ServerResponse<AccountResponse>>("http://manuwolf-001-site1.atempurl.com/api/Cuenta/login", cuenta);
 
             if (result != null && result.Success)
             {

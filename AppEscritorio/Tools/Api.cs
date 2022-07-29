@@ -24,6 +24,8 @@ namespace AppEscritorio.Tools
             return obj;
         }
 
+        
+
         public static async Task<TResponse> Post<TValue, TResponse>(string url, TValue obj)
         {
             HttpClient client = new();

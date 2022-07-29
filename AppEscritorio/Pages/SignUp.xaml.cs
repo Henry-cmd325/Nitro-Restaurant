@@ -110,7 +110,7 @@ namespace AppEscritorio.Pages
                 {
                     Validations.ValidarSignUp(usuario);
 
-                    result = await Api.Post<Usuarios, ServerResponse<UsuarioResponse>>("https://localhost:7214/api/Cuenta/signin", usuario);
+                    result = await Api.Post<Usuarios, ServerResponse<UsuarioResponse>>("http://manuwolf-001-site1.atempurl.com/api/Cuenta/signin", usuario);
 
                     if (result == null) throw new Exception("Ha ocurrido un error");
                 }
