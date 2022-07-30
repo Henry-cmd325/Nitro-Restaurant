@@ -12,7 +12,7 @@ namespace AppMovil
         {
             InitializeComponent();
 
-            MainPage = new Pedidos();
+            MainPage = new MainPage();
         }
 
         protected override void OnStart()

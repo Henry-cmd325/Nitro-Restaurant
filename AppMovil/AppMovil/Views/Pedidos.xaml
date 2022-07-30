@@ -11,19 +11,12 @@
             
             <Frame HorizontalOptions="Center" HeightRequest="550" WidthRequest="400" Margin="0,20,0,0">
                 <StackLayout>
-                    <ListView x:Name="Lista">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <ViewCell>
-                                    <StackLayout Orientation="Horizontal">
-                                        <Label Text="{Binding NombreProducto}" FontSize="17" VerticalOptions="Center" Margin="0,0,0,0"></Label>
-                                        <Stepper x:Name="{Binding Id}" HorizontalOptions="EndAndExpand" Increment="1"></Stepper>
-                                        <Label Text="{Binding Cantidad}" VerticalOptions="Center" FontSize="18" Margin="10,0,0,0"></Label>
-                                    </StackLayout>
-                                </ViewCell>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
+
+                    <ScrollView>
+                        <StackLayout x:Name="ListItems">
+                            
+                        </StackLayout>
+                    </ScrollView>
 
                     <Button Text="Agregar producto" Margin="0,20,0,0" HorizontalOptions="Center" WidthRequest="320" HeightRequest="60" 
                     BackgroundColor="#167ef5" CornerRadius="25" TextColor="White"></Button>
