@@ -7,7 +7,7 @@
       xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
       xmlns:uc="clr-namespace:AppEscritorio.UI.UserControls"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="670" d:DesignWidth="800"
       Title="Products">
 
     <Grid>
@@ -19,12 +19,18 @@
 
         <!--Chart Section-->
         <Border CornerRadius="20" Padding="35 25" Background="#243771" Margin="50 0 10 40">
-            <Button Name="addCategory"  Content="add category" Style="{StaticResource topMenuButton}" Cursor="AppStarting">
-                
-            </Button>
-            
+            <Grid>
+                <Menu Name="CategoriesMenu">
+                    <MenuItem Click="menuItemClick" Name="SelectCategory" Header="Select a category" Foreground="#7C8DC3" Width="370" Style="{StaticResource MaterialDesignMenuItem}">
+                        
+                    </MenuItem>
+                </Menu>
+                <Button Visibility="Hidden" Name="addCategory"  Content="add category" Style="{StaticResource topMenuButton}" Cursor="AppStarting">
+
+                </Button>
+            </Grid>
         </Border>
-        
+
         <!--Order Section-->
         <Border Grid.Column="1" CornerRadius="20" Padding="0 25" Background="#243771" Margin="15 0 47 40">
             <Grid>
@@ -35,9 +41,23 @@
 
                 <!--Orders-->
                 <StackPanel Grid.Row="1">
-                    <uc:Item Title="Category" Desc="0 categories added" Icon="Tshirt" Loaded="Item_Loaded"/>
-                    <uc:Item Title="Products" Desc="0 products added" Icon="ShoePrints"/>
+                    <uc:Item Title="Category" Desc="0 categories added" Icon="BowlFood" Loaded="Item_Loaded"/>
+                    <uc:Item Title="Products" Desc="0 products added" Icon="ShoppingBag" Loaded="Item_Loaded_1"/>
                     
+                    <Button Style="{StaticResource menuButton}" Click="Button_Click_2" Margin="0 340 0 0">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+
+                            <TextBlock Text="Add Category" Style="{StaticResource menuButtonText}" />
+                        </StackPanel>
+                    </Button>
+
+                    <Button Style="{StaticResource menuButton}" Click="Button_Click_2" >
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+
+                            <TextBlock Text="Add Product" Style="{StaticResource menuButtonText}" />
+                        </StackPanel>
+                    </Button>
+
                 </StackPanel>
             </Grid>
 

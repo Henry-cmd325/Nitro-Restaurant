@@ -1,5 +1,6 @@
 ﻿using AppEscritorio.Models.Response;
 using AppEscritorio.Tools;
+using AppEscritorio.UI.PagesUI.ModalCategory;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,22 +28,49 @@ namespace AppEscritorio.UI.PagesUI
             InitializeComponent();
         }
 
+        List<CategoriaResponse> Categories = new();
         private async void  Item_Loaded(object sender, RoutedEventArgs e)
         {
             var result = await Api.Get<ServerResponse<CategoriaResponse[]>>("http://manuwolf-001-site1.atempurl.com/api/Categoria");
 
             if (result != null)
             {
-                if (result.Data == null)
+                if (result.Data.Length == 0)
                 {
-                    addCategory.Visibility = Visibility.Collapsed;
+                    addCategory.Visibility = Visibility.Visible;
                 }
                 else
                 {
-                    //addCategory.Visibility = Visibility.Collapsed;
+                    
+                    
+                    foreach(var category in result.Data)
+                    {
+                        MenuItem item = new MenuItem();
+                        item.Header = category.Nombre;
+                        item.Style = SelectCategory.Style;
+                        item.Foreground = SelectCategory.Foreground;
+                        SelectCategory.Items.Add(item);
+                        
+                        
+                    }
+                    
+
+                    
+                        
                 }
             }
           
+        }
+
+        private void Item_Loaded_1(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            AddCategory cate = new();
+            cate.ShowDialog();
         }
     }
 }
