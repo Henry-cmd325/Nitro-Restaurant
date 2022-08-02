@@ -5,6 +5,7 @@ namespace ApiNitroRestaurant.Services
 {
     public interface IOrderService
     {
+        public ServerResponse<List<OrderResponse>> GetAllOrders();
         public ServerResponse<OrderResponse> GetOrder(int id);
         public ServerResponse<OrderResponse> DeleteOrder(int id);
         public ServerResponse<OrderResponse> PostOrder(OrderRequest model);

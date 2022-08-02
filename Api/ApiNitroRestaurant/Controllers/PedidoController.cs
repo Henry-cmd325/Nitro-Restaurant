@@ -16,6 +16,16 @@ namespace ApiNitroRestaurant.Controllers
             _orderService = orderService;
         }
 
+        [HttpGet]
+        public IActionResult GetAllPedidos()
+        {
+            var response = _orderService.GetAllOrders();
+
+            if (!response.Success) return BadRequest(response);
+
+            return Ok(response);
+        }
+
         [HttpGet("{id}", Name = "GetPedido")]
         public IActionResult GetPedido(int id)
         {

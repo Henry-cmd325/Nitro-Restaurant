@@ -29,7 +29,14 @@ namespace AppMovil.Views
 
                 if (response != null)
                 {
-
+                    if (response.Success)
+                    {
+                        
+                    }
+                    else
+                    {
+                        await DisplayAlert("Ha ocurrido un error", response.Error, "Ok");
+                    }
                 }
                 else
                 {

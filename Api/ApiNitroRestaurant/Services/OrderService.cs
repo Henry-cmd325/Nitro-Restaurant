@@ -41,6 +41,71 @@ namespace ApiNitroRestaurant.Services
             return response;
         }
 
+        public ServerResponse<List<OrderResponse>> GetAllOrders()
+        {
+            ServerResponse<List<OrderResponse>> serverResponse = new();
+
+            var listResponse = new List<OrderResponse>();
+
+            var listDb = _context.Pedidos.ToList();
+
+            if (listDb.Count == 0)
+            {
+                serverResponse.Error = "No existe ninguna orden en la base de datos";
+                serverResponse.Success = false;
+
+                return serverResponse;
+            }
+
+            
+
+            foreach (var order in listDb)
+            {
+                var detallesDb = _context.DetallePedidos.ToList();
+
+                List<DetalleResponse> detallesResponse = new();
+
+                foreach (var detalle in detallesDb)
+                {
+                    detallesResponse.Add(new DetalleResponse()
+                    {
+                        IdDetallePedido = order.IdPedido,
+                        IdProducto = detalle.IdProducto,
+                        Cantidad = detalle.Cantidad
+                    });
+                }
+
+                bool? terminado = null;
+
+                if (order.Terminado != null)
+                {
+                    if (order.Terminado == 1)
+                        terminado = true;
+                    else
+                        terminado = false;
+                }
+
+                listResponse.Add(new OrderResponse()
+                {
+                    IdPedido = order.IdPedido,
+                    IdEmpleado = order.IdEmpleado,
+                    NumeroMesa = order.NumeroMesa,
+                    Anio = order.FechaHora.Year,
+                    Mes = order.FechaHora.Month,
+                    Dia = order.FechaHora.Day, 
+                    Hora = order.FechaHora.Hour,
+                    Minuto = order.FechaHora.Minute, 
+                    Segundo = order.FechaHora.Second,
+                    DetallesPedidos = detallesResponse,
+                    Terminado = terminado
+                });
+            }
+
+            serverResponse.Data = listResponse;
+
+            return serverResponse;
+        }
+
         public ServerResponse<OrderResponse> GetOrder(int id)
         {
             ServerResponse<OrderResponse> response = new();
@@ -80,6 +145,16 @@ namespace ApiNitroRestaurant.Services
                 }
             }
 
+            bool? terminado = null;
+
+            if (orderDb.Terminado != null)
+            {
+                if (orderDb.Terminado == 1)
+                    terminado = true;
+                else
+                    terminado = false;
+            }
+
             response.Data = new OrderResponse()
             {
                 IdEmpleado = orderDb.IdEmpleado,
@@ -92,7 +167,7 @@ namespace ApiNitroRestaurant.Services
                 Minuto = orderDb.FechaHora.Minute, 
                 Segundo = orderDb.FechaHora.Second,
                 DetallesPedidos = listDetalles,
-                Terminado = orderDb.Terminado == 1 ? true : false
+                Terminado = terminado
             };
 
             return response;
