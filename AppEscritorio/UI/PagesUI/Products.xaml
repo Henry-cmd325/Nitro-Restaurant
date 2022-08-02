@@ -20,12 +20,27 @@
         <!--Chart Section-->
         <Border CornerRadius="20" Padding="35 25" Background="#243771" Margin="50 0 10 40">
             <Grid>
-                <Menu Name="CategoriesMenu">
-                    <MenuItem Click="menuItemClick" Name="SelectCategory" Header="Select a category" Foreground="#7C8DC3" Width="370" Style="{StaticResource MaterialDesignMenuItem}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Menu Grid.Row="0" Name="CategoriesMenu">
+                    <MenuItem Name="SelectCategory" Header="Select a category" Foreground="#7C8DC3" Width="370" Style="{StaticResource MaterialDesignMenuItem}">
                         
                     </MenuItem>
                 </Menu>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <uc:Item x:Name="ItemProducts" Title="Products" Icon="ShoppingBag" Loaded="Item_Loaded_Show_Products"  Margin="0,0,0,462"/>
+                </Grid>
                 <Button Visibility="Hidden" Name="addCategory"  Content="add category" Style="{StaticResource topMenuButton}" Cursor="AppStarting">
+
+                </Button>
+                <Button Visibility="Hidden" Name="addProduct"  Content="add product" Style="{StaticResource topMenuButton}" Cursor="AppStarting">
 
                 </Button>
             </Grid>
@@ -41,8 +56,8 @@
 
                 <!--Orders-->
                 <StackPanel Grid.Row="1">
-                    <uc:Item Title="Category" Desc="0 categories added" Icon="BowlFood" Loaded="Item_Loaded"/>
-                    <uc:Item Title="Products" Desc="0 products added" Icon="ShoppingBag" Loaded="Item_Loaded_1"/>
+                    <uc:Item x:Name="CountCategory" Title="Category" Icon="BowlFood" Loaded="Item_Loaded"/>
+                    <uc:Item x:Name="CountProduct" Title="Products" Icon="ShoppingBag" Loaded="Item_Loaded_1"/>
                     
                     <Button Style="{StaticResource menuButton}" Click="Button_Click_2" Margin="0 340 0 0">
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
@@ -51,7 +66,7 @@
                         </StackPanel>
                     </Button>
 
-                    <Button Style="{StaticResource menuButton}" Click="Button_Click_2" >
+                    <Button Style="{StaticResource menuButton}" Click="Button_Click_AddProduct" >
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
 
                             <TextBlock Text="Add Product" Style="{StaticResource menuButtonText}" />

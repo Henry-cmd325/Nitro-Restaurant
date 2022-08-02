@@ -32,7 +32,7 @@ namespace AppEscritorio.Tools
             {
                 Int32.Parse(usuario.Telefono);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw new Exception("Introduzca solo caracteres numéricos en el telefono");
             }

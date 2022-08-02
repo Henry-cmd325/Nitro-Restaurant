@@ -1,6 +1,7 @@
 ﻿using AppEscritorio.Models.Response;
 using AppEscritorio.Tools;
 using AppEscritorio.UI.PagesUI.ModalCategory;
+using AppEscritorio.UI.UserControls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,7 +42,7 @@ namespace AppEscritorio.UI.PagesUI
                 }
                 else
                 {
-                    
+                    int count = 0;
                     
                     foreach(var category in result.Data)
                     {
@@ -51,10 +52,11 @@ namespace AppEscritorio.UI.PagesUI
                         item.Foreground = SelectCategory.Foreground;
                         SelectCategory.Items.Add(item);
                         
+                        count++;
                         
                     }
                     
-
+                    CountCategory.Desc = count.ToString() + " categories added";
                     
                         
                 }
@@ -71,6 +73,53 @@ namespace AppEscritorio.UI.PagesUI
         {
             AddCategory cate = new();
             cate.ShowDialog();
+        }
+
+        private void Button_Click_AddProduct(object sender, RoutedEventArgs e)
+        {
+            AddProduct prod = new();
+            prod.ShowDialog();
+        }
+
+        private async void Item_Loaded_Show_Products(object sender, RoutedEventArgs e)
+        {
+            var result = await Api.Get<ServerResponse<ProductResponse[]>>("http://manuwolf-001-site1.atempurl.com/api/Producto");
+
+            if (result != null)
+            {
+                if (result.Data.Length == 0)
+                {
+                    addProduct.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    int count = 0;
+
+                    foreach (var product in result.Data)
+                    {
+                        Item item = new Item();
+                        ItemProducts.Title = product.Nombre;
+                        item.Title = product.Nombre;
+                        item.Style = ItemProducts.Style;
+                        item.Foreground = ItemProducts.Foreground;
+                        item.Visibility = Visibility.Visible;
+                        
+
+                        count++;
+
+                    }
+
+                    CountProduct.Desc = count.ToString() + " categories added";
+
+
+                }
+            }
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
