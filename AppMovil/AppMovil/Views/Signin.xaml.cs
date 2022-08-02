@@ -44,7 +44,13 @@ namespace AppMovil.Views
                 if (response != null)
                 {
                     if (response.Success)
-                        Application.Current.MainPage = new Pedidos();
+                    {
+                        var app = Application.Current as App;
+
+                        app.IdEmpleado = response.Data.IdEmpleado;
+
+                        app.MainPage = new Pedidos();
+                    }
                     else
                         await DisplayAlert("Ha ocurrido un error de servidor", response.Error, "Ok");
                 }

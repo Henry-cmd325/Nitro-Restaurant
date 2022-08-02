@@ -24,7 +24,7 @@ namespace AppMovil.Tools
             {
                 Int64.Parse(empleado.Telefono);
             }
-            catch (Exception ex)
+            catch
             {
                 throw new Exception("Introduzca solo caracteres numéricos en el telefono");
             }
@@ -50,9 +50,33 @@ namespace AppMovil.Tools
             {
                 Int64.Parse(empleado.Telefono);
             }
-            catch (Exception ex)
+            catch
             {
                 throw new Exception("Introduzca solo caracteres numéricos en el telefono");
+            }
+        }
+
+        public static void ValidarCrearPedido(OrderRequest order)
+        {
+            order.NumeroMesa = order.NumeroMesa.Trim();
+
+            if (order.NumeroMesa == "")
+            {
+                throw new Exception("Debe de rellenar el campo numero mesa");
+            }
+
+            try
+            {
+                Int64.Parse(order.NumeroMesa);
+            }
+            catch
+            {
+                throw new Exception("Debe de introducir un número");
+            }
+
+            if (order.NumeroMesa.Length > 2)
+            {
+                throw new Exception("El valor introducido es muy grande");
             }
         }
     }

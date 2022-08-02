@@ -130,8 +130,6 @@ namespace ApiNitroRestaurant.Models
                     .HasColumnType("int(11)")
                     .HasColumnName("id_empleado");
 
-                entity.Property(e => e.Completado).HasColumnName("completado");
-
                 entity.Property(e => e.IdCuenta)
                     .HasColumnType("int(11)")
                     .HasColumnName("id_cuenta");

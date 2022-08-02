@@ -17,7 +17,6 @@ namespace ApiNitroRestaurant.Models
         public string Paterno { get; set; } = null!;
         public string Materno { get; set; } = null!;
         public string Telefono { get; set; } = null!;
-        public bool? Completado { get; set; }
 
         public virtual Cuenta? IdCuentaNavigation { get; set; }
         public virtual TipoEmpleado IdTipoEmpleadoNavigation { get; set; } = null!;

@@ -631,3 +631,4 @@ D:\Programacion\Uni\Nitro Restaurant\AppMovil\AppMovil.Android\obj\Debug\120\res
 D:\Programacion\Uni\Nitro Restaurant\AppMovil\AppMovil.Android\obj\Debug\120\res\drawable\logolight4.gif
 D:\Programacion\Uni\Nitro Restaurant\AppMovil\AppMovil.Android\obj\Debug\120\res\drawable\logo.png
 D:\Programacion\Uni\Nitro Restaurant\AppMovil\AppMovil.Android\obj\Debug\120\android\assets\Newtonsoft.Json.dll
+D:\Programacion\Uni\Nitro Restaurant\AppMovil\AppMovil.Android\obj\Debug\120\res\drawable\delete.png

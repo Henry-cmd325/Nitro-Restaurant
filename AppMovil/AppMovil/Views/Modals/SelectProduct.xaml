@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppMovil.Views.Modals.SelectProduct">
+    <ContentPage.Content>
+        <StackLayout>
+
+            <Frame HasShadow="True" HorizontalOptions="Center" WidthRequest="480" Margin="40,40,40,0" HeightRequest="300" BackgroundColor="#167ef5" Padding="0">
+                <StackLayout>
+                    <Label Text="Seleccione la categoria" HorizontalOptions="Center" FontSize="20" Margin="0,10,0,10" TextColor="White"></Label>
+                    <ScrollView BackgroundColor="#ebebeb" HeightRequest="300">
+                        <StackLayout x:Name="CategoryList">
+                            
+                        </StackLayout>
+                    </ScrollView>
+                </StackLayout>
+            </Frame>
+            
+            <Frame HasShadow="True" HorizontalOptions="Center" WidthRequest="480" Margin="40,40,40,0" HeightRequest="300" BackgroundColor="#167ef5" Padding="0">
+                <StackLayout WidthRequest="300">
+                    <Label Text="Seleccione el producto" HorizontalOptions="Center" FontSize="20" Margin="0,10,0,10" TextColor="White"></Label>
+                    <ScrollView BackgroundColor="#ebebeb" HeightRequest="300">
+                        <StackLayout x:Name="ProductList" VerticalOptions="Center">
+                            <Label Text="Seleccione una categoria" HorizontalOptions="Center"></Label>
+                        </StackLayout>
+                    </ScrollView>
+                </StackLayout>
+            </Frame>
+
+            <Button Text="Cancelar" Clicked="BtnCancel_Clicked" CornerRadius="10" HeightRequest="60" BackgroundColor="#ff0f0f" TextColor="White" Margin="20,40,20,0"></Button>
+        </StackLayout>
+        
+    </ContentPage.Content>
+</ContentPage>

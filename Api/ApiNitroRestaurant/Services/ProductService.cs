@@ -65,6 +65,40 @@ namespace ApiNitroRestaurant.Services
             return response;
         }
 
+        public ServerResponse<List<ProductResponse>> GetAll()
+        {
+            ServerResponse<List<ProductResponse>> response = new();
+
+            var listResponse = new List<ProductResponse>();
+
+            var productsDb = _context.Productos.ToList();
+
+            if (productsDb.Count == 0)
+            {
+                response.Success = false;
+                response.Error = "No existe ningún producto en la base de datos";
+
+                return response;
+            }
+
+            foreach (var product in productsDb)
+            {
+                listResponse.Add(new ProductResponse()
+                {
+                    IdProducto = product.IdProducto,
+                    IdCategoria = product.IdCategoria,
+                    Nombre = product.Nombre,
+                    Inversion = product.Inversion,
+                    Precio = product.Precio,
+                    Disponible = product.Disponible == 1 ? true : false,
+                    Imagen = product.Imagen != null ? Encoding.UTF8.GetString(product.Imagen) : null
+                });
+            }
+
+            response.Data = listResponse;
+
+            return response;
+        }
         public ServerResponse<ProductResponse> GetProduct(int id)
         {
             ServerResponse<ProductResponse> response = new();
