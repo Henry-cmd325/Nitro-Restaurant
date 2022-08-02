@@ -15,6 +15,16 @@ namespace ApiNitroRestaurant.Controllers
             _productoService = productService;
         }
 
+        [HttpGet]
+        public IActionResult GetAll()
+        {
+            var response = _productoService.GetAll();
+
+            if (!response.Success) return BadRequest(response);
+
+            return Ok(response);
+        }
+
         [HttpGet("{id}", Name = "GetProductById")]
         public IActionResult GetProductById(int id)
         {

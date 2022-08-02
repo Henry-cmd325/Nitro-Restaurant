@@ -39,5 +39,14 @@ namespace AppMovil.Tools
 
             return result;
         }
+
+        public static async Task<bool> Delete(string url)
+        {
+            HttpClient client = new HttpClient();
+
+            var response = await client.DeleteAsync(url);
+
+            return response.IsSuccessStatusCode;
+        }
     }
 }
