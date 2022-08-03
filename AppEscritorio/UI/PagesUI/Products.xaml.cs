@@ -64,10 +64,7 @@ namespace AppEscritorio.UI.PagesUI
           
         }
 
-        private void Item_Loaded_1(object sender, RoutedEventArgs e)
-        {
-
-        }
+      
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
@@ -81,7 +78,7 @@ namespace AppEscritorio.UI.PagesUI
             prod.ShowDialog();
         }
 
-        private async void Item_Loaded_Show_Products(object sender, RoutedEventArgs e)
+        private async void Item_Loaded_1(object sender, RoutedEventArgs e)
         {
             var result = await Api.Get<ServerResponse<ProductResponse[]>>("http://manuwolf-001-site1.atempurl.com/api/Producto");
 
@@ -93,20 +90,33 @@ namespace AppEscritorio.UI.PagesUI
                 }
                 else
                 {
+                    int column = 0;
                     int count = 0;
 
-                    foreach (var product in result.Data)
+                    for (int i = 1; i <= Math.Ceiling(result.Data.Count() / 2.0); i++)
                     {
-                        Item item = new Item();
-                        ItemProducts.Title = product.Nombre;
-                        item.Title = product.Nombre;
-                        item.Style = ItemProducts.Style;
-                        item.Foreground = ItemProducts.Foreground;
-                        item.Visibility = Visibility.Visible;
-                        
+                        var definition = new RowDefinition();
 
-                        count++;
+                        GridProducts.RowDefinitions.Add(definition);
+                    }
 
+                    for (int i = 0; i <= Math.Ceiling(result.Data.Count() / 2.0)-1; i++)
+                    {
+                        for (int j = 0; j <= 1; j++)
+                        {
+                            var product = result.Data[count];
+                            Item item = new Item();
+                            item.Title = product.Nombre;
+                            item.Visibility = Visibility.Visible;
+                            item.Height = 70;
+                            
+                            Grid.SetRow(item, i);
+                            Grid.SetColumn(item, j);
+
+                            GridProducts.Children.Add(item);
+
+                            count++;
+                        }
                     }
 
                     CountProduct.Desc = count.ToString() + " products added";

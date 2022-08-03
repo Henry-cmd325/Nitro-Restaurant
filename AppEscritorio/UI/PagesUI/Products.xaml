@@ -29,14 +29,18 @@
                         
                     </MenuItem>
                 </Menu>
-                <Grid Grid.Row="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <uc:Item x:Name="ItemProducts" Title="Products" Icon="ShoppingBag" Loaded="Item_Loaded_Show_Products"  Margin="0,0,0,462"/>
-                </Grid>
+                <ScrollViewer Grid.Row="1">
+                    <Grid Name="GridProducts">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                    </Grid>
+                </ScrollViewer>
+                
                 <Button Visibility="Hidden" Name="addCategory"  Content="add category" Style="{StaticResource topMenuButton}" Cursor="AppStarting">
 
                 </Button>

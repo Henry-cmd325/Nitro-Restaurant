@@ -8,7 +8,7 @@
         xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
         xmlns:uc="clr-namespace:AppEscritorio.UI.UserControls"
         mc:Ignorable="d"
-        Title="AddProduct" Height="479" Width="596"
+        Title="AddProduct" Height="315" Width="596"
         WindowStyle="None"
         AllowsTransparency="True"
         WindowStartupLocation="CenterScreen">
@@ -19,7 +19,7 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
+                
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
@@ -52,21 +52,14 @@
                          Style="{StaticResource MaterialDesignOutlinedTextBox}" Cursor="IBeam" TextChanged="txtInvestment_TextChanged" />
             </StackPanel>
 
-            <StackPanel VerticalAlignment="Center" Grid.Row="3" Grid.ColumnSpan="2">
+            <StackPanel VerticalAlignment="Center" Grid.Row="2" Grid.Column="2">
                 <TextBox Margin="15 0 15 0" Text="{Binding dUsername}" x:Name="txtPrice" Width="300" FontSize="18" 
                          m:HintAssist.Hint="Price" BorderThickness="2" 
                          BorderBrush="{DynamicResource MaterialDesignDivider}"  
                          Style="{StaticResource MaterialDesignOutlinedTextBox}" Cursor="IBeam" TextChanged="txtPrice_TextChanged"  />
             </StackPanel>
 
-            <StackPanel Grid.Column="2" Grid.Row="2" VerticalAlignment="Center">
-                <ComboBox Name="ComboAvailable" Width="232" IsReadOnly="True" IsEditable="True" Text="Is it available?" FontSize="16" Loaded="ComboBox_Loaded"  Height="32">
-                    <ComboBoxItem Name="Yes" Content="Yes"/>
-                    <ComboBoxItem Name="No" Content="No"/>
-
-                </ComboBox>
-            </StackPanel>
-
+       
 
 
 
