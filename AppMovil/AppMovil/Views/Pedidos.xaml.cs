@@ -17,12 +17,19 @@ namespace AppMovil.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Pedidos : ContentPage
     {
+        private readonly Api Api = new Api();
+
         public List<ProductoResponse> Productos = new List<ProductoResponse>();
+
         public List<DetalleViewModel> ViewProducts = new List<DetalleViewModel>();
+
+        public int EdicionIdPedido;
 
         public Pedidos()
         {
             InitializeComponent();
+
+            BtnSubir.Clicked += BtnSubir_Clicked;
         }
 
         public Pedidos(OrderResponse order, List<ProductoResponse> responses)
@@ -33,6 +40,12 @@ namespace AppMovil.Views
             {
                 AddProduct(responses[i], order.DetallesPedidos[i].Cantidad);
             }
+
+            ENumeroMesa.Text = order.NumeroMesa;
+            BtnSubir.Text = "Subir cambios";
+            BtnSubir.Clicked += BtnEditar_Clicked;
+
+            EdicionIdPedido = order.IdPedido;
         }
 
         public Pedidos(OrderRequest order, List<ProductoResponse> responses)
@@ -43,6 +56,8 @@ namespace AppMovil.Views
             {
                 AddProduct(responses[i], order.DetallesPedidos[i].Cantidad);
             }
+
+            BtnSubir.Clicked += BtnSubir_Clicked;
         }
 
         public void AddProduct(ProductoResponse producto, int cantidad = 1)
@@ -200,14 +215,13 @@ namespace AppMovil.Views
                 if (listDetalle.Count == 0) throw new Exception("No has agregado ningun producto");
 
                 Validations.ValidarCrearPedido(order);
-
+                
                 var response = await Api.Post<OrderRequest, ServerResponse<OrderResponse>>("http://manuwolf-001-site1.atempurl.com/api/Pedido", order);
 
                 if(response != null)
                 {
                     if (response.Success)
                     {
-                        
                         await DisplayAlert("Operación exitosa", "La orden ha sido creada exitosamente", "Ok");
                         app.MainPage = new PaginaPrincipal();
                     }
@@ -231,6 +245,63 @@ namespace AppMovil.Views
             }
         }
 
+        private async void BtnEditar_Clicked(object sender, EventArgs e)
+        {
+            var listDetalle = new List<DetalleRequest>();
+
+            for (int i = 0; i < Productos.Count; i++)
+            {
+                listDetalle.Add(new DetalleRequest()
+                {
+                    IdProducto = Productos[i].IdProducto,
+                    Cantidad = Convert.ToInt32(ViewProducts[i].Cantidad.Text)
+                });
+            }
+
+            var dateTime = DateTime.Now;
+
+            var app = Application.Current as App;
+
+            var order = new OrderRequest()
+            {
+                IdEmpleado = app.IdEmpleado,
+                DetallesPedidos = listDetalle,
+                Anio = dateTime.Year,
+                Mes = dateTime.Month,
+                Dia = dateTime.Day,
+                Hora = dateTime.Hour,
+                Minuto = dateTime.Minute,
+                Segundo = dateTime.Second,
+                NumeroMesa = ENumeroMesa.Text
+            };
+
+            try
+            {
+                if (listDetalle.Count == 0) throw new Exception("No has agregado ningun producto");
+
+                Validations.ValidarCrearPedido(order);
+
+                var response = await Api.Put("http://manuwolf-001-site1.atempurl.com/api/Pedido/" + EdicionIdPedido, order);
+
+                if (response)
+                {
+                    await DisplayAlert("Operación exitosa", "La orden ha sido editada correctamente", "Ok");
+                    app.MainPage = new PaginaPrincipal();
+                }
+                else
+                {
+                    await DisplayAlert("Ha ocurrido un error", "Comprueba tu conexión a internet", "Ok");
+                }
+            }
+            catch (NullReferenceException ex)
+            {
+                await DisplayAlert("Ha ocurrido un error", "Debe de rellenar el campo número mesa", "Ok");
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Ha ocurrido un error", ex.Message, "Ok");
+            }
+        }
         private void BtnSalir_Clicked(object sender, EventArgs e)
         {
             Application.Current.MainPage = new PaginaPrincipal();

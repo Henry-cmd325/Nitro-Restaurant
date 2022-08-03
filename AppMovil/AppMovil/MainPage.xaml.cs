@@ -14,6 +14,8 @@ namespace AppMovil
 {
     public partial class MainPage : ContentPage
     {
+        private readonly Api Api = new Api();
+
         public MainPage()
         {
             InitializeComponent();

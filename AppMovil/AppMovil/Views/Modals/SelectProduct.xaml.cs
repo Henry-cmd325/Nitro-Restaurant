@@ -14,6 +14,8 @@ namespace AppMovil.Views.Modals
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SelectProduct : ContentPage
     {
+        private readonly Api Api = new Api();
+
         public List<CategoriaResponse> categorias = new List<CategoriaResponse>();
 
         public List<ProductoResponse> Sproductos = new List<ProductoResponse>();

@@ -8,13 +8,17 @@ using System.Threading.Tasks;
 
 namespace AppMovil.Tools
 {
-    public static class Api
+    public class Api
     {
-        public static async Task<TValue> Get<TValue>(string url)
-        {
-            HttpClient client = new HttpClient();
+        private readonly HttpClient _client;
 
-            HttpResponseMessage response = await client.GetAsync(url);
+        public Api()
+        {
+            _client = new HttpClient();
+        }
+        public async Task<TValue> Get<TValue>(string url)
+        { 
+            HttpResponseMessage response = await _client.GetAsync(url);
 
             var json = await response.Content.ReadAsStringAsync();         
 
@@ -23,15 +27,13 @@ namespace AppMovil.Tools
             return obj;
         }
 
-        public static async Task<TResponse> Post<TValue, TResponse>(string url, TValue obj)
+        public async Task<TResponse> Post<TValue, TResponse>(string url, TValue obj)
         {
-            HttpClient client = new HttpClient();
-
             var json = JsonConvert.SerializeObject(obj);
             
             var contentJson = new StringContent(json, Encoding.UTF8, "application/json");
 
-            var response = await client.PostAsync(url, contentJson);
+            var response = await _client.PostAsync(url, contentJson);
 
             var responseText = await response.Content.ReadAsStringAsync();
 
@@ -40,11 +42,20 @@ namespace AppMovil.Tools
             return result;
         }
 
-        public static async Task<bool> Delete(string url)
+        public async Task<bool> Delete(string url)
         {
-            HttpClient client = new HttpClient();
+            var response = await _client.DeleteAsync(url);
 
-            var response = await client.DeleteAsync(url);
+            return response.IsSuccessStatusCode;
+        }
+
+        public async Task<bool> Put(string url, object obj)
+        {
+            var json = JsonConvert.SerializeObject(obj);
+
+            var contentJson = new StringContent(json, Encoding.UTF8, "application/json");
+
+            var response = await _client.PutAsync(url, contentJson);
 
             return response.IsSuccessStatusCode;
         }

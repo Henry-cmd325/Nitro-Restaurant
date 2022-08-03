@@ -15,6 +15,7 @@ namespace AppMovil.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Signin : ContentPage
     {
+        private readonly Api Api = new Api();
         public Signin()
         {
             InitializeComponent();

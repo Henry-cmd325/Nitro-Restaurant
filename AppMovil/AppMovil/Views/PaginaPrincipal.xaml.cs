@@ -14,6 +14,8 @@ namespace AppMovil.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PaginaPrincipal : ContentPage
     {
+        private readonly Api Api = new Api();
+
         private List<OrderResponse> orders = new List<OrderResponse>();
         public PaginaPrincipal()
         {
@@ -32,9 +34,11 @@ namespace AppMovil.Views
                 {
                     if (response.Success)
                     {
+                        App app = Application.Current as App;
+
                         foreach (var element in response.Data)
                         {
-                            if (element.Terminado == null || element.Terminado == false)
+                            if (element.IdEmpleado == app.IdEmpleado && (element.Terminado == null || element.Terminado == false))
                             {
                                 orders.Add(element);
 
@@ -75,7 +79,7 @@ namespace AppMovil.Views
                                 var btnEliminar = new Button()
                                 {
                                     FontSize = 12,
-                                    Text = "Editar",
+                                    Text = "Eliminar",
                                     BackgroundColor = Color.Red,
                                     TextColor = Color.White,
                                     HeightRequest = 35,
@@ -86,7 +90,7 @@ namespace AppMovil.Views
 
                                 btnEliminar.Clicked += (obj, e) =>
                                 {
-                                    //Eliminar
+                                    BtnEliminar_Clicked(orders.IndexOf(element));
                                 };
 
                                 stack.Children.Add(label);
@@ -172,7 +176,7 @@ namespace AppMovil.Views
             {
                 try
                 {
-                    bool eliminated = await Api.Delete("");
+                    bool eliminated = await Api.Delete("http://manuwolf-001-site1.atempurl.com/api/Pedido/" + order.IdPedido);
 
                     if (eliminated)
                         Application.Current.MainPage = new PaginaPrincipal();

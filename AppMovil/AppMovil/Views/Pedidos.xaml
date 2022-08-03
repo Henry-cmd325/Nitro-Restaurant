@@ -31,7 +31,7 @@
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                 
                 <Button Text="Subir" TextColor="White" BackgroundColor="#167ef5" HeightRequest="70"
-                        Margin="0,30,0,0" WidthRequest="400" Clicked="BtnSubir_Clicked"></Button>
+                        Margin="0,30,0,0" WidthRequest="400" x:Name="BtnSubir"></Button>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>
