@@ -23,13 +23,13 @@ namespace ApiNitroRestaurant.Hubs
             await Clients.Caller.SendAsync("ReceiveGroup", id, Context.ConnectionId);
         }
 
-        public async Task AddToGroup(string id)
+        public async Task AddToGroup(string group, string idPc)
         {
-            if (Clients.Group(id) != null)
+            if (Clients.Group(group) != null)
             {
-                await Groups.AddToGroupAsync(Context.ConnectionId, id);
-                Console.WriteLine($"El usuario {Context.ConnectionId} ha entrado a la sala {id}");
-                await Clients.Caller.SendAsync("WithinGroup");
+                await Groups.AddToGroupAsync(Context.ConnectionId, idPc);
+                Console.WriteLine($"El usuario {Context.ConnectionId} ha entrado a la sala {idPc}");
+                await Clients.Caller.SendAsync("WithinGroup", idPc);
             }
             else
                 Console.WriteLine($"El usuario {Context.ConnectionId} ha intentado a entrar a un grupo que no existe");   

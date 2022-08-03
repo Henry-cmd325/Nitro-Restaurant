@@ -14,7 +14,7 @@ namespace AppMovil
 {
     public partial class MainPage : ContentPage
     {
-        private readonly Api Api = new Api();
+        private readonly Api Api = DependencyService.Get<Api>();
 
         public MainPage()
         {

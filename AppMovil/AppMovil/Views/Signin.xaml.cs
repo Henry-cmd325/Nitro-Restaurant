@@ -1,5 +1,6 @@
 ﻿using AppMovil.Models.Request;
 using AppMovil.Models.Response;
+using AppMovil.Services;
 using AppMovil.Tools;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,7 @@ namespace AppMovil.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Signin : ContentPage
     {
-        private readonly Api Api = new Api();
+        private readonly Api Api = DependencyService.Get<Api>();
         public Signin()
         {
             InitializeComponent();
@@ -50,7 +51,16 @@ namespace AppMovil.Views
 
                         app.IdEmpleado = response.Data.IdEmpleado;
 
-                        app.MainPage = new PaginaPrincipal();
+                        var connection = DependencyService.Get<SignalRService>();
+
+                        connection.OnConected((idPc) =>
+                        {
+                            app.IdPc = idPc;
+
+                            app.MainPage = new PaginaPrincipal();
+                        });
+
+                        await connection.Connect(ECodigo.Text.Trim());
                     }
                     else
                         await DisplayAlert("Ha ocurrido un error de servidor", response.Error, "Ok");
