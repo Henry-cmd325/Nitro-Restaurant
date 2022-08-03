@@ -30,7 +30,7 @@ namespace AppEscritorio.Tools
             }
             try
             {
-                Int32.Parse(usuario.Telefono);
+                Int64.Parse(usuario.Telefono);
             }
             catch (Exception)
             {
@@ -46,5 +46,28 @@ namespace AppEscritorio.Tools
             
             
         }
+
+        public static void ValidarProducto(string inversion, string precio)
+        {
+            try
+            {
+                float.Parse(inversion);
+            }
+            catch (Exception)
+            {
+                throw new Exception("Introduzca un valor númerico en la inversión por favor");
+            }
+
+            try
+            {
+                float.Parse(precio);
+            }
+            catch (Exception)
+            {
+                throw new Exception("Introduzca un valor númerico en el precio por favor");
+            }
+        }
+
+        
     }
 }

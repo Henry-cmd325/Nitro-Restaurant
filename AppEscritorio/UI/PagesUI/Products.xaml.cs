@@ -109,7 +109,7 @@ namespace AppEscritorio.UI.PagesUI
 
                     }
 
-                    CountProduct.Desc = count.ToString() + " categories added";
+                    CountProduct.Desc = count.ToString() + " products added";
 
 
                 }
