@@ -67,12 +67,15 @@ namespace ApiNitroRestaurant.Services
 
                 foreach (var detalle in detallesDb)
                 {
-                    detallesResponse.Add(new DetalleResponse()
+                    if (detalle.IdPedido == order.IdPedido)
                     {
-                        IdDetallePedido = order.IdPedido,
-                        IdProducto = detalle.IdProducto,
-                        Cantidad = detalle.Cantidad
-                    });
+                        detallesResponse.Add(new DetalleResponse()
+                        {
+                            IdDetallePedido = order.IdPedido,
+                            IdProducto = detalle.IdProducto,
+                            Cantidad = detalle.Cantidad
+                        });
+                    }
                 }
 
                 bool? terminado = null;

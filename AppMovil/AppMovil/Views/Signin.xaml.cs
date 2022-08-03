@@ -49,7 +49,7 @@ namespace AppMovil.Views
 
                         app.IdEmpleado = response.Data.IdEmpleado;
 
-                        app.MainPage = new Pedidos();
+                        app.MainPage = new PaginaPrincipal();
                     }
                     else
                         await DisplayAlert("Ha ocurrido un error de servidor", response.Error, "Ok");

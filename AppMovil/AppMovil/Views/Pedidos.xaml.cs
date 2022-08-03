@@ -85,6 +85,7 @@ namespace AppMovil.Views
             {
                 Minimum = 1,
                 HorizontalOptions = LayoutOptions.EndAndExpand,
+                Maximum = 50,
                 Value = cantidad 
             };
 
@@ -228,6 +229,11 @@ namespace AppMovil.Views
             {
                 await DisplayAlert("Ha ocurrido un error", ex.Message, "Ok");
             }
+        }
+
+        private void BtnSalir_Clicked(object sender, EventArgs e)
+        {
+            Application.Current.MainPage = new PaginaPrincipal();
         }
     }
 }
