@@ -35,7 +35,6 @@ namespace AppEscritorio.UI.PagesUI.ModalCategory
         private async void Button_Click_1(object sender, RoutedEventArgs e)
         {
             float inversion, precio = 0;
-            bool yesOrNo = false;
             
             if (txtNameProduct.Text.Trim() == "")
             {
@@ -43,13 +42,13 @@ namespace AppEscritorio.UI.PagesUI.ModalCategory
             }
           
             
-            if (ComboCategory.ItemStringFormat == "")
+            if (ComboCategory.Items[ComboCategory.SelectedIndex].ToString().Substring(38) == "")
             {
                 MessageBox.Show("Debe seleccionar una categoria", "Campo Vacío", MessageBoxButton.OK, MessageBoxImage.Warning);
 
             } else
             {
-                Titulo.Text = CategorySelected.;
+                Titulo.Text = ComboCategory.Items[ComboCategory.SelectedIndex].ToString().Substring(38);
             }
 
             if (txtInvestment.Text.Trim() == "")
@@ -61,17 +60,7 @@ namespace AppEscritorio.UI.PagesUI.ModalCategory
                 inversion = float.Parse(txtInvestment.Text);
             }
 
-            if ((Yes.IsSelected = false) && (No.IsSelected == false))
-            {
-                MessageBox.Show("Debe seleccionar si el producto está disponible", "Campo Vacío", MessageBoxButton.OK, MessageBoxImage.Warning);
-
-            }
-            else
-            {
-                if (Yes.IsSelected == true) { yesOrNo = true; }
-                else { yesOrNo = false; }
-                
-            }
+           
 
             if (txtPrice.Text.Trim() == "")
             {
@@ -84,9 +73,9 @@ namespace AppEscritorio.UI.PagesUI.ModalCategory
                 var result = await Api.Post<ProductRequest, ServerResponse<ProductResponse>>("http://manuwolf-001-site1.atempurl.com/api/Producto", new ProductRequest
                 {
                     Nombre = txtNameProduct.Text,
-                    Categoria = ComboCategory.ItemStringFormat,
+                    Categoria = ComboCategory.Items[ComboCategory.SelectedIndex].ToString().Substring(38),
                     Inversion = decimal.Parse(txtInvestment.Text),
-                    Disponible = yesOrNo,
+                    Disponible = true,
                     Precio = decimal.Parse(txtPrice.Text),
                     Imagen = null
                 }

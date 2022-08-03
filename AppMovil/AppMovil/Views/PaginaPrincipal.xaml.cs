@@ -14,7 +14,7 @@ namespace AppMovil.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PaginaPrincipal : ContentPage
     {
-        private readonly Api Api = new Api();
+        private readonly Api Api = DependencyService.Get<Api>();
 
         private List<OrderResponse> orders = new List<OrderResponse>();
         public PaginaPrincipal()

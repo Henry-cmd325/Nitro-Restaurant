@@ -17,7 +17,7 @@ namespace AppMovil.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Pedidos : ContentPage
     {
-        private readonly Api Api = new Api();
+        private readonly Api Api = DependencyService.Get<Api>();
 
         public List<ProductoResponse> Productos = new List<ProductoResponse>();
 

@@ -13,6 +13,7 @@ namespace AppMovil
     {
         
         public int IdEmpleado;
+        public string IdPc;
         public App()
         {
             InitializeComponent();
@@ -23,7 +24,7 @@ namespace AppMovil
         protected override void OnStart()
         {
             DependencyService.RegisterSingleton(new SignalRService());
-            DependencyService.RegisterSingleton(new Api());
+            DependencyService.RegisterSingleton(new SignalRService());   
         }
 
         protected override void OnSleep()
