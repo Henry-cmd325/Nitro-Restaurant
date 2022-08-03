@@ -34,15 +34,63 @@ namespace AppEscritorio.UI.PagesUI.ModalCategory
 
         private async void Button_Click_1(object sender, RoutedEventArgs e)
         {
+            float inversion, precio = 0;
+            bool yesOrNo = false;
+            
             if (txtNameProduct.Text.Trim() == "")
             {
                 MessageBox.Show("Debe escribir un nombre para el producto", "Campo Vacío", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
+          
+            
+            if (ComboCategory.ItemStringFormat == "")
+            {
+                MessageBox.Show("Debe seleccionar una categoria", "Campo Vacío", MessageBoxButton.OK, MessageBoxImage.Warning);
+
+            } else
+            {
+                Titulo.Text = CategorySelected.;
+            }
+
+            if (txtInvestment.Text.Trim() == "")
+            {
+                MessageBox.Show("Debe escribir la cantidad invertida en el producto", "Campo Vacío", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
             else
             {
+                inversion = float.Parse(txtInvestment.Text);
+            }
+
+            if ((Yes.IsSelected = false) && (No.IsSelected == false))
+            {
+                MessageBox.Show("Debe seleccionar si el producto está disponible", "Campo Vacío", MessageBoxButton.OK, MessageBoxImage.Warning);
+
+            }
+            else
+            {
+                if (Yes.IsSelected == true) { yesOrNo = true; }
+                else { yesOrNo = false; }
+                
+            }
+
+            if (txtPrice.Text.Trim() == "")
+            {
+                MessageBox.Show("Debe escribir la cantidad invertida en el producto", "Campo Vacío", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            else
+            {
+                precio = float.Parse(txtPrice.Text);
+
                 var result = await Api.Post<ProductRequest, ServerResponse<ProductResponse>>("http://manuwolf-001-site1.atempurl.com/api/Producto", new ProductRequest
-                { Nombre = txtNameProduct.Text,
-                  Categoria = ComboCategory.SelectedItem.ToString() }) ;
+                {
+                    Nombre = txtNameProduct.Text,
+                    Categoria = ComboCategory.ItemStringFormat,
+                    Inversion = decimal.Parse(txtInvestment.Text),
+                    Disponible = yesOrNo,
+                    Precio = decimal.Parse(txtPrice.Text),
+                    Imagen = null
+                }
+                  ) ;
 
                 if (result != null)
                 {
@@ -57,6 +105,8 @@ namespace AppEscritorio.UI.PagesUI.ModalCategory
                     }
                 }
             }
+
+            Validations.ValidarProducto(txtInvestment.Text, txtPrice.Text);
         }
 
         private async void ComboBox_Loaded(object sender, RoutedEventArgs e)
@@ -66,24 +116,37 @@ namespace AppEscritorio.UI.PagesUI.ModalCategory
             if (result != null)
             {
                 
-                    
-
                     foreach (var categ in result.Data)
                     {
                         ComboBoxItem item = new ComboBoxItem();
                         item.Content = categ.Nombre;
                         ComboCategory.Items.Add(item);
-                        
-
-
-                        
+   
 
                     }
+            }
+        }
 
-                    
+        private void ComboCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
 
+        }
 
-                
+        private void txtNameProduct_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void txtPrice_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void txtInvestment_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (System.Text.RegularExpressions.Regex.IsMatch(txtInvestment.Text, " ^ [0-9]"))
+            {
+                txtInvestment.Text = "";
             }
         }
     }
