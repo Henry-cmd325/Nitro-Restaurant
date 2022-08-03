@@ -7,13 +7,14 @@ namespace AppMovil.Tools
 {
     public static class Validations
     {
-        public static void ValidarLogin(EmpleadoAuthRequest empleado)
+        public static void ValidarLogin(EmpleadoAuthRequest empleado, string connString)
         {
             empleado.Telefono = empleado.Telefono.Trim();
+            connString = connString.Trim();
 
-            if (empleado.Telefono == "")
+            if (empleado.Telefono == "" || connString == "")
             {
-                throw new Exception("No puede dejar el campo teléfono en blanco");
+                throw new Exception("Debe de rellenar todos los campos");
             }
 
             if (empleado.Telefono.Length != 10)

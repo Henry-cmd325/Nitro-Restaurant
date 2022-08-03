@@ -1,3 +1,4 @@
+using ApiNitroRestaurant.Hubs;
 using ApiNitroRestaurant.Models;
 using ApiNitroRestaurant.Services;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,8 @@ string connString = builder.Configuration.GetConnectionString("MyConnection");
 
 builder.Services.AddControllers().AddJsonOptions(x => 
     x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
+
+builder.Services.AddSignalR();
 
 builder.Services.AddDbContext<NitroRestaurantContext>
 (
@@ -41,5 +44,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MapHub<OrdenesHub>("/ordenesHub");
 
 app.Run();

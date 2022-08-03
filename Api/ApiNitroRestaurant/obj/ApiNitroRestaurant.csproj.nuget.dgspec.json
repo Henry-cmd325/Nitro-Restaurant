@@ -65,6 +65,10 @@
             "XAct.Core.PCL": {
               "target": "Package",
               "version": "[0.0.5014, )"
+            },
+            "shortid": {
+              "target": "Package",
+              "version": "[4.0.0, )"
             }
           },
           "imports": [

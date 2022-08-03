@@ -35,7 +35,7 @@
                                     <Frame BackgroundColor="AliceBlue" CornerRadius="50" HeightRequest="35" WidthRequest="35" Padding="0" Margin="7">
 
                                     </Frame>
-                                    <Entry Placeholder="Código de enlace" TextColor="Black" HorizontalOptions="FillAndExpand" Margin="0,0,15,-15"></Entry>
+                                    <Entry x:Name="ECodigo" Placeholder="Código de enlace" TextColor="Black" HorizontalOptions="FillAndExpand" Margin="0,0,15,-15"></Entry>
                                 </StackLayout>
                             </Frame>
 

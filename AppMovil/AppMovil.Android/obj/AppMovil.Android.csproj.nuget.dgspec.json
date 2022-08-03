@@ -94,6 +94,10 @@
         "netstandard2.0": {
           "targetAlias": "netstandard2.0",
           "dependencies": {
+            "Microsoft.AspNetCore.SignalR.Client": {
+              "target": "Package",
+              "version": "[6.0.7, )"
+            },
             "NETStandard.Library": {
               "suppressParent": "All",
               "target": "Package",

@@ -37,7 +37,7 @@ namespace AppMovil.Views
                     Telefono = ETelefono.Text
                 };
 
-                Validations.ValidarLogin(empleado);
+                Validations.ValidarLogin(empleado, ECodigo.Text);
 
                 var response = await Api.Post<EmpleadoAuthRequest, ServerResponse<EmpleadoResponse>>
                                              ("http://manuwolf-001-site1.atempurl.com/api/Empleado/login", empleado);
