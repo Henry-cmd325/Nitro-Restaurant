@@ -34,11 +34,17 @@ namespace AppEscritorio.UI
 
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        public void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            Mandar();
+        }
+
+        public void Mandar() 
         {
             Products product = new Products();
             FrameUI.NavigationService.Navigate(product);
         }
+
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
