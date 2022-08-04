@@ -24,11 +24,12 @@
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <Menu Grid.Row="0" Name="CategoriesMenu">
-                    <MenuItem Name="SelectCategory" Header="Select a category" Foreground="#7C8DC3" Width="370" Style="{StaticResource MaterialDesignMenuItem}">
-                        
-                    </MenuItem>
-                </Menu>
+                <ComboBox Name="ComboCategory" IsReadOnly="True" IsEditable="True" Text="Select a Category" FontSize="16" Loaded="ComboBox_Loaded" 
+                          Height="32" Margin="0,0,149,0" Foreground="#9EABE2" BorderBrush="#9EABE2">
+                    <ComboBoxItem Name="CategorySelected">
+
+                    </ComboBoxItem>
+                </ComboBox>
                 <ScrollViewer Grid.Row="1">
                     <Grid Name="GridProducts">
                         <Grid.ColumnDefinitions>
@@ -40,7 +41,7 @@
                         </Grid.RowDefinitions>
                     </Grid>
                 </ScrollViewer>
-                
+
                 <Button Visibility="Hidden" Name="addCategory"  Content="add category" Style="{StaticResource topMenuButton}" Cursor="AppStarting">
 
                 </Button>
@@ -60,9 +61,9 @@
 
                 <!--Orders-->
                 <StackPanel Grid.Row="1">
-                    <uc:Item x:Name="CountCategory" Title="Category" Icon="BowlFood" Loaded="Item_Loaded"/>
+                    <uc:Item x:Name="CountCategory" Title="Category" Icon="BowlFood" Loaded="CountCategory_Loaded"/>
                     <uc:Item x:Name="CountProduct" Title="Products" Icon="ShoppingBag" Loaded="Item_Loaded_1"/>
-                    
+
                     <Button Style="{StaticResource menuButton}" Click="Button_Click_2" Margin="0 340 0 0">
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
 

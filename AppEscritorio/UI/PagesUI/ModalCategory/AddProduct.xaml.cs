@@ -80,13 +80,19 @@ namespace AppEscritorio.UI.PagesUI.ModalCategory
                     Imagen = null
                 }
                   ) ;
+                Validations.ValidarProducto(txtInvestment.Text, txtPrice.Text);
 
                 if (result != null)
                 {
                     if (result.Success)
                     {
                         MessageBox.Show("El producto fue agregado con éxito", "Success", MessageBoxButton.OK);
+
+                        UI_window win = new UI_window();
+                        win.Mandar();
+                        
                         Close();
+                        
                     }
                     else
                     {
@@ -95,7 +101,11 @@ namespace AppEscritorio.UI.PagesUI.ModalCategory
                 }
             }
 
-            Validations.ValidarProducto(txtInvestment.Text, txtPrice.Text);
+            
+
+            
+            
+            
         }
 
         private async void ComboBox_Loaded(object sender, RoutedEventArgs e)
