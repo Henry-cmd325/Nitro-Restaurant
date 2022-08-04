@@ -70,7 +70,7 @@ namespace AppMovil.Views
             }
             catch (NullReferenceException ex)
             {
-                await DisplayAlert("Ha ocurrido un error", "Debe de rellenar todos los campos", "Ok");
+                await DisplayAlert("Ha ocurrido un error", ex.Message + " " + ex.Source.ToString(), "Ok");
             }
             catch (Exception ex)
             {

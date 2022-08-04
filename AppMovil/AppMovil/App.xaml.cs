@@ -24,7 +24,7 @@ namespace AppMovil
         protected override void OnStart()
         {
             DependencyService.RegisterSingleton(new SignalRService());
-            DependencyService.RegisterSingleton(new SignalRService());   
+            DependencyService.RegisterSingleton(new Api());
         }
 
         protected override void OnSleep()

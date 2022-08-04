@@ -1,5 +1,6 @@
 ﻿using AppMovil.Models.Request;
 using AppMovil.Models.Response;
+using AppMovil.Services;
 using AppMovil.Tools;
 using AppMovil.Views;
 using System;
@@ -51,7 +52,11 @@ namespace AppMovil
                     {
                         await DisplayAlert("Operación exitosa", "La cuenta ha sido registrada correctamente", "Ok");
 
-                        Application.Current.MainPage = new Signin();
+                        var app = Application.Current as App;
+
+                        
+
+                        app.MainPage = new Signin();
                     }
                     else
                         await DisplayAlert("Error", response.Error, "Ok");
