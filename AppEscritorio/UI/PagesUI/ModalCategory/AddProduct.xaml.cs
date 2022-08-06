@@ -42,7 +42,7 @@ namespace AppEscritorio.UI.PagesUI.ModalCategory
             }
           
             
-            if (ComboCategory.Items[ComboCategory.SelectedIndex].ToString().Substring(38) == "")
+            if (ComboCategory.SelectedIndex == -1)
             {
                 MessageBox.Show("Debe seleccionar una categoria", "Campo Vacío", MessageBoxButton.OK, MessageBoxImage.Warning);
 
@@ -88,11 +88,7 @@ namespace AppEscritorio.UI.PagesUI.ModalCategory
                     {
                         MessageBox.Show("El producto fue agregado con éxito", "Success", MessageBoxButton.OK);
 
-                        UI_window win = new UI_window();
-                        win.Mandar();
-                        
-                        Close();
-                        
+                        Close();    
                     }
                     else
                     {

@@ -1,4 +1,5 @@
-﻿using MaterialDesignThemes.Wpf;
+﻿using AppEscritorio.UI.PagesUI;
+using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -6,6 +7,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace AppEscritorio
 {
@@ -16,6 +18,6 @@ namespace AppEscritorio
     
     public partial class App : Application
     {
-        
+        public Window? page; 
     }
 }

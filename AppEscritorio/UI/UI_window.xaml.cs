@@ -1,5 +1,7 @@
 ﻿using AppEscritorio.UI.PagesUI;
+using System;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 
@@ -11,9 +13,21 @@ namespace AppEscritorio.UI
     /// </summary>
     public partial class UI_window : Window
     {
+        public Window window = new();
+        public App app = Application.Current as App;
+        public Frame Framesito = new();
         public UI_window()
         {
             InitializeComponent();
+            
+            Framesito.Height = 667;
+            Framesito.NavigationUIVisibility = System.Windows.Navigation.NavigationUIVisibility.Hidden;
+            Framesito.Source = new Uri(@"/UI/PagesUI/Orders.xaml", UriKind.Relative);
+            StackPanelFrame.Children.Add(Framesito);
+
+
+            app.page = this;
+            
         }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
@@ -36,14 +50,16 @@ namespace AppEscritorio.UI
 
         public void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            Mandar();
+            var product = new Products();
+
+            //Framesito.Source = new Uri(@"/UI/PagesUI/Products.xaml", UriKind.Relative);
+            var app = (App)Application.Current;
+            var windowPadre = app.page as UI_window;
+
+            windowPadre.Framesito.NavigationService.Navigate(product);
         }
 
-        public void Mandar() 
-        {
-            Products product = new Products();
-            FrameUI.NavigationService.Navigate(product);
-        }
+        
 
 
         private void Button_Click_3(object sender, RoutedEventArgs e)

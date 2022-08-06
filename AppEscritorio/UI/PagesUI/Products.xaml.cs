@@ -27,6 +27,7 @@ namespace AppEscritorio.UI.PagesUI
         public Products()
         {
             InitializeComponent();
+
         }
 
         List<CategoriaResponse> Categories = new();
@@ -74,7 +75,10 @@ namespace AppEscritorio.UI.PagesUI
         private void Button_Click_AddProduct(object sender, RoutedEventArgs e)
         {
             AddProduct prod = new();
-            prod.ShowDialog();
+            if (prod.ShowDialog() == false)
+            {
+                NavigationService.Navigate(new Products());
+            }
         }
 
         private async void Item_Loaded_1(object sender, RoutedEventArgs e)

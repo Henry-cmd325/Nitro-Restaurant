@@ -81,37 +81,46 @@ namespace AppEscritorio
 
         private async void loginBtn_Click(object sender, RoutedEventArgs e)
         {
-
-            var cuenta = new AccountRequest { Username = txtUsername.Text, Password = txtPassword.Password };
-
-            var result = await Api.Post<AccountRequest, ServerResponse<AccountResponse>>("http://manuwolf-001-site1.atempurl.com/api/Cuenta/login", cuenta);
-
-            if (result != null && result.Success)
+            try
             {
-                if (result.Data == null)
-                {
-                    MessageBox.Show(JsonSerializer.Serialize(result));
-                }
-                else if (result.Data.Username == txtUsername.Text)
-                {
-                    UI_window ui = new UI_window();
-                    ui.Show();
-                    this.Close();
+                var cuenta = new AccountRequest { Username = txtUsername.Text, Password = txtPassword.Password };
 
+                var result = await Api.Post<AccountRequest, ServerResponse<AccountResponse>>("http://manuwolf-001-site1.atempurl.com/api/Cuenta/login", cuenta);
+
+                if (result != null && result.Success)
+                {
+                    if (result.Data == null)
+                    {
+                        MessageBox.Show(JsonSerializer.Serialize(result));
+                    }
+                    else if (result.Data.Username == txtUsername.Text)
+                    {
+                        UI_window ui = new UI_window();
+                        ui.Show();
+                        this.Close();
+
+                    }
+                    else
+                    {
+                        string error = "";
+
+                        if (result.Error != null) error = result.Error;
+
+                        MessageBox.Show("Ha ocurrido un error: " + error);
+                    }
                 }
                 else
                 {
-                    string error = "";
-
-                    if (result.Error != null) error = result.Error;
-
-                    MessageBox.Show("Ha ocurrido un error: " + error);
+                    MessageBox.Show("Ha ocurrido un error");
                 }
             }
-            else
+            catch(Exception ex)
             {
-                MessageBox.Show("Ha ocurrido un error");
+                MessageBox.Show("Comprueba tu conexión a internet");
             }
+            
+
+            
         }
 
         private void signupBtn_Click(object sender, RoutedEventArgs e)

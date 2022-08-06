@@ -107,11 +107,11 @@
                            
                     </StackPanel>
                     <!--Title-->
-                    
 
-                    <Frame Name="FrameUI" Grid.Row="1" Content="Frame" NavigationUIVisibility="Hidden" Source="/UI/PagesUI/Orders.xaml" >
+                    <StackPanel x:Name="StackPanelFrame" Grid.Row="1">
                         
-                    </Frame>
+                    </StackPanel>
+                    
 
                 </Grid>
             </Border>
