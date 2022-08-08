@@ -9,7 +9,7 @@ namespace AppEscritorio.Services
 {
     public class SignalRService : ISignalRService
     {
-        private HubConnection connection;
+        private readonly HubConnection connection;
 
         public SignalRService()
         {

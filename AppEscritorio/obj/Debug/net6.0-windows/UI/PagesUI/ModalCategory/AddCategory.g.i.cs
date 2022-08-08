@@ -61,13 +61,13 @@ namespace AppEscritorio.UI.PagesUI.ModalCategory {
         /// InitializeComponent
         /// </summary>
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "6.0.5.0")]
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "6.0.4.0")]
         public void InitializeComponent() {
             if (_contentLoaded) {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/AppEscritorio;V1.0.0.0;component/ui/pagesui/modalcategory/addcategory.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/AppEscritorio;component/ui/pagesui/modalcategory/addcategory.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\..\UI\PagesUI\ModalCategory\AddCategory.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
@@ -77,7 +77,7 @@ namespace AppEscritorio.UI.PagesUI.ModalCategory {
         }
         
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "6.0.5.0")]
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "6.0.4.0")]
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Design", "CA1033:InterfaceMethodsShouldBeCallableByChildTypes")]
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")]

@@ -106,3 +106,18 @@ D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\obj\Debug\net6.0-windows\UI\P
 D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\obj\Debug\net6.0-windows\UI\PagesUI\ModalCategory\AddProduct.baml
 C:\Users\Admin\source\repos\Nitro-Restaurant\AppEscritorio\obj\Debug\net6.0-windows\UI\PagesUI\ModalCategory\AddProduct.g.cs
 C:\Users\Admin\source\repos\Nitro-Restaurant\AppEscritorio\obj\Debug\net6.0-windows\UI\PagesUI\ModalCategory\AddProduct.baml
+C:\Users\Admin\source\repos\Nitro-Restaurant\AppEscritorio\bin\Debug\net6.0-windows\Microsoft.AspNetCore.Connections.Abstractions.dll
+C:\Users\Admin\source\repos\Nitro-Restaurant\AppEscritorio\bin\Debug\net6.0-windows\Microsoft.AspNetCore.Http.Connections.Client.dll
+C:\Users\Admin\source\repos\Nitro-Restaurant\AppEscritorio\bin\Debug\net6.0-windows\Microsoft.AspNetCore.Http.Connections.Common.dll
+C:\Users\Admin\source\repos\Nitro-Restaurant\AppEscritorio\bin\Debug\net6.0-windows\Microsoft.AspNetCore.SignalR.Client.dll
+C:\Users\Admin\source\repos\Nitro-Restaurant\AppEscritorio\bin\Debug\net6.0-windows\Microsoft.AspNetCore.SignalR.Client.Core.dll
+C:\Users\Admin\source\repos\Nitro-Restaurant\AppEscritorio\bin\Debug\net6.0-windows\Microsoft.AspNetCore.SignalR.Common.dll
+C:\Users\Admin\source\repos\Nitro-Restaurant\AppEscritorio\bin\Debug\net6.0-windows\Microsoft.AspNetCore.SignalR.Protocols.Json.dll
+C:\Users\Admin\source\repos\Nitro-Restaurant\AppEscritorio\bin\Debug\net6.0-windows\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\Admin\source\repos\Nitro-Restaurant\AppEscritorio\bin\Debug\net6.0-windows\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\Admin\source\repos\Nitro-Restaurant\AppEscritorio\bin\Debug\net6.0-windows\Microsoft.Extensions.Features.dll
+C:\Users\Admin\source\repos\Nitro-Restaurant\AppEscritorio\bin\Debug\net6.0-windows\Microsoft.Extensions.Logging.dll
+C:\Users\Admin\source\repos\Nitro-Restaurant\AppEscritorio\bin\Debug\net6.0-windows\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\Admin\source\repos\Nitro-Restaurant\AppEscritorio\bin\Debug\net6.0-windows\Microsoft.Extensions.Options.dll
+C:\Users\Admin\source\repos\Nitro-Restaurant\AppEscritorio\bin\Debug\net6.0-windows\Microsoft.Extensions.Primitives.dll
+C:\Users\Admin\source\repos\Nitro-Restaurant\AppEscritorio\bin\Debug\net6.0-windows\System.IO.Pipelines.dll
