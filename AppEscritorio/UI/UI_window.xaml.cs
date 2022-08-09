@@ -51,8 +51,6 @@ namespace AppEscritorio.UI
         public void Button_Click_2(object sender, RoutedEventArgs e)
         {
             var product = new Products();
-
-            //Framesito.Source = new Uri(@"/UI/PagesUI/Products.xaml", UriKind.Relative);
             var app = (App)Application.Current;
             var windowPadre = app.page as UI_window;
 
@@ -64,7 +62,17 @@ namespace AppEscritorio.UI
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown();
+            MainWindow main = new MainWindow();
+            main.Show();
+            this.Close();
+        }
+
+        private void Button_Click_Orders(object sender, RoutedEventArgs e)
+        {
+            var orders = new Orders();
+            var app = (App)Application.Current;
+            var windowPadre = app.page as UI_window;
+            windowPadre.Framesito.NavigationService.Navigate(orders);
         }
     }
 }

@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Timers;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -123,6 +124,7 @@ namespace AppEscritorio.UI.PagesUI
                             itemProduct.Title = product.Nombre;
                             itemProduct.Visibility = Visibility.Visible;
                             itemProduct.Height = 70;
+                            itemProduct.MouseDoubleClick += Item_MouseDoubleClick;
                             itemProduct.Icon = FontAwesome.Sharp.IconChar.Utensils;
                             itemProduct.Tag = result.Data[count].IdCategoria;
                             items.Add(itemProduct);
@@ -196,6 +198,7 @@ namespace AppEscritorio.UI.PagesUI
                         itemProduct.Title = product.Nombre;
                         itemProduct.Visibility = Visibility.Visible;
                         itemProduct.Height = 70;
+                        itemProduct.MouseDoubleClick += Item_MouseDoubleClick;
                         itemProduct.Icon = FontAwesome.Sharp.IconChar.Utensils;
                         itemProduct.Tag = result.Data[i].IdCategoria;
                         items.Add(itemProduct);
@@ -219,6 +222,33 @@ namespace AppEscritorio.UI.PagesUI
 
 
 
+        }
+
+        private void Item_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            
+            var margin = new Thickness(15, 0, 47, 40);
+            var marginTop = new Thickness(15, 0, 47, 397);
+            if (borderInfoProducts.Margin.Equals(margin))
+            {
+                int i = 40;
+                var timer = new Timer(300);
+                timer.Elapsed += (obj, e) => {
+                    i++;
+                    borderInfoProducts.Margin = new Thickness(0, 0, 0, i);
+                    if (borderInfoProducts.Margin.Equals(marginTop)) timer.Stop();
+                     };
+                timer.AutoReset = true;
+                timer.Enabled = true;
+                   
+           
+                
+                    
+                
+                
+            }
+            
+            
         }
     }
 }

@@ -17,8 +17,9 @@
         </Grid.ColumnDefinitions>
 
 
+
         <!--Chart Section-->
-        <Border CornerRadius="20" Padding="35 25" Background="#243771" Margin="50 0 10 40">
+        <Border CornerRadius="20" Padding="35 25" Background="#243771" Margin="50 0 10 40" Grid.RowSpan="2">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
@@ -39,6 +40,7 @@
                         <Grid.RowDefinitions>
                             <RowDefinition />
                         </Grid.RowDefinitions>
+                        <uc:Item x:Name="itemBase" Visibility="Collapsed" MouseDoubleClick="Item_MouseDoubleClick"></uc:Item>
                     </Grid>
                 </ScrollViewer>
 
@@ -52,7 +54,7 @@
         </Border>
 
         <!--Order Section-->
-        <Border Grid.Column="1" CornerRadius="20" Padding="0 25" Background="#243771" Margin="15 0 47 40">
+        <Border Name="borderInfoProducts" Grid.Column="1" CornerRadius="20" Padding="0 25" Background="#243771" Margin="15,0,47,40">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
@@ -64,14 +66,13 @@
                     <uc:Item x:Name="CountCategory" Title="Category" Icon="BowlFood" Loaded="CountCategory_Loaded"/>
                     <uc:Item x:Name="CountProduct" Title="Products" Icon="ShoppingBag" Loaded="Item_Loaded_1"/>
 
-                    <Button Style="{StaticResource menuButton}" Click="Button_Click_AddCategory" Margin="0 340 0 0">
+                    <Button Name="buttonAddCategory" Style="{StaticResource menuButton}" Click="Button_Click_AddCategory" Margin="0 350 0 0">
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
 
                             <TextBlock Text="Add Category" Style="{StaticResource menuButtonText}" />
                         </StackPanel>
                     </Button>
-
-                    <Button Style="{StaticResource menuButton}" Click="Button_Click_AddProduct" >
+                    <Button Style="{StaticResource menuButton}" Click="Button_Click_AddProduct">
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
 
                             <TextBlock Text="Add Product" Style="{StaticResource menuButtonText}" />
@@ -83,5 +84,9 @@
 
 
         </Border>
+        <Border  Visibility="Collapsed" Grid.Column="1"  CornerRadius="20" Padding="0 25" Background="#243771" Margin="15,286,47,40">
+
+        </Border>
+
     </Grid>
 </Page>

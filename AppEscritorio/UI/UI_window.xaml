@@ -51,7 +51,7 @@
                     <!--Menú Button-->
 
 
-                    <Button Style="{StaticResource menuButton}" Click="Button_Click">
+                    <Button Style="{StaticResource menuButton}" Click="Button_Click_Orders">
                         <StackPanel Orientation="Horizontal">
                             <fa:IconImage Icon="FileSignature" Style="{StaticResource menuButtonIcon}"/>
                             <TextBlock Text="Orders" Style="{StaticResource menuButtonText}"/>
