@@ -28,9 +28,14 @@ namespace AppMovil.Services
             await connection.InvokeAsync("NotifyOrder", idUser);
         }
 
-        public void OnConected(Action<string> action)
+        public void OnWithinGroup(Action action)
         {
             connection.On("WithinGroup", action);
+        }
+
+        public void OnError(Action action)
+        {
+            connection.On("ErrorGroup", action);
         }
     }
 }

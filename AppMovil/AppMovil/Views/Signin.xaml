@@ -12,15 +12,15 @@
                 </Frame>
             </StackLayout>
 
-            <StackLayout Margin="15, 110, 15, 0">
+            <StackLayout Margin="15, 110, 15, 0"> 
 
-                <Frame BackgroundColor ="#f9f9f9" HasShadow="True" HeightRequest="550" HorizontalOptions="FillAndExpand">
+                <Frame BackgroundColor ="#f9f9f9" HasShadow="True" HeightRequest="630" HorizontalOptions="FillAndExpand">
                     <StackLayout>
                         <StackLayout HorizontalOptions="CenterAndExpand" HeightRequest="250">
                             <Image x:Name="Logo" Margin="0,40,0,0" Source="LogoLight3.gif" IsAnimationPlaying="True" WidthRequest="390"></Image>
                         </StackLayout>
 
-                        <StackLayout Margin="0,-20,0,0">
+                        <StackLayout Margin="0,0,0,0">
                             <Frame Padding="0" Margin="0,60,0,0" BackgroundColor="Transparent" BorderColor="DarkGray" CornerRadius="50" HorizontalOptions="FillAndExpand">
                                 <StackLayout Orientation="Horizontal">
                                     <Frame BackgroundColor="AliceBlue" CornerRadius="50" HeightRequest="35" WidthRequest="35" Padding="0" Margin="7">

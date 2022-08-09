@@ -50,14 +50,17 @@ namespace AppMovil.Views
                         var app = Application.Current as App;
 
                         app.IdEmpleado = response.Data.IdEmpleado;
+                        app.IdPc = ECodigo.Text.Trim();
 
                         var connection = DependencyService.Get<SignalRService>();
 
-                        connection.OnConected((idPc) =>
-                        {
-                            app.IdPc = idPc;
-
+                        connection.OnWithinGroup(() => { 
                             app.MainPage = new PaginaPrincipal();
+                        });
+
+                        connection.OnError(async () =>
+                        {
+                            await DisplayAlert("Error", "El codigo introducido es incorrecto", "Ok");
                         });
 
                         await connection.Connect(ECodigo.Text.Trim());
@@ -70,7 +73,7 @@ namespace AppMovil.Views
             }
             catch (NullReferenceException ex)
             {
-                await DisplayAlert("Ha ocurrido un error", ex.Message + " " + ex.Source.ToString(), "Ok");
+                await DisplayAlert("Ha ocurrido un error", "Debe de rellenar todos los campos", "Ok");
             }
             catch (Exception ex)
             {

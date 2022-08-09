@@ -1,5 +1,6 @@
 ﻿using AppMovil.Models.Request;
 using AppMovil.Models.Response;
+using AppMovil.Services;
 using AppMovil.Tools;
 using AppMovil.ViewModel;
 using AppMovil.Views.Modals;
@@ -223,6 +224,7 @@ namespace AppMovil.Views
                     if (response.Success)
                     {
                         await DisplayAlert("Operación exitosa", "La orden ha sido creada exitosamente", "Ok");
+                        await DependencyService.Get<SignalRService>().NotifyOrder(app.IdPc);
                         app.MainPage = new PaginaPrincipal();
                     }
                     else
