@@ -4,11 +4,12 @@
              x:Class="AppMovil.Views.PaginaPrincipal">
     <ContentPage.Content>
         <StackLayout>
-            <StackLayout Orientation="Horizontal" HeightRequest="60" Margin="0,0,0,40" BackgroundColor="LightGray">
-                <Label Text="Pedidos" FontSize="19" TextColor="Black" VerticalOptions="Center" Margin="20,0,0,0"></Label>
-                <Button HorizontalOptions="EndAndExpand" Text="Salir" VerticalOptions="Center" Margin="0,0,10,0" x:Name="BtnSalir" Clicked="BtnSalir_Clicked"></Button>
+            <StackLayout Orientation="Horizontal" HeightRequest="80" Margin="0,0,0,20" BackgroundColor="#167ef5">
+                <Label Text="Pedidos" FontSize="19" TextColor="White" VerticalOptions="Center" Margin="20,0,0,0"></Label>
+                <Button HorizontalOptions="EndAndExpand" Text="Salir" VerticalOptions="Center" Margin="0,0,10,0" 
+                        x:Name="BtnSalir" Clicked="BtnSalir_Clicked" BackgroundColor="#167ef5" TextColor="White"></Button>
             </StackLayout>
-            <ScrollView HeightRequest="600" BackgroundColor="LightGray" Padding="0,0,0,0">
+            <ScrollView HeightRequest="600" BackgroundColor="#fff" Padding="0,0,0,0">
                 <StackLayout HorizontalOptions="Center" Orientation="Vertical" Margin="0,0,0,0" x:Name="Container">
                     
                 </StackLayout>
