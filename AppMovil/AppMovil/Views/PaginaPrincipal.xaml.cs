@@ -15,12 +15,13 @@ namespace AppMovil.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PaginaPrincipal : ContentPage
     {
-        private readonly Api Api = DependencyService.Get<Api>();
+        private readonly Api Api;//DependencyService.Get<Api>();
 
         private List<OrderResponse> orders = new List<OrderResponse>();
         public PaginaPrincipal()
         {
             InitializeComponent();
+            Api = new Api();
         }
 
         protected override async void OnAppearing()
@@ -39,7 +40,7 @@ namespace AppMovil.Views
 
                         foreach (var element in response.Data)
                         {
-                            if (element.IdEmpleado == app.IdEmpleado && (element.Terminado == null || element.Terminado == false))
+                            if (/*element.IdEmpleado == app.IdEmpleado && */(element.Terminado == null || element.Terminado == false))
                             {
                                 orders.Add(element);
 
