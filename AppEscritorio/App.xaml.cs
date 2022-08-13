@@ -1,4 +1,5 @@
-﻿using AppEscritorio.UI.PagesUI;
+﻿using AppEscritorio.Services;
+using AppEscritorio.UI.PagesUI;
 using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,8 @@ namespace AppEscritorio
     
     public partial class App : Application
     {
-        public Window? page; 
+        public Window? page;
+        public SignalRService service = new SignalRService();
+        public string idPc;
     }
 }

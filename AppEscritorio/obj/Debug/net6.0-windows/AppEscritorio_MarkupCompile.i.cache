@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\App.xaml
-91196452364
+101874207869
 
-27-1471767395
+29109342037
 232106328765
-MainWindow.xaml;Pages\SignUp.xaml;UI\PagesUI\ModalCategory\AddCategory.xaml;UI\PagesUI\ModalCategory\AddProduct.xaml;UI\PagesUI\Orders.xaml;UI\PagesUI\Products.xaml;UI\UI_window.xaml;UI\UserControls\InfoCard.xaml;UI\UserControls\Item.xaml;
+MainWindow.xaml;Pages\SignUp.xaml;UI\PagesUI\ModalCategory\AddCategory.xaml;UI\PagesUI\ModalCategory\AddProduct.xaml;UI\PagesUI\Orders.xaml;UI\PagesUI\Products.xaml;UI\PagesUI\Settings.xaml;UI\UI_window.xaml;UI\UserControls\InfoCard.xaml;UI\UserControls\Item.xaml;
 
 False
 

@@ -81,6 +81,7 @@ namespace AppEscritorio
 
         private async void loginBtn_Click(object sender, RoutedEventArgs e)
         {
+            loginBtn.IsEnabled = false;
             try
             {
                 var cuenta = new AccountRequest { Username = txtUsername.Text, Password = txtPassword.Password };
@@ -96,6 +97,16 @@ namespace AppEscritorio
                     else if (result.Data.Username == txtUsername.Text)
                     {
                         UI_window ui = new UI_window();
+                        var app = Application.Current as App;
+
+                        app.service.OnReceiveKey((id) =>
+                        {
+                            app.idPc = id;
+                        });
+                        await app.service.Connect();
+
+                        
+
                         ui.Show();
                         this.Close();
 
@@ -119,7 +130,7 @@ namespace AppEscritorio
                 MessageBox.Show("Comprueba tu conexión a internet");
             }
             
-
+           loginBtn.IsEnabled = true;
             
         }
 

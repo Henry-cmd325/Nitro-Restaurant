@@ -9,7 +9,7 @@ namespace AppEscritorio.Services
 {
     public class SignalRService : ISignalRService
     {
-        private HubConnection connection;
+        private readonly HubConnection connection;
 
         public SignalRService()
         {
@@ -18,15 +18,21 @@ namespace AppEscritorio.Services
                 .Build();
         }
 
-        public async Task OnConnect()
+        public async Task Connect()
         {
             await connection.StartAsync();
             await connection.InvokeAsync("CreateRoom");
         }
 
-        public void OnReceiveGroup(Action<string, string> action)
+        public void OnReceiveKey(Action<string> action)
         {
-            connection.On("ReceiveGroup", action);
+            connection.On("ReceiveKey", action);
         }
+
+        public void OnNewOrder(Action action)
+        {
+            connection.On("NewOrder", action);
+        }
+
     }
 }

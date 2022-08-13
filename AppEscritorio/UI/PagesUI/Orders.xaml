@@ -7,7 +7,7 @@
       xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
       xmlns:uc="clr-namespace:AppEscritorio.UI.UserControls"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="667" d:DesignWidth="800"
       Title="Orders">
 
     <Grid>
@@ -19,33 +19,41 @@
 
         <!--Chart Section-->
         <Border CornerRadius="20" Padding="35 25" Background="#243771" Margin="50 0 10 40">
-
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock x:Name="OrderDescription" Text="Order" HorizontalAlignment="Center" Grid.ColumnSpan="2" Style="{StaticResource titleText}"/>
+                <TextBlock Grid.Row="1" x:Name="MesaggeNotClick" Visibility="Collapsed" Text="Doble Click on an order to view its description" Style="{StaticResource menuButtonText}" Foreground="#9EABE2" HorizontalAlignment="Center"/>
+            </Grid>
         </Border>
         <!--Order Section-->
         <Border Grid.Column="1" CornerRadius="20" Padding="0 25" Background="#243771" Margin="15 0 47 40">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
+            <ScrollViewer Margin="10,0,10,0">
+            <Grid x:Name="GridOrdersList">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                 
+                    </Grid.RowDefinitions>
 
-                <StackPanel Orientation="Horizontal" Margin="20 0 0 15">
-                    <fa:IconImage Icon="Circle" Style="{StaticResource titleIcon}"/>
-                    <TextBlock Text="Last Order" Style="{StaticResource titleText}"/>
-                </StackPanel>
-                <!--Orders-->
-                <StackPanel Grid.Row="1">
-                    <uc:Item Title="T-Shirt Embrace" Desc="John Doe - 10:30" Icon="Tshirt"/>
-                    <uc:Item Title="Shoes Kamoin" Desc="Karim Penci - 12:00" Icon="ShoePrints"/>
-                    <uc:Item Title="Socks Besaze" Desc="Mari Sumue - 13:45" Icon="Socks"/>
-                    <uc:Item Title="T-Shirt Argok" Desc="Ali Qackman - 14:30" Icon="Tshirt"/>
-                    <uc:Item Title="Hat Jackman" Desc="Jack Praide - 15:25" Icon="HardHat"/>
-                    <uc:Item Title="Socks Besaze" Desc="Mari Sumue - 13:45" Icon="Socks"/>
-                    <uc:Item Title="T-Shirt Argok" Desc="Ali Qackman - 14:30" Icon="Tshirt"/>
-                    <uc:Item Title="Hat Jackman" Desc="Jack Praide - 15:25" Icon="HardHat"/>
-                </StackPanel>
-            </Grid>
-
+                    <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="20 0 0 15">
+                        <fa:IconImage Icon="Circle" Style="{StaticResource titleIcon}"/>
+                        <TextBlock Text="Last Order" Style="{StaticResource titleText}"/>
+                    </StackPanel>
+                    <!--Orders-->
+                    <StackPanel Grid.Row="1">
+                        <uc:Item x:Name="ItemBaseOrder" Title="T-Shirt Embrace" Visibility="Collapsed" Desc="John Doe - 10:30" Icon="Clipboard" MouseDoubleClick="ItemBaseOrder_MouseDoubleClick" Loaded="ItemBaseOrder_Loaded"/>
+                    
+                    
+                    </StackPanel>
+                </Grid>
+            </ScrollViewer>
 
         </Border>
     </Grid>

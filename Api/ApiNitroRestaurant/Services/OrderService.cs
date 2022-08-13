@@ -222,7 +222,17 @@ namespace ApiNitroRestaurant.Services
                 IdEmpleado = model.IdEmpleado,
                 NumeroMesa = model.NumeroMesa,
                 FechaHora = fechaHora,
+                
             };
+
+            if (model.Terminado == true)
+            {
+                orderDb.Terminado = 1;
+            }
+            else if (model.Terminado == false)
+            {
+                orderDb.Terminado = 0;
+            }
 
             _context.Pedidos.Add(orderDb);
             _context.SaveChanges();
@@ -333,6 +343,15 @@ namespace ApiNitroRestaurant.Services
             orderDb.IdEmpleado = model.IdEmpleado;
             orderDb.NumeroMesa = model.NumeroMesa;
             orderDb.FechaHora = fechaHora;
+            
+            if (model.Terminado == true)
+            {
+                orderDb.Terminado = 1;
+            }
+            else if (model.Terminado == false)
+            {
+                orderDb.Terminado = 0;
+            }
 
             _context.Entry(orderDb).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
             _context.SaveChanges();

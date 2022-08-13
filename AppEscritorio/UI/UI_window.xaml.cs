@@ -1,4 +1,5 @@
-﻿using AppEscritorio.UI.PagesUI;
+﻿using AppEscritorio.Services;
+using AppEscritorio.UI.PagesUI;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -16,6 +17,7 @@ namespace AppEscritorio.UI
         public Window window = new();
         public App app = Application.Current as App;
         public Frame Framesito = new();
+
         public UI_window()
         {
             InitializeComponent();
@@ -25,10 +27,10 @@ namespace AppEscritorio.UI
             Framesito.Source = new Uri(@"/UI/PagesUI/Orders.xaml", UriKind.Relative);
             StackPanelFrame.Children.Add(Framesito);
 
-
-            app.page = this;
-            
+            app.page = this;   
         }
+
+       
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -38,21 +40,18 @@ namespace AppEscritorio.UI
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
+            var settings = new Settings();
+            var app = (App)Application.Current;
+            var windowPadre = app.page as UI_window;
 
+            windowPadre.Framesito.NavigationService.Navigate(settings);
         }
 
         public void Button_Click_2(object sender, RoutedEventArgs e)
         {
             var product = new Products();
-
-            //Framesito.Source = new Uri(@"/UI/PagesUI/Products.xaml", UriKind.Relative);
             var app = (App)Application.Current;
             var windowPadre = app.page as UI_window;
 
@@ -64,7 +63,18 @@ namespace AppEscritorio.UI
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown();
+            MainWindow main = new MainWindow();
+            this.Close();
+            main.Show();
+            
+        }
+
+        private void Button_Click_Orders(object sender, RoutedEventArgs e)
+        {
+            var orders = new Orders();
+            var app = (App)Application.Current;
+            var windowPadre = app.page as UI_window;
+            windowPadre.Framesito.NavigationService.Navigate(orders);
         }
     }
 }

@@ -7,7 +7,7 @@
       xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
       xmlns:uc="clr-namespace:AppEscritorio.UI.UserControls"
       mc:Ignorable="d" 
-      d:DesignHeight="670" d:DesignWidth="800"
+      d:DesignHeight="667" d:DesignWidth="800"
       Title="Products">
 
     <Grid>
@@ -17,8 +17,9 @@
         </Grid.ColumnDefinitions>
 
 
+
         <!--Chart Section-->
-        <Border CornerRadius="20" Padding="35 25" Background="#243771" Margin="50 0 10 40">
+        <Border CornerRadius="20" Padding="35 25" Background="#243771" Margin="50 0 10 40" Grid.RowSpan="2">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
@@ -26,7 +27,7 @@
                 </Grid.RowDefinitions>
                 <ComboBox Name="ComboCategory" IsReadOnly="True" IsEditable="True" Text="Select a Category" FontSize="16" Loaded="ComboBox_Loaded" 
                           Height="32" Margin="0,0,149,0" Foreground="#9EABE2" BorderBrush="#9EABE2">
-                    <ComboBoxItem Name="CategorySelected">
+                    <ComboBoxItem Name="CategorySelected" Selected="CategorySelected_Selected">
 
                     </ComboBoxItem>
                 </ComboBox>
@@ -39,6 +40,7 @@
                         <Grid.RowDefinitions>
                             <RowDefinition />
                         </Grid.RowDefinitions>
+                        <uc:Item x:Name="itemBase" Visibility="Collapsed" MouseDoubleClick="Item_MouseDoubleClick"></uc:Item>
                     </Grid>
                 </ScrollViewer>
 
@@ -52,7 +54,7 @@
         </Border>
 
         <!--Order Section-->
-        <Border Grid.Column="1" CornerRadius="20" Padding="0 25" Background="#243771" Margin="15 0 47 40">
+        <Border Name="borderInfoProducts" Grid.Column="1" CornerRadius="20" Padding="0 25" Background="#243771" Margin="15,0,47,40">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
@@ -60,18 +62,17 @@
                 </Grid.RowDefinitions>
 
                 <!--Orders-->
-                <StackPanel Grid.Row="1">
-                    <uc:Item x:Name="CountCategory" Title="Category" Icon="BowlFood" Loaded="CountCategory_Loaded"/>
+                <StackPanel Name="StackPanelInfoCount" Grid.Row="1" Height="577" VerticalAlignment="Top">
                     <uc:Item x:Name="CountProduct" Title="Products" Icon="ShoppingBag" Loaded="Item_Loaded_1"/>
+                    <uc:Item x:Name="CountCategory" Title="Category" Icon="BowlFood" Loaded="CountCategory_Loaded"/>
 
-                    <Button Style="{StaticResource menuButton}" Click="Button_Click_2" Margin="0 340 0 0">
+                    <Button Name="buttonAddCategory" Style="{StaticResource menuButton}" Click="Button_Click_AddCategory" Margin="0 350 0 0">
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
 
                             <TextBlock Text="Add Category" Style="{StaticResource menuButtonText}" />
                         </StackPanel>
                     </Button>
-
-                    <Button Style="{StaticResource menuButton}" Click="Button_Click_AddProduct" >
+                    <Button Style="{StaticResource menuButton}" Click="Button_Click_AddProduct">
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
 
                             <TextBlock Text="Add Product" Style="{StaticResource menuButtonText}" />
@@ -83,5 +84,24 @@
 
 
         </Border>
+        <Border Name="borderInfoProducts2" Visibility="Collapsed" Grid.Column="1"  CornerRadius="20" Padding="0 25" Background="#243771" Margin="15,315,47,40">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0" Orientation="Horizontal" Height="50" Margin="20 0 20 15">
+                    <fa:IconImage Icon="Circle" Style="{StaticResource titleIcon}"/>
+                    <TextBlock Name="NameInfoProduct" Text="Last Order" Style="{StaticResource titleText}"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="1">
+                    <uc:Item x:Name="InvestmentInfoProduct" Title="Investment" Icon="MoneyBill" Loaded="CountCategory_Loaded"/>
+                    <uc:Item x:Name="PriceInfoProduct" Title="Price" Icon="MoneyBill" Loaded="CountCategory_Loaded" Margin="0 25 0 0"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
     </Grid>
 </Page>

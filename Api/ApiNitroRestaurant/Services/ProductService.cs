@@ -129,7 +129,7 @@ namespace ApiNitroRestaurant.Services
             return response;
         }
 
-        public ServerResponse<ProductResponse> UpdateProduct(int id, ProductRequest model)
+        public ServerResponse<ProductResponse> UpdateProduct(int id, ProductRequest model) 
         {
             ServerResponse<ProductResponse> response = new();
 
