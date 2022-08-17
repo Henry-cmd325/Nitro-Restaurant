@@ -17,6 +17,16 @@ namespace ApiNitroRestaurant.Controllers
             _employeeService = employeeService;
         }
         
+        [HttpGet]
+        public IActionResult GetEmpleados()
+        {
+            var response = _employeeService.GetAll();
+
+            if (!response.Success) return BadRequest(response);
+
+            return Ok(response);
+        }
+
         [HttpGet("{id}", Name = "GetEmpleadoById")]
         public IActionResult GetEmpleadoById(int id)
         {

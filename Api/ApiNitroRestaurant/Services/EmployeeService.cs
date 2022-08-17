@@ -65,6 +65,41 @@ namespace ApiNitroRestaurant.Services
             return response;
         }
 
+        public ServerResponse<List<EmpleadoResponse>> GetAll()
+        {
+            ServerResponse<List<EmpleadoResponse>> response = new();
+
+            var listResponse = new List<EmpleadoResponse>();
+
+            var listDb = _context.Empleados.ToList();
+
+            if (listDb.Count == 0)
+            {
+                response.Error = "No existe ningun empleado en la base de datos";
+                response.Success = false;
+
+                return response;
+            }
+
+            foreach(var empleado in listDb)
+            {
+                listResponse.Add(new EmpleadoResponse()
+                {
+                    IdEmpleado = empleado.IdEmpleado,
+                    IdCuenta = empleado.IdCuenta,
+                    Materno = empleado.Materno,
+                    Telefono = empleado.Telefono,
+                    Paterno = empleado.Paterno,
+                    Nombre = empleado.Nombre,
+                    IdTipoEmpleado = empleado.IdTipoEmpleado
+                });
+            }
+
+            response.Data = listResponse;
+
+            return response;
+        }
+
         public ServerResponse<EmpleadoResponse> SignIn(EmpleadoRequest model)
         {
             ServerResponse<EmpleadoResponse> response = new();
