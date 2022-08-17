@@ -33,6 +33,8 @@ namespace AppEscritorio.UI.PagesUI
             {
                 ItemBaseOrder_Loaded(new object(), new RoutedEventArgs());
             });
+
+            
         }
 
         private async void ItemBaseOrder_Loaded(object sender, RoutedEventArgs e)
@@ -56,6 +58,7 @@ namespace AppEscritorio.UI.PagesUI
                     itemOrder.Title = "Mesa " + item.NumeroMesa.ToString();
                     itemOrder.Desc = "No. Pedido: " + item.IdPedido.ToString();
                     itemOrder.Icon = ItemBaseOrder.Icon;
+                    itemOrder.Tag = item.IdPedido;
 
                     itemOrder.MouseDoubleClick += ItemBaseOrder_MouseDoubleClick;
                       
@@ -68,9 +71,14 @@ namespace AppEscritorio.UI.PagesUI
             }
         }
 
-        private void ItemBaseOrder_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private async void ItemBaseOrder_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-
+            var result = await Api.Get<ServerResponse<OrderResponse[]>>("http://manuwolf-001-site1.atempurl.com/api/Pedido");
+            var result2 = await Api.Get<ServerResponse<UsuarioResponse[]>>("http://manuwolf-001-site1.atempurl.com/api/Empleado");
+            var order = Convert.ToInt32((sender as Item).Tag);
+            OrderDescription.Text = "Order " + order.ToString();
+            OrderNoMesa.Text = "Table #" + result.Data[order].NumeroMesa.ToString();
+            OrderNameWaiter.Text = "Waiter: " + result2.Data[result.Data[order].IdEmpleado].Nombre;
         }
     }
 }

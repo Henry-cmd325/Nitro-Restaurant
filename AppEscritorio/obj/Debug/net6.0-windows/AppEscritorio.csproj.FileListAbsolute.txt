@@ -141,3 +141,5 @@ C:\Users\Admin\source\repos\Nitro-Restaurant\AppEscritorio\bin\Debug\net6.0-wind
 >>>>>>> 4889525018875cfe6956869be443312468ef549c
 D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\obj\Debug\net6.0-windows\UI\PagesUI\Settings.g.cs
 D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\obj\Debug\net6.0-windows\UI\PagesUI\Settings.baml
+C:\Users\Admin\source\repos\Nitro-Restaurant\AppEscritorio\obj\Debug\net6.0-windows\UI\PagesUI\Settings.g.cs
+C:\Users\Admin\source\repos\Nitro-Restaurant\AppEscritorio\obj\Debug\net6.0-windows\UI\PagesUI\Settings.baml

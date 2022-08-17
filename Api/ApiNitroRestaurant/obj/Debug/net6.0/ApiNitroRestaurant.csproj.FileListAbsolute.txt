@@ -35,8 +35,6 @@ D:\Programacion\Uni\Nitro Restaurant\Api\ApiNitroRestaurant\obj\Debug\net6.0\Api
 D:\Programacion\Uni\Nitro Restaurant\Api\ApiNitroRestaurant\obj\Debug\net6.0\ref\ApiNitroRestaurant.dll
 D:\Programacion\Uni\Nitro Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\Microsoft.Practices.ServiceLocation.dll
 D:\Programacion\Uni\Nitro Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\XAct.Core.PCL.dll
-C:\Users\Admin\source\repos\Nitro-Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\appsettings.Development.json
-C:\Users\Admin\source\repos\Nitro-Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\appsettings.json
 C:\Users\Admin\source\repos\Nitro-Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\ApiNitroRestaurant.exe
 C:\Users\Admin\source\repos\Nitro-Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\ApiNitroRestaurant.deps.json
 C:\Users\Admin\source\repos\Nitro-Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\ApiNitroRestaurant.runtimeconfig.json
@@ -73,3 +71,4 @@ C:\Users\Admin\source\repos\Nitro-Restaurant\Api\ApiNitroRestaurant\obj\Debug\ne
 C:\Users\Admin\source\repos\Nitro-Restaurant\Api\ApiNitroRestaurant\obj\Debug\net6.0\ApiNitroRestaurant.genruntimeconfig.cache
 C:\Users\Admin\source\repos\Nitro-Restaurant\Api\ApiNitroRestaurant\obj\Debug\net6.0\ref\ApiNitroRestaurant.dll
 D:\Programacion\Uni\Nitro Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\shortid.dll
+C:\Users\Admin\source\repos\Nitro-Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\shortid.dll
