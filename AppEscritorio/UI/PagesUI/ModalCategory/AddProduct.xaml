@@ -19,7 +19,7 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
-                
+
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
@@ -31,7 +31,7 @@
             <StackPanel Grid.Row="0" Grid.ColumnSpan="2" Background="Purple">
                 <TextBlock Name="Titulo" HorizontalAlignment="Center" Margin="20 5" Text="New Product" Style="{StaticResource MaterialDesignTextBlock}" Foreground="White"/>
             </StackPanel>
-            
+
             <StackPanel Grid.Row="1" VerticalAlignment="Center">
                 <TextBox Margin="15 0 15 0" Text="{Binding dUsername}" x:Name="txtNameProduct" Width="auto" FontSize="18" 
                          m:HintAssist.Hint="Name of product" BorderThickness="2" 
@@ -41,7 +41,7 @@
             <StackPanel Grid.Column="2" Grid.Row="1" VerticalAlignment="Center">
                 <ComboBox Name="ComboCategory" Width="232" IsReadOnly="True" IsEditable="True" Text="Select a Category" FontSize="16" Loaded="ComboBox_Loaded" SelectionChanged="ComboCategory_SelectionChanged" Height="32">
                     <ComboBoxItem Name="CategorySelected">
-                        
+
                     </ComboBoxItem>
                 </ComboBox>
             </StackPanel>
@@ -52,28 +52,28 @@
                          Style="{StaticResource MaterialDesignOutlinedTextBox}" Cursor="IBeam" TextChanged="txtInvestment_TextChanged" />
             </StackPanel>
 
-            <StackPanel VerticalAlignment="Center" Grid.Row="2" Grid.Column="2">
-                <TextBox Margin="15 0 15 0" Text="{Binding dUsername}" x:Name="txtPrice" Width="300" FontSize="18" 
+            <StackPanel VerticalAlignment="Center" Grid.Row="2" Grid.Column="1">
+                <TextBox Margin="15 0 15 0" Text="{Binding dUsername}" x:Name="txtPrice" Width="auto" FontSize="18" 
                          m:HintAssist.Hint="Price" BorderThickness="2" 
                          BorderBrush="{DynamicResource MaterialDesignDivider}"  
                          Style="{StaticResource MaterialDesignOutlinedTextBox}" Cursor="IBeam" TextChanged="txtPrice_TextChanged"  />
             </StackPanel>
 
-       
+
 
 
 
 
             <Button Grid.Row="4" Grid.Column="0" Width="100" Margin="0 0 0 15" Style="{StaticResource MaterialDesignFlatButton}" Click="Button_Click">
-                    <TextBlock Text="Cancel" Style="{StaticResource menuButtonText}"/>
-                </Button>
-                <Button Grid.Row="4" Grid.Column="1" Width="100" Margin="0 0 0 15" Style="{StaticResource MaterialDesignFlatButton}" Click="Button_Click_1">
-                    <TextBlock Text="Add" Style="{StaticResource menuButtonText}"/>
-                </Button>
-            
+                <TextBlock Text="Cancel" Style="{StaticResource menuButtonText}"/>
+            </Button>
+            <Button Grid.Row="4" Grid.Column="1" Width="100" Margin="0 0 0 15" Style="{StaticResource MaterialDesignFlatButton}" Click="Button_Click_1">
+                <TextBlock Text="Add" Style="{StaticResource menuButtonText}"/>
+            </Button>
+
 
 
         </Grid>
     </m:Card>
-    
+
 </Window>
