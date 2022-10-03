@@ -19,7 +19,7 @@
         </Border.Style>
 
         <StackPanel Orientation="Horizontal">
-            <Grid Width="45" Height="45" Margin="25 0 0 0">
+            <Grid Name="borderIcon" Width="45" Height="45" Margin="25 0 0 0">
                 <Border CornerRadius="10" Background="#152457" />
                 <fa:IconImage Icon="{Binding Path=Icon,ElementName=item}" Foreground="#bcc6e6" Width="25"/>
             </Grid>

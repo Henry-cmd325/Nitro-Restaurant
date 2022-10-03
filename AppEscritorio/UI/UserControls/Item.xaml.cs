@@ -43,6 +43,13 @@ namespace AppEscritorio.UI.UserControls
 
         public static readonly DependencyProperty DescProperty = DependencyProperty.Register("Desc", typeof(string), typeof(Item));
 
+        public string Desc2
+        {
+            get { return (string)GetValue(Desc2Property); }
+            set { SetValue(Desc2Property, value); }
+        }
+
+        public static readonly DependencyProperty Desc2Property = DependencyProperty.Register("Desc2", typeof(string), typeof(Item));
 
         public FontAwesome.Sharp.IconChar Icon
         {

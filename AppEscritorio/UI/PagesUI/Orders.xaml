@@ -27,13 +27,42 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
-                    <RowDefinition/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <TextBlock x:Name="OrderDescription" Text="Order" HorizontalAlignment="Center" Grid.ColumnSpan="2" Style="{StaticResource titleText}"/>
-                <TextBlock x:Name="OrderNoMesa" Text="No. Mesa" HorizontalAlignment="Center" Grid.Column="0" Padding="10" Grid.Row="1" Style="{StaticResource titleText}"/>
-                <TextBlock x:Name="OrderNameWaiter" Text="Waiter" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="1" Padding="10" Style="{StaticResource titleText}"/>
-                <TextBlock Grid.Row="1" x:Name="MesaggeNotClick" Visibility="Collapsed" Text="Doble Click on an order to view its description" Style="{StaticResource menuButtonText}" Foreground="#9EABE2" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="OrderDescription" Text="Order" Visibility="Collapsed" HorizontalAlignment="Center" Grid.ColumnSpan="2" Style="{StaticResource titleText}"/>
+                <TextBlock x:Name="OrderNoMesa" Text="No. Mesa" Visibility="Collapsed" HorizontalAlignment="Center" Grid.Column="0" Padding="20" Grid.Row="1" Style="{StaticResource titleText}"/>
+                <TextBlock x:Name="OrderNameWaiter" Text="Waiter" Visibility="Collapsed" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="1" Padding="20" Style="{StaticResource titleText}"/>
+                <TextBlock x:Name="OrderProducts" Text="Products" Visibility="Collapsed" HorizontalAlignment="Center" Grid.ColumnSpan="2" Grid.Row="2" Padding="10" Style="{StaticResource titleText}"/>
+               
+                <ScrollViewer x:Name="Scroll" Visibility="Collapsed" Grid.Row="3" Grid.ColumnSpan="2">
+                <Grid x:Name="GridProducts">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <uc:Item x:Name="ItemProductsOfOrder" Title="T-Shirt Embrace" Visibility="Collapsed" Desc="John Doe - 10:30" Icon="Utensils" MouseDoubleClick="ItemBaseOrder_MouseDoubleClick" />
+
+                </Grid>
+                </ScrollViewer>
+
+                <TextBlock Grid.Row="1" x:Name="MesaggeNotClick" Visibility="Visible" Text="Doble Click on an order to view its description" Style="{StaticResource menuButtonText}" Grid.ColumnSpan="2" Foreground="#9EABE2" HorizontalAlignment="Center" Margin="0 250 0 0"/>
+                <Button Name="ButtonFinish" Visibility="Collapsed" Style="{StaticResource menuButton}" Grid.Row="3" Grid.Column="1" VerticalAlignment="Bottom" Margin="0 0 0 10" Click="ButtonFinish_Click">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"> 
+                        <TextBlock Text="Fnish Order" Style="{StaticResource menuButtonText}" />
+                    </StackPanel>
+                </Button>
+                <Button Name="ButtonStart" Visibility="Collapsed" Style="{StaticResource menuButton}" Grid.Row="3" Grid.Column="0" VerticalAlignment="Bottom" Margin="0 0 0 10" Click="ButtonStart_Click">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <TextBlock Text="Start Order" Style="{StaticResource menuButtonText}" />
+                    </StackPanel>
+                </Button>
             </Grid>
+            
         </Border>
         <!--Order Section-->
         <Border Grid.Column="1" CornerRadius="20" Padding="0 25" Background="#243771" Margin="15 0 47 40">
