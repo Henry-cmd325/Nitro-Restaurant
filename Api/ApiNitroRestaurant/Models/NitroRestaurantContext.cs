@@ -27,15 +27,10 @@ namespace ApiNitroRestaurant.Models
         public virtual DbSet<TipoEmpleado> TipoEmpleados { get; set; } = null!;
         public virtual DbSet<TipoOperacione> TipoOperaciones { get; set; } = null!;
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            
-        }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.UseCollation("latin1_swedish_ci")
-                .HasCharSet("latin1");
+            modelBuilder.UseCollation("utf8mb4_0900_ai_ci")
+                .HasCharSet("utf8mb4");
 
             modelBuilder.Entity<Categoria>(entity =>
             {
@@ -44,9 +39,10 @@ namespace ApiNitroRestaurant.Models
 
                 entity.ToTable("categorias");
 
-                entity.Property(e => e.IdCategoria)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id_categoria");
+                entity.HasCharSet("latin1")
+                    .UseCollation("latin1_swedish_ci");
+
+                entity.Property(e => e.IdCategoria).HasColumnName("id_categoria");
 
                 entity.Property(e => e.Nombre)
                     .HasMaxLength(20)
@@ -60,9 +56,10 @@ namespace ApiNitroRestaurant.Models
 
                 entity.ToTable("cuentas");
 
-                entity.Property(e => e.IdCuenta)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id_cuenta");
+                entity.HasCharSet("latin1")
+                    .UseCollation("latin1_swedish_ci");
+
+                entity.Property(e => e.IdCuenta).HasColumnName("id_cuenta");
 
                 entity.Property(e => e.Password)
                     .HasMaxLength(64)
@@ -82,25 +79,20 @@ namespace ApiNitroRestaurant.Models
 
                 entity.ToTable("detalle_pedidos");
 
+                entity.HasCharSet("latin1")
+                    .UseCollation("latin1_swedish_ci");
+
                 entity.HasIndex(e => e.IdProducto, "FK1_producto");
 
                 entity.HasIndex(e => e.IdPedido, "FK2_pedido");
 
-                entity.Property(e => e.IdDetalle)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id_detalle");
+                entity.Property(e => e.IdDetalle).HasColumnName("id_detalle");
 
-                entity.Property(e => e.Cantidad)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("cantidad");
+                entity.Property(e => e.Cantidad).HasColumnName("cantidad");
 
-                entity.Property(e => e.IdPedido)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id_pedido");
+                entity.Property(e => e.IdPedido).HasColumnName("id_pedido");
 
-                entity.Property(e => e.IdProducto)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id_producto");
+                entity.Property(e => e.IdProducto).HasColumnName("id_producto");
 
                 entity.HasOne(d => d.IdPedidoNavigation)
                     .WithMany(p => p.DetallePedidos)
@@ -122,21 +114,18 @@ namespace ApiNitroRestaurant.Models
 
                 entity.ToTable("empleados");
 
+                entity.HasCharSet("latin1")
+                    .UseCollation("latin1_swedish_ci");
+
                 entity.HasIndex(e => e.IdCuenta, "FK1_cuenta");
 
                 entity.HasIndex(e => e.IdTipoEmpleado, "FK2_tipo_empleado");
 
-                entity.Property(e => e.IdEmpleado)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id_empleado");
+                entity.Property(e => e.IdEmpleado).HasColumnName("id_empleado");
 
-                entity.Property(e => e.IdCuenta)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id_cuenta");
+                entity.Property(e => e.IdCuenta).HasColumnName("id_cuenta");
 
-                entity.Property(e => e.IdTipoEmpleado)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id_tipo_empleado");
+                entity.Property(e => e.IdTipoEmpleado).HasColumnName("id_tipo_empleado");
 
                 entity.Property(e => e.Materno)
                     .HasMaxLength(50)
@@ -177,9 +166,10 @@ namespace ApiNitroRestaurant.Models
 
                 entity.ToTable("modulos");
 
-                entity.Property(e => e.IdModulo)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id_modulo");
+                entity.HasCharSet("latin1")
+                    .UseCollation("latin1_swedish_ci");
+
+                entity.Property(e => e.IdModulo).HasColumnName("id_modulo");
 
                 entity.Property(e => e.Nombre)
                     .HasMaxLength(50)
@@ -194,15 +184,14 @@ namespace ApiNitroRestaurant.Models
 
                 entity.ToTable("operaciones");
 
+                entity.HasCharSet("latin1")
+                    .UseCollation("latin1_swedish_ci");
+
                 entity.HasIndex(e => e.IdModulo, "FK1_modulos");
 
-                entity.Property(e => e.IdOperacion)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id_operacion");
+                entity.Property(e => e.IdOperacion).HasColumnName("id_operacion");
 
-                entity.Property(e => e.IdModulo)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id_modulo");
+                entity.Property(e => e.IdModulo).HasColumnName("id_modulo");
 
                 entity.Property(e => e.Nombre)
                     .HasMaxLength(50)
@@ -223,21 +212,20 @@ namespace ApiNitroRestaurant.Models
 
                 entity.ToTable("pedidos");
 
+                entity.HasCharSet("latin1")
+                    .UseCollation("latin1_swedish_ci");
+
                 entity.HasIndex(e => e.IdEmpleado, "FK1_empleado");
 
-                entity.Property(e => e.IdPedido)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id_pedido");
+                entity.Property(e => e.IdPedido).HasColumnName("id_pedido");
 
                 entity.Property(e => e.FechaHora)
                     .HasColumnType("timestamp")
                     .ValueGeneratedOnAddOrUpdate()
                     .HasColumnName("fecha_hora")
-                    .HasDefaultValueSql("current_timestamp()");
+                    .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
-                entity.Property(e => e.IdEmpleado)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id_empleado");
+                entity.Property(e => e.IdEmpleado).HasColumnName("id_empleado");
 
                 entity.Property(e => e.NumeroMesa)
                     .HasMaxLength(3)
@@ -261,19 +249,16 @@ namespace ApiNitroRestaurant.Models
 
                 entity.ToTable("productos");
 
+                entity.HasCharSet("latin1")
+                    .UseCollation("latin1_swedish_ci");
+
                 entity.HasIndex(e => e.IdCategoria, "FK1_categoria");
 
-                entity.Property(e => e.IdProducto)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id_producto");
+                entity.Property(e => e.IdProducto).HasColumnName("id_producto");
 
-                entity.Property(e => e.Disponible)
-                    .HasColumnType("smallint(6)")
-                    .HasColumnName("disponible");
+                entity.Property(e => e.Disponible).HasColumnName("disponible");
 
-                entity.Property(e => e.IdCategoria)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id_categoria");
+                entity.Property(e => e.IdCategoria).HasColumnName("id_categoria");
 
                 entity.Property(e => e.Imagen).HasColumnName("imagen");
 
@@ -303,9 +288,10 @@ namespace ApiNitroRestaurant.Models
 
                 entity.ToTable("tipo_empleados");
 
-                entity.Property(e => e.IdTipoEmpleado)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id_tipo_empleado");
+                entity.HasCharSet("latin1")
+                    .UseCollation("latin1_swedish_ci");
+
+                entity.Property(e => e.IdTipoEmpleado).HasColumnName("id_tipo_empleado");
 
                 entity.Property(e => e.Nombre)
                     .HasMaxLength(50)
@@ -320,21 +306,18 @@ namespace ApiNitroRestaurant.Models
 
                 entity.ToTable("tipo_operaciones");
 
+                entity.HasCharSet("latin1")
+                    .UseCollation("latin1_swedish_ci");
+
                 entity.HasIndex(e => e.IdOperacion, "FK1_operaciones");
 
                 entity.HasIndex(e => e.IdTipoEmpleado, "FK2_tipos_empleados");
 
-                entity.Property(e => e.IdTipoOperacion)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id_tipo_operacion");
+                entity.Property(e => e.IdTipoOperacion).HasColumnName("id_tipo_operacion");
 
-                entity.Property(e => e.IdOperacion)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id_operacion");
+                entity.Property(e => e.IdOperacion).HasColumnName("id_operacion");
 
-                entity.Property(e => e.IdTipoEmpleado)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id_tipo_empleado");
+                entity.Property(e => e.IdTipoEmpleado).HasColumnName("id_tipo_empleado");
 
                 entity.HasOne(d => d.IdOperacionNavigation)
                     .WithMany(p => p.TipoOperaciones)

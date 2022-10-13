@@ -65,5 +65,16 @@ namespace ApiNitroRestaurant.Controllers
 
             return NoContent();
         }
+
+        [HttpPut("state/{id}")]
+        public IActionResult PutStatePedido(int id, [FromBody] OrderStateRequest model)
+        {
+            var response = _orderService.UpdateState(id, model);
+
+            if (!response.Success) return BadRequest(response);
+
+            return NoContent();
+        }
+
     }
 }

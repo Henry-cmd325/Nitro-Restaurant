@@ -396,5 +396,52 @@ namespace ApiNitroRestaurant.Services
 
             return response;
         }
+
+        public ServerResponse<OrderResponse> UpdateState(int id, OrderStateRequest model)
+        {
+            ServerResponse<OrderResponse> response = new();
+
+            var pedidoDb = _context.Pedidos.Where(p => p.IdPedido == id).FirstOrDefault();
+
+            if(pedidoDb == null)
+            {
+                response.Error = "El id introducido no corresponde con ningun registro de pedido";
+                response.Success = false;
+
+                return response;
+            }
+
+            if (model.Terminado == true)
+                pedidoDb.Terminado = 1;
+            else if (model.Terminado == false)
+                pedidoDb.Terminado = 0;
+            else
+                pedidoDb.Terminado = null;
+
+            _context.Entry(pedidoDb).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            _context.SaveChanges();
+
+            var orderResponse = new OrderResponse();
+
+            orderResponse.Anio = pedidoDb.FechaHora.Year;
+            orderResponse.Mes = pedidoDb.FechaHora.Month;
+            orderResponse.Dia = pedidoDb.FechaHora.Day;
+            orderResponse.Segundo = pedidoDb.FechaHora.Second;
+            orderResponse.NumeroMesa = pedidoDb.NumeroMesa;
+            orderResponse.DetallesPedidos = new List<DetalleResponse>();
+
+            foreach(var detalle in pedidoDb.DetallePedidos)
+            {
+                orderResponse.DetallesPedidos.Add(new DetalleResponse()
+                {
+                    IdProducto = detalle.IdProducto,
+                    Cantidad = detalle.Cantidad
+                });
+            }
+
+            response.Data = orderResponse;
+
+            return response;
+        }
     }
 }

@@ -10,5 +10,6 @@ namespace ApiNitroRestaurant.Services
         public ServerResponse<OrderResponse> DeleteOrder(int id);
         public ServerResponse<OrderResponse> PostOrder(OrderRequest model);
         public ServerResponse<OrderResponse> UpdateOrder(int id, OrderRequest model);
+        public ServerResponse<OrderResponse> UpdateState(int id, OrderStateRequest model);
     }
 }
