@@ -1,21 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Fernando Jesús\\OneDrive\\Universidad\\Nitro-Restaurant\\AppMovil\\AppMovil.iOS\\AppMovil.iOS.csproj": {}
+    "D:\\Programacion\\Uni\\Nitro Restaurant\\AppMovil\\AppMovil.iOS\\AppMovil.iOS.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Fernando Jesús\\OneDrive\\Universidad\\Nitro-Restaurant\\AppMovil\\AppMovil.iOS\\AppMovil.iOS.csproj": {
+    "D:\\Programacion\\Uni\\Nitro Restaurant\\AppMovil\\AppMovil.iOS\\AppMovil.iOS.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Fernando Jesús\\OneDrive\\Universidad\\Nitro-Restaurant\\AppMovil\\AppMovil.iOS\\AppMovil.iOS.csproj",
+        "projectUniqueName": "D:\\Programacion\\Uni\\Nitro Restaurant\\AppMovil\\AppMovil.iOS\\AppMovil.iOS.csproj",
         "projectName": "AppMovil.iOS",
-        "projectPath": "C:\\Users\\Fernando Jesús\\OneDrive\\Universidad\\Nitro-Restaurant\\AppMovil\\AppMovil.iOS\\AppMovil.iOS.csproj",
-        "packagesPath": "C:\\Users\\Fernando Jesús\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Fernando Jesús\\OneDrive\\Universidad\\Nitro-Restaurant\\AppMovil\\AppMovil.iOS\\obj\\",
+        "projectPath": "D:\\Programacion\\Uni\\Nitro Restaurant\\AppMovil\\AppMovil.iOS\\AppMovil.iOS.csproj",
+        "packagesPath": "C:\\Users\\henry\\.nuget\\packages\\",
+        "outputPath": "D:\\Programacion\\Uni\\Nitro Restaurant\\AppMovil\\AppMovil.iOS\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Fernando Jesús\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\henry\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -28,8 +32,8 @@
         "frameworks": {
           "xamarinios10": {
             "projectReferences": {
-              "C:\\Users\\Fernando Jesús\\OneDrive\\Universidad\\Nitro-Restaurant\\AppMovil\\AppMovil\\AppMovil.csproj": {
-                "projectPath": "C:\\Users\\Fernando Jesús\\OneDrive\\Universidad\\Nitro-Restaurant\\AppMovil\\AppMovil\\AppMovil.csproj"
+              "D:\\Programacion\\Uni\\Nitro Restaurant\\AppMovil\\AppMovil\\AppMovil.csproj": {
+                "projectPath": "D:\\Programacion\\Uni\\Nitro Restaurant\\AppMovil\\AppMovil\\AppMovil.csproj"
               }
             }
           }
@@ -61,17 +65,21 @@
         }
       }
     },
-    "C:\\Users\\Fernando Jesús\\OneDrive\\Universidad\\Nitro-Restaurant\\AppMovil\\AppMovil\\AppMovil.csproj": {
+    "D:\\Programacion\\Uni\\Nitro Restaurant\\AppMovil\\AppMovil\\AppMovil.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Fernando Jesús\\OneDrive\\Universidad\\Nitro-Restaurant\\AppMovil\\AppMovil\\AppMovil.csproj",
+        "projectUniqueName": "D:\\Programacion\\Uni\\Nitro Restaurant\\AppMovil\\AppMovil\\AppMovil.csproj",
         "projectName": "AppMovil",
-        "projectPath": "C:\\Users\\Fernando Jesús\\OneDrive\\Universidad\\Nitro-Restaurant\\AppMovil\\AppMovil\\AppMovil.csproj",
-        "packagesPath": "C:\\Users\\Fernando Jesús\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Fernando Jesús\\OneDrive\\Universidad\\Nitro-Restaurant\\AppMovil\\AppMovil\\obj\\",
+        "projectPath": "D:\\Programacion\\Uni\\Nitro Restaurant\\AppMovil\\AppMovil\\AppMovil.csproj",
+        "packagesPath": "C:\\Users\\henry\\.nuget\\packages\\",
+        "outputPath": "D:\\Programacion\\Uni\\Nitro Restaurant\\AppMovil\\AppMovil\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Fernando Jesús\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\henry\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
