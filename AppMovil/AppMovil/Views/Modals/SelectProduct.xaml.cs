@@ -33,7 +33,7 @@ namespace AppMovil.Views.Modals
 
             try
             {
-                var response = await Api.Get<ServerResponse<CategoriaResponse[]>>("http://manuwolf-001-site1.atempurl.com/api/categoria");
+                var response = await Api.Get<ServerResponse<CategoriaResponse[]>>("http://nitrorestaurant-001-site1.ctempurl.com/api/categoria");
 
                 if (response != null)
                 {
@@ -95,7 +95,7 @@ namespace AppMovil.Views.Modals
 
             try
             {
-                var response = await Api.Get<ServerResponse<ProductoResponse[]>>("http://manuwolf-001-site1.atempurl.com/api/Producto");
+                var response = await Api.Get<ServerResponse<ProductoResponse[]>>("http://nitrorestaurant-001-site1.ctempurl.com/api/Producto");
 
 
                 if (response != null && response.Success)

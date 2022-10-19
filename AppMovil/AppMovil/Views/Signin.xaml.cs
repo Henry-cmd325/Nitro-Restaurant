@@ -41,7 +41,7 @@ namespace AppMovil.Views
                 Validations.ValidarLogin(empleado, ECodigo.Text);
 
                 var response = await Api.Post<EmpleadoAuthRequest, ServerResponse<EmpleadoResponse>>
-                                             ("http://manuwolf-001-site1.atempurl.com/api/Empleado/login", empleado);
+                                             ("http://nitrorestaurant-001-site1.ctempurl.com/api/Empleado/login", empleado);
 
                 if (response != null)
                 {

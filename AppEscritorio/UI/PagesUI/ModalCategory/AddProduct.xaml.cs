@@ -40,7 +40,6 @@ namespace AppEscritorio.UI.PagesUI.ModalCategory
             {
                 MessageBox.Show("Debe escribir un nombre para el producto", "Campo Vacío", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
-          
             
             if (ComboCategory.SelectedIndex == -1)
             {
@@ -60,8 +59,6 @@ namespace AppEscritorio.UI.PagesUI.ModalCategory
                 inversion = float.Parse(txtInvestment.Text);
             }
 
-           
-
             if (txtPrice.Text.Trim() == "")
             {
                 MessageBox.Show("Debe escribir la cantidad invertida en el producto", "Campo Vacío", MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -70,7 +67,7 @@ namespace AppEscritorio.UI.PagesUI.ModalCategory
             {
                 precio = float.Parse(txtPrice.Text);
 
-                var result = await Api.Post<ProductRequest, ServerResponse<ProductResponse>>("http://manuwolf-001-site1.atempurl.com/api/Producto", new ProductRequest
+                var result = await Api.Post<ProductRequest, ServerResponse<ProductResponse>>("http://nitrorestaurant-001-site1.ctempurl.com/api/Producto", new ProductRequest
                 {
                     Nombre = txtNameProduct.Text,
                     Categoria = ComboCategory.Items[ComboCategory.SelectedIndex].ToString().Substring(38),
@@ -79,7 +76,7 @@ namespace AppEscritorio.UI.PagesUI.ModalCategory
                     Precio = decimal.Parse(txtPrice.Text),
                     Imagen = null
                 }
-                  ) ;
+                  );
                 Validations.ValidarProducto(txtInvestment.Text, txtPrice.Text);
 
                 if (result != null)
@@ -88,37 +85,28 @@ namespace AppEscritorio.UI.PagesUI.ModalCategory
                     {
                         MessageBox.Show("El producto fue agregado con éxito", "Success", MessageBoxButton.OK);
 
-                        Close();    
+                        Close();
                     }
                     else
                     {
                         MessageBox.Show(result.Error);
                     }
                 }
-            }
-
-            
-
-            
-            
-            
+            }   
         }
 
         private async void ComboBox_Loaded(object sender, RoutedEventArgs e)
         {
-            var result = await Api.Get<ServerResponse<CategoriaResponse[]>>("http://manuwolf-001-site1.atempurl.com/api/Categoria");
+            var result = await Api.Get<ServerResponse<CategoriaResponse[]>>("http://nitrorestaurant-001-site1.ctempurl.com/api/Categoria");
 
             if (result != null)
             {
-                
-                    foreach (var categ in result.Data)
-                    {
-                        ComboBoxItem item = new ComboBoxItem();
-                        item.Content = categ.Nombre;
-                        ComboCategory.Items.Add(item);
-   
-
-                    }
+                foreach (var categ in result.Data)
+                {
+                    ComboBoxItem item = new ComboBoxItem();
+                    item.Content = categ.Nombre;
+                    ComboCategory.Items.Add(item);
+                }
             }
         }
 
@@ -140,9 +128,7 @@ namespace AppEscritorio.UI.PagesUI.ModalCategory
         private void txtInvestment_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (System.Text.RegularExpressions.Regex.IsMatch(txtInvestment.Text, " ^ [0-9]"))
-            {
                 txtInvestment.Text = "";
-            }
         }
     }
 }

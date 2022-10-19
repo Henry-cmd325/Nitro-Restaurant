@@ -217,9 +217,9 @@ namespace AppMovil.Views
 
                 Validations.ValidarCrearPedido(order);
                 
-                var response = await Api.Post<OrderRequest, ServerResponse<OrderResponse>>("http://manuwolf-001-site1.atempurl.com/api/Pedido", order);
-
-                if(response != null)
+                var response = await Api.Post<OrderRequest, ServerResponse<OrderResponse>>("http://nitrorestaurant-001-site1.ctempurl.com/api/Pedido", order);
+          
+                if (response != null)
                 {
                     if (response.Success)
                     {
@@ -283,7 +283,7 @@ namespace AppMovil.Views
 
                 Validations.ValidarCrearPedido(order);
 
-                var response = await Api.Put("http://manuwolf-001-site1.atempurl.com/api/Pedido/" + EdicionIdPedido, order);
+                var response = await Api.Put("http://nitrorestaurant-001-site1.ctempurl.com/api/Pedido/" + EdicionIdPedido, order);
 
                 if (response)
                 {

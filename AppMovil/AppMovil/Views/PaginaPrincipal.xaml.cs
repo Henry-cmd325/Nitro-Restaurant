@@ -30,7 +30,7 @@ namespace AppMovil.Views
 
             try
             {
-                var response = await Api.Get<ServerResponse<List<OrderResponse>>>("http://manuwolf-001-site1.atempurl.com/api/Pedido");
+                var response = await Api.Get<ServerResponse<List<OrderResponse>>>("http://nitrorestaurant-001-site1.ctempurl.com/api/Pedido");
 
                 if (response != null)
                 {
@@ -134,7 +134,7 @@ namespace AppMovil.Views
             {
                 foreach (var detalle in order.DetallesPedidos)
                 {
-                    var response = await Api.Get<ServerResponse<ProductoResponse>>("http://manuwolf-001-site1.atempurl.com/api/Producto/" + detalle.IdProducto);
+                    var response = await Api.Get<ServerResponse<ProductoResponse>>("http://nitrorestaurant-001-site1.ctempurl.com/api/Producto/" + detalle.IdProducto);
 
                     if (response != null)
                     {
@@ -178,7 +178,7 @@ namespace AppMovil.Views
             {
                 try
                 {
-                    bool eliminated = await Api.Delete("http://manuwolf-001-site1.atempurl.com/api/Pedido/" + order.IdPedido);
+                    bool eliminated = await Api.Delete("http://nitrorestaurant-001-site1.ctempurl.com/api/Pedido/" + order.IdPedido);
 
                     if (eliminated)
                         Application.Current.MainPage = new PaginaPrincipal();

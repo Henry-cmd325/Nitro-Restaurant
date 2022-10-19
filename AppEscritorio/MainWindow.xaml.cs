@@ -40,7 +40,6 @@ namespace AppEscritorio
             {
                 Logo.Source = new BitmapImage(new Uri(@"/Recursos/Logo Light 3.gif", UriKind.Relative));
                 AnimationBehavior.SetSourceUri(Logo, new Uri(@"/Recursos/Logo Light 3.gif", UriKind.Relative));
-
             }
         }
 
@@ -55,7 +54,6 @@ namespace AppEscritorio
                 Logo.Source = new BitmapImage(new Uri(@"/Recursos/Logo Light 3.gif", UriKind.Relative));
                 AnimationBehavior.SetSourceUri(Logo, new Uri(@"/Recursos/Logo Light 3.gif", UriKind.Relative));
             }
-
             else
             {
                 IsDarkTheme = true;
@@ -65,7 +63,6 @@ namespace AppEscritorio
             }
 
             paletteHelper.SetTheme(theme);
-
         }
 
         private void exitApp(object sender, RoutedEventArgs e)
@@ -76,7 +73,6 @@ namespace AppEscritorio
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
         {
             base.OnMouseLeftButtonDown(e);
-
         }
 
         private async void loginBtn_Click(object sender, RoutedEventArgs e)
@@ -86,7 +82,7 @@ namespace AppEscritorio
             {
                 var cuenta = new AccountRequest { Username = txtUsername.Text, Password = txtPassword.Password };
 
-                var result = await Api.Post<AccountRequest, ServerResponse<AccountResponse>>("http://manuwolf-001-site1.atempurl.com/api/Cuenta/login", cuenta);
+                var result = await Api.Post<AccountRequest, ServerResponse<AccountResponse>>("http://nitrorestaurant-001-site1.ctempurl.com/api/Cuenta/login", cuenta);
 
                 if (result != null && result.Success)
                 {
@@ -105,11 +101,8 @@ namespace AppEscritorio
                         });
                         await app.service.Connect();
 
-                        
-
                         ui.Show();
                         this.Close();
-
                     }
                     else
                     {
@@ -130,8 +123,7 @@ namespace AppEscritorio
                 MessageBox.Show("Comprueba tu conexión a internet");
             }
             
-           loginBtn.IsEnabled = true;
-            
+           loginBtn.IsEnabled = true; 
         }
 
         private void signupBtn_Click(object sender, RoutedEventArgs e)
@@ -140,9 +132,6 @@ namespace AppEscritorio
             this.Close();
 
             signWindow.Show();
-
         }
-
-
     }
 }

@@ -14,7 +14,7 @@ namespace AppEscritorio.Services
         public SignalRService()
         {
             connection = new HubConnectionBuilder()
-                .WithUrl("http://manuwolf-001-site1.atempurl.com/ordenesHub")
+                .WithUrl("http://nitrorestaurant-001-site1.ctempurl.com/ordenesHub")
                 .Build();
         }
 

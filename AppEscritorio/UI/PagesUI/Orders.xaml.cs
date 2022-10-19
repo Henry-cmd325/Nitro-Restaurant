@@ -41,7 +41,7 @@ namespace AppEscritorio.UI.PagesUI
         
         private async void ItemBaseOrder_Loaded(object sender, RoutedEventArgs e)
         {
-            var result = await Api.Get<ServerResponse<OrderResponse[]>>("http://manuwolf-001-site1.atempurl.com/api/Pedido");
+            var result = await Api.Get<ServerResponse<OrderResponse[]>>("http://nitrorestaurant-001-site1.ctempurl.com/api/Pedido");
             List<RowDefinition> rows = new();
            
             for (int i = 0; i < result.Data.Length; i++)
@@ -94,8 +94,8 @@ namespace AppEscritorio.UI.PagesUI
                 rows.RemoveAt(rows.Count - 1);
             }
 
-            var result = await Api.Get<ServerResponse<OrderResponse>>("http://manuwolf-001-site1.atempurl.com/api/Pedido/" + (sender as Item).Tag);
-            var result2 = await Api.Get<ServerResponse<UsuarioResponse>>("http://manuwolf-001-site1.atempurl.com/api/Empleado/" + (sender as Item).Desc2);
+            var result = await Api.Get<ServerResponse<OrderResponse>>("http://nitrorestaurant-001-site1.ctempurl.com/api/Pedido/" + (sender as Item).Tag);
+            var result2 = await Api.Get<ServerResponse<UsuarioResponse>>("http://nitrorestaurant-001-site1.ctempurl.com/api/Empleado/" + (sender as Item).Desc2);
            
             var order = Convert.ToInt32((sender as Item).Tag);
             OrderDescription.Text = "Order " + order.ToString();
@@ -116,7 +116,7 @@ namespace AppEscritorio.UI.PagesUI
             int column = 0;
             foreach (var item in result.Data.DetallesPedidos)
             {
-                var result3 = await Api.Get<ServerResponse<ProductResponse>>("http://manuwolf-001-site1.atempurl.com/api/Producto/" + item.IdProducto);
+                var result3 = await Api.Get<ServerResponse<ProductResponse>>("http://nitrorestaurant-001-site1.ctempurl.com/api/Producto/" + item.IdProducto);
 
                 Item product = new();
                 product.Title = result3.Data.Nombre;
@@ -127,27 +127,21 @@ namespace AppEscritorio.UI.PagesUI
                 Grid.SetColumn(product, column);
                 if (column == 0) { column++; row = 0; }
                 else { column = 0; row++; } 
-                GridProducts.Children.Add(product);
-                
+                GridProducts.Children.Add(product);   
             }
-            
-
-
-
         }
 
         private async void ButtonStart_Click(object sender, RoutedEventArgs e)
         {
-            var result = await Api.Post<OrderRequest, ServerResponse<OrderResponse>>("http://manuwolf-001-site1.atempurl.com/api/Pedido/" + (sender as Button).Tag, new OrderRequest
+            var result = await Api.Post<OrderRequest, ServerResponse<OrderResponse>>("http://nitrorestaurant-001-site1.ctempurl.com/api/Pedido/" + (sender as Button).Tag, new OrderRequest
             {
                 Terminado = false
             }) ;
             result.Data.Terminado = false;
-
         }
         private async void ButtonFinish_Click(object sender, RoutedEventArgs e)
         {
-            var result = await Api.Post<OrderRequest, ServerResponse<OrderResponse>>("http://manuwolf-001-site1.atempurl.com/api/Pedido/" + (sender as Button).Tag, new OrderRequest
+            var result = await Api.Post<OrderRequest, ServerResponse<OrderResponse>>("http://nitrorestaurant-001-site1.ctempurl.com/api/Pedido/" + (sender as Button).Tag, new OrderRequest
             {
                 Terminado = true
             });

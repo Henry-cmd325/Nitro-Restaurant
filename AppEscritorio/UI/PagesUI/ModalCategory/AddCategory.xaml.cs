@@ -41,7 +41,7 @@ namespace AppEscritorio.UI.PagesUI.ModalCategory
             }
             else
             {
-                var result = await Api.Post<CategoryRequest, ServerResponse<CategoriaResponse>>("http://manuwolf-001-site1.atempurl.com/api/Categoria", new CategoryRequest
+                var result = await Api.Post<CategoryRequest, ServerResponse<CategoriaResponse>>("http://nitrorestaurant-001-site1.ctempurl.com/api/Categoria", new CategoryRequest
                 { Nombre = txtNameCategory.Text });
 
                 if (result != null)

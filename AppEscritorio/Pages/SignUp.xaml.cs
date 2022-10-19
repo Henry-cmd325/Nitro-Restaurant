@@ -28,10 +28,7 @@ namespace AppEscritorio.Pages
         private readonly PaletteHelper paletteHelper = new();
         public SignUp()
         { 
- 
-
             InitializeComponent();
-
 
             ITheme theme = paletteHelper.GetTheme();
             if (IsDarkTheme = theme.GetBaseTheme() == BaseTheme.Dark)
@@ -43,14 +40,11 @@ namespace AppEscritorio.Pages
             {
                 Logo2.Source = new BitmapImage(new Uri(@"/Recursos/Logo Light 3.gif", UriKind.Relative));
                 AnimationBehavior.SetSourceUri(Logo2, new Uri(@"/Recursos/Logo Light 3.gif", UriKind.Relative));
-
             }
         }
 
         private void toggleTheme(object sender, RoutedEventArgs e)
         {
-
-
             ITheme theme = paletteHelper.GetTheme();
 
             if (IsDarkTheme = theme.GetBaseTheme() == BaseTheme.Dark)
@@ -60,7 +54,6 @@ namespace AppEscritorio.Pages
                 Logo2.Source = new BitmapImage(new Uri(@"/Recursos/Logo Light 3.gif", UriKind.Relative));
                 AnimationBehavior.SetSourceUri(Logo2, new Uri(@"/Recursos/Logo Light 3.gif", UriKind.Relative));
             }
-
             else
             {
                 IsDarkTheme = true;
@@ -70,7 +63,6 @@ namespace AppEscritorio.Pages
             }
 
             paletteHelper.SetTheme(theme);
-
         }
 
         private void exitApp(object sender, RoutedEventArgs e)
@@ -110,7 +102,7 @@ namespace AppEscritorio.Pages
                 {
                     Validations.ValidarSignUp(usuario);
 
-                    result = await Api.Post<Usuarios, ServerResponse<UsuarioResponse>>("http://manuwolf-001-site1.atempurl.com/api/Cuenta/signin", usuario);
+                    result = await Api.Post<Usuarios, ServerResponse<UsuarioResponse>>("http://nitrorestaurant-001-site1.ctempurl.com/api/Cuenta/signin", usuario);
 
                     if (result == null) throw new Exception("Ha ocurrido un error");
                 }
@@ -125,16 +117,16 @@ namespace AppEscritorio.Pages
                         MessageBox.Show(result.Error);
                     else
                     {
-                        MessageBox.Show("¡Registro Exitoso!","El usuario se registró correctamente", MessageBoxButton.OK);
+                        MessageBox.Show("¡Registro Exitoso!", "El usuario se registró correctamente", MessageBoxButton.OK);
                         MainWindow main = new MainWindow();
                         main.Show();
                         this.Close();
                     }
 
                 }
-
-                signUpBtn.IsEnabled = true; 
             }
+
+            signUpBtn.IsEnabled = true;
         }
 
         private void loginBtn_Click(object sender, RoutedEventArgs e)
@@ -142,7 +134,6 @@ namespace AppEscritorio.Pages
             MainWindow main = new MainWindow();
             this.Close();
             main.Show();
-            
         }
     }
 }

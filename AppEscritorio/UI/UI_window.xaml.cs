@@ -21,23 +21,19 @@ namespace AppEscritorio.UI
         public UI_window()
         {
             InitializeComponent();
-            
+
             Framesito.Height = 667;
             Framesito.NavigationUIVisibility = System.Windows.Navigation.NavigationUIVisibility.Hidden;
             Framesito.Source = new Uri(@"/UI/PagesUI/Orders.xaml", UriKind.Relative);
             StackPanelFrame.Children.Add(Framesito);
 
-            app.page = this;   
+            app.page = this;
         }
-
-       
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)
-            {
                 this.DragMove();
-            }
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -66,7 +62,6 @@ namespace AppEscritorio.UI
             MainWindow main = new MainWindow();
             this.Close();
             main.Show();
-            
         }
 
         private void Button_Click_Orders(object sender, RoutedEventArgs e)

@@ -35,7 +35,7 @@ namespace AppEscritorio.UI.PagesUI
         List<CategoriaResponse> Categories = new();
         private async void ComboBox_Loaded(object sender, RoutedEventArgs e)
         {
-            var result = await Api.Get<ServerResponse<CategoriaResponse[]>>("http://manuwolf-001-site1.atempurl.com/api/Categoria");
+            var result = await Api.Get<ServerResponse<CategoriaResponse[]>>("http://nitrorestaurant-001-site1.ctempurl.com/api/Categoria");
 
             if (result != null)
             {
@@ -54,19 +54,13 @@ namespace AppEscritorio.UI.PagesUI
                         itemCategory.Tag = category.IdCategoria;
                         itemCategory.Selected += CategorySelected_Selected;
                         ComboCategory.Items.Add(itemCategory);
-                        
 
-
-                        count++;
-                        
+                        count++; 
                     }
                     
-                    CountCategory.Desc = count.ToString() + " categories added";
-                    
-                        
+                    CountCategory.Desc = count.ToString() + " categories added";      
                 }
             }
-          
         }
 
       
@@ -75,27 +69,20 @@ namespace AppEscritorio.UI.PagesUI
         {
             AddCategory cate = new();
             if (cate.ShowDialog() == false)
-            {
                 NavigationService.Navigate(new Products());
-            }
-
-           
         }
 
         private void Button_Click_AddProduct(object sender, RoutedEventArgs e)
         {
             AddProduct prod = new();
             if (prod.ShowDialog() == false)
-            {
                 NavigationService.Navigate(new Products());
-            }
         }
         
         private async void Item_Loaded_1(object sender, RoutedEventArgs e)
         {
-            var result = await Api.Get<ServerResponse<ProductResponse[]>>("http://manuwolf-001-site1.atempurl.com/api/Producto");
+            var result = await Api.Get<ServerResponse<ProductResponse[]>>("http://nitrorestaurant-001-site1.ctempurl.com/api/Producto");
             
-
             if (result != null)
             {
                 if (result.Data.Length == 0)
@@ -104,7 +91,6 @@ namespace AppEscritorio.UI.PagesUI
                 }
                 else
                 {
-                    
                     int count = 0;
 
                     for (int i = 1; i <= Math.Ceiling(result.Data.Count() / 2.0); i++)
@@ -117,8 +103,8 @@ namespace AppEscritorio.UI.PagesUI
                     for (int i = 0; i <= Math.Ceiling(result.Data.Count() / 2.0)-1; i++)
                     {
                         for (int j = 0; j <= 1; j++)
-                        {Item itemProduct = new Item();
-                            
+                        {
+                            Item itemProduct = new Item();
                             
                             var product = result.Data[count];
                             itemProduct.Title = product.Nombre;
@@ -138,8 +124,6 @@ namespace AppEscritorio.UI.PagesUI
                     }
 
                     CountProduct.Desc = (count + 1).ToString() + " products added";
-
-
                 }
             }
 
@@ -157,11 +141,8 @@ namespace AppEscritorio.UI.PagesUI
 
         private async void CategorySelected_Selected(object sender, RoutedEventArgs e)
         {
-            var result = await Api.Get<ServerResponse<ProductResponse[]>>("http://manuwolf-001-site1.atempurl.com/api/Producto");
-
-           
-               
-                
+            var result = await Api.Get<ServerResponse<ProductResponse[]>>("http://nitrorestaurant-001-site1.ctempurl.com/api/Producto");
+ 
             for(int i = 0; i < items.Count; i++)
             {
                 GridProducts.Children.Remove(items[i]);
@@ -181,52 +162,41 @@ namespace AppEscritorio.UI.PagesUI
                 rows.Add(definition);
                 GridProducts.RowDefinitions.Add(definition);
             }
+
             int row = 0;
             int column = 0;
+
             for (int i = 0; i < result.Data.Count(); i++)
             {
+                if (Convert.ToInt32((sender as ComboBoxItem).Tag) == Convert.ToInt32(result.Data[i].IdCategoria))
+                {
+                    Item itemProduct = new Item();
 
-                
-                    if (Convert.ToInt32((sender as ComboBoxItem).Tag) == Convert.ToInt32(result.Data[i].IdCategoria))
+                    var product = result.Data[i];
+                    itemProduct.Title = product.Nombre;
+                    itemProduct.Visibility = Visibility.Visible;
+                    itemProduct.Height = 70;
+                    itemProduct.MouseDoubleClick += Item_MouseDoubleClick;
+                    itemProduct.Icon = FontAwesome.Sharp.IconChar.Utensils;
+                    itemProduct.Tag = result.Data[i].IdProducto;
+                    items.Add(itemProduct);
+                    Grid.SetRow(itemProduct, row);  
+                    Grid.SetColumn(itemProduct, column);
+                    GridProducts.Children.Add(itemProduct);
+                    column++;
+
+                    if (column == 2)
                     {
-
-
-                        Item itemProduct = new Item();
-
-
-                        var product = result.Data[i];
-                        itemProduct.Title = product.Nombre;
-                        itemProduct.Visibility = Visibility.Visible;
-                        itemProduct.Height = 70;
-                        itemProduct.MouseDoubleClick += Item_MouseDoubleClick;
-                        itemProduct.Icon = FontAwesome.Sharp.IconChar.Utensils;
-                        itemProduct.Tag = result.Data[i].IdProducto;
-                        items.Add(itemProduct);
-                        Grid.SetRow(itemProduct, row);
-                        Grid.SetColumn(itemProduct, column);
-                        GridProducts.Children.Add(itemProduct);
-                        column++;
-                        if (column == 2)
-                        {
-                            column = 0;
-                            row++;
-                        }
-                        
-                    }
-                
-               
-                    
+                        column = 0;
+                        row++;
+                    }      
+                }     
             }
-                
-            
-
-
-
         }
 
         private async void Item_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            var result = await Api.Get<ServerResponse<ProductResponse>>("http://manuwolf-001-site1.atempurl.com/api/Producto/" + (sender as Item).Tag);
+            var result = await Api.Get<ServerResponse<ProductResponse>>("http://nitrorestaurant-001-site1.ctempurl.com/api/Producto/" + (sender as Item).Tag);
             
             var marginTop = new Thickness(15, 0, 47, 357);
             if (!borderInfoProducts.Margin.Equals(marginTop))
@@ -263,9 +233,7 @@ namespace AppEscritorio.UI.PagesUI
                 NameInfoProduct.Text = result.Data.Nombre;
                 InvestmentInfoProduct.Desc = result.Data.Inversion.ToString();
                 PriceInfoProduct.Desc = result.Data.Precio.ToString();
-            }
-            
-            
+            } 
         }
     }
 }
