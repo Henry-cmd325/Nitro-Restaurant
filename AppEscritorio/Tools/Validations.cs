@@ -47,24 +47,45 @@ namespace AppEscritorio.Tools
             
         }
 
-        public static void ValidarProducto(string inversion, string precio)
+
+
+        public static void ValidarAñadirProduct(string product, int index, string investment, string price)
         {
-            try
+            if (product.Trim() == "")
             {
-                float.Parse(inversion);
+                throw new Exception("Debe escribir un nombre para el producto");
             }
-            catch (Exception)
+
+            if (index == -1)
             {
-                throw new Exception("Introduzca un valor númerico en la inversión por favor");
+                throw new Exception("Debe seleccionar una categoria");
+            }
+
+            if(investment.Trim() == "")
+            {
+                throw new Exception("Debe escribir una cantidad invertida");
+            }
+
+            try 
+            { 
+                int InvestmentInt = Int32.Parse(investment); 
+            }catch (Exception ex)
+            {
+                throw new Exception("Inserte solo numeros en la inversión");
+            }
+
+            if(price.Trim() == "")
+            {
+                throw new Exception("Debe escribir una cantidad invertida");
             }
 
             try
             {
-                float.Parse(precio);
+                int PriceInt = Int32.Parse(investment);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw new Exception("Introduzca un valor númerico en el precio por favor");
+                throw new Exception("Inserte solo numeros en el precio");
             }
         }
 

@@ -35,36 +35,12 @@ namespace AppEscritorio.UI.PagesUI.ModalCategory
         private async void Button_Click_1(object sender, RoutedEventArgs e)
         {
             float inversion, precio = 0;
-            
-            if (txtNameProduct.Text.Trim() == "")
-            {
-                MessageBox.Show("Debe escribir un nombre para el producto", "Campo Vacío", MessageBoxButton.OK, MessageBoxImage.Warning);
-            }
-            
-            if (ComboCategory.SelectedIndex == -1)
-            {
-                MessageBox.Show("Debe seleccionar una categoria", "Campo Vacío", MessageBoxButton.OK, MessageBoxImage.Warning);
 
-            } else
+            try
             {
+                Validations.ValidarAñadirProduct(txtNameProduct.Text, ComboCategory.SelectedIndex, txtInvestment.Text, txtPrice.Text);
                 Titulo.Text = ComboCategory.Items[ComboCategory.SelectedIndex].ToString().Substring(38);
-            }
-
-            if (txtInvestment.Text.Trim() == "")
-            {
-                MessageBox.Show("Debe escribir la cantidad invertida en el producto", "Campo Vacío", MessageBoxButton.OK, MessageBoxImage.Warning);
-            }
-            else
-            {
                 inversion = float.Parse(txtInvestment.Text);
-            }
-
-            if (txtPrice.Text.Trim() == "")
-            {
-                MessageBox.Show("Debe escribir la cantidad invertida en el producto", "Campo Vacío", MessageBoxButton.OK, MessageBoxImage.Warning);
-            }
-            else
-            {
                 precio = float.Parse(txtPrice.Text);
 
                 var result = await Api.Post<ProductRequest, ServerResponse<ProductResponse>>("http://nitrorestaurant-001-site1.ctempurl.com/api/Producto", new ProductRequest
@@ -77,7 +53,7 @@ namespace AppEscritorio.UI.PagesUI.ModalCategory
                     Imagen = null
                 }
                   );
-                Validations.ValidarProducto(txtInvestment.Text, txtPrice.Text);
+
 
                 if (result != null)
                 {
@@ -92,7 +68,13 @@ namespace AppEscritorio.UI.PagesUI.ModalCategory
                         MessageBox.Show(result.Error);
                     }
                 }
-            }   
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
+            
         }
 
         private async void ComboBox_Loaded(object sender, RoutedEventArgs e)
