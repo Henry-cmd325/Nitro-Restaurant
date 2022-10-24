@@ -125,8 +125,10 @@ namespace AppEscritorio.UI.PagesUI
                 itemsProduct.Add(product);
                 Grid.SetRow(product, row);
                 Grid.SetColumn(product, column);
-                if (column == 0) { column++; row = 0; }
-                else { column = 0; row++; } 
+                
+                if (column == 0) { column++; }
+                else if (column > 0){ column = 0; row++; }
+
                 GridProducts.Children.Add(product);   
             }
         }
