@@ -160,20 +160,20 @@ public final class R {
 		public static final int notification_template_part_time = 0x7f0b006d;
 	}
 	public static final class string {
-		public static final int copy_toast_msg = 0x7f0e0024;
-		public static final int fallback_menu_item_copy_link = 0x7f0e002a;
-		public static final int fallback_menu_item_open_in_browser = 0x7f0e002b;
-		public static final int fallback_menu_item_share_link = 0x7f0e002c;
-		public static final int status_bar_notification_info_overflow = 0x7f0e0072;
+		public static final int copy_toast_msg = 0x7f0f0024;
+		public static final int fallback_menu_item_copy_link = 0x7f0f002a;
+		public static final int fallback_menu_item_open_in_browser = 0x7f0f002b;
+		public static final int fallback_menu_item_share_link = 0x7f0f002c;
+		public static final int status_bar_notification_info_overflow = 0x7f0f0072;
 	}
 	public static final class style {
-		public static final int TextAppearance_Compat_Notification = 0x7f0f0183;
-		public static final int TextAppearance_Compat_Notification_Info = 0x7f0f0184;
-		public static final int TextAppearance_Compat_Notification_Line2 = 0x7f0f0186;
-		public static final int TextAppearance_Compat_Notification_Time = 0x7f0f0189;
-		public static final int TextAppearance_Compat_Notification_Title = 0x7f0f018b;
-		public static final int Widget_Compat_NotificationActionContainer = 0x7f0f0273;
-		public static final int Widget_Compat_NotificationActionText = 0x7f0f0274;
+		public static final int TextAppearance_Compat_Notification = 0x7f100183;
+		public static final int TextAppearance_Compat_Notification_Info = 0x7f100184;
+		public static final int TextAppearance_Compat_Notification_Line2 = 0x7f100186;
+		public static final int TextAppearance_Compat_Notification_Time = 0x7f100189;
+		public static final int TextAppearance_Compat_Notification_Title = 0x7f10018b;
+		public static final int Widget_Compat_NotificationActionContainer = 0x7f100273;
+		public static final int Widget_Compat_NotificationActionText = 0x7f100274;
 	}
 	public static final class styleable {
 		public static final int[] ColorStateListItem = new int[] { 0x010101a5, 0x0101031f, 0x7f030032 };
@@ -216,6 +216,6 @@ public final class R {
 		public static final int GradientColorItem_android_offset = 1;
 	}
 	public static final class xml {
-		public static final int image_share_filepaths = 0x7f110000;
+		public static final int image_share_filepaths = 0x7f120000;
 	}
 }

@@ -21,6 +21,8 @@ public class MonoPackageManager_Resources {
 		"Microsoft.Extensions.Options.dll",
 		"Microsoft.Extensions.Primitives.dll",
 		"Newtonsoft.Json.dll",
+		"Octane.Xamarin.Forms.VideoPlayer.Android.dll",
+		"Octane.Xamarin.Forms.VideoPlayer.dll",
 		"System.Diagnostics.DiagnosticSource.dll",
 		"System.IO.Pipelines.dll",
 		"System.Text.Encodings.Web.dll",

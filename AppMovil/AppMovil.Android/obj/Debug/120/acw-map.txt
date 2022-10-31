@@ -1,6 +1,15 @@
 AppMovil.Droid.MainActivity, AppMovil.Android;crc647f6b9be71184d9ba.MainActivity
 AppMovil.Droid.MainActivity;crc647f6b9be71184d9ba.MainActivity
 appmovil.droid.MainActivity;crc647f6b9be71184d9ba.MainActivity
+Octane.Xamarin.Forms.VideoPlayer.Android.Widget.VideoView, Octane.Xamarin.Forms.VideoPlayer.Android;Octane.Xamarin.Forms.VideoPlayer.Android.Widget.VideoView
+Octane.Xamarin.Forms.VideoPlayer.Android.Widget.VideoView;Octane.Xamarin.Forms.VideoPlayer.Android.Widget.VideoView
+Octane.Xamarin.Forms.VideoPlayer.Android.Widget.VideoView;Octane.Xamarin.Forms.VideoPlayer.Android.Widget.VideoView
+Octane.Xamarin.Forms.VideoPlayer.Android.Views.View.VideoViewSavedState, Octane.Xamarin.Forms.VideoPlayer.Android;crc6435e865eae5e6981d.VideoViewSavedState
+Octane.Xamarin.Forms.VideoPlayer.Android.Views.View.VideoViewSavedState;crc6435e865eae5e6981d.VideoViewSavedState
+octane.xamarin.forms.videoplayer.android.views.view.VideoViewSavedState;crc6435e865eae5e6981d.VideoViewSavedState
+Octane.Xamarin.Forms.VideoPlayer.Android.Renderers.VideoPlayerRenderer, Octane.Xamarin.Forms.VideoPlayer.Android;crc64fd5f3afdf8fcc6d6.VideoPlayerRenderer
+Octane.Xamarin.Forms.VideoPlayer.Android.Renderers.VideoPlayerRenderer;crc64fd5f3afdf8fcc6d6.VideoPlayerRenderer
+octane.xamarin.forms.videoplayer.android.renderers.VideoPlayerRenderer;crc64fd5f3afdf8fcc6d6.VideoPlayerRenderer
 AndroidX.Activity.IOnBackPressedDispatcherOwner, Xamarin.AndroidX.Activity;androidx.activity.OnBackPressedDispatcherOwner
 AndroidX.Activity.IOnBackPressedDispatcherOwner;androidx.activity.OnBackPressedDispatcherOwner
 androidx.activity.OnBackPressedDispatcherOwner;androidx.activity.OnBackPressedDispatcherOwner
