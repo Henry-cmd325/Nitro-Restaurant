@@ -69,3 +69,5 @@ D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\obj\Debug\net6.0-windows\refi
 D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\obj\Debug\net6.0-windows\AppEscritorio.pdb
 D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\obj\Debug\net6.0-windows\AppEscritorio.genruntimeconfig.cache
 D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\obj\Debug\net6.0-windows\ref\AppEscritorio.dll
+D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\obj\Debug\net6.0-windows\UI\PagesUI\FinishedOrders.g.cs
+D:\Programacion\Uni\Nitro Restaurant\AppEscritorio\obj\Debug\net6.0-windows\UI\PagesUI\FinishedOrders.baml

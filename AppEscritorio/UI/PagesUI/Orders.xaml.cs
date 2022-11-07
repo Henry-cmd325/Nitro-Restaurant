@@ -43,7 +43,20 @@ namespace AppEscritorio.UI.PagesUI
         {
             var result = await Api.Get<ServerResponse<OrderResponse[]>>("http://nitrorestaurant-001-site1.ctempurl.com/api/Pedido");
             List<RowDefinition> rows = new();
-           
+
+            while (itemsList.Count > 0)
+            {
+                GridOrdersList.Children.Remove(itemsList[itemsList.Count - 1]);
+                itemsList.RemoveAt(itemsList.Count - 1);
+            }
+            while (rows.Count > 0)
+            {
+                GridOrdersList.RowDefinitions.Remove(rows[rows.Count - 1]);
+                rows.RemoveAt(rows.Count - 1);
+            }
+
+
+
             for (int i = 0; i < result.Data.Length; i++)
             {
                 var definition = new RowDefinition();
@@ -133,15 +146,18 @@ namespace AppEscritorio.UI.PagesUI
 
         private async void ButtonStart_Click(object sender, RoutedEventArgs e)
         {
-            var result = await Api.Post<OrderRequest, ServerResponse<OrderResponse>>("http://nitrorestaurant-001-site1.ctempurl.com/api/Pedido/" + (sender as Button).Tag, new OrderRequest
+            var result = await Api.Put<OrderStateRequest>("http://nitrorestaurant-001-site1.ctempurl.com/api/Pedido/state/" + (sender as Button).Tag, new OrderStateRequest
             {
                 Terminado = false
             }) ;
-            result.Data.Terminado = false;
+
+          
+
+
         }
         private async void ButtonFinish_Click(object sender, RoutedEventArgs e)
         {
-            var result = await Api.Post<OrderRequest, ServerResponse<OrderResponse>>("http://nitrorestaurant-001-site1.ctempurl.com/api/Pedido/" + (sender as Button).Tag, new OrderRequest
+            var result = await Api.Put<OrderStateRequest>("http://nitrorestaurant-001-site1.ctempurl.com/api/Pedido/state/" + (sender as Button).Tag, new OrderStateRequest
             {
                 Terminado = true
             });

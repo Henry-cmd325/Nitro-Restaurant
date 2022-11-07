@@ -43,5 +43,16 @@ namespace AppEscritorio.Tools
 
             return result;
         }
+
+        public static async Task<bool> Put<TValue>(string url, TValue obj)
+        {
+            HttpClient client = new();
+
+            var response = await client.PutAsJsonAsync(url, obj);
+
+            return response.IsSuccessStatusCode;
+        }
+
+
     }
 }

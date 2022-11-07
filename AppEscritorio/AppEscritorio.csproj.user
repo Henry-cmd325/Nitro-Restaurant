@@ -10,6 +10,9 @@
     <Compile Update="Pages\SignUp.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="UI\PagesUI\FinishedOrders.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="UI\PagesUI\ModalCategory\AddCategory.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -37,6 +40,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Pages\SignUp.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\PagesUI\FinishedOrders.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="UI\PagesUI\ModalCategory\AddCategory.xaml">

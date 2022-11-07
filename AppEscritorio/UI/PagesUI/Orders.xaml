@@ -67,7 +67,7 @@
         <!--Order Section-->
         <Border Grid.Column="1" CornerRadius="20" Padding="0 25" Background="#243771" Margin="15 0 47 40">
             <ScrollViewer Margin="10,0,10,0">
-            <Grid x:Name="GridOrdersList">
+            <Grid Name="GridOrdersList">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
                  
