@@ -54,9 +54,7 @@ namespace AppMovil.Views
 
                         var app = Application.Current as App;
 
-
-
-                        app.MainPage = new Signin();
+                        app.MainPage = new login();
                     }
                     else
                         await DisplayAlert("Error", response.Error, "Ok");

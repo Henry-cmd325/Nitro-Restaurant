@@ -28,7 +28,7 @@ namespace AppMovil
 
         private void AnimateCarousel()
         {
-            timer = new Timer(5000) { AutoReset = true, Enabled = true };
+            timer = new Timer(6000) { AutoReset = true, Enabled = true };
 
             timer.Elapsed += (s, e) =>
             {

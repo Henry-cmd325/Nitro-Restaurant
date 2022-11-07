@@ -46,7 +46,7 @@
 
 
                                 </Frame>
-                                <Entry x:Name="EMaterno" Placeholder="Apellido Materno" TextColor="#167ef5" HorizontalOptions="FillAndExpand" Margin="0,0,15,-9"></Entry>
+                                <Entry x:Name="EMaterno" Placeholder="Apellido Materno" TextColor="Black" HorizontalOptions="FillAndExpand" Margin="0,0,15,-9"></Entry>
                             </StackLayout>
                         </Frame>
 
@@ -55,7 +55,7 @@
                                 <Frame BackgroundColor="AliceBlue" CornerRadius="50" HeightRequest="35" WidthRequest="35" Padding="0" Margin="7">
 
                                 </Frame>
-                                <Entry x:Name="ETelefono" Placeholder="Telefono" TextColor="#167ef5" HorizontalOptions="FillAndExpand" Margin="0,0,15,-9"></Entry>
+                                <Entry x:Name="ETelefono" Placeholder="Telefono" TextColor="Black" HorizontalOptions="FillAndExpand" Margin="0,0,15,-9"></Entry>
                             </StackLayout>
                         </Frame>
 
