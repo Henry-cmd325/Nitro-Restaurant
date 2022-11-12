@@ -19,7 +19,7 @@ namespace AppMovil.Views
         private readonly Api Api = DependencyService.Get<Api>();
         public login()
         {
-            InitializeComponent(); 
+            InitializeComponent();
         }
         private void BtnSingin_Clicked(object sender, EventArgs e)
         {
