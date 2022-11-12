@@ -27,62 +27,53 @@ namespace AppMovil.Views
             Application.Current.MainPage = new MainPage();
         }
 
-        private async void BtnLogin_Clicked(object sender, EventArgs e)
+        private async void BtnSignin_Clicked(object sender, EventArgs e)
         {
-            BtnLogin.IsEnabled = false;
+            BtnSignin.IsEnabled = false;
 
             try
             {
-                var empleado = new EmpleadoAuthRequest()
+                var empleado = new EmpleadoSignInRequest()
                 {
+                    Materno = EMaterno.Text,
+                    Paterno = EPaterno.Text,
+                    Nombre = ENombre.Text,
                     Telefono = ETelefono.Text
                 };
 
-                Validations.ValidarLogin(empleado, ECodigo.Text);
+                Validations.ValidarSignin(empleado);
 
-                var response = await Api.Post<EmpleadoAuthRequest, ServerResponse<EmpleadoResponse>>
-                                             ("http://nitrorestaurant-001-site1.ctempurl.com/api/Empleado/login", empleado);
+                var response = await Api.Post<EmpleadoSignInRequest, ServerResponse<EmpleadoResponse>>
+                                             ("http://nitrorestaurant-001-site1.ctempurl.com/api/Empleado/signin", empleado);
 
                 if (response != null)
                 {
                     if (response.Success)
                     {
+                        await DisplayAlert("Operación exitosa", "La cuenta ha sido registrada correctamente", "Ok");
+
                         var app = Application.Current as App;
 
-                        app.IdEmpleado = response.Data.IdEmpleado;
-                        app.IdPc = ECodigo.Text.Trim();
 
-                        var connection = DependencyService.Get<SignalRService>();
 
-                        connection.OnWithinGroup(() => { 
-                            app.MainPage = new PaginaPrincipal();
-                        });
-
-                        connection.OnError(async () =>
-                        {
-                            await DisplayAlert("Error", "El codigo introducido es incorrecto", "Ok");
-                        });
-
-                        await connection.Connect(ECodigo.Text.Trim());
+                        app.MainPage = new Signin();
                     }
                     else
-                        await DisplayAlert("Ha ocurrido un error de servidor", response.Error, "Ok");
+                        await DisplayAlert("Error", response.Error, "Ok");
                 }
                 else
                     await DisplayAlert("Error de conexión", "Compruebe que este conectado a internet", "Ok");
             }
             catch (NullReferenceException ex)
             {
-                await DisplayAlert("Ha ocurrido un error", "Debe de rellenar todos los campos", "Ok");
+                await DisplayAlert("Error", "Debe de llenar todos los campos", "Ok");
             }
             catch (Exception ex)
             {
-                
-                await DisplayAlert("Ha ocurrido un error de aplicacion", ex.Message, "Ok");
+                await DisplayAlert("Error", ex.Message, "Ok");
             }
-            
 
-            BtnLogin.IsEnabled = true;
+            BtnSignin.IsEnabled = true;
         }
     }
 }

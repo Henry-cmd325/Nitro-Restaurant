@@ -133,4 +133,7 @@
       <Name>AppMovil</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\video.mp4" />
+  </ItemGroup>
 </Project>

@@ -171,7 +171,7 @@ namespace AppEscritorio.Pages {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/AppEscritorio;component/pages/signup.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/AppEscritorio;V1.0.0.0;component/pages/signup.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Pages\SignUp.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

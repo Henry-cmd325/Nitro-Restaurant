@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "oox0+DG/zaj4pcfpSy9zww7VzSNFVgEHEY0mr9Y/Un4DopCkXSG69l52pFXcjyHbAzS3LwtdvOPDF//Al4ThFA==",
+  "dgSpecHash": "BeXtbSniOOKbbRgDfJyv0wNw02z+So/htywAqT/zy27zzPhNSE+bIr+VfAt+NOWy5R3ghUx9ovhharza4UkKTQ==",
   "success": true,
   "projectFilePath": "D:\\Programacion\\Uni\\Nitro Restaurant\\AppMovil\\AppMovil\\AppMovil.csproj",
   "expectedPackageFiles": [
@@ -22,6 +22,7 @@
     "C:\\Users\\henry\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\henry\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
     "C:\\Users\\henry\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\henry\\.nuget\\packages\\octane.xam.videoplayer\\3.1.0\\octane.xam.videoplayer.3.1.0.nupkg.sha512",
     "C:\\Users\\henry\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
     "C:\\Users\\henry\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0\\system.componentmodel.annotations.5.0.0.nupkg.sha512",
     "C:\\Users\\henry\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.0\\system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512",

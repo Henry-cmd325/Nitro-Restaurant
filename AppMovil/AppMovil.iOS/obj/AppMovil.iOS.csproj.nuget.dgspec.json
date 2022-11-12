@@ -119,6 +119,10 @@
               "target": "Package",
               "version": "[13.0.1, )"
             },
+            "Octane.Xam.VideoPlayer": {
+              "target": "Package",
+              "version": "[3.1.0, )"
+            },
             "Xamarin.Essentials": {
               "target": "Package",
               "version": "[1.7.0, )"

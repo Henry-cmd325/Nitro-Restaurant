@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Timers;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -20,60 +21,37 @@ namespace AppMovil
         public MainPage()
         {
             InitializeComponent();
+            AnimateCarousel();
+        }
+
+        Timer timer;
+
+        private void AnimateCarousel()
+        {
+            timer = new Timer(5000) { AutoReset = true, Enabled = true };
+
+            timer.Elapsed += (s, e) =>
+            {
+                if (cvOnBoarding.Position == 2)
+                {
+                    cvOnBoarding.Position = 0;
+                    return;
+                }
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    cvOnBoarding.Position += 1;
+                });
+            };
         }
 
         private void BtnLogin_Clicked(object sender, EventArgs e)
         {
-            Application.Current.MainPage = new Signin();
+            Application.Current.MainPage = new login();
         }
 
-        private async void BtnSignin_Clicked(object sender, EventArgs e)
+        private void BtnSingin_Clicked(object sender, EventArgs e)
         {
-            BtnSignin.IsEnabled = false;
-
-            try
-            {
-                var empleado = new EmpleadoSignInRequest()
-                {
-                    Materno = EMaterno.Text,
-                    Paterno = EPaterno.Text,
-                    Nombre = ENombre.Text,
-                    Telefono = ETelefono.Text
-                };
-
-                Validations.ValidarSignin(empleado);
-                
-                var response = await Api.Post<EmpleadoSignInRequest ,ServerResponse<EmpleadoResponse>>
-                                             ("http://nitrorestaurant-001-site1.ctempurl.com/api/Empleado/signin", empleado);
-
-                if (response != null)
-                {
-                    if (response.Success)
-                    {
-                        await DisplayAlert("Operación exitosa", "La cuenta ha sido registrada correctamente", "Ok");
-
-                        var app = Application.Current as App;
-
-                        
-
-                        app.MainPage = new Signin();
-                    }
-                    else
-                        await DisplayAlert("Error", response.Error, "Ok");
-                }   
-                else
-                    await DisplayAlert("Error de conexión", "Compruebe que este conectado a internet", "Ok");
-            }
-            catch (NullReferenceException ex)
-            {
-                await DisplayAlert("Error", "Debe de llenar todos los campos", "Ok");
-            }
-            catch (Exception ex)
-            {
-                await DisplayAlert("Error", ex.Message, "Ok");
-            }
-
-            BtnSignin.IsEnabled = true;
+            Application.Current.MainPage = new Signin();
         }
     }
 }

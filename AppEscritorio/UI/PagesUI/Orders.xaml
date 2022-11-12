@@ -29,6 +29,7 @@
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="*"/>
+                    <RowDefinition Height="60"/>
                 </Grid.RowDefinitions>
                 <TextBlock x:Name="OrderDescription" Text="Order" Visibility="Collapsed" HorizontalAlignment="Center" Grid.ColumnSpan="2" Style="{StaticResource titleText}"/>
                 <TextBlock x:Name="OrderNoMesa" Text="No. Mesa" Visibility="Collapsed" HorizontalAlignment="Center" Grid.Column="0" Padding="20" Grid.Row="1" Style="{StaticResource titleText}"/>
@@ -51,12 +52,12 @@
                 </ScrollViewer>
 
                 <TextBlock Grid.Row="1" x:Name="MesaggeNotClick" Visibility="Visible" Text="Doble Click on an order to view its description" Style="{StaticResource menuButtonText}" Grid.ColumnSpan="2" Foreground="#9EABE2" HorizontalAlignment="Center" Margin="0 250 0 0"/>
-                <Button Name="ButtonFinish" Visibility="Collapsed" Style="{StaticResource menuButton}" Grid.Row="3" Grid.Column="1" VerticalAlignment="Bottom" Margin="0 0 0 10" Click="ButtonFinish_Click">
+                <Button Name="ButtonFinish" Visibility="Visible" Style="{StaticResource menuButton}" Grid.Row="4" Grid.Column="1" VerticalAlignment="Bottom" Margin="0 0 0 10" Click="ButtonFinish_Click">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"> 
                         <TextBlock Text="Fnish Order" Style="{StaticResource menuButtonText}" />
                     </StackPanel>
                 </Button>
-                <Button Name="ButtonStart" Visibility="Collapsed" Style="{StaticResource menuButton}" Grid.Row="3" Grid.Column="0" VerticalAlignment="Bottom" Margin="0 0 0 10" Click="ButtonStart_Click">
+                <Button Name="ButtonStart" Visibility="Collapsed" Style="{StaticResource menuButton}" Grid.Row="4" Grid.Column="0" VerticalAlignment="Bottom" Margin="0 0 0 10" Click="ButtonStart_Click">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <TextBlock Text="Start Order" Style="{StaticResource menuButtonText}" />
                     </StackPanel>

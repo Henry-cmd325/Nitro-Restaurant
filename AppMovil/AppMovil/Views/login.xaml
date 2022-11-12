@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppMovil.Views.login">
+    <ContentPage.Content>
+        <Grid>
+            <StackLayout Padding="0" Margin="0">
+                <Frame BackgroundColor="LightBlue" HeightRequest="200" HorizontalOptions="FillAndExpand" Padding="0">
+
+                    <Image Source="https://www.agoda.com/wp-content/uploads/2019/03/Best-restaurants-in-Seoul-Fine-dining-Jungsik-Seoul-Mingles-restaurant.jpg"
+                       Aspect="AspectFill"></Image>
+                </Frame>
+            </StackLayout>
+
+            <StackLayout Margin="15, 110, 15, 0">
+
+                <Frame BackgroundColor ="#f9f9f9" HasShadow="True" HeightRequest="630" HorizontalOptions="FillAndExpand">
+                    <StackLayout>
+                        <StackLayout HorizontalOptions="CenterAndExpand" HeightRequest="250">
+                            <Image x:Name="Logo" Margin="0,40,0,0" Source="LogoLight3.gif" IsAnimationPlaying="True" WidthRequest="390"></Image>
+                        </StackLayout>
+
+                        <StackLayout Margin="0,0,0,0">
+                            <Frame Padding="0" Margin="0,60,0,0" BackgroundColor="Transparent" BorderColor="DarkGray" CornerRadius="50" HorizontalOptions="FillAndExpand">
+                                <StackLayout Orientation="Horizontal">
+                                    <Frame BackgroundColor="AliceBlue" CornerRadius="50" HeightRequest="35" WidthRequest="35" Padding="0" Margin="7">
+
+                                    </Frame>
+                                    <Entry x:Name="ETelefono" Placeholder="Número télefonico" TextColor="Black" HorizontalOptions="FillAndExpand" Margin="0,0,15,-15"></Entry>
+                                </StackLayout>
+                            </Frame>
+
+                            <Frame  Padding="0" Margin="0,20,0,0" BackgroundColor="Transparent" BorderColor="DarkGray" CornerRadius="50" HorizontalOptions="FillAndExpand">
+                                <StackLayout Orientation="Horizontal">
+                                    <Frame BackgroundColor="AliceBlue" CornerRadius="50" HeightRequest="35" WidthRequest="35" Padding="0" Margin="7">
+
+                                    </Frame>
+                                    <Entry x:Name="ECodigo" Placeholder="Código de enlace" TextColor="Black" HorizontalOptions="FillAndExpand" Margin="0,0,15,-15"></Entry>
+                                </StackLayout>
+                            </Frame>
+
+                        </StackLayout>
+
+                        <Button x:Name="BtnLogin" HorizontalOptions="Center" TextColor="White" CornerRadius="50" Margin="0,30,0,0" WidthRequest="300" Text="Login" 
+                                Background="#167ef5" Clicked="BtnLogin_Clicked"/>
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" WidthRequest="250">
+                            <Label Text="¿No estas registrado?"></Label>
+                            <Button x:Name="BtnSingin" BackgroundColor="Transparent" Text="Sign in" TextColor="#167ef5" Padding="0" Margin="-8,-8,0,0" HeightRequest="38"
+                                    Clicked="BtnSingin_Clicked"></Button>
+                        </StackLayout>
+
+                    </StackLayout>
+                </Frame>
+
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

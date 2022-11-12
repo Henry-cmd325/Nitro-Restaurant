@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "wubCF+U2NUl3oUj7LX5dGWNoNPfgXUJ+4NVAEA7KuEH0iAjGBjBbvaTZqag2qZgJ5xkY7mD0BtJFB4O+zYQHvQ==",
+  "dgSpecHash": "l5YUHEghLKG5SaXckDjpcnilabDqHMw0fzuhDlI8SOMTyPTb+OYUzw+5nIwPsSe2OF9AGO4ARots+FQIJ7C7Eg==",
   "success": true,
   "projectFilePath": "D:\\Programacion\\Uni\\Nitro Restaurant\\AppMovil\\AppMovil.iOS\\AppMovil.iOS.csproj",
   "expectedPackageFiles": [
@@ -20,6 +20,7 @@
     "C:\\Users\\henry\\.nuget\\packages\\microsoft.extensions.options\\6.0.0\\microsoft.extensions.options.6.0.0.nupkg.sha512",
     "C:\\Users\\henry\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
     "C:\\Users\\henry\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\henry\\.nuget\\packages\\octane.xam.videoplayer\\3.1.0\\octane.xam.videoplayer.3.1.0.nupkg.sha512",
     "C:\\Users\\henry\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
     "C:\\Users\\henry\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.0\\system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512",
     "C:\\Users\\henry\\.nuget\\packages\\system.io.pipelines\\6.0.3\\system.io.pipelines.6.0.3.nupkg.sha512",

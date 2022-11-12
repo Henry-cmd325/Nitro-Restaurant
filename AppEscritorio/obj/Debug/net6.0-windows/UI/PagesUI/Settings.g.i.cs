@@ -64,7 +64,7 @@ namespace AppEscritorio.UI.PagesUI {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/AppEscritorio;component/ui/pagesui/settings.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/AppEscritorio;V1.0.0.0;component/ui/pagesui/settings.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\UI\PagesUI\Settings.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

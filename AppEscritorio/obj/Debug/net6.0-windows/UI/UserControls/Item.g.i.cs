@@ -70,7 +70,7 @@ namespace AppEscritorio.UI.UserControls {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/AppEscritorio;component/ui/usercontrols/item.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/AppEscritorio;V1.0.0.0;component/ui/usercontrols/item.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\UI\UserControls\Item.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

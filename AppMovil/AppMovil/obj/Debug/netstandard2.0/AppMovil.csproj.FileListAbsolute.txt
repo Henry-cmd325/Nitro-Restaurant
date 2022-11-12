@@ -17,3 +17,24 @@ D:\Programacion\Uni\Nitro Restaurant\AppMovil\AppMovil\obj\Debug\netstandard2.0\
 D:\Programacion\Uni\Nitro Restaurant\AppMovil\AppMovil\obj\Debug\netstandard2.0\refint\AppMovil.dll
 D:\Programacion\Uni\Nitro Restaurant\AppMovil\AppMovil\obj\Debug\netstandard2.0\AppMovil.pdb
 D:\Programacion\Uni\Nitro Restaurant\AppMovil\AppMovil\obj\Debug\netstandard2.0\ref\AppMovil.dll
+D:\peyo-\Source\Repos\Nitro-Restaurant\AppMovil\AppMovil\bin\Debug\netstandard2.0\AppMovil.deps.json
+D:\peyo-\Source\Repos\Nitro-Restaurant\AppMovil\AppMovil\bin\Debug\netstandard2.0\AppMovil.dll
+D:\peyo-\Source\Repos\Nitro-Restaurant\AppMovil\AppMovil\bin\Debug\netstandard2.0\AppMovil.pdb
+D:\peyo-\Source\Repos\Nitro-Restaurant\AppMovil\AppMovil\obj\Debug\netstandard2.0\AppMovil.csproj.AssemblyReference.cache
+D:\peyo-\Source\Repos\Nitro-Restaurant\AppMovil\AppMovil\obj\Debug\netstandard2.0\AppMovil.GeneratedMSBuildEditorConfig.editorconfig
+D:\peyo-\Source\Repos\Nitro-Restaurant\AppMovil\AppMovil\obj\Debug\netstandard2.0\App.xaml.g.cs
+D:\peyo-\Source\Repos\Nitro-Restaurant\AppMovil\AppMovil\obj\Debug\netstandard2.0\MainPage.xaml.g.cs
+D:\peyo-\Source\Repos\Nitro-Restaurant\AppMovil\AppMovil\obj\Debug\netstandard2.0\Views\Modals\SelectProduct.xaml.g.cs
+D:\peyo-\Source\Repos\Nitro-Restaurant\AppMovil\AppMovil\obj\Debug\netstandard2.0\Views\PaginaPrincipal.xaml.g.cs
+D:\peyo-\Source\Repos\Nitro-Restaurant\AppMovil\AppMovil\obj\Debug\netstandard2.0\Views\Pedidos.xaml.g.cs
+D:\peyo-\Source\Repos\Nitro-Restaurant\AppMovil\AppMovil\obj\Debug\netstandard2.0\Views\Signin.xaml.g.cs
+D:\peyo-\Source\Repos\Nitro-Restaurant\AppMovil\AppMovil\obj\Debug\netstandard2.0\AppMovil.AssemblyInfoInputs.cache
+D:\peyo-\Source\Repos\Nitro-Restaurant\AppMovil\AppMovil\obj\Debug\netstandard2.0\AppMovil.AssemblyInfo.cs
+D:\peyo-\Source\Repos\Nitro-Restaurant\AppMovil\AppMovil\obj\Debug\netstandard2.0\AppMovil.csproj.CoreCompileInputs.cache
+D:\peyo-\Source\Repos\Nitro-Restaurant\AppMovil\AppMovil\obj\Debug\netstandard2.0\XamlC.stamp
+D:\peyo-\Source\Repos\Nitro-Restaurant\AppMovil\AppMovil\obj\Debug\netstandard2.0\AppMovil.dll
+D:\peyo-\Source\Repos\Nitro-Restaurant\AppMovil\AppMovil\obj\Debug\netstandard2.0\refint\AppMovil.dll
+D:\peyo-\Source\Repos\Nitro-Restaurant\AppMovil\AppMovil\obj\Debug\netstandard2.0\AppMovil.pdb
+D:\peyo-\Source\Repos\Nitro-Restaurant\AppMovil\AppMovil\obj\Debug\netstandard2.0\ref\AppMovil.dll
+D:\peyo-\Source\Repos\Nitro-Restaurant\AppMovil\AppMovil\obj\Debug\netstandard2.0\Views\login.xaml.g.cs
+D:\Programacion\Uni\Nitro Restaurant\AppMovil\AppMovil\obj\Debug\netstandard2.0\Views\login.xaml.g.cs
