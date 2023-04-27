@@ -39,10 +39,8 @@
                          Style="{StaticResource MaterialDesignOutlinedTextBox}" Cursor="IBeam"  />
             </StackPanel>
             <StackPanel Grid.Column="2" Grid.Row="1" VerticalAlignment="Center">
-                <ComboBox Name="ComboCategory" Width="232" IsReadOnly="True" IsEditable="True" Text="Select a Category" FontSize="16" Loaded="ComboBox_Loaded" SelectionChanged="ComboCategory_SelectionChanged" Height="32">
-                    <ComboBoxItem Name="CategorySelected">
-
-                    </ComboBoxItem>
+                <ComboBox x:Name="ComboCategory" Width="232" IsReadOnly="True" IsEditable="True" Text="Select a Category" FontSize="16" Loaded="ComboBox_Loaded" SelectionChanged="ComboCategory_SelectionChanged" Height="32">
+                    <ComboBoxItem x:Name="CategorySelected"/>
                 </ComboBox>
             </StackPanel>
             <StackPanel VerticalAlignment="Center" Grid.Row="2">

@@ -67,7 +67,7 @@ namespace AppEscritorio.UI.PagesUI.ModalCategory {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/AppEscritorio;V1.0.0.0;component/ui/pagesui/modalcategory/addcategory.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/AppEscritorio;component/ui/pagesui/modalcategory/addcategory.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\..\UI\PagesUI\ModalCategory\AddCategory.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

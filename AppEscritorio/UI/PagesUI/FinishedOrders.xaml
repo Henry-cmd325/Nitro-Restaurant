@@ -3,12 +3,90 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
+      xmlns:uc="clr-namespace:AppEscritorio.UI.UserControls"
       xmlns:local="clr-namespace:AppEscritorio.UI.PagesUI"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="FinishedOrders">
 
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="300"/>
+        </Grid.ColumnDefinitions>
+
+
+        <!--Chart Section-->
+        <Border CornerRadius="20" Padding="35 25" Background="#243771" Margin="50 0 10 40">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="60"/>
+                </Grid.RowDefinitions>
+                <TextBlock x:Name="OrderDescription" Text="Order" Visibility="Collapsed" HorizontalAlignment="Center" Grid.ColumnSpan="2" Style="{StaticResource titleText}"/>
+                <TextBlock x:Name="OrderNoMesa" Text="No. Mesa" Visibility="Collapsed" HorizontalAlignment="Center" Grid.Column="0" Padding="20" Grid.Row="1" Style="{StaticResource titleText}"/>
+                <TextBlock x:Name="OrderNameWaiter" Text="Waiter" Visibility="Collapsed" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="1" Padding="20" Style="{StaticResource titleText}"/>
+                <TextBlock x:Name="OrderProducts" Text="Products" Visibility="Collapsed" HorizontalAlignment="Center" Grid.ColumnSpan="2" Grid.Row="2" Padding="10" Style="{StaticResource titleText}"/>
+
+                <ScrollViewer x:Name="Scroll" Visibility="Collapsed" Grid.Row="3" Grid.ColumnSpan="2">
+                    <Grid x:Name="GridProducts">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <uc:Item x:Name="ItemProductsOfOrder" Title="T-Shirt Embrace" Visibility="Collapsed" Desc="John Doe - 10:30" Icon="Utensils" MouseDoubleClick="ItemBaseOrder_MouseDoubleClick" />
+
+                    </Grid>
+                </ScrollViewer>
+
+                <TextBlock Grid.Row="1" x:Name="MesaggeNotClick" Visibility="Visible" Text="Doble Click on an order to view its description" Style="{StaticResource menuButtonText}" Grid.ColumnSpan="2" Foreground="#9EABE2" HorizontalAlignment="Center" Margin="0 250 0 0"/>
+                <Button Name="ButtonFinish" Visibility="Visible" Style="{StaticResource menuButton}" Grid.Row="4" Grid.Column="1" VerticalAlignment="Bottom" Margin="0 0 0 10" Click="ButtonFinish_Click">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <TextBlock Text="Fnish Order" Style="{StaticResource menuButtonText}" />
+                    </StackPanel>
+                </Button>
+                <Button Name="ButtonStart" Visibility="Collapsed" Style="{StaticResource menuButton}" Grid.Row="4" Grid.Column="0" VerticalAlignment="Bottom" Margin="0 0 0 10" Click="ButtonStart_Click">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <TextBlock Text="Start Order" Style="{StaticResource menuButtonText}" />
+                    </StackPanel>
+                </Button>
+            </Grid>
+
+        </Border>
+        <!--Order Section-->
+        <Border Grid.Column="1" CornerRadius="20" Padding="0 25" Background="#243771" Margin="15 0 47 40">
+            <ScrollViewer Margin="10,0,10,0">
+                <Grid Name="GridOrdersList">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="20 0 0 15">
+                        <fa:IconImage Icon="Circle" Style="{StaticResource titleIcon}"/>
+                        <TextBlock Text="Finished orders" Style="{StaticResource titleText}"/>
+                    </StackPanel>
+                    <!--Orders-->
+                    <StackPanel Grid.Row="1">
+                        <uc:Item x:Name="ItemBaseOrder" Title="T-Shirt Embrace" Visibility="Collapsed" Desc="John Doe - 10:30" Icon="Clipboard" MouseDoubleClick="ItemBaseOrder_MouseDoubleClick" Loaded="ItemBaseOrder_Loaded"/>
+
+
+                    </StackPanel>
+                </Grid>
+            </ScrollViewer>
+
+        </Border>
     </Grid>
 </Page>

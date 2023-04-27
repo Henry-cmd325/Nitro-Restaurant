@@ -71,5 +71,13 @@ namespace AppEscritorio.UI
             var windowPadre = app.page as UI_window;
             windowPadre.Framesito.NavigationService.Navigate(orders);
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var finishedOrders = new FinishedOrders();
+            var app = (App)Application.Current;
+            var windowPadre = app.page as UI_window;
+            windowPadre.Framesito.NavigationService.Navigate(finishedOrders);
+        }
     }
 }

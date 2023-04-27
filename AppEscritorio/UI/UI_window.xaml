@@ -59,7 +59,7 @@
                         </StackPanel>
                     </Button>
 
-                    <Button Style="{StaticResource menuButton}">
+                    <Button Style="{StaticResource menuButton}" Click="Button_Click">
                         <StackPanel Orientation="Horizontal">
                             <fa:IconImage Icon="FileSignature" Style="{StaticResource menuButtonIcon}"/>
                             <TextBlock Text="Finished Orders" Style="{StaticResource menuButtonText}"/>

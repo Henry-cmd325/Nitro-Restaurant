@@ -59,7 +59,7 @@ namespace AppMovil.Views
 
                         connection.OnError(async () =>
                         {
-                            await DisplayAlert("Error", "El codigo introducido es incorrecto", "Ok");
+                            await DisplayAlert("Error", "Ha ocurrido un error", "Ok");
                         });
 
                         await connection.Connect(ECodigo.Text.Trim());

@@ -29,7 +29,7 @@
             <materialDesign:DialogHost  CloseOnClickAway="True" x:Name="DialogHost" Margin="0,0,0,0">
 
                 <StackPanel HorizontalAlignment="Center" Width="554" Margin="0,0,0,0">
-                    <materialDesign:PopupBox HorizontalAlignment="Right" Margin="0 20 20 0" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" Height="25">
+                    <materialDesign:PopupBox HorizontalAlignment="Right"  Margin="0 20 20 0" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" Height="25">
                         <StackPanel>
 
 
