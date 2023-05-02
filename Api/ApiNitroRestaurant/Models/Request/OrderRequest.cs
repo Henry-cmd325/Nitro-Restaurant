@@ -3,7 +3,9 @@
     public class OrderRequest
     {
         public int IdEmpleado { get; set; }
-        public string NumeroMesa { get; set; } = null!;
+        public int IdSucursal { get; set; }
+        public string Comentario { get; set; } = null!;
+        public int IdMesa { get; set; }
         public int Anio { get; set; }
         public int Mes { get; set; }
         public int Dia { get; set; }

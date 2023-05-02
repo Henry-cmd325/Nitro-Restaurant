@@ -6,8 +6,8 @@ namespace ApiNitroRestaurant.Services
 {
     public class OrderService : IOrderService
     {
-        private readonly NitroRestaurantContext _context;
-        public OrderService(NitroRestaurantContext context)
+        private readonly db_nitrorestaurantContext _context;
+        public OrderService(db_nitrorestaurantContext context)
         {
             _context = context;
         }
@@ -57,8 +57,6 @@ namespace ApiNitroRestaurant.Services
                 return serverResponse;
             }
 
-            
-
             foreach (var order in listDb)
             {
                 var detallesDb = _context.DetallePedidos.ToList();
@@ -88,11 +86,13 @@ namespace ApiNitroRestaurant.Services
                         terminado = false;
                 }
 
+                var dbEmployee = _context.Empleados.Where(e => e.IdEmpleado == order.IdEmpleado).First();
+                var dbTable = _context.Mesas.Where(m => m.IdMesa == order.IdMesa).First();
+
                 listResponse.Add(new OrderResponse()
                 {
                     IdPedido = order.IdPedido,
-                    IdEmpleado = order.IdEmpleado,
-                    NumeroMesa = order.NumeroMesa,
+                    Empleado = dbEmployee.Nombre,
                     Anio = order.FechaHora.Year,
                     Mes = order.FechaHora.Month,
                     Dia = order.FechaHora.Day, 
@@ -100,7 +100,8 @@ namespace ApiNitroRestaurant.Services
                     Minuto = order.FechaHora.Minute, 
                     Segundo = order.FechaHora.Second,
                     DetallesPedidos = detallesResponse,
-                    Terminado = terminado
+                    Terminado = terminado,
+                    Mesa = dbTable.NumMesa
                 });
             }
 
@@ -158,11 +159,11 @@ namespace ApiNitroRestaurant.Services
                     terminado = false;
             }
 
+            var dbEmployee = _context.Empleados.Where(e => e.IdEmpleado == orderDb.IdEmpleado).First();
             response.Data = new OrderResponse()
             {
-                IdEmpleado = orderDb.IdEmpleado,
+                Empleado = dbEmployee.Nombre,
                 IdPedido = orderDb.IdPedido,
-                NumeroMesa = orderDb.NumeroMesa,
                 Anio = orderDb.FechaHora.Year,
                 Mes = orderDb.FechaHora.Month,
                 Dia = orderDb.FechaHora.Day,
@@ -220,19 +221,12 @@ namespace ApiNitroRestaurant.Services
             var orderDb = new Pedido()
             {
                 IdEmpleado = model.IdEmpleado,
-                NumeroMesa = model.NumeroMesa,
                 FechaHora = fechaHora,
-                
+                Terminado = null,
+                IdSucursal = model.IdSucursal,
+                Comentario = model.Comentario,
+                IdMesa = model.IdMesa
             };
-
-            if (model.Terminado == true)
-            {
-                orderDb.Terminado = 1;
-            }
-            else if (model.Terminado == false)
-            {
-                orderDb.Terminado = 0;
-            }
 
             _context.Pedidos.Add(orderDb);
             _context.SaveChanges();
@@ -260,11 +254,14 @@ namespace ApiNitroRestaurant.Services
                 });
             }
 
+            var dbEmployee = _context.Empleados.Where(e => e.IdEmpleado == orderDb.IdEmpleado).First();
+            var dbTable = _context.Empleados.Where(e => e.IdEmpleado == orderDb.IdEmpleado).First();
+
             var orderResponse = new OrderResponse()
             {
                 IdPedido = orderDb.IdPedido,
-                IdEmpleado = orderDb.IdEmpleado,
-                NumeroMesa = orderDb.NumeroMesa,
+                Empleado = dbEmployee.Nombre,
+                Mesa = dbTable.Nombre,
                 Anio = model.Anio,
                 Mes = model.Mes,
                 Dia = model.Dia,
@@ -341,8 +338,9 @@ namespace ApiNitroRestaurant.Services
             }
 
             orderDb.IdEmpleado = model.IdEmpleado;
-            orderDb.NumeroMesa = model.NumeroMesa;
             orderDb.FechaHora = fechaHora;
+            orderDb.Comentario = model.Comentario;
+            orderDb.IdMesa = model.IdMesa;
             
             if (model.Terminado == true)
             {
@@ -379,11 +377,14 @@ namespace ApiNitroRestaurant.Services
                 });
             }
 
+            var dbEmployee = _context.Empleados.Where(e => e.IdEmpleado == orderDb.IdEmpleado).First();
+            var dbTable = _context.Empleados.Where(e => e.IdEmpleado == orderDb.IdEmpleado).First();
+
             response.Data = new OrderResponse()
             {
                 IdPedido = orderDb.IdPedido,
-                IdEmpleado = orderDb.IdEmpleado,
-                NumeroMesa = orderDb.NumeroMesa,
+                Empleado = dbEmployee.Nombre,
+                Mesa = dbTable.Nombre,
                 Anio = model.Anio,
                 Mes = model.Mes,
                 Dia = model.Dia,
@@ -415,19 +416,17 @@ namespace ApiNitroRestaurant.Services
                 pedidoDb.Terminado = 1;
             else if (model.Terminado == false)
                 pedidoDb.Terminado = 0;
-            else
-                pedidoDb.Terminado = null;
 
             _context.Entry(pedidoDb).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
             _context.SaveChanges();
 
             var orderResponse = new OrderResponse();
 
+            orderResponse.IdPedido = id;
             orderResponse.Anio = pedidoDb.FechaHora.Year;
             orderResponse.Mes = pedidoDb.FechaHora.Month;
             orderResponse.Dia = pedidoDb.FechaHora.Day;
             orderResponse.Segundo = pedidoDb.FechaHora.Second;
-            orderResponse.NumeroMesa = pedidoDb.NumeroMesa;
             orderResponse.DetallesPedidos = new List<DetalleResponse>();
 
             foreach(var detalle in pedidoDb.DetallePedidos)

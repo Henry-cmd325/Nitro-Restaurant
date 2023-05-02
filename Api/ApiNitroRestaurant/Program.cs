@@ -14,12 +14,11 @@ builder.Services.AddControllers().AddJsonOptions(x =>
 
 builder.Services.AddSignalR();
 
-builder.Services.AddDbContext<NitroRestaurantContext>
+builder.Services.AddDbContext<db_nitrorestaurantContext>
 (
     options => options.UseMySql(connString, ServerVersion.AutoDetect(connString))
 );
 
-builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddScoped<IEmployeeService, EmployeeService>();
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();

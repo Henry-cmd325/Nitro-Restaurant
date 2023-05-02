@@ -1,13 +1,14 @@
 ﻿using ApiNitroRestaurant.Models;
 using ApiNitroRestaurant.Models.Request;
 using ApiNitroRestaurant.Models.Response;
+using ApiNitroRestaurant.Tools;
 
 namespace ApiNitroRestaurant.Services
 {
     public class EmployeeService : IEmployeeService
     {
-        private readonly NitroRestaurantContext _context;
-        public EmployeeService(NitroRestaurantContext context)
+        private readonly db_nitrorestaurantContext _context;
+        public EmployeeService(db_nitrorestaurantContext context)
         {
             _context = context;
         }
@@ -15,24 +16,39 @@ namespace ApiNitroRestaurant.Services
         {
             ServerResponse<EmpleadoResponse> response = new();
 
-            var employee = _context.Empleados.Where(e => e.Telefono == model.Telefono).FirstOrDefault();
+            var password = Encrypt.GetSha256(model.Password);
+
+            var employee = _context.Empleados.Where(e => e.Usuario == model.Username && e.Contrasenia == Encrypt.GetSha256(model.Password)).FirstOrDefault();
 
             if (employee == null)
             {
                 response.Success = false;
-                response.Error = "El numero telefonico no esta registrado";
 
+                if (_context.Empleados.Where(e => e.Usuario == model.Username && e.ContraseniaAnterior == Encrypt.GetSha256(model.Password)).FirstOrDefault() == null)
+                {
+                    response.Error = "La contraseña ingresada es una contraseña anterior";
+
+                    return response;
+                }
+
+                response.Error = "El usuario o la contraseña ingresada no corresponden con ningun registro";
+                
                 return response;
             }
+
+            var dbTipoEmpleado = _context.TipoEmpleados.Where(t => t.IdTipoEmpleado == employee.IdTipoEmpleado).First();
+            var dbSucursal = _context.Sucursales.Where(s => s.IdSucursal == employee.IdSucursal).First();
 
             response.Data = new EmpleadoResponse()
             {
                 IdEmpleado = employee.IdEmpleado,
-                IdTipoEmpleado = employee.IdTipoEmpleado,
+                TipoEmpleado = dbTipoEmpleado.Nombre,
+                Usuario = employee.Usuario,
                 Nombre = employee.Nombre,
                 Paterno = employee.Paterno,
                 Materno = employee.Materno,
-                Telefono = employee.Telefono
+                Telefono = employee.Telefono,
+                Sucursal = dbSucursal.Nombre
             };
 
             return response;
@@ -52,14 +68,20 @@ namespace ApiNitroRestaurant.Services
                 return response;
             }
 
+
+            var dbTipoEmpleado = _context.TipoEmpleados.Where(t => t.IdTipoEmpleado == employee.IdTipoEmpleado).First();
+            var dbSucursal = _context.Sucursales.Where(s => s.IdSucursal == employee.IdSucursal).First();
+
             response.Data = new EmpleadoResponse()
             {
                 IdEmpleado = employee.IdEmpleado,
-                IdTipoEmpleado = employee.IdTipoEmpleado,
+                TipoEmpleado = dbTipoEmpleado.Nombre,
+                Usuario = employee.Usuario,
                 Nombre = employee.Nombre,
                 Paterno = employee.Paterno,
                 Materno = employee.Materno,
-                Telefono = employee.Telefono
+                Telefono = employee.Telefono,
+                Sucursal = dbSucursal.Nombre
             };
 
             return response;
@@ -83,15 +105,19 @@ namespace ApiNitroRestaurant.Services
 
             foreach(var empleado in listDb)
             {
+                var dbTipoEmpleado = _context.TipoEmpleados.Where(t => t.IdTipoEmpleado == empleado.IdTipoEmpleado).First();
+                var dbSucursal = _context.Sucursales.Where(s => s.IdSucursal == empleado.IdSucursal).First();
+
                 listResponse.Add(new EmpleadoResponse()
                 {
                     IdEmpleado = empleado.IdEmpleado,
-                    IdCuenta = empleado.IdCuenta,
                     Materno = empleado.Materno,
+                    Usuario = empleado.Usuario,
                     Telefono = empleado.Telefono,
                     Paterno = empleado.Paterno,
                     Nombre = empleado.Nombre,
-                    IdTipoEmpleado = empleado.IdTipoEmpleado
+                    TipoEmpleado = dbTipoEmpleado.Nombre,
+                    Sucursal = dbSucursal.Nombre
                 });
             }
 
@@ -100,7 +126,7 @@ namespace ApiNitroRestaurant.Services
             return response;
         }
 
-        public ServerResponse<EmpleadoResponse> SignIn(EmpleadoRequest model)
+        public ServerResponse<EmpleadoResponse> SignUp(EmpleadoRequest model)
         {
             ServerResponse<EmpleadoResponse> response = new();
 
@@ -114,8 +140,7 @@ namespace ApiNitroRestaurant.Services
                 return response;
             }
 
-            var atribbuteType = _context.TipoEmpleados.Where(t => t.Nombre == model.TipoEmpleado.Nombre).FirstOrDefault();
-
+            var atribbuteType = _context.TipoEmpleados.Where(t => t.Nombre == t.Nombre).FirstOrDefault();
             if (atribbuteType == null)
             {
                 response.Success = false;
@@ -123,23 +148,38 @@ namespace ApiNitroRestaurant.Services
 
                 return response;
             }
-            else if (atribbuteType.Nombre != "Mesero")
-            {
-                response.Success = false;
-                response.Error = "Este endpoint solo es para crear usuarios de tipo Mesero";
-
-                return response;
-            }
+          
 
             var employee = new Empleado();
             employee.Telefono = model.Telefono;
+            employee.IdSucursal = model.IdSucursal;
+            employee.Usuario = model.Usuario;
             employee.Materno = model.Materno;
             employee.Paterno = model.Paterno;
             employee.Nombre = model.Nombre;
+            employee.Contrasenia = Encrypt.GetSha256(model.Contrasenia);
             employee.IdTipoEmpleado = atribbuteType.IdTipoEmpleado;
 
             _context.Empleados.Add(employee);
             _context.SaveChanges();
+
+            var dbTipo = _context.Empleados.Where(e => e.IdTipoEmpleado == employee.IdTipoEmpleado).FirstOrDefault();
+            if (dbTipo == null)
+            {
+                response.Success = false;
+                response.Error = "El id del tipo-empleado introducido no existe";
+
+                return response;
+            }
+
+            var dbSucursal = _context.Sucursales.Where(s => s.IdSucursal == employee.IdSucursal).FirstOrDefault();
+            if (dbSucursal == null)
+            {
+                response.Success = false;
+                response.Error = "El id de la sucursal introducida no existe";
+
+                return response;
+            }
 
             var employeeResponse = new EmpleadoResponse()
             {
@@ -147,7 +187,11 @@ namespace ApiNitroRestaurant.Services
                 Telefono = employee.Telefono,
                 Materno = employee.Materno,
                 Paterno = employee.Paterno,
-                Nombre = employee.Nombre
+                Nombre = employee.Nombre,
+                TipoEmpleado = dbTipo.Nombre,
+                Usuario = employee.Usuario,
+                Contrasenia = employee.Contrasenia,
+                Sucursal = dbSucursal.Nombre
             };
 
             response.Data = employeeResponse;

@@ -7,14 +7,14 @@ namespace ApiNitroRestaurant.Models
     {
         public Operacione()
         {
-            TipoOperaciones = new HashSet<TipoOperacione>();
+            TipoeOperaciones = new HashSet<TipoeOperacione>();
         }
 
         public int IdOperacion { get; set; }
         public int IdModulo { get; set; }
-        public string Nombre { get; set; } = null!;
+        public int Nombre { get; set; }
 
         public virtual Modulo IdModuloNavigation { get; set; } = null!;
-        public virtual ICollection<TipoOperacione> TipoOperaciones { get; set; }
+        public virtual ICollection<TipoeOperacione> TipoeOperaciones { get; set; }
     }
 }

@@ -7,8 +7,8 @@ namespace ApiNitroRestaurant.Services
 {
     public class ProductService : IProductService
     {
-        private readonly NitroRestaurantContext _context;
-        public ProductService(NitroRestaurantContext context)
+        private readonly db_nitrorestaurantContext _context;
+        public ProductService(db_nitrorestaurantContext context)
         {
             _context = context; 
         }
@@ -26,7 +26,7 @@ namespace ApiNitroRestaurant.Services
                 return response;
             }
 
-            var categoria = _context.Categorias.Where(c => c.Nombre == model.Categoria).FirstOrDefault();
+            var categoria = _context.Categorias.Where(c => c.IdCategoria == model.IdCategoria).FirstOrDefault();
 
             if (categoria == null)
             {
@@ -42,8 +42,11 @@ namespace ApiNitroRestaurant.Services
                 Nombre = model.Nombre,
                 Inversion = model.Inversion,
                 Precio = model.Precio,
-                Disponible = model.Disponible ? Convert.ToInt16(1) : Convert.ToInt16(0),
-                Imagen = model.Imagen != null ? Encoding.ASCII.GetBytes(model.Imagen) : null
+                Contable = model.Contable? (ulong)1 : 0,
+                ImgUrl = model.ImgUrl,
+                Cantidad = model.Cantidad,
+                IdUm = model.IdUm,
+                IdSucursal = model.IdSucursal
             };
 
             _context.Productos.Add(product);
@@ -56,8 +59,11 @@ namespace ApiNitroRestaurant.Services
                 Nombre = product.Nombre,
                 Inversion = product.Inversion,
                 Precio = product.Precio,
-                Disponible = product.Disponible == 1 ? true : false,
-                Imagen = product.Imagen != null ? Encoding.UTF8.GetString(product.Imagen) : null
+                Contable = model.Contable,
+                ImgUrl = product.ImgUrl,
+                Cantidad = product.Cantidad,
+                IdUm = product.IdUm,
+                IdSucursal = product.IdSucursal
             };
 
             response.Data = productResponse;
@@ -90,8 +96,11 @@ namespace ApiNitroRestaurant.Services
                     Nombre = product.Nombre,
                     Inversion = product.Inversion,
                     Precio = product.Precio,
-                    Disponible = product.Disponible == 1 ? true : false,
-                    Imagen = product.Imagen != null ? Encoding.UTF8.GetString(product.Imagen) : null
+                    Contable = product.Contable == 1? true: false,
+                    ImgUrl = product.ImgUrl,
+                    Cantidad = product.Cantidad,
+                    IdUm = product.IdUm,
+                    IdSucursal = product.IdSucursal
                 });
             }
 
@@ -120,8 +129,11 @@ namespace ApiNitroRestaurant.Services
                 Nombre = product.Nombre,
                 Inversion = product.Inversion,
                 Precio = product.Precio,
-                Disponible = product.Disponible == 1 ? true : false,
-                Imagen = product.Imagen != null ? Encoding.UTF8.GetString(product.Imagen) : null
+                Contable = product.Contable == 1? true: false,
+                ImgUrl = product.ImgUrl,
+                Cantidad = product.Cantidad,
+                IdUm = product.IdUm,
+                IdSucursal = product.IdSucursal
             };
 
             response.Data = productResponse;
@@ -134,7 +146,6 @@ namespace ApiNitroRestaurant.Services
             ServerResponse<ProductResponse> response = new();
 
             var productDb = _context.Productos.Where(p => p.IdProducto == id).FirstOrDefault();
-
             if(productDb == null)
             {
                 response.Error = "No existe ningun producto con el id introducido";
@@ -143,8 +154,7 @@ namespace ApiNitroRestaurant.Services
                 return response;
             }
 
-            var categoria = _context.Categorias.Where(c => c.Nombre == model.Categoria).FirstOrDefault();
-
+            var categoria = _context.Categorias.Where(c => c.IdCategoria == model.IdCategoria).FirstOrDefault();
             if (categoria == null)
             {
                 response.Error = "La categoria elegida para el producto no existe";
@@ -154,11 +164,14 @@ namespace ApiNitroRestaurant.Services
             }
 
             productDb.Nombre = model.Nombre;
-            productDb.Disponible = model.Disponible? Convert.ToInt16(1) : Convert.ToInt16(0);
-            productDb.Imagen = model.Imagen != null ? Encoding.ASCII.GetBytes(model.Imagen) : null;
             productDb.IdCategoria = categoria.IdCategoria;
             productDb.Precio = model.Precio;
             productDb.Inversion = model.Inversion;
+            productDb.Contable = model.Contable? (ulong)1: 0;
+            productDb.ImgUrl = model.ImgUrl;
+            productDb.Cantidad = model.Cantidad;
+            productDb.IdUm = model.IdUm;
+            productDb.IdSucursal = model.IdSucursal;
 
             _context.Entry(productDb).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
             _context.SaveChanges();
@@ -170,8 +183,11 @@ namespace ApiNitroRestaurant.Services
                 Nombre = productDb.Nombre,
                 Inversion = productDb.Inversion,
                 Precio = productDb.Precio,
-                Disponible = productDb.Disponible == 1 ? true : false,
-                Imagen = productDb.Imagen != null ? Encoding.UTF8.GetString(productDb.Imagen) : null
+                Contable = model.Contable,
+                ImgUrl = model.ImgUrl,
+                Cantidad = model.Cantidad,
+                IdUm = model.IdUm,
+                IdSucursal = model.IdSucursal
             };
 
             return response;

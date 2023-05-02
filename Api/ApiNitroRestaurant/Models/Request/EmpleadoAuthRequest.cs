@@ -2,6 +2,7 @@
 {
     public class EmpleadoAuthRequest
     {
-        public string Telefono { get; set; } = null!;       
+        public string Username { get; set; } = null!;
+        public string Password { get; set; } = null!;       
     }
 }

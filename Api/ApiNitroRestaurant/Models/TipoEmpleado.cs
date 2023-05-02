@@ -8,13 +8,13 @@ namespace ApiNitroRestaurant.Models
         public TipoEmpleado()
         {
             Empleados = new HashSet<Empleado>();
-            TipoOperaciones = new HashSet<TipoOperacione>();
+            TipoeOperaciones = new HashSet<TipoeOperacione>();
         }
 
         public int IdTipoEmpleado { get; set; }
         public string Nombre { get; set; } = null!;
 
         public virtual ICollection<Empleado> Empleados { get; set; }
-        public virtual ICollection<TipoOperacione> TipoOperaciones { get; set; }
+        public virtual ICollection<TipoeOperacione> TipoeOperaciones { get; set; }
     }
 }

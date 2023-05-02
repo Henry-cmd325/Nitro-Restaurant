@@ -50,7 +50,7 @@ namespace ApiNitroRestaurant.Controllers
         [HttpPost("signin")]
         public IActionResult EmpleadoSignIn([FromBody] EmpleadoRequest model)
         {
-            var response = _employeeService.SignIn(model);
+            var response = _employeeService.SignUp(model);
 
             if (!response.Success) return BadRequest(response);
 

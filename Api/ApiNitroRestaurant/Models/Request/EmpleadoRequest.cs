@@ -6,6 +6,10 @@
         public string Paterno { get; set; } = null!;
         public string Materno { get; set; } = null!;
         public string Telefono { get; set; } = null!;
-        public TipoEmpleadoRequest TipoEmpleado { get; set; } = null!;
+        public int IdTipoEmpleado { get; set; }
+        public int IdSucursal { get; set; }
+        public string Usuario { get; set; } = null!;
+        public string Contrasenia { get; set; } = null!;
+        public string? ContraseniaAnterior { get; set; }
     }
 }

@@ -6,8 +6,8 @@ namespace ApiNitroRestaurant.Services
 {
     public class CategoryService : ICategoryService
     {
-        private readonly NitroRestaurantContext _context;
-        public CategoryService(NitroRestaurantContext context)
+        private readonly db_nitrorestaurantContext _context;
+        public CategoryService(db_nitrorestaurantContext context)
         {
             _context = context;
         }
@@ -50,7 +50,6 @@ namespace ApiNitroRestaurant.Services
                 return response;
             }
 
-            
             _context.Categorias.Remove(categoryDb);
             _context.SaveChanges();
 

@@ -12,11 +12,17 @@ namespace ApiNitroRestaurant.Models
 
         public int IdPedido { get; set; }
         public int IdEmpleado { get; set; }
-        public string NumeroMesa { get; set; } = null!;
+        public int IdSucursal { get; set; }
+        public int IdTipoPedido { get; set; }
         public DateTime FechaHora { get; set; }
         public ulong? Terminado { get; set; }
+        public string Comentario { get; set; } = null!;
+        public int IdMesa { get; set; }
 
         public virtual Empleado IdEmpleadoNavigation { get; set; } = null!;
+        public virtual Mesa IdMesaNavigation { get; set; } = null!;
+        public virtual Sucursale IdSucursalNavigation { get; set; } = null!;
+        public virtual TipoPedido IdTipoPedidoNavigation { get; set; } = null!;
         public virtual ICollection<DetallePedido> DetallePedidos { get; set; }
     }
 }
