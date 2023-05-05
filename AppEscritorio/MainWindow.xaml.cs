@@ -82,7 +82,7 @@ namespace AppEscritorio
             {
                 var cuenta = new AccountRequest { Username = txtUsername.Text, Password = txtPassword.Password };
 
-                var result = await Api.Post<AccountRequest, ServerResponse<AccountResponse>>("http://nitrorestaurant-001-site1.ctempurl.com/api/Cuenta/login", cuenta);
+                var result = await Api.Post<AccountRequest, ServerResponse<AccountResponse>>("https://localhost:7214/api/Empleado/login", cuenta);
 
                 if (result != null && result.Success)
                 {
