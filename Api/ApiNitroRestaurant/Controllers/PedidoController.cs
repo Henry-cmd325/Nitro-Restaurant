@@ -37,7 +37,7 @@ namespace ApiNitroRestaurant.Controllers
         }
 
         [HttpPost]
-        public IActionResult PostPedido([FromBody] OrderRequest model)
+        public IActionResult PostPedido(OrderRequest model)
         {
             var response = _orderService.PostOrder(model);
 
@@ -57,7 +57,7 @@ namespace ApiNitroRestaurant.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult PutPedido(int id, [FromBody] OrderRequest model)
+        public IActionResult PutPedido(int id, OrderRequest model)
         {
             var response = _orderService.UpdateOrder(id, model);
 
@@ -67,7 +67,7 @@ namespace ApiNitroRestaurant.Controllers
         }
 
         [HttpPut("state/{id}")]
-        public IActionResult PutStatePedido(int id, [FromBody] OrderStateRequest model)
+        public IActionResult PutStatePedido(int id, OrderStateRequest model)
         {
             var response = _orderService.UpdateState(id, model);
 

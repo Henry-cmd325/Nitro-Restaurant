@@ -37,7 +37,7 @@ namespace ApiNitroRestaurant.Controllers
         }
 
         [HttpPost]
-        public IActionResult CategoriaPost([FromBody] CategoriaRequest model)
+        public IActionResult CategoriaPost(CategoriaRequest model)
         {
             var response = _categoryService.PostCategory(model);
 
@@ -57,7 +57,7 @@ namespace ApiNitroRestaurant.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult CategoriaPut(int id, [FromBody] CategoriaRequest model)
+        public IActionResult CategoriaPut(int id, CategoriaRequest model)
         {
             var response = _categoryService.PutCategory(id, model);
 

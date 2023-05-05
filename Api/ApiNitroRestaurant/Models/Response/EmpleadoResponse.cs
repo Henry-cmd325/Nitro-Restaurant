@@ -8,6 +8,7 @@
         public string Contrasenia { get; set; } = null!;
         public string Nombre { get; set; } = null!;
         public string Paterno { get; set; } = null!;
+        public bool Activo { get; set; }
         public string Materno { get; set; } = null!;
         public string Telefono { get; set; } = null!;
         public string Sucursal { get; set; } = null!;

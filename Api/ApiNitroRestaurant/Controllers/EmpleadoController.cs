@@ -16,7 +16,7 @@ namespace ApiNitroRestaurant.Controllers
         {
             _employeeService = employeeService;
         }
-        
+
         [HttpGet]
         public IActionResult GetEmpleados()
         {
@@ -38,23 +38,33 @@ namespace ApiNitroRestaurant.Controllers
         }
 
         [HttpPost("login")]
-        public IActionResult EmpleadoLogin([FromBody] EmpleadoAuthRequest model)
+        public IActionResult EmpleadoLogin(EmpleadoAuthRequest model)
         {
             var response = _employeeService.Auth(model);
 
-            if(!response.Success) return BadRequest(response);
+            if (!response.Success) return BadRequest(response);
 
             return Ok(response);
         }
 
-        [HttpPost("signin")]
-        public IActionResult EmpleadoSignIn([FromBody] EmpleadoRequest model)
+        [HttpPost("signup")]
+        public IActionResult EmpleadoSignUp(EmpleadoRequest model)
         {
             var response = _employeeService.SignUp(model);
 
             if (!response.Success) return BadRequest(response);
 
             return CreatedAtRoute(nameof(GetEmpleadoById), new { id = response.Data.IdEmpleado }, response);
+        }
+
+        [HttpPut("disable/{id}")]
+        public IActionResult DisableEmpleado(int id)
+        {
+            var response = _employeeService.Disable(id);
+
+            if (!response.Success) return BadRequest(response);
+
+            return NoContent();
         }
     }
 }
