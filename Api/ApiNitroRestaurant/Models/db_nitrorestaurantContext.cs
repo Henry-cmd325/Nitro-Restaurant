@@ -112,6 +112,10 @@ namespace ApiNitroRestaurant.Models
                     .HasColumnType("int(11)")
                     .HasColumnName("ID_EMPLEADO");
 
+                entity.Property(e => e.Activo)
+                    .HasColumnType("bit(1)")
+                    .HasColumnName("ACTIVO");
+
                 entity.Property(e => e.Contrasenia)
                     .HasMaxLength(64)
                     .HasColumnName("CONTRASENIA");

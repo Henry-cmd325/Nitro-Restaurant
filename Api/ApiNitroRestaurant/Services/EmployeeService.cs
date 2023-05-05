@@ -18,7 +18,8 @@ namespace ApiNitroRestaurant.Services
 
             var password = Encrypt.GetSha256(model.Password);
 
-            var employee = _context.Empleados.Where(e => e.Usuario == model.Username && e.Contrasenia == Encrypt.GetSha256(model.Password)).FirstOrDefault();
+            var employee = _context.Empleados.Where(e => e.Usuario == model.Username 
+                                                    && e.Contrasenia == Encrypt.GetSha256(model.Password)).FirstOrDefault();
 
             if (employee == null)
             {
@@ -36,6 +37,14 @@ namespace ApiNitroRestaurant.Services
                 return response;
             }
 
+            if (employee.Activo == 0)
+            {
+                response.Success = false;
+                response.Error = "La cuenta con la que quiere ingresar ha sido dado de baja";
+
+                return response;
+            }
+
             var dbTipoEmpleado = _context.TipoEmpleados.Where(t => t.IdTipoEmpleado == employee.IdTipoEmpleado).First();
             var dbSucursal = _context.Sucursales.Where(s => s.IdSucursal == employee.IdSucursal).First();
 
@@ -48,8 +57,29 @@ namespace ApiNitroRestaurant.Services
                 Paterno = employee.Paterno,
                 Materno = employee.Materno,
                 Telefono = employee.Telefono,
+                Activo = true,
                 Sucursal = dbSucursal.Nombre
             };
+
+            return response;
+        }
+
+        public ServerResponse<EmpleadoResponse> Disable(int id)
+        {
+            var response = new ServerResponse<EmpleadoResponse>();
+
+            var dbEmployee = _context.Empleados.Where(e => e.IdEmpleado == id).FirstOrDefault();
+            if (dbEmployee == null)
+            {
+                response.Success = false;
+                response.Error = "El id introducido no corresponde con ningun empleado";
+
+                return response;
+            }
+
+            dbEmployee.Activo = (ulong)(dbEmployee.Activo == 1? 0: 1);
+            _context.Entry(dbEmployee).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            _context.SaveChanges();
 
             return response;
         }
@@ -80,6 +110,7 @@ namespace ApiNitroRestaurant.Services
                 Nombre = employee.Nombre,
                 Paterno = employee.Paterno,
                 Materno = employee.Materno,
+                Activo = employee.Activo == 1,
                 Telefono = employee.Telefono,
                 Sucursal = dbSucursal.Nombre
             };
@@ -159,6 +190,7 @@ namespace ApiNitroRestaurant.Services
             employee.Nombre = model.Nombre;
             employee.Contrasenia = Encrypt.GetSha256(model.Contrasenia);
             employee.IdTipoEmpleado = atribbuteType.IdTipoEmpleado;
+            employee.Activo = 1;
 
             _context.Empleados.Add(employee);
             _context.SaveChanges();

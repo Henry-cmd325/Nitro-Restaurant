@@ -21,6 +21,7 @@ namespace ApiNitroRestaurant.Models
         public string Usuario { get; set; } = null!;
         public string Contrasenia { get; set; } = null!;
         public string? ContraseniaAnterior { get; set; }
+        public ulong Activo { get; set; }
 
         public virtual Sucursale IdSucursalNavigation { get; set; } = null!;
         public virtual TipoEmpleado IdTipoEmpleadoNavigation { get; set; } = null!;

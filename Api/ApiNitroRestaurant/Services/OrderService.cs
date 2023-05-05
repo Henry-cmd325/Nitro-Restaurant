@@ -30,7 +30,13 @@ namespace ApiNitroRestaurant.Services
             {
                 var detailDb = _context.DetallePedidos.Where(d => d.IdPedido == orderDb.IdPedido).FirstOrDefault();
 
-                if (detailDb != null) _context.DetallePedidos.Remove(detailDb);
+                if (detailDb != null)
+                {
+                    _context.DetallePedidos.Remove(detailDb);
+
+                    var product = _context.Productos.Where(p => p.IdProducto == detailDb.IdProducto).First().Cantidad += detailDb.Cantidad;
+                    _context.Entry(product).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                }
 
                 _context.SaveChanges();
             }
@@ -78,16 +84,11 @@ namespace ApiNitroRestaurant.Services
 
                 bool? terminado = null;
 
-                if (order.Terminado != null)
-                {
-                    if (order.Terminado == 1)
-                        terminado = true;
-                    else
-                        terminado = false;
-                }
+                if (order.Terminado != null) terminado = order.Terminado == 1;
 
                 var dbEmployee = _context.Empleados.Where(e => e.IdEmpleado == order.IdEmpleado).First();
                 var dbTable = _context.Mesas.Where(m => m.IdMesa == order.IdMesa).First();
+                var dbTipo = _context.TipoPedidos.Where(t => t.IdTipoPedido == order.IdTipoPedido).First();
 
                 listResponse.Add(new OrderResponse()
                 {
@@ -100,7 +101,9 @@ namespace ApiNitroRestaurant.Services
                     Minuto = order.FechaHora.Minute, 
                     Segundo = order.FechaHora.Second,
                     DetallesPedidos = detallesResponse,
+                    Comentario = order.Comentario,
                     Terminado = terminado,
+                    TipoPedido = dbTipo.Nombre,
                     Mesa = dbTable.NumMesa
                 });
             }
@@ -151,15 +154,12 @@ namespace ApiNitroRestaurant.Services
 
             bool? terminado = null;
 
-            if (orderDb.Terminado != null)
-            {
-                if (orderDb.Terminado == 1)
-                    terminado = true;
-                else
-                    terminado = false;
-            }
+            if (orderDb.Terminado != null) terminado = orderDb.Terminado == 1;
 
             var dbEmployee = _context.Empleados.Where(e => e.IdEmpleado == orderDb.IdEmpleado).First();
+            var dbMesa = _context.Mesas.Where(m => m.IdMesa == orderDb.IdMesa).First();
+            var dbTipo = _context.TipoPedidos.Where(t => t.IdTipoPedido == orderDb.IdTipoPedido).First();
+
             response.Data = new OrderResponse()
             {
                 Empleado = dbEmployee.Nombre,
@@ -170,6 +170,9 @@ namespace ApiNitroRestaurant.Services
                 Hora = orderDb.FechaHora.Hour, 
                 Minuto = orderDb.FechaHora.Minute, 
                 Segundo = orderDb.FechaHora.Second,
+                Comentario = orderDb.Comentario,
+                TipoPedido = dbTipo.Nombre,
+                Mesa = dbMesa.NumMesa,
                 DetallesPedidos = listDetalles,
                 Terminado = terminado
             };
@@ -224,6 +227,7 @@ namespace ApiNitroRestaurant.Services
                 FechaHora = fechaHora,
                 Terminado = null,
                 IdSucursal = model.IdSucursal,
+                IdTipoPedido = model.IdTipoPedido,
                 Comentario = model.Comentario,
                 IdMesa = model.IdMesa
             };
@@ -256,6 +260,7 @@ namespace ApiNitroRestaurant.Services
 
             var dbEmployee = _context.Empleados.Where(e => e.IdEmpleado == orderDb.IdEmpleado).First();
             var dbTable = _context.Empleados.Where(e => e.IdEmpleado == orderDb.IdEmpleado).First();
+            var dbTipo = _context.TipoEmpleados.Where(e => e.IdTipoEmpleado == orderDb.IdTipoPedido).First();
 
             var orderResponse = new OrderResponse()
             {
@@ -269,7 +274,9 @@ namespace ApiNitroRestaurant.Services
                 Minuto = model.Minuto,
                 Segundo = model.Segundo,
                 DetallesPedidos = listDetalleResponse,
-                Terminado = model.Terminado
+                TipoPedido = dbTipo.Nombre,
+                Comentario = model.Comentario,
+                Terminado = null
             };
             
             response.Data = orderResponse;
@@ -282,7 +289,6 @@ namespace ApiNitroRestaurant.Services
             ServerResponse<OrderResponse> response = new();
 
             var orderDb = _context.Pedidos.Where(p => p.IdPedido == id).FirstOrDefault();
-
             if (orderDb == null)
             {
                 response.Error = "El id introducido no coincide con el id de ningun pedido";
@@ -292,13 +298,19 @@ namespace ApiNitroRestaurant.Services
             }
 
             var empleadoDb = _context.Empleados.Where(e => e.IdEmpleado == model.IdEmpleado).FirstOrDefault();
-
             if (empleadoDb == null)
             {
                 response.Success = false;
                 response.Error = "No existe ningun empleado con el id introducido";
 
                 return response;
+            }
+
+            var mesaDb = _context.Mesas.Where(m => m.IdMesa == model.IdMesa).FirstOrDefault();
+            if (mesaDb == null)
+            {
+                response.Success = false;
+                response.Error = "No existe nungyna mesa con el id introducido";
             }
 
             while (_context.DetallePedidos.Where(d => d.IdPedido == orderDb.IdPedido).FirstOrDefault() != null)
@@ -317,7 +329,7 @@ namespace ApiNitroRestaurant.Services
                 if (productoDb == null)
                 {
                     response.Success = false;
-                    response.Error = "No existe ningun producto con el id introducido (" + detalle.IdProducto + ")";
+                    response.Error = "No existe ningun producto con el id introducido";
 
                     return response;
                 }
@@ -341,15 +353,7 @@ namespace ApiNitroRestaurant.Services
             orderDb.FechaHora = fechaHora;
             orderDb.Comentario = model.Comentario;
             orderDb.IdMesa = model.IdMesa;
-            
-            if (model.Terminado == true)
-            {
-                orderDb.Terminado = 1;
-            }
-            else if (model.Terminado == false)
-            {
-                orderDb.Terminado = 0;
-            }
+            orderDb.IdTipoPedido = model.IdTipoPedido;
 
             _context.Entry(orderDb).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
             _context.SaveChanges();
@@ -368,32 +372,7 @@ namespace ApiNitroRestaurant.Services
                 _context.DetallePedidos.Add(detalleDb);
 
                 _context.SaveChanges();
-
-                listDetalleResponse.Add(new DetalleResponse()
-                {
-                    IdDetallePedido = detalleDb.IdDetalle,
-                    IdProducto = detalleDb.IdProducto,
-                    Cantidad = detalle.Cantidad
-                });
             }
-
-            var dbEmployee = _context.Empleados.Where(e => e.IdEmpleado == orderDb.IdEmpleado).First();
-            var dbTable = _context.Empleados.Where(e => e.IdEmpleado == orderDb.IdEmpleado).First();
-
-            response.Data = new OrderResponse()
-            {
-                IdPedido = orderDb.IdPedido,
-                Empleado = dbEmployee.Nombre,
-                Mesa = dbTable.Nombre,
-                Anio = model.Anio,
-                Mes = model.Mes,
-                Dia = model.Dia,
-                Hora = model.Hora,
-                Minuto = model.Minuto,
-                Segundo = model.Segundo,
-                DetallesPedidos = listDetalleResponse,
-                Terminado = model.Terminado,
-            };
 
             return response;
         }
@@ -404,7 +383,7 @@ namespace ApiNitroRestaurant.Services
 
             var pedidoDb = _context.Pedidos.Where(p => p.IdPedido == id).FirstOrDefault();
 
-            if(pedidoDb == null)
+            if (pedidoDb == null)
             {
                 response.Error = "El id introducido no corresponde con ningun registro de pedido";
                 response.Success = false;
@@ -412,33 +391,13 @@ namespace ApiNitroRestaurant.Services
                 return response;
             }
 
-            if (model.Terminado == true)
-                pedidoDb.Terminado = 1;
-            else if (model.Terminado == false)
-                pedidoDb.Terminado = 0;
+            if (model.Terminado == null)
+                pedidoDb.Terminado = null;
+            else
+                pedidoDb.Terminado = (ulong)((bool)(model.Terminado) ? 1 : 0);
 
             _context.Entry(pedidoDb).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
             _context.SaveChanges();
-
-            var orderResponse = new OrderResponse();
-
-            orderResponse.IdPedido = id;
-            orderResponse.Anio = pedidoDb.FechaHora.Year;
-            orderResponse.Mes = pedidoDb.FechaHora.Month;
-            orderResponse.Dia = pedidoDb.FechaHora.Day;
-            orderResponse.Segundo = pedidoDb.FechaHora.Second;
-            orderResponse.DetallesPedidos = new List<DetalleResponse>();
-
-            foreach(var detalle in pedidoDb.DetallePedidos)
-            {
-                orderResponse.DetallesPedidos.Add(new DetalleResponse()
-                {
-                    IdProducto = detalle.IdProducto,
-                    Cantidad = detalle.Cantidad
-                });
-            }
-
-            response.Data = orderResponse;
 
             return response;
         }
