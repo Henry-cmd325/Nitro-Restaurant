@@ -9,6 +9,7 @@
         public int IdTipoEmpleado { get; set; }
         public int IdSucursal { get; set; }
         public string Usuario { get; set; } = null!;
+        public bool Activo { get; set; }
         public string Contrasenia { get; set; } = null!;
         public string? ContraseniaAnterior { get; set; }
     }
