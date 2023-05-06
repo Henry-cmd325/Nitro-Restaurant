@@ -35,7 +35,7 @@ namespace AppEscritorio.UI.PagesUI
         List<CategoriaResponse> Categories = new();
         private async void ComboBox_Loaded(object sender, RoutedEventArgs e)
         {
-            var result = await Api.Get<ServerResponse<CategoriaResponse[]>>("http://nitrorestaurant-001-site1.ctempurl.com/api/Categoria");
+            var result = await Api.Get<ServerResponse<CategoriaResponse[]>>("https://localhost:7214/api/Categoria");
 
             if (result != null)
             {
@@ -81,7 +81,7 @@ namespace AppEscritorio.UI.PagesUI
         
         private async void Item_Loaded_1(object sender, RoutedEventArgs e)
         {
-            var result = await Api.Get<ServerResponse<ProductResponse[]>>("http://nitrorestaurant-001-site1.ctempurl.com/api/Producto");
+            var result = await Api.Get<ServerResponse<ProductResponse[]>>("https://localhost:7214/api/Producto");
             
             if (result != null)
             {
@@ -141,7 +141,7 @@ namespace AppEscritorio.UI.PagesUI
 
         private async void CategorySelected_Selected(object sender, RoutedEventArgs e)
         {
-            var result = await Api.Get<ServerResponse<ProductResponse[]>>("http://nitrorestaurant-001-site1.ctempurl.com/api/Producto");
+            var result = await Api.Get<ServerResponse<ProductResponse[]>>("https://localhost:7214/api/Producto");
  
             for(int i = 0; i < items.Count; i++)
             {
@@ -196,7 +196,7 @@ namespace AppEscritorio.UI.PagesUI
 
         private async void Item_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            var result = await Api.Get<ServerResponse<ProductResponse>>("http://nitrorestaurant-001-site1.ctempurl.com/api/Producto/" + (sender as Item).Tag);
+            var result = await Api.Get<ServerResponse<ProductResponse>>("https://localhost:7214/api/Producto/" + (sender as Item).Tag);
             
             var marginTop = new Thickness(15, 0, 47, 357);
             if (!borderInfoProducts.Margin.Equals(marginTop))

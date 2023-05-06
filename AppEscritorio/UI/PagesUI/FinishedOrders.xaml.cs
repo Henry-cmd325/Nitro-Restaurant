@@ -32,7 +32,7 @@ namespace AppEscritorio.UI.PagesUI
 
         private async void ItemBaseOrder_Loaded(object sender, RoutedEventArgs e)
         {
-            var result = await Api.Get<ServerResponse<OrderResponse[]>>("http://nitrorestaurant-001-site1.ctempurl.com/api/Pedido");
+            var result = await Api.Get<ServerResponse<OrderResponse[]>>("https://localhost:7214/api/Pedido");
             List<RowDefinition> rows = new();
 
             while (itemsList.Count > 0)
@@ -98,8 +98,8 @@ namespace AppEscritorio.UI.PagesUI
                 rows.RemoveAt(rows.Count - 1);
             }
 
-            var result = await Api.Get<ServerResponse<OrderResponse>>("http://nitrorestaurant-001-site1.ctempurl.com/api/Pedido/" + (sender as Item).Tag);
-            var result2 = await Api.Get<ServerResponse<UsuarioResponse>>("http://nitrorestaurant-001-site1.ctempurl.com/api/Empleado/" + (sender as Item).Desc2);
+            var result = await Api.Get<ServerResponse<OrderResponse>>("https://localhost:7214/api/Pedido/" + (sender as Item).Tag);
+            var result2 = await Api.Get<ServerResponse<UsuarioResponse>>("https://localhost:7214/api/Empleado/" + (sender as Item).Desc2);
 
             var order = Convert.ToInt32((sender as Item).Tag);
             OrderDescription.Text = "Order " + order.ToString();
@@ -120,7 +120,7 @@ namespace AppEscritorio.UI.PagesUI
             int column = 0;
             foreach (var item in result.Data.DetallesPedidos)
             {
-                var result3 = await Api.Get<ServerResponse<ProductResponse>>("http://nitrorestaurant-001-site1.ctempurl.com/api/Producto/" + item.IdProducto);
+                var result3 = await Api.Get<ServerResponse<ProductResponse>>("https://localhost:7214/api/Producto/" + item.IdProducto);
 
                 Item product = new();
                 product.Title = result3.Data.Nombre;
@@ -139,7 +139,7 @@ namespace AppEscritorio.UI.PagesUI
 
         private async void ButtonStart_Click(object sender, RoutedEventArgs e)
         {
-            var result = await Api.Put<OrderStateRequest>("http://nitrorestaurant-001-site1.ctempurl.com/api/Pedido/state/" + (sender as Button).Tag, new OrderStateRequest
+            var result = await Api.Put<OrderStateRequest>("https://localhost:7214/api/Pedido/state/" + (sender as Button).Tag, new OrderStateRequest
             {
                 Terminado = false
             });
@@ -150,7 +150,7 @@ namespace AppEscritorio.UI.PagesUI
         }
         private async void ButtonFinish_Click(object sender, RoutedEventArgs e)
         {
-            var result = await Api.Put<OrderStateRequest>("http://nitrorestaurant-001-site1.ctempurl.com/api/Pedido/state/" + (sender as Button).Tag, new OrderStateRequest
+            var result = await Api.Put<OrderStateRequest>("https://localhost:7214/api/Pedido/state/" + (sender as Button).Tag, new OrderStateRequest
             {
                 Terminado = true
             });

@@ -102,7 +102,7 @@ namespace AppEscritorio.Pages
                 {
                     Validations.ValidarSignUp(usuario);
 
-                    result = await Api.Post<Usuarios, ServerResponse<UsuarioResponse>>("http://nitrorestaurant-001-site1.ctempurl.com/api/Cuenta/signin", usuario);
+                    result = await Api.Post<Usuarios, ServerResponse<UsuarioResponse>>("https://localhost:7214/api/Empleado/signin", usuario);
 
                     if (result == null) throw new Exception("Ha ocurrido un error");
                 }
