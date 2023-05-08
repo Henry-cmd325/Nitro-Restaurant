@@ -11,6 +11,7 @@ namespace ApiNitroRestaurant.Services
         public ServerResponse<CategoryResponse> DeleteCategory(int id);
         public ServerResponse<CategoryResponse> PostCategory(CategoriaRequest categoryName);
         public ServerResponse<CategoryResponse> PutCategory(int id, CategoriaRequest model);
+        public ServerResponse<List<CategoryResponse>> GetAll(string empleado);
         public ServerResponse<List<CategoryResponse>> GetAll();
     }
 }

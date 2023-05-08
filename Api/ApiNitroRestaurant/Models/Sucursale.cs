@@ -7,6 +7,7 @@ namespace ApiNitroRestaurant.Models
     {
         public Sucursale()
         {
+            Categoria = new HashSet<Categoria>();
             Empleados = new HashSet<Empleado>();
             Mesas = new HashSet<Mesa>();
             Pedidos = new HashSet<Pedido>();
@@ -18,6 +19,7 @@ namespace ApiNitroRestaurant.Models
         public string NumMesas { get; set; } = null!;
         public string Ubicacion { get; set; } = null!;
 
+        public virtual ICollection<Categoria> Categoria { get; set; }
         public virtual ICollection<Empleado> Empleados { get; set; }
         public virtual ICollection<Mesa> Mesas { get; set; }
         public virtual ICollection<Pedido> Pedidos { get; set; }

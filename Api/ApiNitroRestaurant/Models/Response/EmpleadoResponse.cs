@@ -3,6 +3,7 @@
     public class EmpleadoResponse
     {
         public int IdEmpleado { get; set; }
+        public string Token { get; set; } = null!;
         public string TipoEmpleado { get; set; } = null!;
         public string Usuario { get; set; } = null!;
         public string Contrasenia { get; set; } = null!;

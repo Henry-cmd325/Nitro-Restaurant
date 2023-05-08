@@ -1,20 +1,21 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using ApiNitroRestaurant.Models;
-using ApiNitroRestaurant.Models.Response;
+﻿using Microsoft.AspNetCore.Mvc;
 using ApiNitroRestaurant.Models.Request;
 using ApiNitroRestaurant.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ApiNitroRestaurant.Controllers
 {
+    [Authorize(Roles = "Admin")]
     [Route("api/[controller]")]
     [ApiController]
     public class EmpleadoController : ControllerBase
     {
         private readonly IEmployeeService _employeeService;
-        public EmpleadoController(IEmployeeService employeeService)
+        private readonly IConfiguration _config;   
+        public EmpleadoController(IEmployeeService employeeService, IConfiguration config)
         {
             _employeeService = employeeService;
+            _config = config;
         }
 
         [HttpGet]
@@ -37,12 +38,15 @@ namespace ApiNitroRestaurant.Controllers
             return Ok(response);
         }
 
+        [AllowAnonymous]
         [HttpPost("login")]
         public IActionResult EmpleadoLogin(EmpleadoAuthRequest model)
         {
             var response = _employeeService.Auth(model);
 
             if (!response.Success) return BadRequest(response);
+
+            response.Data.Token = _employeeService.GenerateToken(response.Data, _config);
 
             return Ok(response);
         }

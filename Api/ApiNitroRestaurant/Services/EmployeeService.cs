@@ -2,6 +2,10 @@
 using ApiNitroRestaurant.Models.Request;
 using ApiNitroRestaurant.Models.Response;
 using ApiNitroRestaurant.Tools;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 
 namespace ApiNitroRestaurant.Services
 {
@@ -25,22 +29,23 @@ namespace ApiNitroRestaurant.Services
             {
                 response.Success = false;
 
-                if (_context.Empleados.Where(e => e.Usuario == model.Username && e.ContraseniaAnterior == Encrypt.GetSha256(model.Password)).FirstOrDefault() == null)
+                employee = _context.Empleados.Where(e => e.Usuario == model.Username 
+                                                    && e.ContraseniaAnterior == Encrypt.GetSha256(model.Password)).FirstOrDefault();
+
+                if (employee != null)
                 {
                     response.Error = "La contraseña ingresada es una contraseña anterior";
-
                     return response;
                 }
 
                 response.Error = "El usuario o la contraseña ingresada no corresponden con ningun registro";
-                
                 return response;
             }
 
             if (employee.Activo == 0)
             {
                 response.Success = false;
-                response.Error = "La cuenta con la que quiere ingresar ha sido dado de baja";
+                response.Error = "La cuenta con la que quiere ingresar ha sido dada de baja";
 
                 return response;
             }
@@ -62,6 +67,24 @@ namespace ApiNitroRestaurant.Services
             };
 
             return response;
+        }
+
+        public string GenerateToken(EmpleadoResponse request, IConfiguration config)
+        {
+            var claims = new[]
+            {
+                new Claim(ClaimTypes.Name, request.Nombre),
+                new Claim(ClaimTypes.Role, request.TipoEmpleado)
+            };
+
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config.GetSection("JWT:Key").Value!));
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
+
+            var securityToken = new JwtSecurityToken(claims: claims, expires: DateTime.Now.AddHours(1), signingCredentials: creds);
+
+            string token = new JwtSecurityTokenHandler().WriteToken(securityToken);
+
+            return token;
         }
 
         public ServerResponse<EmpleadoResponse> Disable(int id)
@@ -162,7 +185,6 @@ namespace ApiNitroRestaurant.Services
             ServerResponse<EmpleadoResponse> response = new();
 
             var employeeDb = _context.Empleados.Where(e => e.Telefono == model.Telefono).FirstOrDefault();
-
             if (employeeDb != null)
             {
                 response.Success = false;
@@ -171,15 +193,32 @@ namespace ApiNitroRestaurant.Services
                 return response;
             }
 
-            var atribbuteType = _context.TipoEmpleados.Where(t => t.Nombre == t.Nombre).FirstOrDefault();
-            if (atribbuteType == null)
+            employeeDb = _context.Empleados.Where(e => e.Usuario == model.Usuario).FirstOrDefault();
+            if (employeeDb != null)
+            {
+                response.Success = false;
+                response.Error = "Ya existe otra cuenta con este mismo nombre de usuario";
+
+                return response;
+            }
+         
+            var dbTipo = _context.TipoEmpleados.Where(t => t.Nombre == t.Nombre).FirstOrDefault();
+            if (dbTipo == null)
             {
                 response.Success = false;
                 response.Error = "El tipo de usuario elegido no existe";
 
                 return response;
             }
-          
+
+            var dbSucursal = _context.Sucursales.Where(s => s.IdSucursal == model.IdSucursal).FirstOrDefault();
+            if (dbSucursal == null)
+            {
+                response.Success = false;
+                response.Error = "El id de la sucursal introducida no existe";
+
+                return response;
+            }
 
             var employee = new Empleado();
             employee.Telefono = model.Telefono;
@@ -189,29 +228,11 @@ namespace ApiNitroRestaurant.Services
             employee.Paterno = model.Paterno;
             employee.Nombre = model.Nombre;
             employee.Contrasenia = Encrypt.GetSha256(model.Contrasenia);
-            employee.IdTipoEmpleado = atribbuteType.IdTipoEmpleado;
+            employee.IdTipoEmpleado = model.IdTipoEmpleado;
             employee.Activo = 1;
 
             _context.Empleados.Add(employee);
             _context.SaveChanges();
-
-            var dbTipo = _context.Empleados.Where(e => e.IdTipoEmpleado == employee.IdTipoEmpleado).FirstOrDefault();
-            if (dbTipo == null)
-            {
-                response.Success = false;
-                response.Error = "El id del tipo-empleado introducido no existe";
-
-                return response;
-            }
-
-            var dbSucursal = _context.Sucursales.Where(s => s.IdSucursal == employee.IdSucursal).FirstOrDefault();
-            if (dbSucursal == null)
-            {
-                response.Success = false;
-                response.Error = "El id de la sucursal introducida no existe";
-
-                return response;
-            }
 
             var employeeResponse = new EmpleadoResponse()
             {
@@ -229,6 +250,46 @@ namespace ApiNitroRestaurant.Services
             response.Data = employeeResponse;
 
             return response;  
+        }
+
+        public ServerResponse<List<EmpleadoResponse>> GetAll(string empleado)
+        {
+            ServerResponse<List<EmpleadoResponse>> response = new();
+
+            var listResponse = new List<EmpleadoResponse>();
+
+            var employeeDb = _context.Empleados.Where(e => e.Usuario == empleado).First();
+            var listDb = _context.Empleados.Where(e => e.IdSucursal == employeeDb.IdSucursal).ToList();
+
+            if (listDb.Count == 0)
+            {
+                response.Error = "No existe ningun empleado en la base de datos";
+                response.Success = false;
+
+                return response;
+            }
+
+            foreach (var empleadoDb in listDb)
+            {
+                var dbTipoEmpleado = _context.TipoEmpleados.Where(t => t.IdTipoEmpleado == empleadoDb.IdTipoEmpleado).First();
+                var dbSucursal = _context.Sucursales.Where(s => s.IdSucursal == empleadoDb.IdSucursal).First();
+
+                listResponse.Add(new EmpleadoResponse()
+                {
+                    IdEmpleado = empleadoDb.IdEmpleado,
+                    Materno = empleadoDb.Materno,
+                    Usuario = empleadoDb.Usuario,
+                    Telefono = empleadoDb.Telefono,
+                    Paterno = empleadoDb.Paterno,
+                    Nombre = empleadoDb.Nombre,
+                    TipoEmpleado = dbTipoEmpleado.Nombre,
+                    Sucursal = dbSucursal.Nombre
+                });
+            }
+
+            response.Data = listResponse;
+
+            return response;
         }
     }
 }

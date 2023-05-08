@@ -1,6 +1,6 @@
 ﻿using ApiNitroRestaurant.Models.Request;
 using ApiNitroRestaurant.Services;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ApiNitroRestaurant.Controllers
@@ -16,6 +16,7 @@ namespace ApiNitroRestaurant.Controllers
             _categoryService = categoryService;
         }
 
+        [Authorize]
         [HttpGet]
         public IActionResult CategoriaGetAll()
         {
@@ -26,6 +27,7 @@ namespace ApiNitroRestaurant.Controllers
             return Ok(response);
         }
 
+        [Authorize]
         [HttpGet("{id}", Name = "CategoriaGet")]
         public IActionResult CategoriaGet(int id)
         {
@@ -36,6 +38,7 @@ namespace ApiNitroRestaurant.Controllers
             return Ok(response);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public IActionResult CategoriaPost(CategoriaRequest model)
         {
@@ -46,6 +49,7 @@ namespace ApiNitroRestaurant.Controllers
             return Ok(response);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
         public IActionResult CategoriaDelete(int id)
         {
@@ -56,6 +60,7 @@ namespace ApiNitroRestaurant.Controllers
             return NoContent();
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPut("{id}")]
         public IActionResult CategoriaPut(int id, CategoriaRequest model)
         {

@@ -115,3 +115,10 @@ C:\Programacion\Nitro-Restaurant\Api\ApiNitroRestaurant\obj\Debug\net6.0\ApiNitr
 C:\Programacion\Nitro-Restaurant\Api\ApiNitroRestaurant\obj\Debug\net6.0\ref\ApiNitroRestaurant.dll
 C:\Programacion\Nitro-Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\appsettings.Development.json
 C:\Programacion\Nitro-Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\appsettings.json
+D:\Programacion\Uni\Nitro Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\Programacion\Uni\Nitro Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\Programacion\Uni\Nitro Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+D:\Programacion\Uni\Nitro Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+D:\Programacion\Uni\Nitro Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\Programacion\Uni\Nitro Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+D:\Programacion\Uni\Nitro Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll

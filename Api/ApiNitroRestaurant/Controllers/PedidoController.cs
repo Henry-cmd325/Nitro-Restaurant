@@ -1,10 +1,12 @@
 ﻿using ApiNitroRestaurant.Models.Request;
 using ApiNitroRestaurant.Services;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace ApiNitroRestaurant.Controllers
 {
+
     [Route("api/[controller]")]
     [ApiController]
     public class PedidoController : ControllerBase
@@ -16,16 +18,28 @@ namespace ApiNitroRestaurant.Controllers
             _orderService = orderService;
         }
 
+        [Authorize]
         [HttpGet]
         public IActionResult GetAllPedidos()
         {
-            var response = _orderService.GetAllOrders();
+            var user = HttpContext.User.Identity as ClaimsIdentity;
+            var claim = user!.Claims.Where(c => c.Type == ClaimTypes.Name).First();
 
-            if (!response.Success) return BadRequest(response);
+            var response = _orderService.GetAllOrders(claim.Value);
 
             return Ok(response);
         }
 
+        [Authorize(Roles = "Admin")]
+        [HttpGet("/admin")]
+        public IActionResult GetAllPedidosFromAllSubsidiary()
+        {
+            var response = _orderService.GetAllOrders();
+
+            return Ok(response);
+        }
+
+        [Authorize]
         [HttpGet("{id}", Name = "GetPedido")]
         public IActionResult GetPedido(int id)
         {
@@ -36,6 +50,7 @@ namespace ApiNitroRestaurant.Controllers
             return Ok(response);
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult PostPedido(OrderRequest model)
         {
@@ -46,6 +61,7 @@ namespace ApiNitroRestaurant.Controllers
             return CreatedAtRoute(nameof(GetPedido), new { id = response.Data.IdPedido }, response);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
         public IActionResult DeletePedido(int id)
         {
@@ -56,6 +72,7 @@ namespace ApiNitroRestaurant.Controllers
             return NoContent();
         }
 
+        [Authorize]
         [HttpPut("{id}")]
         public IActionResult PutPedido(int id, OrderRequest model)
         {
@@ -66,6 +83,7 @@ namespace ApiNitroRestaurant.Controllers
             return NoContent();
         }
 
+        [Authorize]
         [HttpPut("state/{id}")]
         public IActionResult PutStatePedido(int id, OrderStateRequest model)
         {

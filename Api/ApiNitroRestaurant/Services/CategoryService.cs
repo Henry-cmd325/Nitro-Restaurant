@@ -12,14 +12,15 @@ namespace ApiNitroRestaurant.Services
             _context = context;
         }
 
-        public ServerResponse<List<CategoryResponse>> GetAll()
+        public ServerResponse<List<CategoryResponse>> GetAll(string empleado)
         {
             ServerResponse<List<CategoryResponse>> response = new();
 
+
             var listResponse = new List<CategoryResponse>();
 
-
-            var listDb = _context.Categorias.ToList();
+            var empleadoDb = _context.Empleados.Where(e => e.Usuario == empleado).First();
+            var listDb = _context.Categorias.Where(c => c.IdSucursal == empleadoDb.IdSucursal).ToList();
 
             if (listDb.Count == 0)
             {
@@ -30,7 +31,15 @@ namespace ApiNitroRestaurant.Services
             }
 
             foreach (var item in listDb)
-                listResponse.Add(new CategoryResponse() { Nombre = item.Nombre, IdCategoria = item.IdCategoria });
+            {
+                listResponse.Add(new CategoryResponse()
+                {
+                    Nombre = item.Nombre,
+                    IdCategoria = item.IdCategoria,
+                    ImgUrl = item.ImgUrl,
+                    IdSucursal = item.IdSucursal
+                });
+            }
 
             response.Data = listResponse;
 
@@ -73,7 +82,9 @@ namespace ApiNitroRestaurant.Services
             var categoryResponse = new CategoryResponse()
             {
                 IdCategoria = categoryDb.IdCategoria,
-                Nombre = categoryDb.Nombre
+                Nombre = categoryDb.Nombre,
+                ImgUrl = categoryDb.ImgUrl,
+                IdSucursal = categoryDb.IdSucursal
             };
 
             response.Data = categoryResponse;
@@ -98,13 +109,17 @@ namespace ApiNitroRestaurant.Services
             var category = new Categoria();
 
             category.Nombre = model.Nombre;
+            category.IdSucursal = model.IdSucursal;
+            category.ImgUrl = category.ImgUrl;
 
             _context.Categorias.Add(category);
             _context.SaveChanges();
 
             var categoryResponse = new CategoryResponse();
 
-            categoryResponse.IdCategoria = category.IdCategoria; 
+            categoryResponse.IdCategoria = category.IdCategoria;
+            categoryResponse.IdSucursal = category.IdSucursal;
+            categoryResponse.ImgUrl = category.ImgUrl;
             categoryResponse.Nombre = category.Nombre;
 
             response.Data = categoryResponse;
@@ -136,6 +151,38 @@ namespace ApiNitroRestaurant.Services
                 IdCategoria = categoryDb.IdCategoria,
                 Nombre = model.Nombre
             };
+
+            return response;
+        }
+
+        public ServerResponse<List<CategoryResponse>> GetAll()
+        {
+            ServerResponse<List<CategoryResponse>> response = new();
+
+            var listResponse = new List<CategoryResponse>();
+
+            var listDb = _context.Categorias.ToList();
+
+            if (listDb.Count == 0)
+            {
+                response.Error = "No existe ningún elemento en categorias";
+                response.Success = false;
+
+                return response;
+            }
+
+            foreach (var item in listDb)
+            {
+                listResponse.Add(new CategoryResponse()
+                {
+                    Nombre = item.Nombre,
+                    IdCategoria = item.IdCategoria,
+                    ImgUrl = item.ImgUrl,
+                    IdSucursal = item.IdSucursal
+                });
+            }
+
+            response.Data = listResponse;
 
             return response;
         }

@@ -1,6 +1,8 @@
 ﻿using ApiNitroRestaurant.Models.Request;
 using ApiNitroRestaurant.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace ApiNitroRestaurant.Controllers
 {
@@ -15,16 +17,28 @@ namespace ApiNitroRestaurant.Controllers
             _productoService = productService;
         }
 
+        [Authorize]
         [HttpGet]
         public IActionResult GetAll()
         {
-            var response = _productoService.GetAll();
+            var user = HttpContext.User.Identity as ClaimsIdentity;
+            var claim = user!.Claims.Where(c => c.Type == ClaimTypes.Name).First();
 
-            if (!response.Success) return BadRequest(response);
+            var response = _productoService.GetAll(claim.Value);
 
             return Ok(response);
         }
 
+        [Authorize(Roles = "Admin")]
+        [HttpGet]
+        public IActionResult GetAllFromAllSubsidiaries()
+        {
+            var response = _productoService.GetAll();
+
+            return Ok(response);
+        }
+
+        [Authorize]
         [HttpGet("{id}", Name = "GetProductById")]
         public IActionResult GetProductById(int id)
         {
@@ -35,8 +49,9 @@ namespace ApiNitroRestaurant.Controllers
             return Ok(response);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
-        public IActionResult CrearEmpleado([FromBody] ProductRequest model)
+        public IActionResult CrearProducto(ProductRequest model)
         {
             var response = _productoService.CreateProduct(model);
 
@@ -45,8 +60,9 @@ namespace ApiNitroRestaurant.Controllers
             return CreatedAtRoute(nameof(GetProductById), new { id = response.Data.IdProducto }, response);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPut("{id}")]
-        public IActionResult EditarProducto(int id, [FromBody] ProductRequest model)
+        public IActionResult EditarProducto(int id, ProductRequest model)
         {
             var response = _productoService.UpdateProduct(id, model);
 

@@ -51,6 +51,65 @@ namespace ApiNitroRestaurant.Services
             return response;
         }
 
+        public ServerResponse<List<OrderResponse>> GetAllOrders(string empleado)
+        {
+            ServerResponse<List<OrderResponse>> serverResponse = new();
+
+            var listResponse = new List<OrderResponse>();
+
+            var employee = _context.Empleados.Where(e => e.Usuario == empleado).First();
+
+            var listDb = _context.Pedidos.Where(p => p.IdSucursal == employee.IdSucursal).ToList();
+
+            foreach (var order in listDb)
+            {
+                var detallesDb = _context.DetallePedidos.ToList();
+
+                List<DetalleResponse> detallesResponse = new();
+
+                foreach (var detalle in detallesDb)
+                {
+                    if (detalle.IdPedido == order.IdPedido)
+                    {
+                        detallesResponse.Add(new DetalleResponse()
+                        {
+                            IdDetallePedido = order.IdPedido,
+                            IdProducto = detalle.IdProducto,
+                            Cantidad = detalle.Cantidad
+                        });
+                    }
+                }
+
+                bool? terminado = null;
+
+                if (order.Terminado != null) terminado = order.Terminado == 1;
+
+                var dbEmployee = _context.Empleados.Where(e => e.IdEmpleado == order.IdEmpleado).First();
+                var dbTable = _context.Mesas.Where(m => m.IdMesa == order.IdMesa).First();
+                var dbTipo = _context.TipoPedidos.Where(t => t.IdTipoPedido == order.IdTipoPedido).First();
+
+                listResponse.Add(new OrderResponse()
+                {
+                    IdPedido = order.IdPedido,
+                    Empleado = dbEmployee.Nombre,
+                    Anio = order.FechaHora.Year,
+                    Mes = order.FechaHora.Month,
+                    Dia = order.FechaHora.Day, 
+                    Hora = order.FechaHora.Hour,
+                    Minuto = order.FechaHora.Minute, 
+                    Segundo = order.FechaHora.Second,
+                    DetallesPedidos = detallesResponse,
+                    Comentario = order.Comentario,
+                    Terminado = terminado,
+                    TipoPedido = dbTipo.Nombre,
+                    Mesa = dbTable.NumMesa
+                });
+            }
+            serverResponse.Data = listResponse;
+
+            return serverResponse;
+        }
+
         public ServerResponse<List<OrderResponse>> GetAllOrders()
         {
             ServerResponse<List<OrderResponse>> serverResponse = new();
@@ -92,9 +151,9 @@ namespace ApiNitroRestaurant.Services
                     Empleado = dbEmployee.Nombre,
                     Anio = order.FechaHora.Year,
                     Mes = order.FechaHora.Month,
-                    Dia = order.FechaHora.Day, 
+                    Dia = order.FechaHora.Day,
                     Hora = order.FechaHora.Hour,
-                    Minuto = order.FechaHora.Minute, 
+                    Minuto = order.FechaHora.Minute,
                     Segundo = order.FechaHora.Second,
                     DetallesPedidos = detallesResponse,
                     Comentario = order.Comentario,

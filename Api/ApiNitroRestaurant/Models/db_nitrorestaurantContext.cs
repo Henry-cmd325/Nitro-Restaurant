@@ -44,9 +44,15 @@ namespace ApiNitroRestaurant.Models
 
                 entity.ToTable("categorias");
 
+                entity.HasIndex(e => e.IdSucursal, "FK_categorias_sucursales");
+
                 entity.Property(e => e.IdCategoria)
                     .HasColumnType("int(11)")
                     .HasColumnName("ID_CATEGORIA");
+
+                entity.Property(e => e.IdSucursal)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("id_sucursal");
 
                 entity.Property(e => e.ImgUrl)
                     .HasMaxLength(100)
@@ -55,6 +61,12 @@ namespace ApiNitroRestaurant.Models
                 entity.Property(e => e.Nombre)
                     .HasMaxLength(100)
                     .HasColumnName("NOMBRE");
+
+                entity.HasOne(d => d.IdSucursalNavigation)
+                    .WithMany(p => p.Categoria)
+                    .HasForeignKey(d => d.IdSucursal)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_categorias_sucursales");
             });
 
             modelBuilder.Entity<DetallePedido>(entity =>
