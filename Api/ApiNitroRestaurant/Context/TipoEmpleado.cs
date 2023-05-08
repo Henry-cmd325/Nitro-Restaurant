@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ApiNitroRestaurant.Models
+namespace ApiNitroRestaurant.Context
 {
     public partial class TipoEmpleado
     {

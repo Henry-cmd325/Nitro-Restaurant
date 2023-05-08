@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
+﻿using Microsoft.EntityFrameworkCore;
 
-namespace ApiNitroRestaurant.Models
+namespace ApiNitroRestaurant.Context
 {
     public partial class db_nitrorestaurantContext : DbContext
     {

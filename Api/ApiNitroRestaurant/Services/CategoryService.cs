@@ -1,4 +1,5 @@
-﻿using ApiNitroRestaurant.Models;
+﻿using ApiNitroRestaurant.Context;
+using ApiNitroRestaurant.Models;
 using ApiNitroRestaurant.Models.Request;
 using ApiNitroRestaurant.Models.Response;
 
