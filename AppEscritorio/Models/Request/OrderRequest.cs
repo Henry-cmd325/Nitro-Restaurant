@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AppEscritorio.Models.Request
+﻿namespace ApiNitroRestaurant.Models.Request
 {
-    internal class OrderRequest
+    public class OrderRequest
     {
         public int IdEmpleado { get; set; }
-        public string NumeroMesa { get; set; } = null!;
+        public int IdTipoPedido { get; set; }
+        public int IdSucursal { get; set; }
+        public string Comentario { get; set; } = null!;
+        public int IdMesa { get; set; }
         public int Anio { get; set; }
         public int Mes { get; set; }
         public int Dia { get; set; }
@@ -17,6 +14,5 @@ namespace AppEscritorio.Models.Request
         public int Minuto { get; set; }
         public int Segundo { get; set; }
         public List<DetalleRequest> DetallesPedidos { get; set; } = null!;
-        public bool? Terminado { get; set; }
     }
 }

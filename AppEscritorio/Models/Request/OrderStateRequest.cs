@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AppEscritorio.Models.Request
+﻿namespace ApiNitroRestaurant.Models.Request
 {
-    internal class OrderStateRequest
+    public class OrderStateRequest
     {
         public bool? Terminado { get; set; }
     }
