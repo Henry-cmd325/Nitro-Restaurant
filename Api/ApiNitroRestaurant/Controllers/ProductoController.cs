@@ -30,6 +30,7 @@ namespace ApiNitroRestaurant.Controllers
         }
 
         [Authorize(Roles = "Admin")]
+        [Route("all")]
         [HttpGet]
         public IActionResult GetAllFromAllSubsidiaries()
         {

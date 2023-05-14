@@ -1,4 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace ApiNitroRestaurant.Context
 {
@@ -456,9 +459,29 @@ namespace ApiNitroRestaurant.Context
                     .HasColumnType("int(11)")
                     .HasColumnName("ID_PROVEEDOR");
 
+                entity.Property(e => e.Direccion)
+                    .HasMaxLength(100)
+                    .HasColumnName("direccion");
+
                 entity.Property(e => e.Nombre)
                     .HasMaxLength(50)
                     .HasColumnName("NOMBRE");
+
+                entity.Property(e => e.NumeroCuenta)
+                    .HasMaxLength(30)
+                    .HasColumnName("numero_cuenta");
+
+                entity.Property(e => e.Telefono1)
+                    .HasMaxLength(10)
+                    .HasColumnName("telefono1");
+
+                entity.Property(e => e.Telefono2)
+                    .HasMaxLength(10)
+                    .HasColumnName("telefono2");
+
+                entity.Property(e => e.Telefono3)
+                    .HasMaxLength(10)
+                    .HasColumnName("telefono3");
             });
 
             modelBuilder.Entity<Sucursale>(entity =>

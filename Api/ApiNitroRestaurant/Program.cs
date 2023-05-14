@@ -1,6 +1,5 @@
 using ApiNitroRestaurant.Context;
 using ApiNitroRestaurant.Hubs;
-using ApiNitroRestaurant.Models;
 using ApiNitroRestaurant.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
