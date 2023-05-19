@@ -188,6 +188,8 @@ namespace ApiNitroRestaurant.Context
 
                 entity.HasIndex(e => e.IdProveedor, "FK_REFERENCE_14");
 
+                entity.HasIndex(e => e.IdSucursal, "FK_entradas_sucursales");
+
                 entity.Property(e => e.IdEntrada)
                     .HasColumnType("int(11)")
                     .HasColumnName("ID_ENTRADA");
@@ -208,6 +210,10 @@ namespace ApiNitroRestaurant.Context
                     .HasColumnType("int(11)")
                     .HasColumnName("ID_PROVEEDOR");
 
+                entity.Property(e => e.IdSucursal)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("id_sucursal");
+
                 entity.HasOne(d => d.IdProductoNavigation)
                     .WithMany(p => p.Entrada)
                     .HasForeignKey(d => d.IdProducto)
@@ -218,6 +224,12 @@ namespace ApiNitroRestaurant.Context
                     .WithMany(p => p.Entrada)
                     .HasForeignKey(d => d.IdProveedor)
                     .HasConstraintName("FK_REFERENCE_14");
+
+                entity.HasOne(d => d.IdSucursalNavigation)
+                    .WithMany(p => p.Entrada)
+                    .HasForeignKey(d => d.IdSucursal)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_entradas_sucursales");
             });
 
             modelBuilder.Entity<Mesa>(entity =>
