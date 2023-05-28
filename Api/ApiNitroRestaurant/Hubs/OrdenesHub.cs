@@ -5,7 +5,9 @@ namespace ApiNitroRestaurant.Hubs
 {
     public class OrdenesHub : Hub
     {
-        private static Dictionary<string, string> GroupByIdPc = new();
+        private static string Code = string.Empty;
+        private static string RoomOwner = string.Empty;
+
         public override Task OnConnectedAsync()
         {
             Console.WriteLine("--> Conexión establecida " + Context.ConnectionId);
@@ -15,49 +17,30 @@ namespace ApiNitroRestaurant.Hubs
 
         public override Task OnDisconnectedAsync(Exception? exception)
         {
-            if (GroupByIdPc.TryGetValue(Context.ConnectionId, out var value))
-            {
-                GroupByIdPc.Remove(Context.ConnectionId);
-                Console.WriteLine($"--> EL grupo con llave {value} ha sido eliminado");
-            }
-            else
-            {
-                Console.WriteLine($"El usuario {Context.ConnectionId} no era dueño de ningun grupo");
-            }
-                
+            if (Context.ConnectionId == RoomOwner)  Clients.Group(Code).SendAsync("Disconnected");
+            
             return base.OnDisconnectedAsync(exception);
         }
 
         public async Task CreateRoom()
         {
-            string id = ShortId.Generate();
-
-            await Groups.AddToGroupAsync(Context.ConnectionId, id);
-            Console.WriteLine($"El usuario {Context.ConnectionId} ha creado la sala {id}");
-            GroupByIdPc.Add(Context.ConnectionId, id);
-            await Clients.Caller.SendAsync("ReceiveKey", Context.ConnectionId);
-
-            
+            Code = ShortId.Generate();
+            RoomOwner = Context.ConnectionId;
+            await Groups.AddToGroupAsync(Context.ConnectionId, Code);
+            Console.WriteLine($"El usuario {Context.ConnectionId} ha creado la sala {Code}");
         }
 
-        public async Task AddToGroup(string idPc)
+        public async Task AddToGroup()
         {
-            if (GroupByIdPc.TryGetValue(idPc, out var value))
-            {
-                await Groups.AddToGroupAsync(Context.ConnectionId, value);
-                Console.WriteLine($"El usuario {Context.ConnectionId} ha entrado a la sala con llave {value}");
-                await Clients.Caller.SendAsync("WithinGroup");
-            }
-            else
-            {
-                Console.WriteLine($"El usuario {Context.ConnectionId} ha usado una llave que no existe ({idPc})");
-                await Clients.Caller.SendAsync("ErrorGroup");
-            }
+            await Groups.AddToGroupAsync(Context.ConnectionId, Code);
+            Console.WriteLine($"El usuario {Context.ConnectionId} ha entrado a la sala con llave {Code}");
+
+            await Clients.Caller.SendAsync("WithinGroup");
         }
 
-        public async Task NotifyOrder(string idUser)
+        public async Task NotifyOrder()
         {
-            await Clients.Client(idUser).SendAsync("NewOrder");
+            await Clients.Client(RoomOwner).SendAsync("NewOrder");
         }
     }
 }
