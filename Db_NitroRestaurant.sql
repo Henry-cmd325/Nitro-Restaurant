@@ -26,10 +26,13 @@ CREATE TABLE IF NOT EXISTS `categorias` (
   PRIMARY KEY (`ID_CATEGORIA`),
   KEY `FK_categorias_sucursales` (`id_sucursal`),
   CONSTRAINT `FK_categorias_sucursales` FOREIGN KEY (`id_sucursal`) REFERENCES `sucursales` (`ID_SUCURSAL`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf16;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf16;
 
--- Volcando datos para la tabla db_nitrorestaurant.categorias: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla db_nitrorestaurant.categorias: ~2 rows (aproximadamente)
 /*!40000 ALTER TABLE `categorias` DISABLE KEYS */;
+INSERT INTO `categorias` (`ID_CATEGORIA`, `NOMBRE`, `IMG_URL`, `id_sucursal`) VALUES
+	(2, 'Alcohol', NULL, 1),
+	(3, 'Pasteles', NULL, 1);
 /*!40000 ALTER TABLE `categorias` ENABLE KEYS */;
 
 -- Volcando estructura para tabla db_nitrorestaurant.detalle_pedidos
@@ -83,15 +86,24 @@ CREATE TABLE IF NOT EXISTS `entradas` (
   `ID_PROVEEDOR` int(11) DEFAULT NULL,
   `CANTIDAD` int(11) NOT NULL,
   `FECHA_HORA` datetime NOT NULL,
+  `id_sucursal` int(11) NOT NULL,
   PRIMARY KEY (`ID_ENTRADA`),
   KEY `FK_REFERENCE_13` (`ID_PRODUCTO`),
   KEY `FK_REFERENCE_14` (`ID_PROVEEDOR`),
+  KEY `FK_entradas_sucursales` (`id_sucursal`),
   CONSTRAINT `FK_REFERENCE_13` FOREIGN KEY (`ID_PRODUCTO`) REFERENCES `productos` (`ID_PRODUCTO`),
-  CONSTRAINT `FK_REFERENCE_14` FOREIGN KEY (`ID_PROVEEDOR`) REFERENCES `proveedores` (`ID_PROVEEDOR`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf16;
+  CONSTRAINT `FK_REFERENCE_14` FOREIGN KEY (`ID_PROVEEDOR`) REFERENCES `proveedores` (`ID_PROVEEDOR`),
+  CONSTRAINT `FK_entradas_sucursales` FOREIGN KEY (`id_sucursal`) REFERENCES `sucursales` (`ID_SUCURSAL`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf16;
 
--- Volcando datos para la tabla db_nitrorestaurant.entradas: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla db_nitrorestaurant.entradas: ~5 rows (aproximadamente)
 /*!40000 ALTER TABLE `entradas` DISABLE KEYS */;
+INSERT INTO `entradas` (`ID_ENTRADA`, `ID_PRODUCTO`, `ID_PROVEEDOR`, `CANTIDAD`, `FECHA_HORA`, `id_sucursal`) VALUES
+	(2, 2, 2, 2, '2023-05-16 07:29:32', 1),
+	(3, 2, 2, 2, '2023-05-16 09:54:12', 1),
+	(4, 2, 2, 2, '2023-05-16 21:36:12', 1),
+	(5, 2, 2, 2, '2023-05-16 21:36:12', 1),
+	(6, 2, 2, 2, '2023-05-19 21:36:12', 1);
 /*!40000 ALTER TABLE `entradas` ENABLE KEYS */;
 
 -- Volcando estructura para tabla db_nitrorestaurant.mesas
@@ -107,7 +119,7 @@ CREATE TABLE IF NOT EXISTS `mesas` (
   CONSTRAINT `FK_REFERENCE_16` FOREIGN KEY (`ID_EMPLEADO`) REFERENCES `empleados` (`ID_EMPLEADO`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf16;
 
--- Volcando datos para la tabla db_nitrorestaurant.mesas: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla db_nitrorestaurant.mesas: ~1 rows (aproximadamente)
 /*!40000 ALTER TABLE `mesas` DISABLE KEYS */;
 INSERT INTO `mesas` (`ID_SUCURSAL`, `ID_EMPLEADO`, `ID_MESA`, `NUM_MESA`) VALUES
 	(1, 1, 1, '1');
@@ -182,10 +194,12 @@ CREATE TABLE IF NOT EXISTS `productos` (
   CONSTRAINT `FK_REFERENCE_10` FOREIGN KEY (`ID_UM`) REFERENCES `unidad_medidas` (`ID_UM`),
   CONSTRAINT `FK_REFERENCE_19` FOREIGN KEY (`ID_SUCURSAL`) REFERENCES `sucursales` (`ID_SUCURSAL`),
   CONSTRAINT `FK_REFERENCE_8` FOREIGN KEY (`ID_CATEGORIA`) REFERENCES `categorias` (`ID_CATEGORIA`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf16;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf16;
 
 -- Volcando datos para la tabla db_nitrorestaurant.productos: ~1 rows (aproximadamente)
 /*!40000 ALTER TABLE `productos` DISABLE KEYS */;
+INSERT INTO `productos` (`ID_PRODUCTO`, `ID_CATEGORIA`, `NOMBRE`, `INVERSION`, `PRECIO`, `CONTABLE`, `IMG_URL`, `CANTIDAD`, `ID_UM`, `ID_SUCURSAL`) VALUES
+	(2, 3, 'pan de limon', 30.00, 60.00, b'1', NULL, 18, 1, 1);
 /*!40000 ALTER TABLE `productos` ENABLE KEYS */;
 
 -- Volcando estructura para tabla db_nitrorestaurant.proveedores
@@ -198,10 +212,12 @@ CREATE TABLE IF NOT EXISTS `proveedores` (
   `numero_cuenta` varchar(30) DEFAULT NULL,
   `telefono3` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`ID_PROVEEDOR`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf16;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf16;
 
--- Volcando datos para la tabla db_nitrorestaurant.proveedores: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla db_nitrorestaurant.proveedores: ~1 rows (aproximadamente)
 /*!40000 ALTER TABLE `proveedores` DISABLE KEYS */;
+INSERT INTO `proveedores` (`ID_PROVEEDOR`, `NOMBRE`, `telefono2`, `telefono1`, `direccion`, `numero_cuenta`, `telefono3`) VALUES
+	(2, 'CHEF HENRY', NULL, '9932107321', NULL, NULL, NULL);
 /*!40000 ALTER TABLE `proveedores` ENABLE KEYS */;
 
 -- Volcando estructura para tabla db_nitrorestaurant.sucursales
@@ -211,12 +227,13 @@ CREATE TABLE IF NOT EXISTS `sucursales` (
   `NUM_MESAS` varchar(3) NOT NULL,
   `UBICACION` varchar(100) NOT NULL,
   PRIMARY KEY (`ID_SUCURSAL`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf16;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf16;
 
--- Volcando datos para la tabla db_nitrorestaurant.sucursales: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla db_nitrorestaurant.sucursales: ~2 rows (aproximadamente)
 /*!40000 ALTER TABLE `sucursales` DISABLE KEYS */;
 INSERT INTO `sucursales` (`ID_SUCURSAL`, `NOMBRE`, `NUM_MESAS`, `UBICACION`) VALUES
-	(1, '1', '20', 'en casa de manu');
+	(1, '1', '30', 'en casa de manu'),
+	(2, 'string', '13', 'string');
 /*!40000 ALTER TABLE `sucursales` ENABLE KEYS */;
 
 -- Volcando estructura para tabla db_nitrorestaurant.tipoe_operaciones
@@ -256,7 +273,7 @@ CREATE TABLE IF NOT EXISTS `tipo_pedidos` (
   PRIMARY KEY (`ID_TIPO_PEDIDO`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf16;
 
--- Volcando datos para la tabla db_nitrorestaurant.tipo_pedidos: ~2 rows (aproximadamente)
+-- Volcando datos para la tabla db_nitrorestaurant.tipo_pedidos: ~3 rows (aproximadamente)
 /*!40000 ALTER TABLE `tipo_pedidos` DISABLE KEYS */;
 INSERT INTO `tipo_pedidos` (`ID_TIPO_PEDIDO`, `NOMBRE`) VALUES
 	(1, 'Para llevar'),
@@ -271,7 +288,7 @@ CREATE TABLE IF NOT EXISTS `unidad_medidas` (
   PRIMARY KEY (`ID_UM`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf16;
 
--- Volcando datos para la tabla db_nitrorestaurant.unidad_medidas: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla db_nitrorestaurant.unidad_medidas: ~1 rows (aproximadamente)
 /*!40000 ALTER TABLE `unidad_medidas` DISABLE KEYS */;
 INSERT INTO `unidad_medidas` (`ID_UM`, `NOMBRE`) VALUES
 	(1, 'Pieza');
