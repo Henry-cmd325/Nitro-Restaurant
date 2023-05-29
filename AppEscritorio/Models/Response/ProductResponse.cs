@@ -1,4 +1,4 @@
-﻿namespace ApiNitroRestaurant.Models.Response
+﻿namespace AppEscritorio.Models.Response
 {
     public class ProductResponse
     {

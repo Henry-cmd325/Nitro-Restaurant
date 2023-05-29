@@ -46,13 +46,14 @@ namespace AppEscritorio.UI.PagesUI.ModalCategory
                 var result = await Api.Post<ProductRequest, ServerResponse<ProductResponse>>("http://nitrorestaurant-001-site1.ctempurl.com/api/Producto", new ProductRequest
                 {
                     Nombre = txtNameProduct.Text,
-                    Categoria = ComboCategory.Items[ComboCategory.SelectedIndex].ToString().Substring(38),
+                    IdCategoria = 1,
                     Inversion = decimal.Parse(txtInvestment.Text),
-                    Disponible = true,
+                    Cantidad = 1,
                     Precio = decimal.Parse(txtPrice.Text),
-                    Imagen = null
+                    ImgUrl = null,
+                    IdSucursal = 1
                 }
-                  );
+                  ); ;
 
 
                 if (result != null)

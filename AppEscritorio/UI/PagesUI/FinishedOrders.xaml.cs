@@ -61,12 +61,12 @@ namespace AppEscritorio.UI.PagesUI
                 if (item.Terminado == true)
                 {
                     Item itemOrder = new();
-                    itemOrder.Title = "Table #" + item.NumeroMesa.ToString();
-                    itemOrder.Desc = "No. Order: " + item.IdPedido.ToString();
+                    itemOrder.Title = "Table #" + item.Mesa;
+                    itemOrder.Desc = "No. Order: " + item.IdPedido;
                     itemOrder.Icon = ItemBaseOrder.Icon;
                     itemsList.Add(itemOrder);
                     itemOrder.Tag = item.IdPedido;
-                    itemOrder.Desc2 = item.IdEmpleado.ToString();
+                    itemOrder.Desc2 = item.Empleado;
                     itemOrder.MouseDoubleClick += ItemBaseOrder_MouseDoubleClick;
 
 
@@ -99,12 +99,12 @@ namespace AppEscritorio.UI.PagesUI
             }
 
             var result = await Api.Get<ServerResponse<OrderResponse>>("https://localhost:7214/api/Pedido/" + (sender as Item).Tag);
-            var result2 = await Api.Get<ServerResponse<UsuarioResponse>>("https://localhost:7214/api/Empleado/" + (sender as Item).Desc2);
+            var result2 = await Api.Get<ServerResponse<EmpleadoResponse>>("https://localhost:7214/api/Empleado/" + (sender as Item).Desc2);
 
             var order = Convert.ToInt32((sender as Item).Tag);
             OrderDescription.Text = "Order " + order.ToString();
             OrderDescription.Visibility = Visibility.Visible;
-            OrderNoMesa.Text = "Table #" + result.Data.NumeroMesa.ToString();
+            OrderNoMesa.Text = "Table #" + result.Data.Mesa;
             OrderNoMesa.Visibility = Visibility.Visible;
             OrderNameWaiter.Text = "Waiter: " + result2.Data.Nombre;
             OrderNameWaiter.Visibility = Visibility.Visible;

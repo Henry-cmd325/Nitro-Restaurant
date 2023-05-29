@@ -1,6 +1,6 @@
-﻿namespace ApiNitroRestaurant.Models.Response
+﻿namespace AppEscritorio.Models.Response
 {
-    public class CategoryResponse
+    public class CategoriaResponse
     {
         public int IdCategoria { get; set; }
         public string Nombre { get; set; } = null!;

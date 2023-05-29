@@ -1,4 +1,6 @@
-﻿namespace ApiNitroRestaurant.Models.Response
+﻿using System.Collections.Generic;
+
+namespace AppEscritorio.Models.Response
 {
     public class OrderResponse
     {

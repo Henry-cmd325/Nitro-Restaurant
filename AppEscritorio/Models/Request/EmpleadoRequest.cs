@@ -1,4 +1,4 @@
-﻿namespace ApiNitroRestaurant.Models.Request
+﻿namespace AppEscritorio.Models.Request
 {
     public class EmpleadoRequest
     {

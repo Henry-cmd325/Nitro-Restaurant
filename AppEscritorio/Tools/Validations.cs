@@ -1,4 +1,5 @@
-﻿using AppEscritorio.Pages;
+﻿using AppEscritorio.Models.Request;
+using AppEscritorio.Pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,17 +10,17 @@ namespace AppEscritorio.Tools
 {
     public static class Validations
     {
-        public static void ValidarSignUp(Usuarios usuario)
+        public static void ValidarSignUp(EmpleadoRequest usuario)
         {
             usuario.Nombre = usuario.Nombre.Trim();
             usuario.Paterno = usuario.Paterno.Trim();
             usuario.Materno = usuario.Materno.Trim();
             usuario.Telefono = usuario.Telefono.Trim();
-            usuario.Cuenta.Username = usuario.Cuenta.Username.Trim();
-            usuario.Cuenta.Password = usuario.Cuenta.Password.Trim();
+            usuario.Usuario = usuario.Usuario.Trim();
+            usuario.Contrasenia = usuario.Contrasenia.Trim();
 
             if (usuario.Nombre == "" || usuario.Paterno == "" || usuario.Materno == "" ||
-                usuario.Telefono == "" || usuario.Cuenta.Username == "" || usuario.Cuenta.Password == "")
+                usuario.Telefono == "" || usuario.Usuario == "" || usuario.Contrasenia == "")
             {
                 throw new Exception("Rellene todos los campos por favor :)");
             }
@@ -37,7 +38,7 @@ namespace AppEscritorio.Tools
                 throw new Exception("Introduzca solo caracteres numéricos en el telefono");
             }
 
-            if (usuario.Cuenta.Password.Length < 8)
+            if (usuario.Contrasenia.Length < 8)
             {
                 throw new Exception("La contraseña debe ser de al menos 12 carácteres");
             }

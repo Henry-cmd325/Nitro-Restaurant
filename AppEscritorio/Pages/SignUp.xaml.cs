@@ -16,6 +16,7 @@ using AppEscritorio.Models.Response;
 using AppEscritorio.Tools;
 using AppEscritorio.UI;
 using MaterialDesignThemes.Wpf;
+using AppEscritorio.Models.Request;
 
 namespace AppEscritorio.Pages
 {
@@ -80,29 +81,31 @@ namespace AppEscritorio.Pages
             }
             else
             {
-                var cuenta = new AccountRequest
+                var cuenta = new EmpleadoAuthRequest
                 {
                     Username = txtUsername.Text,
                     Password = txtPassword.Password
                 };
 
-                var usuario = new Usuarios
+                var usuario = new EmpleadoRequest
                 {
                     Nombre = txtName.Text,
                     Paterno = txtFLastName.Text,
                     Materno = txtSLastName.Text,
                     Telefono = txtPhone.Text,
-                    TipoEmpleado = new TipoEmpleadoRequest { Nombre = "User" },
-                    Cuenta = cuenta
+                    IdTipoEmpleado = 2,
+                    Activo = true,
+                    Usuario = txtUsername.Text,
+                    Contrasenia = txtPassword.Password
                 };
 
-                ServerResponse<UsuarioResponse> result = null;
+                ServerResponse<EmpleadoResponse> result = null;
 
                 try
                 {
                     Validations.ValidarSignUp(usuario);
 
-                    result = await Api.Post<Usuarios, ServerResponse<UsuarioResponse>>("https://localhost:7214/api/Empleado/signin", usuario);
+                    result = await Api.Post<EmpleadoRequest, ServerResponse<EmpleadoResponse>>("https://localhost:7214/api/Empleado/signin", usuario);
 
                     if (result == null) throw new Exception("Ha ocurrido un error");
                 }

@@ -1,4 +1,6 @@
-﻿namespace ApiNitroRestaurant.Models.Request
+﻿using System.Collections.Generic;
+
+namespace AppEscritorio.Models.Request
 {
     public class OrderRequest
     {
