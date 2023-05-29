@@ -16,7 +16,6 @@ namespace ApiNitroRestaurant.Services
             ServerResponse<bool> response = new();
 
             var dbEntrance = _context.Entradas.Where(e => e.IdEntrada == id).FirstOrDefault();
-
             if (dbEntrance == null)
             {
                 response.Success = false;
@@ -25,7 +24,12 @@ namespace ApiNitroRestaurant.Services
                 return response;
             }
 
+            var dbProducto = _context.Productos.Where(p => p.IdProducto == dbEntrance.IdProducto).First();
+            dbProducto.Cantidad -= dbEntrance.Cantidad;
+
+            _context.Entry(dbProducto).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
             _context.Remove(dbEntrance);
+
             response.Data = true;
 
             return response;
