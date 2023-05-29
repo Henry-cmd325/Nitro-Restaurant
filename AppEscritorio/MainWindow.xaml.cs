@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using AppEscritorio.Models.Request;
 using AppEscritorio.Models.Response;
 using AppEscritorio.Pages;
 using AppEscritorio.Tools;
@@ -80,9 +81,9 @@ namespace AppEscritorio
             loginBtn.IsEnabled = false;
             try
             {
-                var cuenta = new AccountRequest { Username = txtUsername.Text, Password = txtPassword.Password };
+                var request = new EmpleadoAuthRequest { Username = txtUsername.Text, Password = txtPassword.Password };
 
-                var result = await Api.Post<AccountRequest, ServerResponse<AccountResponse>>("https://localhost:7214/api/Empleado/login", cuenta);
+                var result = await Api.Post<EmpleadoAuthRequest, ServerResponse<EmpleadoResponse>>("https://localhost:7214/api/Empleado/login", request);
 
                 if (result != null && result.Success)
                 {
@@ -90,15 +91,12 @@ namespace AppEscritorio
                     {
                         MessageBox.Show(JsonSerializer.Serialize(result));
                     }
-                    else if (result.Data.Username == txtUsername.Text)
+                    else if (result.Data.Usuario == txtUsername.Text)
                     {
                         UI_window ui = new UI_window();
                         var app = Application.Current as App;
 
-                        app.service.OnReceiveKey((id) =>
-                        {
-                            app.idPc = id;
-                        });
+                        Api.Token = result.Data.Token;
                         await app.service.Connect();
 
                         ui.Show();
@@ -120,7 +118,7 @@ namespace AppEscritorio
             }
             catch(Exception ex)
             {
-                MessageBox.Show("Comprueba tu conexión a internet");
+                MessageBox.Show("Comprueba tu conexión a internet " + ex.Message);
             }
             
            loginBtn.IsEnabled = true; 

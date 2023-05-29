@@ -46,11 +46,14 @@ namespace AppEscritorio.UI.PagesUI.ModalCategory
                 var result = await Api.Post<ProductRequest, ServerResponse<ProductResponse>>("http://nitrorestaurant-001-site1.ctempurl.com/api/Producto", new ProductRequest
                 {
                     Nombre = txtNameProduct.Text,
-                    Categoria = ComboCategory.Items[ComboCategory.SelectedIndex].ToString().Substring(38),
+                    IdSucursal = 1,
+                    IdCategoria = ComboCategory.SelectedIndex,
                     Inversion = decimal.Parse(txtInvestment.Text),
-                    Disponible = true,
+                    Contable = true,
+                    Cantidad = 0,
                     Precio = decimal.Parse(txtPrice.Text),
-                    Imagen = null
+                    ImgUrl = null,
+                    IdUm = 1
                 }
                   );
 
@@ -79,7 +82,7 @@ namespace AppEscritorio.UI.PagesUI.ModalCategory
 
         private async void ComboBox_Loaded(object sender, RoutedEventArgs e)
         {
-            var result = await Api.Get<ServerResponse<CategoriaResponse[]>>("http://nitrorestaurant-001-site1.ctempurl.com/api/Categoria");
+            var result = await Api.Get<ServerResponse<CategoryResponse[]>>("http://nitrorestaurant-001-site1.ctempurl.com/api/Categoria");
 
             if (result != null)
             {

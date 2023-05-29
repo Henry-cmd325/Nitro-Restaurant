@@ -70,12 +70,12 @@ namespace AppEscritorio.UI.PagesUI
                 if (item.Terminado == null)
                 {
                     Item itemOrder = new();
-                    itemOrder.Title = "Table #" + item.NumeroMesa.ToString();
+                    itemOrder.Title = "Table #" + item.Mesa.ToString();
                     itemOrder.Desc = "No. Order: " + item.IdPedido.ToString();
                     itemOrder.Icon = ItemBaseOrder.Icon;
                     itemsList.Add(itemOrder);
                     itemOrder.Tag = item.IdPedido;
-                    itemOrder.Desc2 = item.IdEmpleado.ToString();
+                    itemOrder.Desc2 = item.IdPedido.ToString();
                     itemOrder.MouseDoubleClick += ItemBaseOrder_MouseDoubleClick;
                       
 
@@ -108,18 +108,18 @@ namespace AppEscritorio.UI.PagesUI
             }
 
             var result = await Api.Get<ServerResponse<OrderResponse>>("https://localhost:7214/api/Pedido/" + (sender as Item).Tag);
-            var result2 = await Api.Get<ServerResponse<UsuarioResponse>>("https://localhost:7214/api/Empleado/" + (sender as Item).Desc2);
+            var result2 = await Api.Get<ServerResponse<EmpleadoResponse>>("https://localhost:7214/api/Empleado/" + (sender as Item).Desc2);
            
             var order = Convert.ToInt32((sender as Item).Tag);
             OrderDescription.Text = "Order " + order.ToString();
             OrderDescription.Visibility = Visibility.Visible;
-            OrderNoMesa.Text = "Table #" + result.Data.NumeroMesa.ToString();
+            OrderNoMesa.Text = "Table #" + result.Data.Mesa.ToString();
             OrderNoMesa.Visibility = Visibility.Visible;
             OrderNameWaiter.Text = "Waiter: " + result2.Data.Nombre;
             OrderNameWaiter.Visibility = Visibility.Visible;
             Scroll.Visibility = Visibility.Visible;
             
-             for (int i = 0; i <= Math.Ceiling(result.Data.DetallesPedidos.Count / 2.0) ; i++)
+             for (int i = 0; i <= Math.Ceiling(result.Data.DetallesPedidos.Count() / 2.0) ; i++)
              {
                  var definition = new RowDefinition();
                  rows.Add(definition);

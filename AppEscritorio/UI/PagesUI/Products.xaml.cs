@@ -32,10 +32,10 @@ namespace AppEscritorio.UI.PagesUI
         }
         List<Item> items = new();
         List<RowDefinition> rows = new();
-        List<CategoriaResponse> Categories = new();
+        List<CategoryResponse> Categories = new();
         private async void ComboBox_Loaded(object sender, RoutedEventArgs e)
         {
-            var result = await Api.Get<ServerResponse<CategoriaResponse[]>>("https://localhost:7214/api/Categoria");
+            var result = await Api.Get<ServerResponse<CategoryResponse[]>>("https://localhost:7214/api/Categoria");
 
             if (result != null)
             {

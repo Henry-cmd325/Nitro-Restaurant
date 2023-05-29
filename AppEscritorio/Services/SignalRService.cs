@@ -14,7 +14,7 @@ namespace AppEscritorio.Services
         public SignalRService()
         {
             connection = new HubConnectionBuilder()
-                .WithUrl("http://nitrorestaurant-001-site1.ctempurl.com/ordenesHub")
+                .WithUrl("https://localhost:7214/ordenesHub")
                 .Build();
         }
 
@@ -22,11 +22,6 @@ namespace AppEscritorio.Services
         {
             await connection.StartAsync();
             await connection.InvokeAsync("CreateRoom");
-        }
-
-        public void OnReceiveKey(Action<string> action)
-        {
-            connection.On("ReceiveKey", action);
         }
 
         public void OnNewOrder(Action action)

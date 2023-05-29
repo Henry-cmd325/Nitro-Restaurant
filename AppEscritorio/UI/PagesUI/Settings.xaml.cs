@@ -30,7 +30,5 @@ namespace AppEscritorio.UI.PagesUI
 
             EnlaceCode.Text += " " + app.idPc;
         }
-
-        
     }
 }

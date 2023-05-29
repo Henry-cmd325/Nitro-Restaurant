@@ -1,21 +1,26 @@
-﻿using AppEscritorio.Models.Response;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+﻿using System.Net.Http.Headers;
 using System.Net.Http;
 using System.Net.Http.Json;
-using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace AppEscritorio.Tools
 {
-    internal class Api
+    public class Api
     {
+        public static string Token = string.Empty;
+        private static readonly HttpClient client;
+
+        static Api()
+        {
+            client = new HttpClient();
+        }
         public static async Task<TValue?> Get<TValue>(string url)
         {
-            HttpClient client = new();
+            if (Token != string.Empty)
+            {
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Token);
+            }
 
             HttpResponseMessage response = await client.GetAsync(url);
 
@@ -30,7 +35,10 @@ namespace AppEscritorio.Tools
 
         public static async Task<TResponse> Post<TValue, TResponse>(string url, TValue obj)
         {
-            HttpClient client = new();
+            if (Token != string.Empty)
+            {
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Token);
+            }
 
             var response = await client.PostAsJsonAsync(url, obj);
 
@@ -46,7 +54,10 @@ namespace AppEscritorio.Tools
 
         public static async Task<bool> Put<TValue>(string url, TValue obj)
         {
-            HttpClient client = new();
+            if (Token != string.Empty)
+            {
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Token);
+            }
 
             var response = await client.PutAsJsonAsync(url, obj);
 
