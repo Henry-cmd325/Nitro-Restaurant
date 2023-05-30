@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Programacion\\Nitro-Restaurant\\Api\\ApiNitroRestaurant\\ApiNitroRestaurant.csproj": {}
+    "D:\\Programacion\\Uni\\Nitro Restaurant\\Api\\ApiNitroRestaurant\\ApiNitroRestaurant.csproj": {}
   },
   "projects": {
-    "C:\\Programacion\\Nitro-Restaurant\\Api\\ApiNitroRestaurant\\ApiNitroRestaurant.csproj": {
+    "D:\\Programacion\\Uni\\Nitro Restaurant\\Api\\ApiNitroRestaurant\\ApiNitroRestaurant.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Programacion\\Nitro-Restaurant\\Api\\ApiNitroRestaurant\\ApiNitroRestaurant.csproj",
+        "projectUniqueName": "D:\\Programacion\\Uni\\Nitro Restaurant\\Api\\ApiNitroRestaurant\\ApiNitroRestaurant.csproj",
         "projectName": "ApiNitroRestaurant",
-        "projectPath": "C:\\Programacion\\Nitro-Restaurant\\Api\\ApiNitroRestaurant\\ApiNitroRestaurant.csproj",
-        "packagesPath": "C:\\Users\\manul\\.nuget\\packages\\",
-        "outputPath": "C:\\Programacion\\Nitro-Restaurant\\Api\\ApiNitroRestaurant\\obj\\",
+        "projectPath": "D:\\Programacion\\Uni\\Nitro Restaurant\\Api\\ApiNitroRestaurant\\ApiNitroRestaurant.csproj",
+        "packagesPath": "C:\\Users\\henry\\.nuget\\packages\\",
+        "outputPath": "D:\\Programacion\\Uni\\Nitro Restaurant\\Api\\ApiNitroRestaurant\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\manul\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\henry\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -60,7 +64,7 @@
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[6.2.3, )"
+              "version": "[6.5.0, )"
             },
             "XAct.Core.PCL": {
               "target": "Package",
@@ -77,8 +81,7 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -90,7 +93,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     }

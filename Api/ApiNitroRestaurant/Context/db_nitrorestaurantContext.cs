@@ -1,4 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace ApiNitroRestaurant.Context
 {
@@ -185,6 +188,8 @@ namespace ApiNitroRestaurant.Context
 
                 entity.HasIndex(e => e.IdProveedor, "FK_REFERENCE_14");
 
+                entity.HasIndex(e => e.IdSucursal, "FK_entradas_sucursales");
+
                 entity.Property(e => e.IdEntrada)
                     .HasColumnType("int(11)")
                     .HasColumnName("ID_ENTRADA");
@@ -205,6 +210,10 @@ namespace ApiNitroRestaurant.Context
                     .HasColumnType("int(11)")
                     .HasColumnName("ID_PROVEEDOR");
 
+                entity.Property(e => e.IdSucursal)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("id_sucursal");
+
                 entity.HasOne(d => d.IdProductoNavigation)
                     .WithMany(p => p.Entrada)
                     .HasForeignKey(d => d.IdProducto)
@@ -215,6 +224,12 @@ namespace ApiNitroRestaurant.Context
                     .WithMany(p => p.Entrada)
                     .HasForeignKey(d => d.IdProveedor)
                     .HasConstraintName("FK_REFERENCE_14");
+
+                entity.HasOne(d => d.IdSucursalNavigation)
+                    .WithMany(p => p.Entrada)
+                    .HasForeignKey(d => d.IdSucursal)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_entradas_sucursales");
             });
 
             modelBuilder.Entity<Mesa>(entity =>
@@ -456,9 +471,29 @@ namespace ApiNitroRestaurant.Context
                     .HasColumnType("int(11)")
                     .HasColumnName("ID_PROVEEDOR");
 
+                entity.Property(e => e.Direccion)
+                    .HasMaxLength(100)
+                    .HasColumnName("direccion");
+
                 entity.Property(e => e.Nombre)
                     .HasMaxLength(50)
                     .HasColumnName("NOMBRE");
+
+                entity.Property(e => e.NumeroCuenta)
+                    .HasMaxLength(30)
+                    .HasColumnName("numero_cuenta");
+
+                entity.Property(e => e.Telefono1)
+                    .HasMaxLength(10)
+                    .HasColumnName("telefono1");
+
+                entity.Property(e => e.Telefono2)
+                    .HasMaxLength(10)
+                    .HasColumnName("telefono2");
+
+                entity.Property(e => e.Telefono3)
+                    .HasMaxLength(10)
+                    .HasColumnName("telefono3");
             });
 
             modelBuilder.Entity<Sucursale>(entity =>

@@ -5,18 +5,28 @@ D:\Programacion\Uni\Nitro Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\Api
 D:\Programacion\Uni\Nitro Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\ApiNitroRestaurant.runtimeconfig.json
 D:\Programacion\Uni\Nitro Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\ApiNitroRestaurant.dll
 D:\Programacion\Uni\Nitro Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\ApiNitroRestaurant.pdb
+D:\Programacion\Uni\Nitro Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\Microsoft.Practices.ServiceLocation.dll
 D:\Programacion\Uni\Nitro Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\Humanizer.dll
+D:\Programacion\Uni\Nitro Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 D:\Programacion\Uni\Nitro Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
 D:\Programacion\Uni\Nitro Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
 D:\Programacion\Uni\Nitro Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
 D:\Programacion\Uni\Nitro Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
 D:\Programacion\Uni\Nitro Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
+D:\Programacion\Uni\Nitro Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\Programacion\Uni\Nitro Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+D:\Programacion\Uni\Nitro Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+D:\Programacion\Uni\Nitro Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\Programacion\Uni\Nitro Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
 D:\Programacion\Uni\Nitro Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\Microsoft.OpenApi.dll
 D:\Programacion\Uni\Nitro Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\MySqlConnector.dll
 D:\Programacion\Uni\Nitro Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\Pomelo.EntityFrameworkCore.MySql.dll
+D:\Programacion\Uni\Nitro Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\shortid.dll
 D:\Programacion\Uni\Nitro Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
 D:\Programacion\Uni\Nitro Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 D:\Programacion\Uni\Nitro Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\Programacion\Uni\Nitro Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
+D:\Programacion\Uni\Nitro Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\XAct.Core.PCL.dll
 D:\Programacion\Uni\Nitro Restaurant\Api\ApiNitroRestaurant\obj\Debug\net6.0\ApiNitroRestaurant.csproj.AssemblyReference.cache
 D:\Programacion\Uni\Nitro Restaurant\Api\ApiNitroRestaurant\obj\Debug\net6.0\ApiNitroRestaurant.GeneratedMSBuildEditorConfig.editorconfig
 D:\Programacion\Uni\Nitro Restaurant\Api\ApiNitroRestaurant\obj\Debug\net6.0\ApiNitroRestaurant.AssemblyInfoInputs.cache
@@ -33,97 +43,3 @@ D:\Programacion\Uni\Nitro Restaurant\Api\ApiNitroRestaurant\obj\Debug\net6.0\ref
 D:\Programacion\Uni\Nitro Restaurant\Api\ApiNitroRestaurant\obj\Debug\net6.0\ApiNitroRestaurant.pdb
 D:\Programacion\Uni\Nitro Restaurant\Api\ApiNitroRestaurant\obj\Debug\net6.0\ApiNitroRestaurant.genruntimeconfig.cache
 D:\Programacion\Uni\Nitro Restaurant\Api\ApiNitroRestaurant\obj\Debug\net6.0\ref\ApiNitroRestaurant.dll
-D:\Programacion\Uni\Nitro Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\Microsoft.Practices.ServiceLocation.dll
-D:\Programacion\Uni\Nitro Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\XAct.Core.PCL.dll
-C:\Users\Admin\source\repos\Nitro-Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\ApiNitroRestaurant.exe
-C:\Users\Admin\source\repos\Nitro-Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\ApiNitroRestaurant.deps.json
-C:\Users\Admin\source\repos\Nitro-Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\ApiNitroRestaurant.runtimeconfig.json
-C:\Users\Admin\source\repos\Nitro-Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\ApiNitroRestaurant.dll
-C:\Users\Admin\source\repos\Nitro-Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\ApiNitroRestaurant.pdb
-C:\Users\Admin\source\repos\Nitro-Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\Microsoft.Practices.ServiceLocation.dll
-C:\Users\Admin\source\repos\Nitro-Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\Humanizer.dll
-C:\Users\Admin\source\repos\Nitro-Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
-C:\Users\Admin\source\repos\Nitro-Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
-C:\Users\Admin\source\repos\Nitro-Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
-C:\Users\Admin\source\repos\Nitro-Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
-C:\Users\Admin\source\repos\Nitro-Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
-C:\Users\Admin\source\repos\Nitro-Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\Microsoft.OpenApi.dll
-C:\Users\Admin\source\repos\Nitro-Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\MySqlConnector.dll
-C:\Users\Admin\source\repos\Nitro-Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\Pomelo.EntityFrameworkCore.MySql.dll
-C:\Users\Admin\source\repos\Nitro-Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
-C:\Users\Admin\source\repos\Nitro-Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
-C:\Users\Admin\source\repos\Nitro-Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
-C:\Users\Admin\source\repos\Nitro-Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\XAct.Core.PCL.dll
-C:\Users\Admin\source\repos\Nitro-Restaurant\Api\ApiNitroRestaurant\obj\Debug\net6.0\ApiNitroRestaurant.csproj.AssemblyReference.cache
-C:\Users\Admin\source\repos\Nitro-Restaurant\Api\ApiNitroRestaurant\obj\Debug\net6.0\ApiNitroRestaurant.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Admin\source\repos\Nitro-Restaurant\Api\ApiNitroRestaurant\obj\Debug\net6.0\ApiNitroRestaurant.AssemblyInfoInputs.cache
-C:\Users\Admin\source\repos\Nitro-Restaurant\Api\ApiNitroRestaurant\obj\Debug\net6.0\ApiNitroRestaurant.AssemblyInfo.cs
-C:\Users\Admin\source\repos\Nitro-Restaurant\Api\ApiNitroRestaurant\obj\Debug\net6.0\ApiNitroRestaurant.csproj.CoreCompileInputs.cache
-C:\Users\Admin\source\repos\Nitro-Restaurant\Api\ApiNitroRestaurant\obj\Debug\net6.0\ApiNitroRestaurant.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\Admin\source\repos\Nitro-Restaurant\Api\ApiNitroRestaurant\obj\Debug\net6.0\ApiNitroRestaurant.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\Admin\source\repos\Nitro-Restaurant\Api\ApiNitroRestaurant\obj\Debug\net6.0\staticwebassets.build.json
-C:\Users\Admin\source\repos\Nitro-Restaurant\Api\ApiNitroRestaurant\obj\Debug\net6.0\staticwebassets.development.json
-C:\Users\Admin\source\repos\Nitro-Restaurant\Api\ApiNitroRestaurant\obj\Debug\net6.0\scopedcss\bundle\ApiNitroRestaurant.styles.css
-C:\Users\Admin\source\repos\Nitro-Restaurant\Api\ApiNitroRestaurant\obj\Debug\net6.0\ApiNitroRestaurant.csproj.CopyComplete
-C:\Users\Admin\source\repos\Nitro-Restaurant\Api\ApiNitroRestaurant\obj\Debug\net6.0\ApiNitroRestaurant.dll
-C:\Users\Admin\source\repos\Nitro-Restaurant\Api\ApiNitroRestaurant\obj\Debug\net6.0\refint\ApiNitroRestaurant.dll
-C:\Users\Admin\source\repos\Nitro-Restaurant\Api\ApiNitroRestaurant\obj\Debug\net6.0\ApiNitroRestaurant.pdb
-C:\Users\Admin\source\repos\Nitro-Restaurant\Api\ApiNitroRestaurant\obj\Debug\net6.0\ApiNitroRestaurant.genruntimeconfig.cache
-C:\Users\Admin\source\repos\Nitro-Restaurant\Api\ApiNitroRestaurant\obj\Debug\net6.0\ref\ApiNitroRestaurant.dll
-D:\Programacion\Uni\Nitro Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\shortid.dll
-C:\Users\Admin\source\repos\Nitro-Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\shortid.dll
-C:\Programacion\Nitro-Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\ApiNitroRestaurant.exe
-C:\Programacion\Nitro-Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\ApiNitroRestaurant.deps.json
-C:\Programacion\Nitro-Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\ApiNitroRestaurant.runtimeconfig.json
-C:\Programacion\Nitro-Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\ApiNitroRestaurant.dll
-C:\Programacion\Nitro-Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\ApiNitroRestaurant.pdb
-C:\Programacion\Nitro-Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\Microsoft.Practices.ServiceLocation.dll
-C:\Programacion\Nitro-Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\Humanizer.dll
-C:\Programacion\Nitro-Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
-C:\Programacion\Nitro-Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
-C:\Programacion\Nitro-Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
-C:\Programacion\Nitro-Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
-C:\Programacion\Nitro-Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
-C:\Programacion\Nitro-Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\Microsoft.OpenApi.dll
-C:\Programacion\Nitro-Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\MySqlConnector.dll
-C:\Programacion\Nitro-Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\Pomelo.EntityFrameworkCore.MySql.dll
-C:\Programacion\Nitro-Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\shortid.dll
-C:\Programacion\Nitro-Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
-C:\Programacion\Nitro-Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
-C:\Programacion\Nitro-Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
-C:\Programacion\Nitro-Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\XAct.Core.PCL.dll
-C:\Programacion\Nitro-Restaurant\Api\ApiNitroRestaurant\obj\Debug\net6.0\ApiNitroRestaurant.csproj.AssemblyReference.cache
-C:\Programacion\Nitro-Restaurant\Api\ApiNitroRestaurant\obj\Debug\net6.0\ApiNitroRestaurant.GeneratedMSBuildEditorConfig.editorconfig
-C:\Programacion\Nitro-Restaurant\Api\ApiNitroRestaurant\obj\Debug\net6.0\ApiNitroRestaurant.AssemblyInfoInputs.cache
-C:\Programacion\Nitro-Restaurant\Api\ApiNitroRestaurant\obj\Debug\net6.0\ApiNitroRestaurant.AssemblyInfo.cs
-C:\Programacion\Nitro-Restaurant\Api\ApiNitroRestaurant\obj\Debug\net6.0\ApiNitroRestaurant.csproj.CoreCompileInputs.cache
-C:\Programacion\Nitro-Restaurant\Api\ApiNitroRestaurant\obj\Debug\net6.0\ApiNitroRestaurant.MvcApplicationPartsAssemblyInfo.cs
-C:\Programacion\Nitro-Restaurant\Api\ApiNitroRestaurant\obj\Debug\net6.0\ApiNitroRestaurant.MvcApplicationPartsAssemblyInfo.cache
-C:\Programacion\Nitro-Restaurant\Api\ApiNitroRestaurant\obj\Debug\net6.0\staticwebassets\msbuild.ApiNitroRestaurant.Microsoft.AspNetCore.StaticWebAssets.props
-C:\Programacion\Nitro-Restaurant\Api\ApiNitroRestaurant\obj\Debug\net6.0\staticwebassets\msbuild.build.ApiNitroRestaurant.props
-C:\Programacion\Nitro-Restaurant\Api\ApiNitroRestaurant\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.ApiNitroRestaurant.props
-C:\Programacion\Nitro-Restaurant\Api\ApiNitroRestaurant\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.ApiNitroRestaurant.props
-C:\Programacion\Nitro-Restaurant\Api\ApiNitroRestaurant\obj\Debug\net6.0\staticwebassets.pack.json
-C:\Programacion\Nitro-Restaurant\Api\ApiNitroRestaurant\obj\Debug\net6.0\staticwebassets.build.json
-C:\Programacion\Nitro-Restaurant\Api\ApiNitroRestaurant\obj\Debug\net6.0\staticwebassets.development.json
-C:\Programacion\Nitro-Restaurant\Api\ApiNitroRestaurant\obj\Debug\net6.0\scopedcss\bundle\ApiNitroRestaurant.styles.css
-C:\Programacion\Nitro-Restaurant\Api\ApiNitroRestaurant\obj\Debug\net6.0\ApiNitroRestaurant.csproj.CopyComplete
-C:\Programacion\Nitro-Restaurant\Api\ApiNitroRestaurant\obj\Debug\net6.0\ApiNitroRestaurant.dll
-C:\Programacion\Nitro-Restaurant\Api\ApiNitroRestaurant\obj\Debug\net6.0\refint\ApiNitroRestaurant.dll
-C:\Programacion\Nitro-Restaurant\Api\ApiNitroRestaurant\obj\Debug\net6.0\ApiNitroRestaurant.pdb
-C:\Programacion\Nitro-Restaurant\Api\ApiNitroRestaurant\obj\Debug\net6.0\ApiNitroRestaurant.genruntimeconfig.cache
-C:\Programacion\Nitro-Restaurant\Api\ApiNitroRestaurant\obj\Debug\net6.0\ref\ApiNitroRestaurant.dll
-D:\Programacion\Uni\Nitro Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
-D:\Programacion\Uni\Nitro Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
-D:\Programacion\Uni\Nitro Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
-D:\Programacion\Uni\Nitro Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
-D:\Programacion\Uni\Nitro Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
-D:\Programacion\Uni\Nitro Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
-D:\Programacion\Uni\Nitro Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
-C:\Programacion\Nitro-Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
-C:\Programacion\Nitro-Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
-C:\Programacion\Nitro-Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
-C:\Programacion\Nitro-Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
-C:\Programacion\Nitro-Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
-C:\Programacion\Nitro-Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
-C:\Programacion\Nitro-Restaurant\Api\ApiNitroRestaurant\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll

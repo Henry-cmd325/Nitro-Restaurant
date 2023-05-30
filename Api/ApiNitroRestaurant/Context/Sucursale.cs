@@ -9,6 +9,7 @@ namespace ApiNitroRestaurant.Context
         {
             Categoria = new HashSet<Categoria>();
             Empleados = new HashSet<Empleado>();
+            Entrada = new HashSet<Entrada>();
             Mesas = new HashSet<Mesa>();
             Pedidos = new HashSet<Pedido>();
             Productos = new HashSet<Producto>();
@@ -21,6 +22,7 @@ namespace ApiNitroRestaurant.Context
 
         public virtual ICollection<Categoria> Categoria { get; set; }
         public virtual ICollection<Empleado> Empleados { get; set; }
+        public virtual ICollection<Entrada> Entrada { get; set; }
         public virtual ICollection<Mesa> Mesas { get; set; }
         public virtual ICollection<Pedido> Pedidos { get; set; }
         public virtual ICollection<Producto> Productos { get; set; }

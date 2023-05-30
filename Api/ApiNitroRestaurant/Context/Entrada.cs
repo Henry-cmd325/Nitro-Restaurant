@@ -10,8 +10,10 @@ namespace ApiNitroRestaurant.Context
         public int? IdProveedor { get; set; }
         public int Cantidad { get; set; }
         public DateTime FechaHora { get; set; }
+        public int IdSucursal { get; set; }
 
         public virtual Producto IdProductoNavigation { get; set; } = null!;
         public virtual Proveedore? IdProveedorNavigation { get; set; }
+        public virtual Sucursale IdSucursalNavigation { get; set; } = null!;
     }
 }

@@ -31,7 +31,8 @@ namespace ApiNitroRestaurant.Controllers
         }
 
         [Authorize(Roles = "Admin")]
-        [HttpGet("/admin")]
+        [Route("all")]
+        [HttpGet]
         public IActionResult GetAllPedidosFromAllSubsidiary()
         {
             var response = _orderService.GetAllOrders();

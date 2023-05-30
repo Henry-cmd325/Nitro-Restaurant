@@ -1,6 +1,5 @@
 using ApiNitroRestaurant.Context;
 using ApiNitroRestaurant.Hubs;
-using ApiNitroRestaurant.Models;
 using ApiNitroRestaurant.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -24,9 +23,11 @@ builder.Services.AddDbContext<db_nitrorestaurantContext>
 );
 
 builder.Services.AddScoped<IEmployeeService, EmployeeService>();
+builder.Services.AddScoped<ISucursalService, SucursalService>();
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IOrderService, OrderService>();
+builder.Services.AddScoped<IEntranceService, EntranceService>();
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
