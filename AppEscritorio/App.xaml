@@ -12,6 +12,8 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
+                <ResourceDictionary Source="/ResourceDictionaries/Buttons.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="/ResourceDictionaries/ColorsUI.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
 
             <Style x:Key="menuButton" TargetType="Button">

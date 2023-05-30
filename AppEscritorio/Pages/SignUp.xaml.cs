@@ -96,7 +96,8 @@ namespace AppEscritorio.Pages
                     IdTipoEmpleado = 2,
                     Activo = true,
                     Usuario = txtUsername.Text,
-                    Contrasenia = txtPassword.Password
+                    Contrasenia = txtPassword.Password,
+                    IdSucursal= 1
                 };
 
                 ServerResponse<EmpleadoResponse> result = null;

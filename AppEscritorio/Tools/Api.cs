@@ -13,11 +13,21 @@ namespace AppEscritorio.Tools
 {
     internal class Api
     {
+        public static string Token = string.Empty;
+        private static readonly HttpClient _client;
+
+        static Api()
+        {
+            _client = new HttpClient();
+        }
         public static async Task<TValue?> Get<TValue>(string url)
         {
-            HttpClient client = new();
+           if (Token != string.Empty)
+            {
+                _client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", Token);
+            }
 
-            HttpResponseMessage response = await client.GetAsync(url);
+            HttpResponseMessage response = await _client.GetAsync(url);
 
             var json = await response.Content.ReadAsStringAsync();
             var obj = JsonSerializer.Deserialize<TValue>(json, new JsonSerializerOptions()
@@ -30,9 +40,12 @@ namespace AppEscritorio.Tools
 
         public static async Task<TResponse> Post<TValue, TResponse>(string url, TValue obj)
         {
-            HttpClient client = new();
+			if (Token != string.Empty)
+			{
+				_client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", Token);
+			};
 
-            var response = await client.PostAsJsonAsync(url, obj);
+            var response = await _client.PostAsJsonAsync(url, obj);
 
             var resultJson = await response.Content.ReadAsStringAsync();
 
@@ -46,9 +59,12 @@ namespace AppEscritorio.Tools
 
         public static async Task<bool> Put<TValue>(string url, TValue obj)
         {
-            HttpClient client = new();
+			if (Token != string.Empty)
+			{
+				_client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", Token);
+			}
 
-            var response = await client.PutAsJsonAsync(url, obj);
+			var response = await _client.PutAsJsonAsync(url, obj);
 
             return response.IsSuccessStatusCode;
         }

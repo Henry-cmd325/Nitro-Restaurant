@@ -28,6 +28,9 @@
     <Compile Update="UI\UI_window.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="UI\UserControls\ControlBar.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="UI\UserControls\InfoCard.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -40,6 +43,12 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Pages\SignUp.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ResourceDictionaries\Buttons.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ResourceDictionaries\ColorsUI.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="UI\PagesUI\FinishedOrders.xaml">
@@ -61,6 +70,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="UI\UI_window.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\UserControls\ControlBar.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="UI\UserControls\InfoCard.xaml">

@@ -1,3 +1,4 @@
+using ApiNitroRestaurant.Context;
 using ApiNitroRestaurant.Hubs;
 using ApiNitroRestaurant.Models;
 using ApiNitroRestaurant.Services;
