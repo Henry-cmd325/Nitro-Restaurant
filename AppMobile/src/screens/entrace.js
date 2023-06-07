@@ -28,7 +28,9 @@ const InputScreen = ({ navigateToScreen }) => {
                 source={require('../assets/fondo2.jpg')}
                 style={{ flex: 1, resizeMode: 'cover', justifyContent: 'center' }}
             >
-                <Carousel />
+                <View style={{ flex: 1 }}>
+                    <Carousel />
+                </View>
                 <View style={{ flex: 1, justifyContent: 'flex-end' }}>
                     <View style={{ flexDirection: 'row', justifyContent: 'center', marginBottom: 30 }}>
                         <TouchableOpacity style={[buttonStyles.button, { marginRight: 10 }]} onPress={() => navigateToScreen('login')}>
