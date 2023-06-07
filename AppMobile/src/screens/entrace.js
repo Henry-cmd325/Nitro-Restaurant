@@ -1,21 +1,50 @@
 import React from 'react';
-import { StatusBar, Alert, Button, ImageBackground, View } from 'react-native';
+
+//REACT NATIVE Y TAILWIND CSS
+import { StyleSheet, SafeAreaView, StatusBar, Alert, Button, ImageBackground, TouchableOpacity, Text, View } from 'react-native';
 import { useColorScheme, apply } from 'nativewind';
+
+// ESTILOS NATIVOS
+import { brand } from '../styles/palette';
+import buttonStyles from '../styles/buttonStyles';
+import style from '../styles/style';
+
+// COMPONENTES 
+import Carousel from '../components/Carousel';
+
+const styles = StyleSheet.create({
+    safeArea: {
+    backgroundColor: 'white',
+    },
+});
 
 const InputScreen = ({ navigateToScreen }) => {
     return (
-        <View style={{ flex: 1}}>
-            <View style={{ flex: 1 }}>
-                <ImageBackground
-                source={require('../assets/Nitro-min.gif')}
-                style={{ flex: 1, resizeMode: 'cover', justifyContent: 'center' }}
-                />
+        
+        <View style={{ flex: 1 }}>
+            <StatusBar backgroundColor="white" barStyle="dark-content" />
 
-                <View>
-                <Button onPress={() => navigateToScreen('login')} title="Login" color="#841584" />
-                <Button onPress={() => navigateToScreen('signup')} title="Signup" color="#841584" />
+            <ImageBackground
+                source={require('../assets/fondo2.jpg')}
+                style={{ flex: 1, resizeMode: 'cover', justifyContent: 'center' }}
+            >
+                <Carousel />
+                <View style={{ flex: 1, justifyContent: 'flex-end' }}>
+                    <View style={{ flexDirection: 'row', justifyContent: 'center', marginBottom: 30 }}>
+                        <TouchableOpacity style={[buttonStyles.button, { marginRight: 10 }]} onPress={() => navigateToScreen('login')}>
+                            <Text style={buttonStyles.buttonText}>LOG IN</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={buttonStyles.button_signup} onPress={() => navigateToScreen('signup')}>
+                            <Text style={buttonStyles.buttonText_signup}>SIGN UP</Text>
+                        </TouchableOpacity>
+                    </View>
+                    <View style={{ alignItems: 'center', marginBottom: 30 }}>
+                        <Text style={style.entraceText}>Colabora con 
+                            <Text style={{ fontWeight: '500' }}> Nitro Restaurant</Text>
+                        </Text>
+                    </View>
                 </View>
-            </View>
+            </ImageBackground>
         </View>
     );
 };

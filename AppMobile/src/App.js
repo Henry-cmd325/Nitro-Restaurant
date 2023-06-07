@@ -4,8 +4,12 @@ import InputScreen from './screens/entrace';
 import HomeScreen from './screens/home';
 import LoginScreen from './screens/login';
 import SignupScreen from './screens/signup';
-import OrdersScreen from './screens/orders';
+import OrdersScreen from './screens/Modal_orders';
 import TableOrdersScreen from './screens/tableOrders';
+// COMPONENTES
+import CarouselScreen from './components/Carousel';
+
+//{currentScreen === 'carousel' && <CarouselScreen navigateToScreen={navigateToScreen} />}
 
 const App = () => {
   const [currentScreen, setCurrentScreen] = useState('entrace');
@@ -22,6 +26,7 @@ const App = () => {
       {currentScreen === 'signup' && <SignupScreen navigateToScreen={navigateToScreen} />}
       {currentScreen === 'orders' && <OrdersScreen navigateToScreen={navigateToScreen} />}
       {currentScreen === 'tableOrders' && <TableOrdersScreen navigateToScreen={navigateToScreen} />}
+      
     </View>
   );
 };
