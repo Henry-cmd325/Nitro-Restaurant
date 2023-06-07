@@ -27,8 +27,8 @@ const Carousel = () => {
     }
   };
 
-  // Desplaza automáticamente al siguiente elemento cada 3 segundos
-  setTimeout(scrollToNextPage, 3000);
+  // Desplaza automáticamente al siguiente elemento cada 4 segundos
+  setTimeout(scrollToNextPage, 4000);
 
   return (
     <View style={styles.carouselContainer}>
