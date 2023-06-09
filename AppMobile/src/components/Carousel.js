@@ -9,23 +9,28 @@ const OnboardingData = [
 
 const Carousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+
   const carouselRef = useRef(null); 
 
   const onViewableItemsChanged = useRef(({ viewableItems }) => {
-    if (viewableItems.length > 0) {
+    if (viewableItems.length > 0 && carouselRef.current) {
       setCurrentIndex(viewableItems[0].index);
     }
   }).current;
 
   const viewabilityConfig = useRef({ viewAreaCoveragePercentThreshold: 50 }).current;
 
+  // HACE SCROLL AL SIGUIENTE CARUSEL
   const scrollToNextPage = () => {
-    if (currentIndex < OnboardingData.length - 1) {
-      carouselRef.current.scrollToIndex({ index: currentIndex + 1 });
-    } else {
-      carouselRef.current.scrollToIndex({ index: 0 });
+    if (carouselRef.current) {
+      if (currentIndex < OnboardingData.length - 1) {
+        carouselRef.current.scrollToIndex({ index: currentIndex + 1 });
+      } else {
+        carouselRef.current.scrollToIndex({ index: 0 });
+      }
     }
   };
+  
 
   // Desplaza automáticamente al siguiente elemento cada 4 segundos
   setTimeout(scrollToNextPage, 4000);
@@ -41,8 +46,8 @@ const Carousel = () => {
         viewabilityConfig={viewabilityConfig}
         renderItem={({ item }) => (
           <View style={styles.slide}>
-            <Text style={[styles.heading, { color: 'white' }]}>{item.heading}</Text>
-            <Text style={[styles.caption, { color: 'white' }]}>{item.caption}</Text>
+            <Text style={[styles.heading, { color: '#fafafa' }]}>{item.heading}</Text>
+            <Text style={[styles.caption, { color: '#fafafa' }]}>{item.caption}</Text>
           </View>
         )}
       />
@@ -98,4 +103,5 @@ const styles = StyleSheet.create({
   });
 
 export default Carousel;
+
 export { OnboardingData };

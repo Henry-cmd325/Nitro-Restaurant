@@ -9,6 +9,8 @@ import { brand } from '../styles/palette';
 import buttonStyles from '../styles/buttonStyles';
 import style from '../styles/style';
 
+//source=(require('../assets/Nitro.gif'))
+
 // COMPONENTES 
 import Carousel from '../components/Carousel';
 
