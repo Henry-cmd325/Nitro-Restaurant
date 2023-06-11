@@ -28,4 +28,18 @@ export default StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     },
+    formButton: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: 8,
+        backgroundColor: '#c8e6fb',
+        borderRadius: 19,
+        width: 180,
+        height: 40,
+    },
+    buttonText_Black: {
+        color: '#2F363B',
+        fontWeight: 'bold',
+        textAlign: 'center',
+    },
 });

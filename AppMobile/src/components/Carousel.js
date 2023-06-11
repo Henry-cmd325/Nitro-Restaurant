@@ -30,7 +30,6 @@ const Carousel = () => {
       }
     }
   };
-  
 
   // Desplaza automáticamente al siguiente elemento cada 4 segundos
   setTimeout(scrollToNextPage, 4000);
