@@ -20,16 +20,20 @@ namespace ApiNitroRestaurant.Context
         public virtual DbSet<DetallePedido> DetallePedidos { get; set; } = null!;
         public virtual DbSet<Empleado> Empleados { get; set; } = null!;
         public virtual DbSet<Entrada> Entradas { get; set; } = null!;
+        public virtual DbSet<EntradasPrima> EntradasPrimas { get; set; } = null!;
         public virtual DbSet<Mesa> Mesas { get; set; } = null!;
         public virtual DbSet<Modulo> Modulos { get; set; } = null!;
         public virtual DbSet<Operacione> Operaciones { get; set; } = null!;
         public virtual DbSet<Pedido> Pedidos { get; set; } = null!;
+        public virtual DbSet<Prima> Primas { get; set; } = null!;
+        public virtual DbSet<PrimasProducto> PrimasProductos { get; set; } = null!;
         public virtual DbSet<Producto> Productos { get; set; } = null!;
         public virtual DbSet<Proveedore> Proveedores { get; set; } = null!;
         public virtual DbSet<Sucursale> Sucursales { get; set; } = null!;
         public virtual DbSet<TipoEmpleado> TipoEmpleados { get; set; } = null!;
         public virtual DbSet<TipoPedido> TipoPedidos { get; set; } = null!;
         public virtual DbSet<TipoeOperacione> TipoeOperaciones { get; set; } = null!;
+        public virtual DbSet<TiposCobro> TiposCobros { get; set; } = null!;
         public virtual DbSet<UnidadMedida> UnidadMedidas { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -95,6 +99,10 @@ namespace ApiNitroRestaurant.Context
                 entity.Property(e => e.IdProducto)
                     .HasColumnType("int(11)")
                     .HasColumnName("ID_PRODUCTO");
+
+                entity.Property(e => e.Precio)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("precio");
 
                 entity.HasOne(d => d.IdPedidoNavigation)
                     .WithMany(p => p.DetallePedidos)
@@ -214,6 +222,10 @@ namespace ApiNitroRestaurant.Context
                     .HasColumnType("int(11)")
                     .HasColumnName("id_sucursal");
 
+                entity.Property(e => e.Precio)
+                    .HasPrecision(8, 2)
+                    .HasColumnName("precio");
+
                 entity.HasOne(d => d.IdProductoNavigation)
                     .WithMany(p => p.Entrada)
                     .HasForeignKey(d => d.IdProducto)
@@ -223,6 +235,7 @@ namespace ApiNitroRestaurant.Context
                 entity.HasOne(d => d.IdProveedorNavigation)
                     .WithMany(p => p.Entrada)
                     .HasForeignKey(d => d.IdProveedor)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_REFERENCE_14");
 
                 entity.HasOne(d => d.IdSucursalNavigation)
@@ -230,6 +243,56 @@ namespace ApiNitroRestaurant.Context
                     .HasForeignKey(d => d.IdSucursal)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_entradas_sucursales");
+            });
+
+            modelBuilder.Entity<EntradasPrima>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToTable("entradas_primas");
+
+                entity.HasIndex(e => e.IdPrima, "FK1_entradas_primas");
+
+                entity.HasIndex(e => e.IdProveedor, "FK2_entradas_proveedores");
+
+                entity.HasIndex(e => e.IdEntrada, "Índice 1");
+
+                entity.Property(e => e.Cantidad)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("cantidad");
+
+                entity.Property(e => e.FechaHora)
+                    .HasColumnType("datetime")
+                    .HasColumnName("fecha_hora");
+
+                entity.Property(e => e.IdEntrada)
+                    .HasColumnType("int(11)")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnName("id_entrada");
+
+                entity.Property(e => e.IdPrima)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("id_prima");
+
+                entity.Property(e => e.IdProveedor)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("id_proveedor");
+
+                entity.Property(e => e.Precio)
+                    .HasPrecision(8, 2)
+                    .HasColumnName("precio");
+
+                entity.HasOne(d => d.IdPrimaNavigation)
+                    .WithMany()
+                    .HasForeignKey(d => d.IdPrima)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK1_entradas_primas");
+
+                entity.HasOne(d => d.IdProveedorNavigation)
+                    .WithMany()
+                    .HasForeignKey(d => d.IdProveedor)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK2_entradas_proveedores");
             });
 
             modelBuilder.Entity<Mesa>(entity =>
@@ -331,9 +394,13 @@ namespace ApiNitroRestaurant.Context
 
                 entity.HasIndex(e => e.IdEmpleado, "FK_REFERENCE_9");
 
+                entity.HasIndex(e => e.IdTipoCobro, "FK_Refence_10");
+
                 entity.Property(e => e.IdPedido)
                     .HasColumnType("int(11)")
                     .HasColumnName("ID_PEDIDO");
+
+                entity.Property(e => e.Cobrado).HasColumnType("bit(1)");
 
                 entity.Property(e => e.Comentario)
                     .HasMaxLength(100)
@@ -355,9 +422,15 @@ namespace ApiNitroRestaurant.Context
                     .HasColumnType("int(11)")
                     .HasColumnName("ID_SUCURSAL");
 
+                entity.Property(e => e.IdTipoCobro)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("id_tipo_cobro");
+
                 entity.Property(e => e.IdTipoPedido)
                     .HasColumnType("int(11)")
                     .HasColumnName("ID_TIPO_PEDIDO");
+
+                entity.Property(e => e.Propina).HasPrecision(8, 2);
 
                 entity.Property(e => e.Terminado)
                     .HasColumnType("bit(1)")
@@ -381,11 +454,99 @@ namespace ApiNitroRestaurant.Context
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_REFERENCE_11");
 
+                entity.HasOne(d => d.IdTipoCobroNavigation)
+                    .WithMany(p => p.Pedidos)
+                    .HasForeignKey(d => d.IdTipoCobro)
+                    .HasConstraintName("FK_Refence_10");
+
                 entity.HasOne(d => d.IdTipoPedidoNavigation)
                     .WithMany(p => p.Pedidos)
                     .HasForeignKey(d => d.IdTipoPedido)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_REFERENCE_12");
+            });
+
+            modelBuilder.Entity<Prima>(entity =>
+            {
+                entity.HasKey(e => e.IdPrima)
+                    .HasName("PRIMARY");
+
+                entity.ToTable("primas");
+
+                entity.HasIndex(e => e.IdUm, "FK1_prima_um");
+
+                entity.HasIndex(e => e.IdSucursal, "FK2_prima_sucursal");
+
+                entity.Property(e => e.IdPrima)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("id_prima");
+
+                entity.Property(e => e.Cantidad)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("cantidad");
+
+                entity.Property(e => e.IdSucursal)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("id_sucursal");
+
+                entity.Property(e => e.IdUm)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("id_um");
+
+                entity.Property(e => e.Inversion)
+                    .HasPrecision(8, 2)
+                    .HasColumnName("inversion");
+
+                entity.Property(e => e.Nombre)
+                    .HasMaxLength(50)
+                    .HasColumnName("nombre");
+
+                entity.HasOne(d => d.IdSucursalNavigation)
+                    .WithMany(p => p.Primas)
+                    .HasForeignKey(d => d.IdSucursal)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK2_prima_sucursal");
+
+                entity.HasOne(d => d.IdUmNavigation)
+                    .WithMany(p => p.Primas)
+                    .HasForeignKey(d => d.IdUm)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK1_prima_um");
+            });
+
+            modelBuilder.Entity<PrimasProducto>(entity =>
+            {
+                entity.HasKey(e => new { e.IdPrima, e.IdProduto })
+                    .HasName("PRIMARY")
+                    .HasAnnotation("MySql:IndexPrefixLength", new[] { 0, 0 });
+
+                entity.ToTable("primas_productos");
+
+                entity.HasIndex(e => e.IdProduto, "FK2_pp_producto");
+
+                entity.Property(e => e.IdPrima)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("id_prima");
+
+                entity.Property(e => e.IdProduto)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("id_produto");
+
+                entity.Property(e => e.CantidadPrima)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("cantidad_prima");
+
+                entity.HasOne(d => d.IdPrimaNavigation)
+                    .WithMany(p => p.PrimasProductos)
+                    .HasForeignKey(d => d.IdPrima)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK1_pp_prima");
+
+                entity.HasOne(d => d.IdProdutoNavigation)
+                    .WithMany(p => p.PrimasProductos)
+                    .HasForeignKey(d => d.IdProduto)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK2_pp_producto");
             });
 
             modelBuilder.Entity<Producto>(entity =>
@@ -408,10 +569,6 @@ namespace ApiNitroRestaurant.Context
                 entity.Property(e => e.Cantidad)
                     .HasColumnType("int(11)")
                     .HasColumnName("CANTIDAD");
-
-                entity.Property(e => e.Contable)
-                    .HasColumnType("bit(1)")
-                    .HasColumnName("CONTABLE");
 
                 entity.Property(e => e.IdCategoria)
                     .HasColumnType("int(11)")
@@ -586,6 +743,22 @@ namespace ApiNitroRestaurant.Context
                     .HasForeignKey(d => d.IdTipoOperacion)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_REFERENCE_4");
+            });
+
+            modelBuilder.Entity<TiposCobro>(entity =>
+            {
+                entity.HasKey(e => e.IdTipoCobro)
+                    .HasName("PRIMARY");
+
+                entity.ToTable("tipos_cobro");
+
+                entity.Property(e => e.IdTipoCobro)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("id_tipo_cobro");
+
+                entity.Property(e => e.Nombre)
+                    .HasMaxLength(20)
+                    .HasColumnName("nombre");
             });
 
             modelBuilder.Entity<UnidadMedida>(entity =>

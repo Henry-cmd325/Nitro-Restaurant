@@ -37,13 +37,30 @@ namespace ApiNitroRestaurant.Services
                 return response;
             }
 
+            foreach (var item in model.primaList)
+            {
+                int repetidas = 0;
+                foreach (var item2 in model.primaList)
+                {
+                    if (item.IdPrima == item2.IdPrima)
+                        repetidas++;
+                }
+
+                if (repetidas >= 2)
+                {
+                    response.Success = false;
+                    response.Error = "No puedes repetir un mismo ingrediente para un producto";
+
+                    return response;
+                }
+            }
+
             var product = new Producto()
             {
                 IdCategoria = categoria.IdCategoria,
                 Nombre = model.Nombre,
                 Inversion = model.Inversion,
                 Precio = model.Precio,
-                Contable = model.Contable? (ulong)1 : 0,
                 ImgUrl = model.ImgUrl,
                 Cantidad = model.Cantidad,
                 IdUm = model.IdUm,
@@ -53,6 +70,21 @@ namespace ApiNitroRestaurant.Services
             _context.Productos.Add(product);
             _context.SaveChanges();
 
+            if (model.primaList.Count > 0)
+            {
+                foreach (var prima in model.primaList)
+                {
+                    _context.PrimasProductos.Add(new()
+                    {
+                        IdPrima = prima.IdPrima,
+                        IdProduto = product.IdProducto,
+                        CantidadPrima = prima.Cantidad
+                    });
+                }
+                _context.SaveChanges();
+            }
+            
+
             var productResponse = new ProductResponse()
             {
                 IdProducto = product.IdProducto,
@@ -60,7 +92,6 @@ namespace ApiNitroRestaurant.Services
                 Nombre = product.Nombre,
                 Inversion = product.Inversion,
                 Precio = product.Precio,
-                Contable = model.Contable,
                 ImgUrl = product.ImgUrl,
                 Cantidad = product.Cantidad,
                 IdUm = product.IdUm,
@@ -97,7 +128,6 @@ namespace ApiNitroRestaurant.Services
                     Nombre = product.Nombre,
                     Inversion = product.Inversion,
                     Precio = product.Precio,
-                    Contable = product.Contable == 1? true: false,
                     ImgUrl = product.ImgUrl,
                     Cantidad = product.Cantidad,
                     IdUm = product.IdUm,
@@ -136,7 +166,6 @@ namespace ApiNitroRestaurant.Services
                     Nombre = product.Nombre,
                     Inversion = product.Inversion,
                     Precio = product.Precio,
-                    Contable = product.Contable == 1 ? true : false,
                     ImgUrl = product.ImgUrl,
                     Cantidad = product.Cantidad,
                     IdUm = product.IdUm,
@@ -170,7 +199,6 @@ namespace ApiNitroRestaurant.Services
                 Nombre = product.Nombre,
                 Inversion = product.Inversion,
                 Precio = product.Precio,
-                Contable = product.Contable == 1? true: false,
                 ImgUrl = product.ImgUrl,
                 Cantidad = product.Cantidad,
                 IdUm = product.IdUm,
@@ -204,11 +232,28 @@ namespace ApiNitroRestaurant.Services
                 return response;
             }
 
+            foreach (var item in model.primaList)
+            {
+                int repetidas = 0;
+                foreach (var item2 in model.primaList)
+                {
+                    if (item.IdPrima == item2.IdPrima)
+                        repetidas++;
+                }
+
+                if (repetidas >= 2)
+                {
+                    response.Success = false;
+                    response.Error = "No puedes repetir un mismo ingrediente para un producto";
+
+                    return response;
+                }
+            }
+
             productDb.Nombre = model.Nombre;
             productDb.IdCategoria = categoria.IdCategoria;
             productDb.Precio = model.Precio;
             productDb.Inversion = model.Inversion;
-            productDb.Contable = model.Contable? (ulong)1: 0;
             productDb.ImgUrl = model.ImgUrl;
             productDb.Cantidad = model.Cantidad;
             productDb.IdUm = model.IdUm;
@@ -217,6 +262,28 @@ namespace ApiNitroRestaurant.Services
             _context.Entry(productDb).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
             _context.SaveChanges();
 
+            if (model.primaList.Count > 0)
+            {
+                int count = 0;
+
+                var dbList = _context.PrimasProductos.Where(p => p.IdProduto == productDb.IdProducto).ToList();
+                while (model.primaList.Count < dbList.Count)
+                {
+                    _context.PrimasProductos.Remove(dbList.Last());
+                    dbList.Remove(dbList.Last());
+                }
+                _context.SaveChanges();
+
+                while (model.primaList.Count > count)
+                {
+                    dbList[count].IdPrima = model.primaList[count].IdPrima;
+                    dbList[count].CantidadPrima = model.primaList[count].Cantidad;
+                    _context.Entry(dbList[count]).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                    count++;
+                }
+
+                _context.SaveChanges();
+            }
             response.Data = new ProductResponse()
             {
                 IdProducto = id,
@@ -224,7 +291,6 @@ namespace ApiNitroRestaurant.Services
                 Nombre = productDb.Nombre,
                 Inversion = productDb.Inversion,
                 Precio = productDb.Precio,
-                Contable = model.Contable,
                 ImgUrl = model.ImgUrl,
                 Cantidad = model.Cantidad,
                 IdUm = model.IdUm,

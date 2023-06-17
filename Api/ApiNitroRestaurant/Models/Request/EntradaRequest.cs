@@ -4,7 +4,7 @@
     {
         public int IdProducto { get; set; }
         public int IdSucursal { get; set; }
-        public int? IdProveedor { get; set; }
+        public int IdProveedor { get; set; }
         public int Cantidad { get; set; }
         public int Anio { get; set; }
         public int Mes { get; set; }

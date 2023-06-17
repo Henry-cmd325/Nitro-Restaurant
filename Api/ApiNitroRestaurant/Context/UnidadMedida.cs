@@ -7,12 +7,14 @@ namespace ApiNitroRestaurant.Context
     {
         public UnidadMedida()
         {
+            Primas = new HashSet<Prima>();
             Productos = new HashSet<Producto>();
         }
 
         public int IdUm { get; set; }
         public string Nombre { get; set; } = null!;
 
+        public virtual ICollection<Prima> Primas { get; set; }
         public virtual ICollection<Producto> Productos { get; set; }
     }
 }

@@ -7,7 +7,6 @@
         public string Nombre { get; set; } = null!;
         public decimal Inversion { get; set; }
         public decimal Precio { get; set; }
-        public bool Contable { get; set; }
         public int Cantidad { get; set; }
         public int IdUm { get; set; }
         public string? ImgUrl { get; set; }

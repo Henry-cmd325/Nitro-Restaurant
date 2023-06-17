@@ -9,6 +9,7 @@ namespace ApiNitroRestaurant.Context
         {
             DetallePedidos = new HashSet<DetallePedido>();
             Entrada = new HashSet<Entrada>();
+            PrimasProductos = new HashSet<PrimasProducto>();
         }
 
         public int IdProducto { get; set; }
@@ -16,7 +17,6 @@ namespace ApiNitroRestaurant.Context
         public string Nombre { get; set; } = null!;
         public decimal Inversion { get; set; }
         public decimal Precio { get; set; }
-        public ulong Contable { get; set; }
         public string? ImgUrl { get; set; }
         public int Cantidad { get; set; }
         public int IdUm { get; set; }
@@ -27,5 +27,6 @@ namespace ApiNitroRestaurant.Context
         public virtual UnidadMedida IdUmNavigation { get; set; } = null!;
         public virtual ICollection<DetallePedido> DetallePedidos { get; set; }
         public virtual ICollection<Entrada> Entrada { get; set; }
+        public virtual ICollection<PrimasProducto> PrimasProductos { get; set; }
     }
 }

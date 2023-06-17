@@ -18,10 +18,14 @@ namespace ApiNitroRestaurant.Context
         public ulong? Terminado { get; set; }
         public string Comentario { get; set; } = null!;
         public int IdMesa { get; set; }
+        public ulong Cobrado { get; set; }
+        public decimal Propina { get; set; }
+        public int? IdTipoCobro { get; set; }
 
         public virtual Empleado IdEmpleadoNavigation { get; set; } = null!;
         public virtual Mesa IdMesaNavigation { get; set; } = null!;
         public virtual Sucursale IdSucursalNavigation { get; set; } = null!;
+        public virtual TiposCobro? IdTipoCobroNavigation { get; set; }
         public virtual TipoPedido IdTipoPedidoNavigation { get; set; } = null!;
         public virtual ICollection<DetallePedido> DetallePedidos { get; set; }
     }

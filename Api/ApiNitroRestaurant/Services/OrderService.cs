@@ -27,22 +27,32 @@ namespace ApiNitroRestaurant.Services
                 return response;
             }
 
+            bool contable = false;
             while (_context.DetallePedidos.Where(d => d.IdPedido == orderDb.IdPedido).FirstOrDefault() != null)
             {
-                var detailDb = _context.DetallePedidos.Where(d => d.IdPedido == orderDb.IdPedido).FirstOrDefault();
+                var detailDb = _context.DetallePedidos.Where(d => d.IdPedido == orderDb.IdPedido).First();
 
-                if (detailDb != null)
+                var product = _context.Productos.Where(p => p.IdProducto == detailDb.IdProducto).First();
+                var primaProducto = _context.PrimasProductos.Where(p => p.IdProduto == product.IdProducto).First();
+                var prima = _context.Primas.Where(p => p.IdPrima == primaProducto.IdPrima).ToList();
+
+                contable = true;
+
+                for (int i = 0; i <= prima.Count; i++)
                 {
-                    var product = _context.Productos.Where(p => p.IdProducto == detailDb.IdProducto).First();
-                    if (product.Contable == 1)
-                    {
-                        product.Cantidad += detailDb.Cantidad;
-                        _context.Entry(product).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-                    }
+                    contable = false;
 
-                    _context.DetallePedidos.Remove(detailDb);
+                    prima[i].Cantidad += detailDb.Cantidad * primaProducto.CantidadPrima;
+                    _context.Entry(prima[i]).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
                 }
 
+                if (contable)
+                {
+                    product.Cantidad += detailDb.Cantidad;
+                    _context.Entry(product).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                }
+
+                _context.DetallePedidos.Remove(detailDb);
                 _context.SaveChanges();
             }
 
@@ -303,13 +313,6 @@ namespace ApiNitroRestaurant.Services
             foreach(var detalle in model.DetallesPedidos)
             {
                 var dbProduct = _context.Productos.Where(p => p.IdProducto == detalle.IdProducto).First();
-                if (dbProduct == null)
-                {
-                    response.Error = "El id introducido no hace referencia a ningun producto: " + detalle.IdProducto;
-                    response.Success = false;
-
-                    return response;
-                }
 
                 listProducts.Add(dbProduct);
             }
@@ -327,14 +330,25 @@ namespace ApiNitroRestaurant.Services
                     Cantidad = detalle.Cantidad
                 };
 
-                if (dbProduct.Contable == 1)
+                bool contable = true;
+
+                var dbPrimas = _context.PrimasProductos.Where(p => p.IdProduto == detalleDb.IdProducto).ToList();
+                foreach (var primaProducto in dbPrimas)
                 {
-                    dbProduct.Cantidad -= detalle.Cantidad;
-                    _context.Entry(dbProduct).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                    contable = false;
+                    var dbPrima = _context.Primas.Where(p => p.IdPrima == primaProducto.IdPrima).First();
+
+                    dbPrima.Cantidad -= detalleDb.Cantidad * primaProducto.CantidadPrima;
+                    _context.Entry(dbPrima).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
                 }
 
+                if (contable)
+                {
+                    dbProduct.Cantidad -= detalleDb.Cantidad;
+                    _context.Entry(dbProduct).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                }
+                 
                 _context.DetallePedidos.Add(detalleDb);
-
                 _context.SaveChanges();
 
                 listDetalleResponse.Add(new DetalleResponse()
@@ -344,6 +358,10 @@ namespace ApiNitroRestaurant.Services
                     Cantidad = detalle.Cantidad
                 });
             }
+
+            dbTable.IdEmpleado = empleadoDb.IdEmpleado;
+            _context.Entry(dbTable).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            _context.SaveChanges();
 
             var orderResponse = new OrderResponse()
             {
@@ -434,22 +452,48 @@ namespace ApiNitroRestaurant.Services
                 return response;
             }
 
-            while (_context.DetallePedidos.Where(d => d.IdPedido == orderDb.IdPedido).FirstOrDefault() != null)
-            {
-                var detailDb = _context.DetallePedidos.Where(d => d.IdPedido == orderDb.IdPedido).FirstOrDefault();
 
-                if (detailDb != null)
+            int count = 0;
+            var detailsDb = _context.DetallePedidos.Where(d => d.IdPedido == orderDb.IdPedido).ToList();
+
+            if (model.DetallesPedidos.Count > 0)
+            {
+                foreach (var detalle in detailsDb)
                 {
-                    var dbProduct = _context.Productos.Where(p => p.IdProducto == detailDb.IdProducto).First();
-                    if (dbProduct.Contable == 1)
+                    bool contable = true;
+
+                    var product = _context.Productos.Where(p => p.IdProducto == detalle.IdProducto).First();
+                    var primaProducto = _context.PrimasProductos.Where(p => p.IdProduto == product.IdProducto).First();
+                    var prima = _context.Primas.Where(p => p.IdPrima == primaProducto.IdPrima).ToList();
+
+                    for (int i = 0; i < model.DetallesPedidos.Count; i++)
                     {
-                        dbProduct.Cantidad -= detailDb.Cantidad;
-                        _context.Entry(dbProduct).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                        contable = false;
+                        prima[i].Cantidad += (primaProducto.CantidadPrima * model.DetallesPedidos[i].Cantidad) - (primaProducto.CantidadPrima * detalle.Cantidad);
+                        _context.Entry(prima[i]).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
                     }
 
-                    _context.DetallePedidos.Remove(detailDb);
-                }
+                    if (contable)
+                    {
+                        product.Cantidad += (detalle.Cantidad - model.DetallesPedidos[count].Cantidad);
+                        _context.Entry(product).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                    }
 
+                    detalle.Cantidad = model.DetallesPedidos[count].Cantidad;
+                    detalle.IdProducto = model.DetallesPedidos[count].IdProducto;
+
+                    _context.Entry(detalle).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+
+                    _context.SaveChanges();
+                    count++;
+                }
+            }
+            else
+            {
+                foreach (var detail in detailsDb)
+                {
+                    _context.DetallePedidos.Remove(detail);
+                }
                 _context.SaveChanges();
             }
 
@@ -458,8 +502,12 @@ namespace ApiNitroRestaurant.Services
             orderDb.Comentario = model.Comentario;
             orderDb.IdMesa = model.IdMesa;
             orderDb.IdTipoPedido = model.IdTipoPedido;
+            
+            mesaDb.IdEmpleado = empleadoDb.IdEmpleado;
 
             _context.Entry(orderDb).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            
+            _context.Entry(mesaDb).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
             _context.SaveChanges();
 
             var listDetalleResponse = new List<DetalleResponse>();
@@ -497,8 +545,17 @@ namespace ApiNitroRestaurant.Services
             if (model.Terminado == null)
                 pedidoDb.Terminado = null;
             else
+            {
                 pedidoDb.Terminado = (ulong)((bool)(model.Terminado) ? 1 : 0);
-
+               
+                if (pedidoDb.Terminado == 1)
+                {
+                    var dbTable = _context.Mesas.Where(m => pedidoDb.IdMesa == m.IdMesa).First();
+                    dbTable.IdEmpleado = null;
+                    _context.Entry(dbTable).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                }
+            }
+         
             _context.Entry(pedidoDb).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
             _context.SaveChanges();
 
