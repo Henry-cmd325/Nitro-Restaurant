@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
     buttonContainer: { flexDirection: 'row', justifyContent: 'space-around' },
-    button: { padding: 13, backgroundColor: '#1E6E28', borderRadius: 15, width: 150 },
+    button: { padding: 13, backgroundColor: '#522197', borderRadius: 15, width: 150 },
     buttonText: { color: '#fafafa', fontWeight: 'bold', textAlign: 'center' },
     button_signup: { padding: 13, backgroundColor: '#ECECEC', borderRadius: 15, width: 150 },
     buttonText_signup: { color: '#2F363B', fontWeight: 'bold', textAlign: 'center' },

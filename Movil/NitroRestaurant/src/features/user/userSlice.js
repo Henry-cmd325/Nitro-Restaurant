@@ -1,13 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    uid: '',
-    createdAt: '',
-    lastLoginAt: '',
-    displayName: '',
-    email: '',
+    UserState: false,
+    UserId: '',
+    UserName: '',
+    UserType: '',
+    UserType: '',
+    branch: '',
+    LastName: '',
+    FirstName: '',
     phoneNumber: '',
-    photoURL: '',
 }
 
 export const userSlice = createSlice({
@@ -15,14 +17,16 @@ export const userSlice = createSlice({
     initialState, 
     reducers: {
         addUser: (state, action) => {
-            const { uid, createdAt, lastLoginAt, displayName, email, phoneNumber, photoURL } = action.payload;
-            state.uid = uid;
-            state.createdAt = createdAt;
-            state.lastLoginAt = lastLoginAt;
-            state.displayName = displayName;
-            state.email = email;
+            const { UserState, UserId, UserName, password, UserType, branch, LastName, FirstName, phoneNumber } = action.payload;
+            state.UserState = UserState;
+            state.UserId = UserId;
+            state.UserName = UserName;
+            state.password = password;
+            state.UserType = UserType;
+            state.branch = branch;
+            state.LastName = LastName;
+            state.FirstName = FirstName;
             state.phoneNumber = phoneNumber;
-            state.photoURL = photoURL;
         },
         logout: state => {
             Object.assign(state, initialState);
