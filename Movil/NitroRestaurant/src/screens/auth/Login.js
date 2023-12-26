@@ -14,7 +14,7 @@ export default LoginScreen = () => {
     const navigation = useNavigation();
     const handleNavigateToSignIn = () => { navigation.navigate('signin'); };
 
-    const [email, setEmail] = useState('');
+    const [phone, setPhone] = useState('');
     const [password, setPassword] = useState('');
     const handlePasswordChange = (text) => { setPassword(text); };
 
@@ -23,10 +23,10 @@ export default LoginScreen = () => {
             <View style={InputForms.container}>
                 <View style={InputForms.formContainer}>
                 <Text style={[ Fonts.formTitle, {color: '#2F363B', marginBottom: 20}]}>Iniciar sesión</Text>
-                <TextInput style={[InputForms.input, { marginBottom: 30 }]} placeholder="Correo electrónico" keyboardType="email-address" maxLength={100} value={email} onChangeText={setEmail} />
-                <PasswordInput placeholder="Contraseña" onPasswordChange={handlePasswordChange} passwordValue={password} />
-                <TouchableOpacity style={[buttonStyles.formButton, { marginTop: 19 }]} >
-                    <Text style={[Fonts.buttonTitle, {textAlign: 'center', color: '#2F363B'}]}>LOG IN</Text>
+                <TextInput style={[InputForms.input, { marginBottom: 30 }]} placeholder="Número télefonico" keyboardType="email-address" maxLength={100} value={phone} onChangeText={setPhone} />
+                <PasswordInput placeholder="Código de enlace" onPasswordChange={handlePasswordChange} passwordValue={password} />
+                <TouchableOpacity style={[buttonStyles.formButton, { marginTop: 19 }]} onPress={()=> navigation.navigate('main')}>
+                    <Text style={[Fonts.buttonTitle, {textAlign: 'center', color: '#fafafa'}]}>LOG IN</Text>
                 </TouchableOpacity>
                 <TouchableOpacity >
                     <Text onPress={handleNavigateToSignIn} style={InputForms.signInText}>¿No estás registrado? <Text style={InputForms.signInLink}>SIGN IN</Text></Text>

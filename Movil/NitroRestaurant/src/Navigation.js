@@ -7,6 +7,11 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import InputScreen from './screens/entrace';
 import LoginScreen from './screens/auth/Login';
 
+// Main
+import ProfileScreen from './screens/main/Profile';
+import HomeScreen from './screens/main/home';
+import OrdersScreen from './screens/main/Orders';
+
 const AuthStack = createStackNavigator();
 const Stack = createStackNavigator();
 const navigationRef = React.createRef();
@@ -19,13 +24,25 @@ const AuthScreens = () => (
         <AuthStack.Screen name="login" component={LoginScreen} options={{ headerShown: false }} />
     </AuthStack.Navigator>
 );
-//
+
+// Barra de navegación 
+const MainBarScreen=()=>{
+    return (
+        <Tab.Navigator initialRouteName="home" screenOptions={{ headerShown: false, tabBarActiveTintColor: '#333', tabBarInactiveTintColor: '#ccc', tabBarStyle: { display: 'flex', backgroundColor: '#fafafa', paddingVertical: 15, elevation: 0, height:65,  elevation: 0, shadowOpacity: 0 } }} >
+            <Tab.Screen name="home" component={HomeScreen} options={{ tabBarLabel: '', tabBarIcon: ({ color }) => <Icon name="home" size={27} color={color} /> }}/>
+            <Tab.Screen name="orders" component={OrdersScreen} options={{ tabBarLabel: '', tabBarIcon: ({ color }) => <Icon name="shopping-cart" size={27} color={color} /> }}/>
+            <Tab.Screen name="profile" component={ProfileScreen} options={{ tabBarLabel: '', tabBarIcon: ({ color }) => <Icon name="person" size={27} color={color} /> }}/>
+        </Tab.Navigator>
+    );
+};
+
 // Funcion principal de la aplicación
 export default function Navigation() {
     return (
         <NavigationContainer ref={navigationRef}>
             <Stack.Navigator>
                 <Stack.Screen name="auth" component={AuthScreens} options={{ headerShown: false }} />
+                <Stack.Screen name="main" component={MainBarScreen} options={{ headerShown: false }} />
             </Stack.Navigator>
         </NavigationContainer>
     );

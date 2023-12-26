@@ -9,6 +9,7 @@ export default StyleSheet.create({
     labelSubtitleNormal: { fontSize: 22, fontWeight: 'bold' },
     formTitle: { fontSize: 26, fontWeight: 'bold' },
     buttonTitle: { fontSize: 15, fontWeight: 'bold' },
+    itemText: { fontSize: 14},
     cardsText: { fontSize: 16 },
     modalText: { fontSize: 17, fontWeight: '600', paddingBottom: 6 },
     addText: { fontSize: 18, fontWeight: '600', paddingBottom: 6 },
