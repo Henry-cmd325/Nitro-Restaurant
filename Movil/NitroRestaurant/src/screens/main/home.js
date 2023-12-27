@@ -19,7 +19,7 @@ export default HomeScreen = () => {
             <View className="flex-1 justify-center items-center" style={{ backgroundColor: '#fafafa', height: '100%', width: '100%'}} >
 
                 <View style={{ flexDirection: 'row', alignItems: 'center', marginHorizontal: '10%', marginVertical: '10%'}}>
-                    <Text style={[Fonts.labelSubtitle, { color: "#999" }]}>Milkflower </Text>
+                    <Text style={[Fonts.labelSubtitle, { color: "#999" }]}>Fahrenheit </Text>
                     <Icon name="arrow-right-alt" size={30} color='#333' />
                     <Text style={[Fonts.labelSubtitle, { color: "#333", fontWeight: '500'}]}> Villahermosa</Text>
                 </View>
