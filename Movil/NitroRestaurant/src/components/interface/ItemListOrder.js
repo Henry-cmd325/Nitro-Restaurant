@@ -2,7 +2,7 @@ import { StyleSheet, View, TouchableOpacity, Text, Image } from 'react-native';
 // React Native Paper
 import { Divider } from 'react-native-paper';
 // Styles
-import Fonts from '../../styles/Fonts';
+import Fonts from '../styles/Fonts';
 
 export default ItemListOrder = ({ content, items, price, urlImage, onPress }) => {
     return (

@@ -8,9 +8,9 @@ import InputScreen from './screens/entrace';
 import LoginScreen from './screens/auth/Login';
 
 // Main
-import ProfileScreen from './screens/main/Profile';
-import HomeScreen from './screens/main/home';
-import OrdersScreen from './screens/main/Orders';
+import ProfileScreen from './screens/home/Profile';
+import HomeScreen from './screens/home/home';
+import OrdersScreen from './screens/home/Orders';
 
 const AuthStack = createStackNavigator();
 const Stack = createStackNavigator();

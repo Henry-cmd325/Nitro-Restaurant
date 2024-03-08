@@ -1,6 +1,6 @@
 import {Modal, StyleSheet, Text, View} from 'react-native';
 import { Divider, Button } from 'react-native-paper';
-import Fonts from '../../styles/Fonts';
+import Fonts from '../styles/Fonts';
 
 export default ModalAlert = ({ visible, message, title, onPress, button, close }) => {
 

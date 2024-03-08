@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { TextInput, View, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import InputForms from '../../styles/InputForms';
+import InputForms from '../styles/InputForms';
 
 export default PasswordInput = ({ placeholder, onPasswordChange, passwordValue }) => {
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);

@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import {Modal, StyleSheet, Text, View, SafeAreaView, ScrollView} from 'react-native';
 import { Divider, Button } from 'react-native-paper';
-import Fonts from '../../styles/Fonts';
+import Fonts from '../styles/Fonts';
 
 import ItemListProduct from './ItemListProduct';
 
+import { useSelector } from 'react-redux';
+
 const NewOrder = ({ visible, message, title, onPress, button, close }) => {
+    const products = useSelector(state => state.products);
+    const [List, setList] = useState(products.items);
     // Hooks para el estado del scroll
     const [isExtended, setIsExtended] = React.useState(false);
     const onScroll = ({ nativeEvent }) => { const currentScrollPosition = Math.floor(nativeEvent?.contentOffset?.y) ?? 0; setIsExtended(currentScrollPosition <= 0); };
@@ -15,7 +19,7 @@ const NewOrder = ({ visible, message, title, onPress, button, close }) => {
             <Modal animationType="slide" transparent={true} visible={visible} onRequestClose={close} >
 
                 <View style={styles.centeredView}>
-                    <View style={{ backgroundColor: 'white', padding: 20, borderRadius: 30, width: '100%', height:'75%', top:20, shadowColor: "#000", shadowOffset: { width: 0, height: 20 }, shadowOpacity: 0.8, shadowRadius: 10, elevation: 10, paddingBottom:'30%' }}>
+                    <View style={{ backgroundColor: 'white', padding: 20, borderRadius: 30, width: '100%', height:'80%', top:20, shadowColor: "#000", shadowOffset: { width: 0, height: 20 }, shadowOpacity: 0.8, shadowRadius: 10, elevation: 10, paddingBottom:'30%' }}>
                         <View style={{ alignItems: 'center' }}>
                             <Divider style={[{ backgroundColor: "#dadada", height:3, width: '20%', bottom:10, borderRadius: 40, alignItems: 'center' }]} />
                         </View>
@@ -24,12 +28,12 @@ const NewOrder = ({ visible, message, title, onPress, button, close }) => {
                         <Text style={[styles.txtLabels, Fonts.cardsText, {marginHorizontal: '30%',color:'#999'}]}>Tienes 8 productos añadidos a el pedido actualmente.</Text>
                         <SafeAreaView style={{}} >
                             <ScrollView  showsVerticalScrollIndicator={false} onScroll={onScroll}>
-                                <ItemListProduct />
-                                <ItemListProduct />
-                                <ItemListProduct />
-                                <ItemListProduct />
-                                <ItemListProduct />
-                                <Button  mode="contained" style={[Fonts.buttonTitle,{ backgroundColor: '#38447E', margin: 25, padding:3}]}> CREAR PEDIDO </Button>
+                                {List.map((item) => (
+                                    <View key={item.id}>
+                                        <ItemListProduct title={item.Name} content={item.Description} price={item.Price} url={item.ImgUrl} amount={item.amount} />
+                                    </View>
+                                ))}
+                                <Button  mode="contained" style={[Fonts.buttonTitle,{ backgroundColor: '#38447E', margin: 20, padding:3}]}> CREAR PEDIDO </Button>
                             </ScrollView>
                         </SafeAreaView>
                     </View>

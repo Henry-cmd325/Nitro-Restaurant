@@ -1,5 +1,5 @@
 import { Provider } from 'react-redux';
-import store from './app/store';
+import store from './store/store';
 import Navigation from './Navigation';
 
 // Funcion principal de la aplicación
