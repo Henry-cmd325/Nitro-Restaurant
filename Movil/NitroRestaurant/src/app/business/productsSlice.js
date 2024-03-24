@@ -3,7 +3,9 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = { items: [
     {id: 1, Name: 'Café', Description: 'crab & cucumber', Price: '0.00', ImgUrl: 'https://images.pexels.com/photos/4347597/pexels-photo-4347597.jpeg?auto=compress&cs=tinysrgb&w=1260&', amount: '32'},
     {id: 2, Name: 'Latte', Description: 'crab & cucumber', Price: '0.00', ImgUrl: 'https://images.pexels.com/photos/312418/pexels-photo-312418.jpeg?auto=compress&cs=tinysrgb&w=1260&h=', amount: '26'},
-    {id: 3, Name: 'Brownie', Description: 'crab & cucumber', Price: '0.00', ImgUrl: 'https://images.pexels.com/photos/45202/brownie-dessert-cake-sweet-45202.jpeg?auto=compress&cs=tinysr', amount: '5'}
+    {id: 3, Name: 'Brownie', Description: 'crab & cucumber', Price: '0.00', ImgUrl: 'https://images.pexels.com/photos/45202/brownie-dessert-cake-sweet-45202.jpeg?auto=compress&cs=tinysr', amount: '5'},
+    {id: 4, Name: 'Brownie', Description: 'crab & cucumber', Price: '0.00', ImgUrl: 'https://images.pexels.com/photos/45202/brownie-dessert-cake-sweet-45202.jpeg?auto=compress&cs=tinysr', amount: '5'},
+    {id: 5, Name: 'Brownie', Description: 'crab & cucumber', Price: '0.00', ImgUrl: 'https://images.pexels.com/photos/45202/brownie-dessert-cake-sweet-45202.jpeg?auto=compress&cs=tinysr', amount: '5'}
 ] };
 
 export const productsSlice = createSlice({

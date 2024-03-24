@@ -4,9 +4,9 @@ import { Text } from 'react-native-paper';
 // React Navigation
 import { useNavigation } from '@react-navigation/native';
 // Estilos de la pantalla
-import buttonStyles from '../../styles/buttonStyles';
-import InputForms from '../../styles/InputForms';
-import Fonts from '../../styles/Fonts';
+import buttonStyles from '../../components/styles/buttonStyles';
+import InputForms from '../../components/styles/InputForms';
+import Fonts from '../../components/styles/Fonts';
 // Componentes
 import PasswordInput from '../../components/common/PasswordInput';
 

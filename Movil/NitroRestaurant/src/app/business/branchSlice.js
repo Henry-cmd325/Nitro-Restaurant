@@ -2,9 +2,10 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
     BranchId: null,
-    Name: '',
+    Name: 'Villahermosa',
     NumTables: null,
-    address: ''
+    address: '',
+    City: 'Villahermosa'
 };
 
 export const branchSlice = createSlice({
@@ -12,11 +13,12 @@ export const branchSlice = createSlice({
     initialState, 
     reducers: {
         addData: (state, action) => {
-            const { BranchId, Name, NumTables, address } = action.payload;
+            const { BranchId, Name, NumTables, address, City } = action.payload;
             state.BranchId = BranchId;
             state.Name = Name;
             state.NumTables = NumTables;
             state.address = address;
+            state.City = City;
         },
         clear: state => {
             Object.assign(state, initialState);

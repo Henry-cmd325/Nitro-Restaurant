@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 // React Navigation
 import { useNavigation } from '@react-navigation/native';
 // Styles
-import Fonts from '../../styles/Fonts';
+import Fonts from '../../components/styles/Fonts';
 // Componentes
 import ModalAlert from '../../components/interface/ModalAlert';
 
@@ -16,7 +16,7 @@ const CardInfo = () => {
         try {
             setModalVisible(true);
         } catch (error) {
-        console.log('Error al abir el modal', error);
+            console.log('Error al abir el modal', error);
         }
     };
     const handleClose = async () => {

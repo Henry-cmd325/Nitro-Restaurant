@@ -3,7 +3,7 @@ import {Modal, StyleSheet, Text, View, SafeAreaView, ScrollView} from 'react-nat
 import { Divider, Button } from 'react-native-paper';
 import Fonts from '../styles/Fonts';
 
-import ItemListProduct from './ItemListProduct';
+import ItemListProduct from '../common/ItemListProduct';
 
 import { useSelector } from 'react-redux';
 
@@ -26,7 +26,7 @@ const NewOrder = ({ visible, message, title, onPress, button, close }) => {
                         {/*Hola*/}
                         <Text style={[styles.txtLabels, Fonts.addText, {paddingBottom:10, paddingTop:5, color:'#000', fontSize:20}]}>Detalle pedido</Text>
                         <Text style={[styles.txtLabels, Fonts.cardsText, {marginHorizontal: '30%',color:'#999'}]}>Tienes 8 productos añadidos a el pedido actualmente.</Text>
-                        <SafeAreaView style={{}} >
+                        <SafeAreaView >
                             <ScrollView  showsVerticalScrollIndicator={false} onScroll={onScroll}>
                                 {List.map((item) => (
                                     <View key={item.id}>

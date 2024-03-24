@@ -1,46 +1,49 @@
 import React, { useState, useEffect } from 'react';
-import { View, StatusBar, TouchableOpacity, StyleSheet, Image, Text, TextInput } from 'react-native';
+import { View, StatusBar, Text } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+// Redux
+import { useSelector } from 'react-redux';
+// Views
+import StatsView from './views/statsView.js';
+import ProductsView from './views/productsView.js';
+// Components
+import RenderViews from '../../components/common/RenderingViews.js';
+import FilterPagesExtended from '../../components/common/FilterPagesExtended';
+import { formatDateToString } from '../../utils/helpers/dateHelpers.js';
 
-// React Navigation
-import { useNavigation } from '@react-navigation/native';
-import Fonts from '../../styles/Fonts';
-import InputForms from '../../styles/InputForms';
-
-import FilterPagesExtended from '../../components/interface/FilterPagesExtended';
+const Views = { STATS: StatsView, PRODUCTS: ProductsView, };
 
 export default HomeScreen = () => {
-    // Navegación entre páginas
-    const navigation = useNavigation();
+    // Redux
+    const business = useSelector(state => state.business.Name);
+    const branch = useSelector(state => state.branch.City);
+    //
+    const [selectedOption, setSelectedOption] = useState("STATS");
+    const filterContent = (option) => { setSelectedOption(option); };
+    // Date
+    const currentDate = new Date();
+    const formattedDate = formatDateToString(currentDate);
 
     return (
         <>
             <StatusBar backgroundColor='#fafafa'  barStyle="dark-content" />
-            <View className="flex-1 justify-center items-center" style={{ backgroundColor: '#fafafa', height: '100%', width: '100%'}} >
-
-                <View style={{ flexDirection: 'row', alignItems: 'center', marginHorizontal: '10%', marginVertical: '10%'}}>
-                    <Text style={[Fonts.labelSubtitle, { color: "#999" }]}>Fahrenheit </Text>
-                    <Icon name="arrow-right-alt" size={30} color='#333' />
-                    <Text style={[Fonts.labelSubtitle, { color: "#333", fontWeight: '500'}]}> Villahermosa</Text>
+            <View className='bg-gray-50 w-full h-full' >
+                <View className='mx-10 mt-10'>
+                    <View className='flex-row items-center'>
+                        <Text className='text-stone-400 font-normal text-2xl'>{business} </Text>
+                        <Icon className='text-stone-400' name="arrow-right-alt" size={30} />
+                        <Text className='text-stone-800 font-medium text-2xl'> {branch}</Text>
+                    </View>
                 </View>
 
-                <View style={[{ marginHorizontal: 35 }]}>
-                    <View style={[styles.row]}>
-                        <FilterPagesExtended text="Estadísticas" backgroundColor="#38447E" />
-                        <FilterPagesExtended text="Productos" backgroundColor="#ECECEC" />
+                <View className="flex-1">
+                    <View className='flex-row justify-between py-8 mx-7'>
+                        <FilterPagesExtended text="Estadísticas" backgroundColor="#ECECEC" isSelected={selectedOption === "STATS"} onPress={() => filterContent("STATS")}/>
+                        <FilterPagesExtended text="Productos" backgroundColor="#ECECEC" isSelected={selectedOption === "PRODUCTS"} onPress={() => filterContent("PRODUCTS")} />
                     </View>
+                    <RenderViews data={Views} render={selectedOption} />
                 </View>
             </View>
         </>
     );
 };
-
-const styles = StyleSheet.create({
-    row: { flexDirection: 'row', justifyContent: 'space-between' },
-});
-
-/*
-<View style={[{marginHorizontal:'12%' }]}>
-    <TextInput style={[InputForms.input, { height: 50, paddingHorizontal:25 }]} placeholder="Buscar sugerencias" keyboardType="email-address" maxLength={100} />
-</View>
-*/

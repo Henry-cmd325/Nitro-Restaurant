@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 //REACT NATIVE Y TAILWIND CSS
 import { View, ImageBackground, Text, StyleSheet, TouchableOpacity, StatusBar } from 'react-native';
-import buttonStyles from '../styles/buttonStyles';
-import Fonts from '../styles/Fonts';
+import buttonStyles from '../components/styles/buttonStyles';
+import Fonts from '../components/styles/Fonts';
 // React Navigation
 import { useNavigation } from '@react-navigation/native';
 
