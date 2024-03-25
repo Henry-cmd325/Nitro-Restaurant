@@ -8,6 +8,8 @@ import { useNavigation } from '@react-navigation/native';
 import Fonts from '../../components/styles/Fonts';
 // Componentes
 import ModalAlert from '../../components/interface/ModalAlert';
+// Redux
+import { useSelector } from 'react-redux';
 
 const CardInfo = () => {
     const navigation = useNavigation();
@@ -27,50 +29,50 @@ const CardInfo = () => {
         <SafeAreaView>
             {isModalVisible && <ModalAlert visible={isModalVisible} title='Cerrar sesión' message="¿Seguro que desea cerrar sesión?" button='LOGOUT' close={handleClose} />}
             <ScrollView>
-                <View style={[styles.CardShadow,{ margin: 4, marginBottom: -10, borderRadius: 16, backgroundColor: '#fafafa' }]}>
+                <View style={[{ margin: 4, marginBottom: -10, borderRadius: 16}]}>
                     <Card.Content>
                         <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', padding: 20 }}>
                             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                                <Icon name="person" size={24} color='#767983' />
+                                <Icon name="person" size={24} color='#9ca3af' />
                                 <Text style={[styles.txtLabels, Fonts.cardsText]}>Tu Perfil</Text>
                             </View>
-                            <Icon name="chevron-right" size={24} color='#767983' />
+                            <Icon name="chevron-right" size={24} color='#9ca3af' />
                         </TouchableOpacity>
                         <Divider style={{ backgroundColor: "#e4e5e6"}} />
                         <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', padding: 20 }}>
                             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                                <Icon name='location-on' size={24} color='#767983' />
+                                <Icon name='location-on' size={24} color='#9ca3af' />
                                 <Text style={[styles.txtLabels, Fonts.cardsText]}>Datos de Sucursal</Text>
                             </View>
-                            <Icon name="chevron-right" size={24} color='#767983' />
+                            <Icon name="chevron-right" size={24} color='#9ca3af' />
                         </TouchableOpacity>
                         <Divider style={{ backgroundColor: "#e4e5e6"}} />
                         <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', padding: 20 }} >
                             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                                <Icon name='analytics' size={24} color='#767983' />
+                                <Icon name='analytics' size={24} color='#9ca3af' />
                                 <Text style={[styles.txtLabels, Fonts.cardsText]}>Estadísticas</Text>
                             </View>
-                            <Icon name="chevron-right" size={24} color='#767983' />
+                            <Icon name="chevron-right" size={24} color='#9ca3af' />
                         </TouchableOpacity>
                         <Divider style={{ backgroundColor: "#e4e5e6"}} />
                         <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', padding: 20 }}>
                             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                                <Icon name='settings' size={24} color='#767983' />
+                                <Icon name='settings' size={24} color='#9ca3af' />
                                 <Text style={[styles.txtLabels, Fonts.cardsText]}>Configuración</Text>
                             </View>
-                            <Icon name="chevron-right" size={24} color='#767983' />
+                            <Icon name="chevron-right" size={24} color='#9ca3af' />
                         </TouchableOpacity>
                         <Divider style={{ backgroundColor: "#e4e5e6"}} />
                         <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', padding: 20 }}>
                             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                                <Icon name='lock' size={24} color='#767983' />
+                                <Icon name='lock' size={24} color='#9ca3af' />
                                 <Text style={[styles.txtLabels, Fonts.cardsText]}>Políticas de privacidad</Text>
                             </View>
-                            <Icon name="chevron-right" size={24} color='#767983' />
+                            <Icon name="chevron-right" size={24} color='#9ca3af' />
                         </TouchableOpacity>
                         <Divider style={{ backgroundColor: "#e4e5e6"}} />
                     </Card.Content>
-                    <Button  mode="contained" style={[Fonts.buttonTitle,{ backgroundColor: '#38447E', margin: 25}]} onPress={()=> handleModal()}> LOGOUT </Button>
+                    <Button className="bg-indigo-900" mode="contained" style={[Fonts.buttonTitle,{margin: 25}]} onPress={()=> handleModal()}> LOGOUT </Button>
                 </View>
             </ScrollView>
         </SafeAreaView>
@@ -78,22 +80,19 @@ const CardInfo = () => {
 }
 
 export default ProfileScreen = () => {
+    const user = useSelector(state => state.user);
 
     return (
-        <View style={styles.content}>
+        <View className="flex-1 bg-zinc-50">
             <StatusBar backgroundColor='#fafafa' barStyle="dark-content" />
             <Appbar.Header style={{ backgroundColor: '#fafafa'}} mode='center-aligned'>
-                <Appbar.Content color='#999' title="Perfil" />
+                <Appbar.BackAction onPress={() => {}} />
+                <Appbar.Content color='#000' title="Perfil" />
             </Appbar.Header>
 
-            <View style={[styles.ProfileInfoContent, { marginTop: 5 }]}>
-                <Avatar.Text size={70} label='E' style={[styles.aviIcon, {backgroundColor: "#d7dfe4", borderColor: "#bbb", borderWidth: 1}]} />
-                <Text style={[styles.ProfileName, Fonts.subtitles]}>eehcx</Text>
-                <View style={{flex:1, alignItems: 'center'}}>
-                    <View style={[styles.mailContent, styles.mailChild, styles.mailLayout]}>
-                        <Text style={[Fonts.cardsText]}>eehcx.contacto@gmail.com</Text>
-                    </View>
-                </View>
+            <View className="flex-1 flex-col items-center justify-center mt-1">
+                <Avatar.Image className="border-indigo-700" size={110} source={{uri: user.UserImg}} />
+                <Text className="text-xl m-3 font-medium text-gray-800">{user.UserName}</Text>
             </View>
             <CardInfo />
         </View>
@@ -101,11 +100,5 @@ export default ProfileScreen = () => {
 };
 
 const styles = StyleSheet.create({
-    content: { flex: 1, backgroundColor: '#fafafa' },
-    ProfileInfoContent: { flex: 1, flexDirection: 'column', alignItems: 'center', justifyContent: 'center' },
-    ProfileName: { margin: 10 },
-    mailContent: { flexDirection: 'row', alignItems: 'center' },
-    mailLayout: { height: 28, paddingLeft: 20, paddingRight: 20, position: "absolute" },
-    mailChild: { borderRadius: 15, backgroundColor: "#d7dfe4", top: 0, flex: 1 },
-    txtLabels: { marginLeft: 16, color: '#67757d', fontSize: 15 },
+    txtLabels: { marginLeft: 16, color: '#4b5563', fontSize: 15 },
 });

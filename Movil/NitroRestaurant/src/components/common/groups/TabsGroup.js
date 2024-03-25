@@ -16,7 +16,7 @@ const TabsGroup = ({tabsData}) => {
             <SafeAreaView className='flex-row'>
                 <ScrollView  horizontal={true} onScroll={onScroll} showsHorizontalScrollIndicator={false}>
                     {tabsData.map((item) => (
-                        <FilterPagesIcon key={item.id} text={item.name} iconSize={35} icon={item.icon} isSelected={selectedOption === item.name} onPress={() => filterContent(item.name)} />
+                        <FilterPagesIcon key={item.id} text={item.name} icon={item.icon} isSelected={selectedOption === item.name} onPress={() => filterContent(item.name)} />
                     ))}
                 </ScrollView>
             </SafeAreaView>
