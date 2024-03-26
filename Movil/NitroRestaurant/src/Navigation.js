@@ -12,6 +12,9 @@ import ProfileScreen from './screens/home/Profile';
 import HomeScreen from './screens/home/home';
 import OrdersScreen from './screens/home/Orders';
 
+// Functionality
+import NewOrder from './screens/home/views/OrdersView/NewOrder';
+
 const AuthStack = createStackNavigator();
 const Stack = createStackNavigator();
 const navigationRef = React.createRef();
@@ -43,6 +46,7 @@ export default function Navigation() {
             <Stack.Navigator>
                 <Stack.Screen name="auth" component={AuthScreens} options={{ headerShown: false }} />
                 <Stack.Screen name="main" component={MainBarScreen} options={{ headerShown: false }} />
+                <Stack.Screen name="newOrder" component={NewOrder} options={{ headerShown: false }} />
             </Stack.Navigator>
         </NavigationContainer>
     );
