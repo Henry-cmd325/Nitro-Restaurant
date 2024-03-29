@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 //React Native
 import { SafeAreaView, ScrollView, View, TouchableOpacity, Text } from 'react-native';
-import { ActivityIndicator, MD2Colors, PaperProvider, Appbar } from 'react-native-paper';
+import { ActivityIndicator, MD2Colors, PaperProvider, Appbar, Divider } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 // Componentes
-import ItemListOrder from '../../components/common/ItemListOrder';
+import ItemListOrder from '../../components/common/ItemList/ItemListOrder';
 import InputForms from '../../components/styles/InputForms';
 // React Navigation
 import { useNavigation } from '@react-navigation/native';
@@ -15,7 +15,9 @@ export default OrdersScreen = () => {
     const navigation = useNavigation();
     // Redux
     const orders = useSelector(state => state.orders);
-    const [List, setList] = useState(orders.items);
+    const tables = useSelector(state => state.branch.tables);
+    const availableTables = tables.filter(table => !table.ESTADO);
+    List = useSelector(state => state.orders.items);
     // Estado de Carga de la página
     const [loading, setLoading] = useState(true);
     // Hooks para el estado del componente
@@ -54,9 +56,18 @@ export default OrdersScreen = () => {
                                 <Appbar.Header style={{ backgroundColor: '#fafafa'}} mode='center-aligned'>
                                     <Appbar.Content color='#999' title="Lista de pedidos" />
                                 </Appbar.Header>
+                                <Text className="pt-5 pb-2 px-7 font-medium text-sm">Pedidos activos</Text>
+                                <Divider className="my-1 bg-slate-200" />
                                 {List.map((item) => (
                                     <View key={item.id}>
-                                        <ItemListOrder content={item.date} items={item.name} price={item.price} urlImage={item.ImgUrl} />
+                                        <ItemListOrder content={item.FECHA_HORA} items={"Mesa  "+item.NUM_MESA} status={item.ESTADO} price={item.TOTAL} urlImage={item.IMG_URL} />
+                                    </View>
+                                ))}
+                                <Text className="pt-5 pb-2 px-7 font-medium text-sm">Mesas disponibles</Text>
+                                <Divider className="my-1 bg-slate-200" />
+                                {availableTables.map((item) => (
+                                    <View key={item.id}>
+                                        <ItemListOrder content={item.FECHA_HORA} items={"Mesa  "+item.NUM_MESA} status={item.ESTADO} urlImage={item.IMG_URL} />
                                     </View>
                                 ))}
                             </ScrollView>

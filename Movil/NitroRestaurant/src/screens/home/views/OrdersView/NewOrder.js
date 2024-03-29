@@ -5,14 +5,18 @@ import { PaperProvider, Searchbar, Appbar, ActivityIndicator, MD2Colors } from '
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 // Components
 import TabsGroup from '../../../../components/common/groups/TabsGroup';
-import CartModal from '../../../../components/interface/CartModal';
+import CartModal from '../../../../components/layouts/CartModal';
 import InputForms from '../../../../components/styles/InputForms';
+import ItemListProduct from '../../../../components/common/ItemList/ItemListProduct';
 // Redux
 import { useSelector } from 'react-redux';
+// React Navigation
+import { useNavigation } from '@react-navigation/native';
 
 const NewOrder = () => {
+    const navigation = useNavigation();
     const products = useSelector(state => state.products);
-    const [List, setList] = useState(products.items);
+    const List = useSelector(state => state.products.items);
     // Hooks para el estado del scroll
     const [isExtended, setIsExtended] = React.useState(false);
     const onScroll = ({ nativeEvent }) => { const currentScrollPosition = Math.floor(nativeEvent?.contentOffset?.y) ?? 0; setIsExtended(currentScrollPosition <= 0); };
@@ -41,7 +45,7 @@ const NewOrder = () => {
     return (
         <View className="flex-1 bg-zinc-50 px-2"> 
             <Appbar.Header style={{ backgroundColor: '#fafafa'}} mode='center-aligned'>
-                <Appbar.BackAction onPress={() => {}} />
+                <Appbar.BackAction onPress={() => navigation.goBack()} />
                 <Appbar.Content color='#999' title="Nuevo pedido" />
             </Appbar.Header>
             <View className="py-4 px-3">
@@ -60,7 +64,7 @@ const NewOrder = () => {
                         <ScrollView onScroll={onScroll} showsVerticalScrollIndicator={false}>
                             {List.map((item) => (
                                 <View key={item.id} >
-                                    <ItemListOrder items={item.Name} content={item.Description} price={"$ " + item.Price} urlImage={item.ImgUrl} />
+                                    <ItemListProduct items={item.NOMBRE} content={item.DETALLE} price={"$ " + item.PRECIO} urlImage={item.IMG_URL} />
                                 </View>
                             ))}
                             <TouchableOpacity className='flex-row items-center justify-center py-3 bg-slate-200 mx-5 my-2 rounded-full' onPress={()=> handleModal()}>

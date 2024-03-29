@@ -9,11 +9,11 @@ const initialState = {
         { id: 5, name: 'Fritos', icon: 'https://firebasestorage.googleapis.com/v0/b/nitro-restaurant.appspot.com/o/static%2FIcons3D%2Fpretzel-60.png?alt=media&token=7d4cb12a-82cb-4353-bcbf-9adc4988fc7c' }
     ],
     items: [
-        {id: 1, Name: 'Café', Description: 'crab & cucumber', Price: 76, ImgUrl: 'https://images.pexels.com/photos/4347597/pexels-photo-4347597.jpeg?auto=compress&cs=tinysrgb&w=1260&'},
-        {id: 2, Name: 'Latte', Description: 'crab & cucumber', Price: 165, ImgUrl: 'https://images.pexels.com/photos/312418/pexels-photo-312418.jpeg?auto=compress&cs=tinysrgb&w=1260&h='},
-        {id: 3, Name: 'Brownie', Description: 'crab & cucumber', Price: 265, ImgUrl: 'https://images.pexels.com/photos/45202/brownie-dessert-cake-sweet-45202.jpeg?auto=compress&cs=tinysr'},
-        {id: 4, Name: 'Brownie', Description: 'crab & cucumber', Price: 265, ImgUrl: 'https://images.pexels.com/photos/45202/brownie-dessert-cake-sweet-45202.jpeg?auto=compress&cs=tinysr'},
-        {id: 5, Name: 'Brownie', Description: 'crab & cucumber', Price: 265, ImgUrl: 'https://images.pexels.com/photos/45202/brownie-dessert-cake-sweet-45202.jpeg?auto=compress&cs=tinysr'}
+        {id: 1, NOMBRE: 'Café', DETALLE: 'crab & cucumber', PRECIO: 76, IMG_URL: 'https://images.pexels.com/photos/4347597/pexels-photo-4347597.jpeg?auto=compress&cs=tinysrgb&w=1260&'},
+        {id: 2, NOMBRE: 'Latte', DETALLE: 'crab & cucumber', PRECIO: 165, IMG_URL: 'https://images.pexels.com/photos/312418/pexels-photo-312418.jpeg?auto=compress&cs=tinysrgb&w=1260&h='},
+        {id: 3, NOMBRE: 'Brownie', DETALLE: 'crab & cucumber', PRECIO: 265, IMG_URL: 'https://images.pexels.com/photos/45202/brownie-dessert-cake-sweet-45202.jpeg?auto=compress&cs=tinysr'},
+        {id: 4, NOMBRE: 'Brownie', DETALLE: 'crab & cucumber', PRECIO: 265, IMG_URL: 'https://images.pexels.com/photos/45202/brownie-dessert-cake-sweet-45202.jpeg?auto=compress&cs=tinysr'},
+        {id: 5, NOMBRE: 'Brownie', DETALLE: 'crab & cucumber', PRECIO: 265, IMG_URL: 'https://images.pexels.com/photos/45202/brownie-dessert-cake-sweet-45202.jpeg?auto=compress&cs=tinysr'}
     ] 
 };
 

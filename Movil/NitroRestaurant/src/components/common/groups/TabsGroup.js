@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { SafeAreaView, ScrollView, } from "react-native";
 // Components
-import FilterPagesIcon from '../../../components/common/FilterPagesIcon';
+import FilterPagesIcon from '../../interface/Filters/FilterPagesIcon';
 
 const TabsGroup = ({tabsData}) => {
     // Hooks para el estado del componente

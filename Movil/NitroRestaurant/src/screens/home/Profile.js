@@ -7,7 +7,7 @@ import { useNavigation } from '@react-navigation/native';
 // Styles
 import Fonts from '../../components/styles/Fonts';
 // Componentes
-import ModalAlert from '../../components/interface/ModalAlert';
+import ModalAlert from '../../components/layouts/ModalAlert';
 // Redux
 import { useSelector } from 'react-redux';
 

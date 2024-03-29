@@ -6,9 +6,9 @@ import { Dimensions } from "react-native";
 import { useSelector } from 'react-redux';
 
 const StatsView = () => {
-    const rushHour = useSelector(state => state.stats.rushHour);
-    const preparation = useSelector(state => state.stats.preparation);
-    const dailySales = useSelector(state => state.stats.dailySales);
+    const rushHour = useSelector(state => state.branch.rushHour);
+    const preparation = useSelector(state => state.branch.preparation);
+    const dailySales = useSelector(state => state.branch.dailySales);
     const schedules = dailySales.map(item => item.schedules);
     const sales = dailySales.map(item => parseFloat(item.sales));
     // Scroll

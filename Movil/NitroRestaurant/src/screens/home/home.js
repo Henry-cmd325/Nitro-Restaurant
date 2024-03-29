@@ -8,7 +8,7 @@ import StatsView from './views/statsView.js';
 import ProductsView from './views/productsView.js';
 // Components
 import RenderViews from '../../components/common/RenderingViews.js';
-import FilterPagesExtended from '../../components/common/FilterPagesExtended';
+import FilterPagesExtended from '../../components/interface/Filters/FilterPagesExtended.js';
 import { formatDateToString } from '../../utils/helpers/dateHelpers.js';
 
 const Views = { STATS: StatsView, PRODUCTS: ProductsView, };

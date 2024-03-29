@@ -2,9 +2,9 @@ import { createSlice, createSelector } from '@reduxjs/toolkit';
 
 const initialState = { 
     order:[
-        {id: 1, Name: 'Café', Price: 120.38, ImgUrl: 'https://images.pexels.com/photos/4347597/pexels-photo-4347597.jpeg?auto=compress&cs=tinysrgb&w=1260&', amount: 1, totalPrice: 120.38},
-        {id: 2, Name: 'Latte', Price: 176.73, ImgUrl: 'https://images.pexels.com/photos/312418/pexels-photo-312418.jpeg?auto=compress&cs=tinysrgb&w=1260&h=', amount: 1, totalPrice: 176.73},
-        {id: 3, Name: 'Brownie', Price: 50.00, ImgUrl: 'https://images.pexels.com/photos/45202/brownie-dessert-cake-sweet-45202.jpeg?auto=compress&cs=tinysr', amount: 1, totalPrice: 50.00},
+        {id: 1, NOMBRE: 'Café', DETALLE: 'crab & cucumber', PRECIO: 120.38, IMG_URL: 'https://images.pexels.com/photos/4347597/pexels-photo-4347597.jpeg?auto=compress&cs=tinysrgb&w=1260&', CANTIDAD: 1, PRECIO_TOTAL: 120.38},
+        {id: 2, NOMBRE: 'Latte', DETALLE: 'crab & cucumber', PRECIO: 176.73, IMG_URL: 'https://images.pexels.com/photos/312418/pexels-photo-312418.jpeg?auto=compress&cs=tinysrgb&w=1260&h=', CANTIDAD: 1, PRECIO_TOTAL: 176.73},
+        {id: 3, NOMBRE: 'Brownie', DETALLE: 'crab & cucumber', PRECIO: 50.00, IMG_URL: 'https://images.pexels.com/photos/45202/brownie-dessert-cake-sweet-45202.jpeg?auto=compress&cs=tinysr', CANTIDAD: 1, PRECIO_TOTAL: 50.00},
     ]
 };
 
@@ -26,17 +26,17 @@ export const ordersDetailsSlice = createSlice({
         increment: (state, action) => {
             const item = state.order.find(item => item.id === action.payload);
             if (item) {
-                item.amount++;
-                item.totalPrice = item.amount * item.Price;
-                //console.log(item.amount);
+                item.CANTIDAD++;
+                item.PRECIO_TOTAL = item.CANTIDAD * item.PRECIO;
+                //console.log(item.CANTIDAD);
             }
         },
         decrement: (state, action) => {
             const item = state.order.find(item => item.id === action.payload);
-            if (item && item.amount > 1) {
-                item.amount--;
-                item.totalPrice = item.amount * item.Price;
-                //console.log(item.amount);
+            if (item && item.CANTIDAD > 1) {
+                item.CANTIDAD--;
+                item.PRECIO_TOTAL = item.CANTIDAD * item.PRECIO;
+                //console.log(item.CANTIDAD);
             }
         },
     },
@@ -51,5 +51,5 @@ export const selectOrderWithId = (id) => (state) =>
     state.ordersDetails.order.filter((item) => item.id === id);
 
 export const selectOrderTotal = createSelector(selectAllOrders, (items) =>
-    items.reduce((total, item) => (total += item.totalPrice), 0)
+    items.reduce((total, item) => (total += item.PRECIO_TOTAL), 0)
 );

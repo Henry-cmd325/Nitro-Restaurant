@@ -3,13 +3,13 @@ import { View, Text, SafeAreaView, ScrollView } from "react-native";
 import { PaperProvider } from 'react-native-paper';
 // Components
 import TabsGroup from '../../../components/common/groups/TabsGroup';
-import ItemListOrder from '../../../components/common/ItemListOrder';
+import ItemListProduct from '../../../components/common/ItemList/ItemListProduct';
 // Redux
 import { useSelector } from 'react-redux';
 export default  ProductsView = () => {
     // Redux
     const products = useSelector(state => state.products);
-    const [List, setList] = useState(products.items);
+    const List = useSelector(state => state.products.items)
     // Scroll
     const [isExtended, setIsExtended] = React.useState(false);
     const onScroll = ({ nativeEvent }) => { const currentScrollPosition = Math.floor(nativeEvent?.contentOffset?.y) ?? 0; 
@@ -25,7 +25,7 @@ export default  ProductsView = () => {
                         <ScrollView onScroll={onScroll} showsVerticalScrollIndicator={false}>
                             {List.map((item) => (
                                 <View key={item.id} >
-                                    <ItemListOrder items={item.Name} content={item.Description} price={"$ "+item.Price} urlImage={item.ImgUrl} />
+                                    <ItemListProduct items={item.NOMBRE} content={item.DETALLE} price={"$ "+item.PRECIO} urlImage={item.IMG_URL} />
                                 </View>
                             ))}
                         </ScrollView>

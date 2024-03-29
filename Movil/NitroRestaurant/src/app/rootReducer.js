@@ -5,7 +5,6 @@ import branchSlice from './business/branchSlice';
 import productsSlice from './business/productsSlice';
 import businessSlice from './business/businessSlice';
 import ordersSlice from './business/ordersSlice';
-import statsSlice from './business/statsSlice';
 import orderDetailsSlice from './business/orderDetailsSlice';
 
 const rootReducer = combineReducers({
@@ -14,7 +13,6 @@ const rootReducer = combineReducers({
     products: productsSlice,
     business: businessSlice,
     orders: ordersSlice,
-    stats: statsSlice,
     ordersDetails: orderDetailsSlice,
 });
 
