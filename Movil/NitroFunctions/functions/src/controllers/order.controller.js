@@ -2,8 +2,8 @@ const orderService = require('../services/order.service');
 
 async function createOrderController (req, res) {
     try {
-        const { detalle_pedido, estado, fecha_hora, id_mesa, precio_total, tipo_pedido } = req.body;
-        const result = await orderService.createOrder(detalle_pedido, estado, fecha_hora, id_mesa, precio_total, tipo_pedido);
+        const { detalle_pedido, estado, id_mesa, id_sucursal, total, id_tipo_pedido } = req.body;
+        const result = await orderService.createOrder(detalle_pedido, estado, id_mesa, id_sucursal, total, id_tipo_pedido);
 
         return res.status(201).json(result);
     } catch (error) {

@@ -2,8 +2,8 @@ const businessService = require('../services/business.service');
 
 async function createBusinessController (req, res) {
     try {
-        const { nombre } = req.body;
-        const result = await businessService.createBusiness(nombre);
+        const { nombre, sucursales } = req.body;
+        const result = await businessService.createBusiness(nombre, sucursales);
 
         return res.status(201).json(result);
     } catch (error) {

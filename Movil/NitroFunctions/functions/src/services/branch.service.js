@@ -1,18 +1,18 @@
-const { onRequest } = require('firebase-functions/v2');
 const { getFirestore } = require('firebase-admin/firestore');
+const { GeoPoint } = require('@google-cloud/firestore');
 
-async function createBranch (nombre, direccion, telefono, id_negocio) {
+async function createBranch (nombre, id_negocio, latitud, longitud) {
     try {
-        if (!nombre || !direccion || !telefono || !id_negocio) {
-            throw new Error('Todos los campos son obligatorios');
-        }
 
         const branchesRef = getFirestore().collection('sucursales');
+        const business_ref = getFirestore().collection('negocios').doc(id_negocio);
+
+        const geopoint = new GeoPoint(latitud, longitud);
+
         const newBranchRef = await branchesRef.add({
-            id_negocio: id_negocio,
-            nombre: nombre,
-            direccion: direccion,
-            telefono: telefono
+            negocio_ref: business_ref,
+            nombre,
+            ubicacion: geopoint,
         });
 
         return { id: newBranchRef.id, message: 'Sucursal creada exitosamente' };

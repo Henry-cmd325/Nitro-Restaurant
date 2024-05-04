@@ -2,9 +2,9 @@ const branchService = require('../services/branch.service');
 
 async function createBranchController (req, res) {
     try {
-        const { nombre, direccion, telefono, id_negocio } = req.body;
+        const { nombre, id_negocio, latitud, longitud } = req.body;
 
-        const result = await branchService.createBranch(nombre, direccion, telefono, id_negocio);
+        const result = await branchService.createBranch(nombre, id_negocio, latitud, longitud);
 
         return res.status(201).json(result);
     } catch (error) {

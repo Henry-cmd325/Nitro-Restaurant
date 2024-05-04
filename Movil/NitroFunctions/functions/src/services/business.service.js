@@ -1,15 +1,16 @@
 const { onRequest } = require('firebase-functions/v2');
 const { getFirestore } = require('firebase-admin/firestore');
 
-async function createBusiness  (nombre){
+async function createBusiness  (nombre, sucursales){
     try {
-        if (!nombre) {
+        /*if (!nombre) {
             throw new Error('Todos los campos son obligatorios');
-        }
+        }*/
 
         const branchesRef = getFirestore().collection('negocios');
         const newBranchRef = await branchesRef.add({
-            nombre: nombre,
+            nombre,
+            sucursales
         });
 
         return { id: newBranchRef.id, message: 'Negocio creada exitosamente' };
