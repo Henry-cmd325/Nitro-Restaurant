@@ -10,8 +10,21 @@ async function createOrder (detalle_pedido, estado, id_mesa, id_sucursal, total,
 
         const timestamp = Timestamp.now();
 
+        const detalle_pedido_map = detalle_pedido.map(async item => {
+            const product_ref = getFirestore().collection('productos').doc(item.id_producto);
+
+            return {
+                cantidad: item.cantidad,
+                modificaciones: item.modificaciones,
+                precio: item.precio,
+                producto_ref: product_ref
+            };
+        });
+
+        const detalle_procesado = await Promise.all(detalle_pedido_map);
+
         const newReference = await reference.add({
-            detalle_pedido,
+            detalle_pedido: detalle_procesado,
             estado,
             fecha_creacion: timestamp,
             mesa_ref: table_ref,
