@@ -28,6 +28,64 @@ async function createProduct (cantidad, contable, detalle, id_sucursal, id_categ
     }
 };
 
+async function getProduct(id_producto) {
+    try {
+        const docRef = getFirestore().collection("productos").doc(id_producto);
+        const docSnapshot = await docRef.get();
+
+        const productData = docSnapshot.data();
+        return { id: id_producto, ...productData }; 
+    } catch (error) {
+        console.error('Error al consultar el producto:', error);
+        throw new Error('Se produjo un error al consultar el producto');
+    }
+}
+
+async function getProductsByCategory(id_categoria) {
+    try {
+        const collection_ref = getFirestore().collection("productos");
+
+        const category_ref = getFirestore().collection("categorias").doc(id_categoria);
+        const querySnapshot = await collection_ref.where("categoria_ref", "==", category_ref).get();
+
+        const products = [];
+        querySnapshot.forEach((doc) => {
+            const productId = doc.id;
+            const productData = doc.data();
+            products.push({ id: productId, ...productData });
+        });
+
+        return products;
+    } catch (error) {
+        console.error('Error al consultar los productos por categoría:', error);
+        throw new Error('Se produjo un error al consultar los productos por categoría');
+    }
+}
+
+
+async function getAllProducts() {
+    try {
+        const querySnapshot = await getFirestore().collection("productos").get(); 
+
+        const productData = [];
+
+        querySnapshot.forEach((doc) => {
+            const productId = doc.id;
+            const productInfo = doc.data();
+
+            productData.push({ id: productId, ...productInfo });
+        });
+
+        return productData;
+    } catch (error) {
+        console.error('Error al consultar:', error);
+        throw new Error('Se produjo un error al consultar');
+    }
+}
+
 module.exports = {
     createProduct,
+    getProduct,
+    getProductsByCategory,
+    getAllProducts
 };
