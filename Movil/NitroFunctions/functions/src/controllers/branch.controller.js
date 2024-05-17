@@ -13,6 +13,20 @@ async function createBranchController (req, res) {
     }
 };
 
+async function getBusinessBranchController(req, res) {
+    try {
+        const { id_sucursal } = req.params; 
+        const result = await branchService.getBusinessBranch(id_sucursal);
+
+        return res.status(200).json(result);
+    } catch (error) {
+        console.error('Error en el controlador al obtener los datos de la sucursal actual y el negocio afiliado:', error);
+        return res.status(500).json({ error: 'Se produjo un error al obtener los datos de la sucursal actual y el negocio afiliado' });
+    }
+}
+
+
 module.exports = {
     createBranchController,
+    getBusinessBranchController
 };

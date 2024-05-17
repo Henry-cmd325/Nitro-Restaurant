@@ -12,6 +12,18 @@ async function createOrderController (req, res) {
     }
 };
 
+async function getCurrentOrdersController(req, res) {
+    try {
+        const { id_sucursal } = req.params;
+        const result = await orderService.getCurrentOrders(id_sucursal);
+        return res.status(200).json(result);
+    } catch (e) {
+        console.error('Error al consultar el pedido:', e);
+        return res.status(500).json({ error: error.message });
+    }
+}
+
 module.exports = {
     createOrderController,
+    getCurrentOrdersController
 };

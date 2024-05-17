@@ -22,6 +22,30 @@ async function createBranch (nombre, id_negocio, latitud, longitud) {
     }
 };
 
+async function getBusinessBranch(id_sucursal) {
+    try {
+        const branch_ref = getFirestore().collection("sucursales").doc(id_sucursal);
+        const branchSnapshot = await branch_ref.get();
+        const branchData = branchSnapshot.data();
+        
+        const business_ref = branchData.negocio_ref;
+        const businessSnapshot = await business_ref.get();
+        const businessData = businessSnapshot.data();
+
+        const branch = { id: id_sucursal, ...branchData };
+        delete branch.negocio_ref;
+
+        return {
+            sucursales: branch ,
+            negocios: { id: businessSnapshot.id, ...businessData }
+        };
+    } catch (error) {
+        console.error('Error al obtener los datos de la sucursal actual y el negocio afiliado:', error);
+        throw new Error('Se produjo un error al obtener los datos de la sucursal actual y el negocio afiliado');
+    }
+}
+
 module.exports = {
     createBranch,
+    getBusinessBranch
 };

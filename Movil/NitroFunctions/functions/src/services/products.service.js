@@ -41,7 +41,7 @@ async function getProduct(id_producto) {
     }
 }
 
-async function getProductsByCategory(id_categoria) {
+async function getProductsByCategory(id_categoria) { // Agregar filtrado por negocio
     try {
         const collection_ref = getFirestore().collection("productos");
 
@@ -63,7 +63,7 @@ async function getProductsByCategory(id_categoria) {
 }
 
 
-async function getAllProducts() {
+async function getAllProducts() { // Agregar filtrado por negocio
     try {
         const querySnapshot = await getFirestore().collection("productos").get(); 
 
