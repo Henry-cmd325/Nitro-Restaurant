@@ -1,7 +1,7 @@
 const { getFirestore, Timestamp } = require('firebase-admin/firestore');
 
 async function createOrder (detalle_pedido, estado, id_mesa, id_sucursal, total, id_tipo_pedido) {
-    try { // Agregar actualización del estado de la mesa
+    try {
 
         const reference = getFirestore().collection('pedidos');
         const table_ref = getFirestore().collection('mesas').doc(id_mesa);
@@ -33,6 +33,8 @@ async function createOrder (detalle_pedido, estado, id_mesa, id_sucursal, total,
             tipo_pedido_ref: order_type_ref
         });
 
+        await table_ref.update({estado: true})
+
         return { id: newReference.id, message: 'Pedido creado exitosamente' };
     } catch (error) {
         console.error('Error al crear el pedido:', error);
@@ -40,50 +42,83 @@ async function createOrder (detalle_pedido, estado, id_mesa, id_sucursal, total,
     }
 };
 
-async function getCurrentOrders(id_sucursal) {
+async function updateOrderState(id_pedido){
     try {
-        const sucursalRef = getFirestore().collection("sucursales").doc(id_sucursal);
-        const ordersRef = getFirestore().collection("pedidos").where("sucursal_ref", "==", sucursalRef);
-        const querySnapshot = await ordersRef.where("estado", "==", true).get();
-        const orders = [];
+        const order_ref = getFirestore().collection('pedidos').doc(id_pedido);
 
-        for (const doc of querySnapshot.docs) {
-            const orderId = doc.id;
-            const orderData = doc.data();
+        const orderSnapshot = await order_ref.get();
+        const orderData = orderSnapshot.data();
 
-            const tableRef = orderData.mesa_ref;
-            const orderTypeRef = orderData.tipo_pedido_ref;
+        await order_ref.update({ estado: false });
 
-            const [tableSnapshot, orderTypeSnapshot] = await Promise.all([
-                tableRef.get(),
-                orderTypeRef.get()
-            ]);
+        const table_ref = orderData.mesa_ref;
+        const tableSnapshot = await table_ref.get();
+        const tableData = tableSnapshot.data();
 
-            const tableData = tableSnapshot.data();
-            const orderTypeData = orderTypeSnapshot.data();
-
-            const pedido = { id: orderId, ...orderData }
-            delete pedido.mesa_ref;
-            delete pedido.tipo_pedido_ref;
-            delete pedido.sucursal_ref;
-            const mesa = { id: tableSnapshot.id, ...tableData };
-            delete mesa.sucursal_ref;
-
-            orders.push({
-                pedido: pedido,
-                mesa: mesa,
-                tipo_pedido: { id: orderTypeSnapshot.id, ...orderTypeData }
-            });
+        if (tableData) {
+            const tableRef = getFirestore().collection('mesas').doc(tableSnapshot.id);
+            await tableRef.update({ estado: false });
         }
 
-        return orders;
+        return { message: 'Pedido terminado' };
     } catch (e) {
-        console.error('Error al obtener los datos de los pedidos:', e);
-        throw new Error('Se produjo un error al obtener los datos de los pedidos');
+        console.e('Error al actualizar el estado del pedido y la mesa:', e);
+        throw new Error('Se produjo un error al actualizar el estado del pedido y la mesa');
     }
 }
 
+/*
+async function listenToOrders(id_sucursal, sendUpdate) {
+    try {
+        const db = getFirestore();
+        const branchRef = db.collection("sucursales").doc(id_sucursal);
+        const ordersRef = db.collection("pedidos").where("sucursal_ref", "==", branchRef).where("estado", "==", true);
+
+        const unsubscribe = ordersRef.onSnapshot(async (snapshot) => {
+            const orders = [];
+
+            for (const doc of snapshot.docs) {
+                const orderId = doc.id;
+                const orderData = doc.data();
+
+                const tableRef = orderData.mesa_ref;
+                const orderTypeRef = orderData.tipo_pedido_ref;
+
+                const [tableSnapshot, orderTypeSnapshot] = await Promise.all([
+                    tableRef.get(),
+                    orderTypeRef.get()
+                ]);
+
+                const tableData = tableSnapshot.data();
+                const orderTypeData = orderTypeSnapshot.data();
+
+                const pedido = { id: orderId, ...orderData };
+                delete pedido.mesa_ref;
+                delete pedido.tipo_pedido_ref;
+                delete pedido.sucursal_ref;
+
+                const mesa = { id: tableSnapshot.id, ...tableData };
+                delete mesa.sucursal_ref;
+
+                orders.push({
+                    pedido: pedido,
+                    mesa: mesa,
+                    tipo_pedido: { id: orderTypeSnapshot.id, ...orderTypeData }
+                });
+            }
+
+            sendUpdate(orders);
+        });
+
+        return unsubscribe;
+    } catch (e) {
+        console.error('Error al escuchar los cambios de los pedidos:', e);
+        throw new Error('Se produjo un error al escuchar los cambios de los pedidos');
+    }
+}
+*/
+
 module.exports = {
     createOrder,
-    getCurrentOrders
+    updateOrderState
 };

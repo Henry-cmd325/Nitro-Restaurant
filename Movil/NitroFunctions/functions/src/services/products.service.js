@@ -28,6 +28,7 @@ async function createProduct (cantidad, contable, detalle, id_sucursal, id_categ
     }
 };
 
+/*
 async function getProduct(id_producto) {
     try {
         const docRef = getFirestore().collection("productos").doc(id_producto);
@@ -82,10 +83,8 @@ async function getAllProducts() { // Agregar filtrado por negocio
         throw new Error('Se produjo un error al consultar');
     }
 }
+*/
 
 module.exports = {
-    createProduct,
-    getProduct,
-    getProductsByCategory,
-    getAllProducts
+    createProduct
 };

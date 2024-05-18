@@ -9,7 +9,6 @@ const orders = require('./src/routes/order.routes');
 const products = require('./src/routes/product.routes');
 
 initializeApp();
-
 const app = express();
 
 // Configuración de rutas
@@ -18,4 +17,4 @@ app.use('/negocio', business);
 app.use('/pedido', orders);
 app.use('/producto', products)
 
-exports.app = functions.https.onRequest(app);
+exports.api = functions.https.onRequest(app);
