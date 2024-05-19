@@ -12,11 +12,9 @@ async function createProductController (req, res){
     }
 }
 
-/*
-
 async function getProductController(req, res) {
     try {
-        const id_producto = req.params.id_producto; 
+        const {id_producto} = req.params;
 
         if (!id_producto) {
             return res.status(400).json({ error: "Se requiere un ID de producto" });
@@ -54,8 +52,10 @@ async function getAllProductsController (req, res){
         return res.status(500).json({ error: error.message });
     }
 }
-*/
 
 module.exports = {
-    createProductController
+    createProductController,
+    getProductController,
+    getProductsByCategoryController,
+    getAllProductsController
 }

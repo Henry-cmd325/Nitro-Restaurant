@@ -28,7 +28,6 @@ async function createProduct (cantidad, contable, detalle, id_sucursal, id_categ
     }
 };
 
-/*
 async function getProduct(id_producto) {
     try {
         const docRef = getFirestore().collection("productos").doc(id_producto);
@@ -42,7 +41,7 @@ async function getProduct(id_producto) {
     }
 }
 
-async function getProductsByCategory(id_categoria) { // Agregar filtrado por negocio
+async function getProductsByCategory(id_categoria) {
     try {
         const collection_ref = getFirestore().collection("productos");
 
@@ -63,8 +62,7 @@ async function getProductsByCategory(id_categoria) { // Agregar filtrado por neg
     }
 }
 
-
-async function getAllProducts() { // Agregar filtrado por negocio
+async function getAllProducts() {
     try {
         const querySnapshot = await getFirestore().collection("productos").get(); 
 
@@ -83,8 +81,10 @@ async function getAllProducts() { // Agregar filtrado por negocio
         throw new Error('Se produjo un error al consultar');
     }
 }
-*/
 
 module.exports = {
-    createProduct
+    createProduct,
+    getProduct,
+    getProductsByCategory,
+    getAllProducts
 };

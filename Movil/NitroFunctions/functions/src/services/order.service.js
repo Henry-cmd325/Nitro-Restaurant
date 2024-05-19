@@ -1,17 +1,18 @@
-const { getFirestore, Timestamp } = require('firebase-admin/firestore');
+const { Timestamp } = require('firebase-admin/firestore');
+const admin = require('firebase-admin');
 
 async function createOrder (detalle_pedido, estado, id_mesa, id_sucursal, total, id_tipo_pedido) {
     try {
 
-        const reference = getFirestore().collection('pedidos');
-        const table_ref = getFirestore().collection('mesas').doc(id_mesa);
-        const branch_ref = getFirestore().collection('sucursales').doc(id_sucursal);
-        const order_type_ref = getFirestore().collection('tipo_pedidos').doc(id_tipo_pedido);
+        const reference = admin.firestore().collection('pedidos');
+        const table_ref = admin.firestore().collection('mesas').doc(id_mesa);
+        const branch_ref = admin.firestore().collection('sucursales').doc(id_sucursal);
+        const order_type_ref = admin.firestore().collection('tipo_pedidos').doc(id_tipo_pedido);
 
         const timestamp = Timestamp.now();
 
         const detalle_pedido_map = detalle_pedido.map(async item => {
-            const product_ref = getFirestore().collection('productos').doc(item.id_producto);
+            const product_ref = admin.firestore().collection('productos').doc(item.id_producto);
 
             return {
                 cantidad: item.cantidad,
@@ -44,7 +45,7 @@ async function createOrder (detalle_pedido, estado, id_mesa, id_sucursal, total,
 
 async function updateOrderState(id_pedido){
     try {
-        const order_ref = getFirestore().collection('pedidos').doc(id_pedido);
+        const order_ref = admin.firestore().collection('pedidos').doc(id_pedido);
 
         const orderSnapshot = await order_ref.get();
         const orderData = orderSnapshot.data();
@@ -56,7 +57,7 @@ async function updateOrderState(id_pedido){
         const tableData = tableSnapshot.data();
 
         if (tableData) {
-            const tableRef = getFirestore().collection('mesas').doc(tableSnapshot.id);
+            const tableRef = admin.firestore().collection('mesas').doc(tableSnapshot.id);
             await tableRef.update({ estado: false });
         }
 
@@ -67,17 +68,17 @@ async function updateOrderState(id_pedido){
     }
 }
 
-/*
 async function listenToOrders(id_sucursal, sendUpdate) {
     try {
-        const db = getFirestore();
-        const branchRef = db.collection("sucursales").doc(id_sucursal);
-        const ordersRef = db.collection("pedidos").where("sucursal_ref", "==", branchRef).where("estado", "==", true);
+        const branchRef = admin.firestore().collection("sucursales").doc(id_sucursal);
+        const ordersRef = admin.firestore().collection("pedidos").where("sucursal_ref", "==", branchRef).where("estado", "==", true);
 
         const unsubscribe = ordersRef.onSnapshot(async (snapshot) => {
+            //console.log('Snapshot received with docs:', snapshot.docs.length);
             const orders = [];
 
             for (const doc of snapshot.docs) {
+                //console.log('Processing document:', doc.id);
                 const orderId = doc.id;
                 const orderData = doc.data();
 
@@ -108,6 +109,7 @@ async function listenToOrders(id_sucursal, sendUpdate) {
             }
 
             sendUpdate(orders);
+            //console.log('ORDENES ACTIVAS: ', orders);
         });
 
         return unsubscribe;
@@ -116,9 +118,9 @@ async function listenToOrders(id_sucursal, sendUpdate) {
         throw new Error('Se produjo un error al escuchar los cambios de los pedidos');
     }
 }
-*/
 
 module.exports = {
     createOrder,
-    updateOrderState
+    updateOrderState,
+    listenToOrders
 };
