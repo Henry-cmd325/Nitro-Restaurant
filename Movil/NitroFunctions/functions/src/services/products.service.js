@@ -1,17 +1,17 @@
 const { getFirestore } = require('firebase-admin/firestore');
+const admin = require('firebase-admin');
 
-async function createProduct (cantidad, contable, detalle, id_sucursal, id_categoria, id_um, imagen, inversion, nombre, precio) {
+async function createProduct (cantidad, contable, id_sucursal, id_categoria, id_um, imagen, inversion, nombre, precio) {
     try {
 
-        const reference = getFirestore().collection('productos');
-        const branch_ref = getFirestore().collection('sucursales').doc(id_sucursal);
-        const categories_ref = getFirestore().collection('categorias').doc(id_categoria);
-        const um_ref = getFirestore().collection('unidades_medida').doc(id_um);
+        const reference = admin.firestore().collection('productos');
+        const branch_ref = admin.firestore().collection('sucursales').doc(id_sucursal);
+        const categories_ref = admin.firestore().collection('categorias').doc(id_categoria);
+        const um_ref = admin.firestore().collection('unidades_medida').doc(id_um);
 
         const newReference = await reference.add({
             cantidad,
             contable,
-            detalle,
             sucursal_ref: branch_ref,
             categoria_ref: categories_ref,
             unidad_medida_ref: um_ref,
@@ -46,12 +46,17 @@ async function getProductsByCategory(id_categoria) {
         const collection_ref = getFirestore().collection("productos");
 
         const category_ref = getFirestore().collection("categorias").doc(id_categoria);
-        const querySnapshot = await collection_ref.where("categoria_ref", "==", category_ref).get();
+        const querySnapshot = await collection_ref
+            .where("categoria_ref", "==", category_ref).get();
 
         const products = [];
         querySnapshot.forEach((doc) => {
             const productId = doc.id;
             const productData = doc.data();
+            delete productData.categoria_ref;
+            delete productData.sucursal_ref;
+            delete productData.unidad_medida_ref;
+
             products.push({ id: productId, ...productData });
         });
 
@@ -64,16 +69,30 @@ async function getProductsByCategory(id_categoria) {
 
 async function getAllProducts() {
     try {
-        const querySnapshot = await getFirestore().collection("productos").get(); 
+        const querySnapshot = await getFirestore().collection("productos")
+            .orderBy("nombre").get(); 
 
-        const productData = [];
-
-        querySnapshot.forEach((doc) => {
+        const data = querySnapshot.docs.map(async (doc) => {
             const productId = doc.id;
             const productInfo = doc.data();
+            const categoryRef = productInfo.categoria_ref;
 
-            productData.push({ id: productId, ...productInfo });
+            let CategoryName = '';
+            if (categoryRef) {
+                const document = await categoryRef.get();
+                if (document.exists) {
+                    CategoryName = document.data().nombre;
+                }
+            }
+
+            delete productInfo.categoria_ref;
+            delete productInfo.sucursal_ref;
+            delete productInfo.unidad_medida_ref;
+
+            return { id: productId, categoria: CategoryName, ...productInfo };
         });
+
+        const productData = await Promise.all(data);
 
         return productData;
     } catch (error) {

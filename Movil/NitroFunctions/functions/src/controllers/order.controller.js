@@ -23,33 +23,7 @@ async function updateOrderStateController (req, res) {
     }
 }
 
-async function sseOrdersController(req, res) {
-    res.setHeader('Content-Type', 'text/event-stream');
-    res.setHeader('Cache-Control', 'no-cache');
-    res.setHeader('Connection', 'keep-alive');
-    res.flushHeaders();
-
-    const {id_sucursal} = req.params;
-
-    const sendUpdate = (orders) => {
-        res.write(`data: ${JSON.stringify(orders)}\n\n`);
-    };
-
-    try {
-        const unsubscribe = await orderService.listenToOrders(id_sucursal, sendUpdate);
-
-        req.on('close', () => {
-            unsubscribe();
-            res.end();
-        });
-    } catch (e) {
-        console.error('Error al consultar el pedido:', e);
-        res.status(500).end();
-    }
-}
-
 module.exports = {
     createOrderController,
-    updateOrderStateController,
-    sseOrdersController
+    updateOrderStateController
 };

@@ -4,16 +4,16 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
+// Authentication
+import LoadingScreen from './screens/auth/redirect';
 import InputScreen from './screens/entrace';
 import LoginScreen from './screens/auth/Login';
 
 // Main
 import ProfileScreen from './screens/home/Profile';
 import HomeScreen from './screens/home/home';
-import OrdersScreen from './screens/home/Orders';
-
-// Functionality
-import NewOrder from './screens/home/views/OrdersView/NewOrder';
+//import OrdersScreen from './screens/home/Orders';
+import NewOrderScreen from './screens/home/views/OrdersView/NewOrder';
 
 const AuthStack = createStackNavigator();
 const Stack = createStackNavigator();
@@ -31,10 +31,32 @@ const AuthScreens = () => (
 // Barra de navegación 
 const MainBarScreen=()=>{
     return (
-        <Tab.Navigator initialRouteName="home" screenOptions={{ headerShown: false, tabBarActiveTintColor: '#333', tabBarInactiveTintColor: '#ccc', tabBarStyle: { display: 'flex', backgroundColor: '#fafafa', paddingVertical: 15, elevation: 0, height:65,  elevation: 0, shadowOpacity: 0 } }} >
-            <Tab.Screen name="home" component={HomeScreen} options={{ tabBarLabel: '', tabBarIcon: ({ color }) => <Icon name="home-variant" size={27} color={color} /> }}/>
-            <Tab.Screen name="orders" component={OrdersScreen} options={{ tabBarLabel: '', tabBarIcon: ({ color }) => <Icon name="inbox" size={27} color={color} /> }}/>
-            <Tab.Screen name="profile" component={ProfileScreen} options={{ tabBarLabel: '', tabBarIcon: ({ color }) => <Icon name="account" size={27} color={color} /> }}/>
+        <Tab.Navigator 
+            initialRouteName="home" 
+            screenOptions={{ 
+                headerShown: false, 
+                tabBarActiveTintColor: '#1e293b', 
+                tabBarInactiveTintColor: '#cbd5e1', 
+                tabBarStyle: { 
+                    position: 'absolute',
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    height:70,  
+                    backgroundColor: '#f1f5f9', 
+                    paddingVertical: 15,
+                    elevation: 30, 
+                    shadowOpacity: 0, 
+                    borderTopRightRadius: 30, 
+                    borderTopLeftRadius: 30, 
+                    marginBottom: -5,
+                } 
+            }} 
+        >
+            <Tab.Screen name="home" component={HomeScreen} options={{ tabBarLabel: '', tabBarIcon: ({ color }) => <Icon name="home-variant" size={30} color={color} /> }}/>
+            <Tab.Screen name="orders" component={NewOrderScreen} options={{ tabBarLabel: '', tabBarIcon: ({ color }) => <Icon name="shopping" size={30} color={color} /> }} />
+            {/*<Tab.Screen name="orders" component={OrdersScreen} options={{ tabBarLabel: '', tabBarIcon: ({ color }) => <Icon name="cart" size={30} color={color} /> }}/>*/}
+            <Tab.Screen name="profile" component={ProfileScreen} options={{ tabBarLabel: '', tabBarIcon: ({ color }) => <Icon name="account" size={30} color={color} /> }}/>
         </Tab.Navigator>
     );
 };
@@ -44,9 +66,9 @@ export default function Navigation() {
     return (
         <NavigationContainer ref={navigationRef}>
             <Stack.Navigator>
+                <Stack.Screen name="loading" component={LoadingScreen} options={{ headerShown: false }} />
                 <Stack.Screen name="auth" component={AuthScreens} options={{ headerShown: false }} />
                 <Stack.Screen name="main" component={MainBarScreen} options={{ headerShown: false }} />
-                <Stack.Screen name="newOrder" component={NewOrder} options={{ headerShown: false }} />
             </Stack.Navigator>
         </NavigationContainer>
     );

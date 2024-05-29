@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Avatar, Card, Button, Divider, Appbar  } from 'react-native-paper';
 import { View, StyleSheet, StatusBar, Text, TouchableOpacity, ScrollView, SafeAreaView } from 'react-native';
+// Firebase Auth
+import { app } from '../../config/firebase';
+import { getAuth, signOut } from "firebase/auth";
 import Icon from 'react-native-vector-icons/MaterialIcons';
 // React Navigation
 import { useNavigation } from '@react-navigation/native';
@@ -9,11 +12,15 @@ import Fonts from '../../components/styles/Fonts';
 // Componentes
 import ModalAlert from '../../components/layouts/ModalAlert';
 // Redux
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { logout } from '../../Actions/actions';
+import { persistor } from '../../store/store';
 
 const CardInfo = () => {
+    dispatch = useDispatch();
     const navigation = useNavigation();
     const [isModalVisible, setModalVisible] = useState(false);
+
     const handleModal = async () => {
         try {
             setModalVisible(true);
@@ -21,15 +28,28 @@ const CardInfo = () => {
             console.log('Error al abir el modal', error);
         }
     };
+
     const handleClose = async () => {
         setModalVisible(false);
     };
 
+    const handleLogout = async () => {
+        const auth = getAuth(app);
+        try {
+            await signOut(auth);
+            dispatch(logout());
+            persistor.purge();
+            navigation.navigate('auth');
+        } catch (error) {
+        console.log('Error al cerrar sesión:', error);
+        }
+    };
+
     return(
         <SafeAreaView>
-            {isModalVisible && <ModalAlert visible={isModalVisible} title='Cerrar sesión' message="¿Seguro que desea cerrar sesión?" button='LOGOUT' close={handleClose} />}
+            {isModalVisible && <ModalAlert visible={isModalVisible} title='Cerrar sesión' message="¿Seguro que desea cerrar sesión?" button='LOGOUT' onPress={()=> handleLogout()} close={handleClose} />}
             <ScrollView>
-                <View style={[{ margin: 4, marginBottom: -10, borderRadius: 16}]}>
+                <View className=" pb-14">
                     <Card.Content>
                         <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', padding: 20 }}>
                             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
@@ -72,7 +92,7 @@ const CardInfo = () => {
                         </TouchableOpacity>
                         <Divider style={{ backgroundColor: "#e4e5e6"}} />
                     </Card.Content>
-                    <Button className="bg-indigo-900" mode="contained" style={[Fonts.buttonTitle,{margin: 25}]} onPress={()=> handleModal()}> LOGOUT </Button>
+                    <Button className="bg-indigo-800 flex-row items-center justify-center py-1.5 mx-10 my-6 rounded-full" mode="contained" textColor='#c7d2fe' onPress={()=> handleModal()}> LOGOUT </Button>
                 </View>
             </ScrollView>
         </SafeAreaView>
@@ -81,18 +101,19 @@ const CardInfo = () => {
 
 export default ProfileScreen = () => {
     const user = useSelector(state => state.user);
+    const navigation = useNavigation();
 
     return (
         <View className="flex-1 bg-zinc-50">
             <StatusBar backgroundColor='#fafafa' barStyle="dark-content" />
-            <Appbar.Header style={{ backgroundColor: '#fafafa'}} mode='center-aligned'>
-                <Appbar.BackAction onPress={() => {}} />
+            <Appbar.Header style={{ backgroundColor: '#fafafa'}} mode='small'>
+                <Appbar.Action icon='chevron-left' size={28} color='#09090b' onPress={() => navigation.goBack()} />
                 <Appbar.Content color='#000' title="Perfil" />
             </Appbar.Header>
 
             <View className="flex-1 flex-col items-center justify-center mt-1">
-                <Avatar.Image className="border-indigo-700" size={110} source={{uri: user.UserImg}} />
-                <Text className="text-xl m-3 font-medium text-gray-800">{user.UserName}</Text>
+                <Avatar.Image className="border-indigo-700" size={75} source={{uri: user.photoURL}} />
+                <Text className="text-2xl m-3 font-medium text-gray-800">{user.displayName}</Text>
             </View>
             <CardInfo />
         </View>

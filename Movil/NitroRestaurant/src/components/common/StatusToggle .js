@@ -10,19 +10,19 @@ const StatusToggle = ({active}) =>{
 
         switch (active) {
             case true:
-                textColor = 'text-emerald-500';
-                activeColor = '#10b981';
-                state = 'Activo';
+                textColor = 'text-red-500';
+                activeColor = '#ef4444';
+                state = 'Ocupado';
                 break;
             case false:
-                textColor = 'text-red-500';
-                activeColor = '#ef4444';
-                state = 'Inactivo';
+                textColor = 'text-emerald-500';
+                activeColor = '#10b981';
+                state = 'Disponible';
                 break;
             default:
-                textColor = 'text-red-500';
-                activeColor = '#ef4444';
-                state = 'Inactivo';
+                textColor = 'text-emerald-500';
+                activeColor = '#10b981';
+                state = 'Disponible';
         }
         return {textColor, activeColor, state};
     }

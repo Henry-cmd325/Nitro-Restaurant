@@ -13,32 +13,6 @@ async function createTableController (req, res){
     }
 }
 
-async function sseTablesController(req, res) {
-    res.setHeader('Content-Type', 'text/event-stream');
-    res.setHeader('Cache-Control', 'no-cache');
-    res.setHeader('Connection', 'keep-alive');
-    res.flushHeaders();
-
-    const {id_sucursal} = req.params;
-
-    const sendUpdate = (tables) => {
-        res.write(`data: ${JSON.stringify(tables)}\n\n`);
-    };
-
-    try {
-        const unsubscribe = await tableService.listenToAvailableTables(id_sucursal, sendUpdate);
-
-        req.on('close', () => {
-            unsubscribe();
-            res.end();
-        });
-    } catch (e) {
-        console.error('Error al consultar las mesas:', e);
-        res.status(500).end();
-    }
-}
-
 module.exports = {
-    createTableController,
-    sseTablesController
+    createTableController
 };

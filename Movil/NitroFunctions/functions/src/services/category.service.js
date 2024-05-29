@@ -11,12 +11,11 @@ async function getCategories(id_sucursal) {
         querySnapshot.forEach((doc) => {
             const categoryId = doc.id;
             const categoryData = doc.data();
+            delete categoryData.sucursal_ref
 
-            const categoria = { id: categoryId, ...categoryData };
-            delete categoria.sucursal_ref;
-
-            categories.push({categoria: categoria});
+            categories.push({ id: categoryId, ...categoryData });
         });
+        
 
         return categories;
     } catch (e) {

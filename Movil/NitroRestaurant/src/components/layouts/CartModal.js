@@ -2,19 +2,23 @@ import React from 'react';
 import {Modal, StyleSheet, Text, View, SafeAreaView, ScrollView, TouchableOpacity} from 'react-native';
 import { Divider } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-//TouchableWithoutFeedback
+// Componentes
 import ItemOrder from '../common/ItemList/ItemOrder';
 import ArrowNavigator from '../interface/Filters/ArrowNavigator';
 
 import { useSelector } from 'react-redux';
-import { selectOrderTotal } from '../../app/business/orderDetailsSlice';
+import { selectOrderTotal } from '../../app/business/OrderSlice';
 
 const CartModal = ({ visible, close }) => {
-    const List = useSelector(state => state.ordersDetails.order);
+    const List = useSelector(state => state.orders.order_detail);
+    const order = List.length;
     const total = useSelector(selectOrderTotal);
     // Hooks para el estado del scroll
     const [isExtended, setIsExtended] = React.useState(false);
-    const onScroll = ({ nativeEvent }) => { const currentScrollPosition = Math.floor(nativeEvent?.contentOffset?.y) ?? 0; setIsExtended(currentScrollPosition <= 0); };
+    const onScroll = ({ nativeEvent }) => { 
+        const currentScrollPosition = Math.floor(nativeEvent?.contentOffset?.y) ?? 0; 
+        setIsExtended(currentScrollPosition <= 0); 
+    };
 
     return (
         <>
@@ -27,38 +31,60 @@ const CartModal = ({ visible, close }) => {
                                 <Icon name="close" size={24} color='#000' />
                             </TouchableOpacity>
                         </View>
-                        <SafeAreaView >
-                            <ScrollView  showsVerticalScrollIndicator={false} onScroll={onScroll}>
-                                <View className="bg-indigo-200 w-full py-32 rounded-2xl p-2 my-4">
-                                    <ArrowNavigator />
-                                    <Divider className="my-1 bg-indigo-300 mx-5" />
-                                    <View className="mx-4 my-4"> 
-                                        <View className="flex-row ">
-                                            <View className="w-10 h-10 items-center justify-center rounded-lg bg-indigo-300 bg-opacity-25">
-                                                <Icon name="clock-fast" size={24} color='#3730a3' />
+                        {order === 0 && (
+                            <>
+                                <View className="flex-1 justify-center items-center mb-6">
+                                    <Icon name="basket-off-outline" size={100} color='#cbd5e1' />
+                                    <Text className="font-normal my-5 text-lg text-slate-300 text-center mx-11">
+                                        Parece que aún no has añadido nada al carrito.
+                                    </Text>
+                                </View>
+                            </>
+                        )}
+                        {order !== 0  && (
+                            <>
+                                <SafeAreaView >
+                                    <ScrollView  showsVerticalScrollIndicator={false} onScroll={onScroll}>
+                                        <View className="bg-indigo-200 w-full py-32 rounded-2xl p-2 my-4">
+                                            <ArrowNavigator />
+                                            <Divider className="my-1 bg-indigo-300 mx-5" />
+                                            <View className="mx-4 my-4"> 
+                                                <View className="flex-row ">
+                                                    <View className="w-10 h-10 items-center justify-center rounded-lg bg-indigo-300 bg-opacity-25">
+                                                        <Icon name="clock-fast" size={24} color='#3730a3' />
+                                                    </View>
+                                                    <Text className="px-6 py-1 font-medium text-lg text-indigo-900">30 mins</Text>
+                                                    <View className="w-10 h-10 items-center justify-center rounded-lg bg-indigo-300 bg-opacity-25">
+                                                        <Icon name="food-outline" size={24} color='#3730a3' />
+                                                    </View>
+                                                    <Text className="px-6 py-1 font-medium text-lg text-indigo-900">{List.length + " platos"}</Text>
+                                                </View>
                                             </View>
-                                            <Text className="px-6 py-1 font-medium text-lg text-indigo-900">30 mins</Text>
-                                            <View className="w-10 h-10 items-center justify-center rounded-lg bg-indigo-300 bg-opacity-25">
-                                                <Icon name="food-outline" size={24} color='#3730a3' />
-                                            </View>
-                                            <Text className="px-6 py-1 font-medium text-lg text-indigo-900">{List.length + " platos"}</Text>
                                         </View>
-                                    </View>
-                                </View>
-                                {List.map((item) => (
-                                    <View key={item.id}>
-                                        <ItemOrder title={item.NOMBRE} content={item.DETALLE} price={item.PRECIO_TOTAL.toFixed(1)} url={item.IMG_URL} amount={item.CANTIDAD} id={item.id} />
-                                    </View>
-                                ))}
-                                <View className="flex-row mx-4 my-3 justify-between">
-                                    <Text className="text-slate-800 text-2xl font-semibold">Total </Text>
-                                    <Text className="text-indigo-500 text-2xl font-semibold">${total.toFixed(2)}</Text>
-                                </View>
-                                <TouchableOpacity className="bg-indigo-900 mx-3 my-7 py-5 flex-1 items-center rounded-2xl">
-                                    <Text className="font-medium text-white">CREAR PEDIDO</Text>
-                                </TouchableOpacity>
-                            </ScrollView>
-                        </SafeAreaView>
+                                        {List.map((item, index) => (
+                                            <View key={index}>
+                                                <ItemOrder 
+                                                    title={item.nombre} 
+                                                    price={item.precio_total.toFixed(1)} 
+                                                    url={item.imagen} 
+                                                    amount={item.cantidad} 
+                                                    id={item.id} 
+                                                />
+                                            </View>
+                                        ))}
+                                        <View className="flex-row mx-3 mt-10 justify-between">
+                                            <Text className="text-slate-800 text-2xl font-semibold">Total </Text>
+                                            <Text className="text-indigo-500 text-2xl font-semibold">
+                                                $ {total.toFixed(2)}
+                                            </Text>
+                                        </View>
+                                        <TouchableOpacity className="bg-indigo-900 mx-3 mt-12 mb-5 py-5 flex-1 items-center rounded-full">
+                                            <Text className="font-medium text-white">CREAR PEDIDO</Text>
+                                        </TouchableOpacity>
+                                    </ScrollView>
+                                </SafeAreaView>
+                            </>
+                        )}
                     </View>
                 </View>
             </Modal>

@@ -1,19 +1,27 @@
 import { combineReducers } from 'redux';
 // Slices
-import userSlice from "./user/userSlice";
-import branchSlice from './business/branchSlice';
-import productsSlice from './business/productsSlice';
-import businessSlice from './business/businessSlice';
-import ordersSlice from './business/ordersSlice';
-import orderDetailsSlice from './business/orderDetailsSlice';
+import userReducer, { userInitialState } from "./user/userSlice";
+import businessReducer, { businessInitialState } from './business/BusinessSlice';
+import productReducer, { productsInitialState } from './business/ProductSlice';
+import ordersReducer, { ordersInitialState } from './business/OrderSlice';
 
-const rootReducer = combineReducers({
-    user: userSlice,
-    branch: branchSlice,
-    products: productsSlice,
-    business: businessSlice,
-    orders: ordersSlice,
-    ordersDetails: orderDetailsSlice,
+const appReducer = combineReducers({
+    user: userReducer,
+    business: businessReducer,
+    products: productReducer,
+    orders: ordersReducer
 });
+
+const rootReducer = (state, action) => {
+    if (action.type === 'LOGOUT') {
+        state = {
+            user: userInitialState,
+            business: businessInitialState,
+            products: productsInitialState,
+            orders: ordersInitialState
+        };
+    }
+    return appReducer(state, action);
+};
 
 export default rootReducer;

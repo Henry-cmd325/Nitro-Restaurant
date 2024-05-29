@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 // Redux
 import { useDispatch, useSelector } from 'react-redux';
-import { CurrentTable, incrementCurrent, decrementCurrent } from '../../../app/business/branchSlice';
+import { CurrentTable, incrementCurrent, decrementCurrent } from '../../../app/business/BusinessSlice';
 
 const ArrowNavigator = () => {
     // Redux

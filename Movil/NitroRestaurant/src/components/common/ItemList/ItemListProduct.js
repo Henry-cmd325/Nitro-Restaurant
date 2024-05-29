@@ -1,26 +1,62 @@
-import { StyleSheet, View, TouchableOpacity, Text, Image } from 'react-native';
-// React Native Paper
+import { View, TouchableOpacity, Text, Image } from 'react-native';
 import { Divider } from 'react-native-paper';
-// Styles
-import Fonts from '../../styles/Fonts';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-export default ItemListProduct = ({ content, items, price, urlImage, onPress }) => {
+const CheckProduct = ({ status, onPress }) => {
+    let activeIcon;
+    let background;
+
+    const check = () => {
+        switch (status) {
+            case true:
+                activeIcon = 'check';
+                background = 'bg-indigo-100';
+                break;
+            case false:
+                activeIcon = 'plus';
+                background = 'bg-slate-200';
+                break;
+            default:
+                activeIcon = 'plus';
+                background = 'bg-slate-200';
+        }
+    };
+
+    check(); 
+
+    return (
+        <TouchableOpacity style={{elevation:1}} className={`rounded-full p-1 ${background}`} onPress={onPress}>
+            <Icon color='#64748b' name={activeIcon} size={22} />
+        </TouchableOpacity>
+    )
+}
+
+export default ItemListProduct = ({ items, price, urlImage, status, onPress }) => {
     return (
         <>
-            <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingVertical:10,  marginHorizontal: 25 }} onPress={onPress}>
-                <Image style={[{ borderRadius: 10, width: 70, height: 70 }]} source={{uri: urlImage }} />
-                <View style={{ flexDirection: 'column', alignItems: 'flex-start', marginVertical:20, marginRight: '10%' }}>
-                    <Text style={[styles.txtLabels, Fonts.modalText]}>{items}</Text>
-                    <Text style={[styles.txtLabels, Fonts.cardsText]}>{content}</Text>
+            <View className="flex-row items-center bg-slate-50 my-5 mx-1 rounded-2xl h-28 w-full">
+                <View style={{elevation:2}} className=" rounded-xl">
+                    <Image className="w-24 h-24 rounded-xl" source={{uri: urlImage }} />
                 </View>
-                <Text style={[styles.txtLabels, Fonts.modalText]}>{price}</Text>
-            </TouchableOpacity>
-            <Divider style={[styles.cardList, { backgroundColor: "#e4e5e6" }]} />
+                <View className='flex-col mx-6'>
+                    <Text className="text-xl font-semibold text-slate-500">{items}</Text>
+                    <View className="flex-row">
+                        <View className="flex-row mr-2">
+                            <Icon color='#cbd5e1' name="fire" size={19} />
+                            <Text className="text-sm font-semibold text-slate-300 mx-1">320cal</Text>
+                        </View>
+                        <View className="flex-row mx-2">
+                            <Icon color='#cbd5e1' name="scale-unbalanced" size={19} />
+                            <Text className="text-sm font-semibold text-slate-300 mx-1">300g</Text>
+                        </View>
+                    </View>
+                    <View className="flex-row justify-between items-center w-52">
+                        <Text className="text-base font-bold text-slate-500">{price}</Text>
+                        <CheckProduct status={status} onPress={onPress} />
+                    </View>
+                </View>
+            </View>
+            <Divider className="h-px bg-slate-200 mr-5 rounded-full" />
         </>
     );
 };
-
-const styles = StyleSheet.create({
-    cardList:{ marginTop: 5, marginBottom: 5 },
-    txtLabels: { marginLeft: 10, color: '#67757d', fontSize: 15 },
-});

@@ -68,59 +68,7 @@ async function updateOrderState(id_pedido){
     }
 }
 
-async function listenToOrders(id_sucursal, sendUpdate) {
-    try {
-        const branchRef = admin.firestore().collection("sucursales").doc(id_sucursal);
-        const ordersRef = admin.firestore().collection("pedidos").where("sucursal_ref", "==", branchRef).where("estado", "==", true);
-
-        const unsubscribe = ordersRef.onSnapshot(async (snapshot) => {
-            //console.log('Snapshot received with docs:', snapshot.docs.length);
-            const orders = [];
-
-            for (const doc of snapshot.docs) {
-                //console.log('Processing document:', doc.id);
-                const orderId = doc.id;
-                const orderData = doc.data();
-
-                const tableRef = orderData.mesa_ref;
-                const orderTypeRef = orderData.tipo_pedido_ref;
-
-                const [tableSnapshot, orderTypeSnapshot] = await Promise.all([
-                    tableRef.get(),
-                    orderTypeRef.get()
-                ]);
-
-                const tableData = tableSnapshot.data();
-                const orderTypeData = orderTypeSnapshot.data();
-
-                const pedido = { id: orderId, ...orderData };
-                delete pedido.mesa_ref;
-                delete pedido.tipo_pedido_ref;
-                delete pedido.sucursal_ref;
-
-                const mesa = { id: tableSnapshot.id, ...tableData };
-                delete mesa.sucursal_ref;
-
-                orders.push({
-                    pedido: pedido,
-                    mesa: mesa,
-                    tipo_pedido: { id: orderTypeSnapshot.id, ...orderTypeData }
-                });
-            }
-
-            sendUpdate(orders);
-            //console.log('ORDENES ACTIVAS: ', orders);
-        });
-
-        return unsubscribe;
-    } catch (e) {
-        console.error('Error al escuchar los cambios de los pedidos:', e);
-        throw new Error('Se produjo un error al escuchar los cambios de los pedidos');
-    }
-}
-
 module.exports = {
     createOrder,
-    updateOrderState,
-    listenToOrders
+    updateOrderState
 };

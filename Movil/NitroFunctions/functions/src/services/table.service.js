@@ -33,11 +33,10 @@ async function listenToAvailableTables(id_sucursal, sendUpdate){
                 const tableId = doc.id;
                 const tablesData = doc.data();
 
-                const mesa = { id: tableId, ...tablesData };
-                delete mesa.sucursal_ref;
+                delete tablesData.sucursal_ref;
 
                 tables.push({
-                    mesa: mesa
+                    id: tableId, ...tablesData 
                 });
             }
 
