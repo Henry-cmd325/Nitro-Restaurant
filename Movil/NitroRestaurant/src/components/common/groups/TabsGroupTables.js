@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, ScrollView, Image, TouchableOpacity } from 'react-native';
-import { useSelector } from 'react-redux';
+import { View, Text, ScrollView } from 'react-native';
+import Svg, { Defs, LinearGradient, Stop, Rect } from 'react-native-svg';
+import ItemListCheck from '../ItemList/ItemListCheck';
 
-const TabsTables = () => {
-    const List = useSelector(state => state.business.tables);
+const TabsTables = ({data}) => {
     const [isExtended, setIsExtended] = React.useState(false);
 
     const onScroll = ({ nativeEvent }) => { 
@@ -12,28 +12,38 @@ const TabsTables = () => {
     };
 
     return(
-        <ScrollView className="mx-4" horizontal={true} onScroll={onScroll} showsHorizontalScrollIndicator={false}>
-            {List.map((item, index) => (
-                <>
-                    <TouchableOpacity key={index} style={{elevation:1}} className="rounded-3xl w-24 h-24 justify-center items-center bg-indigo-100 mx-2 my-3">
-                        <Image className="w-20 h-20" source={{ uri: 'https://firebasestorage.googleapis.com/v0/b/nitro-restaurant.appspot.com/o/static%2FImages%2FMesas%20-%20Copy%401-1366x617%20(1).png?alt=media&token=8bb54961-3141-49a5-bac5-6b1525e5d654' }} />
-                    </TouchableOpacity>
-                </>
-            ))}
-        </ScrollView>
+        <View className="flex-1 flex-row relative">
+            <ScrollView className="mx-5" horizontal={true} onScroll={onScroll} showsHorizontalScrollIndicator={false}>
+                {data.map((item, index) => (
+                    <View  key={index}>
+                        <ItemListCheck status={item.estado} tables={'Mesa '+item.numero.toString()} />
+                    </View>
+                ))}
+            </ScrollView>
+            <View className="absolute justify-center items-center">
+                <Svg height="120" width="40">
+                <Defs>
+                    <LinearGradient id="gradLeft" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <Stop offset="35%" stopColor="#f1f5f9" stopOpacity="1" />
+                    <Stop offset="100%" stopColor="#f1f5f9" stopOpacity="0" />
+                    </LinearGradient>
+                </Defs>
+                <Rect x="0" y="0" width="40" height="120" fill="url(#gradLeft)" />
+                </Svg>
+            </View>
+            <View className='flex-1 justify-center items-end'>
+                <Svg height="120" width="40">
+                    <Defs>
+                    <LinearGradient id="grad" x1="100%" y1="0%" x2="0%" y2="0%">
+                        <Stop offset="30%" stopColor="#f8fafc" stopOpacity="1" />
+                        <Stop offset="100%" stopColor="#f8fafc" stopOpacity="0" />
+                    </LinearGradient>
+                    </Defs>
+                    <Rect x="0" y="0" width="40" height="120" fill="url(#grad)" />
+                </Svg>
+            </View>
+        </View>
     );
 };
 
 export default TabsTables;
-
-/*
-<View className=" rounded-3xl w-24 h-24 justify-center items-center bg-indigo-100 mx-2">
-    <Image className="w-20 h-20" source={{ uri: 'https://firebasestorage.googleapis.com/v0/b/nitro-restaurant.appspot.com/o/static%2FImages%2FMesas%20-%20Copy%401-1366x617%20(1).png?alt=media&token=8bb54961-3141-49a5-bac5-6b1525e5d654' }} />
-</View>
-<View className=" rounded-3xl w-24 h-24 justify-center items-center bg-red-300 mx-2">
-    <Image className="w-20 h-20" source={{ uri: 'https://firebasestorage.googleapis.com/v0/b/nitro-restaurant.appspot.com/o/static%2FImages%2FMesas%20-%20Copy%20-%20Copy%401-1366x617.png?alt=media&token=c12eda6e-f7ed-4277-9443-a93d4cde0f00' }} />
-</View>
-<View className=" rounded-3xl w-24 h-24 justify-center items-center bg-indigo-100 mx-2">
-    <Image className="w-20 h-20" source={{ uri: 'https://firebasestorage.googleapis.com/v0/b/nitro-restaurant.appspot.com/o/static%2FImages%2FMesas%20-%20Copy%401-1366x617%20(1).png?alt=media&token=8bb54961-3141-49a5-bac5-6b1525e5d654' }} />
-</View>
-*/

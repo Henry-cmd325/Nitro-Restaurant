@@ -105,7 +105,7 @@ const NewOrderScreen = () => {
 
                 const ProductsData = await fetchAllProducts();
                 dispatch(updateProducts(ProductsData));
-                console.log(ProductsData);
+                //console.log(ProductsData);
 
                 setIsLoading(false);
             } catch (error) {
@@ -146,6 +146,8 @@ const NewOrderScreen = () => {
                                                     price={"$ " + item.precio} 
                                                     urlImage={item.imagen} 
                                                     status={isProductSelected(item.id)}
+                                                    content={item.nutricion.contenido.valor + item.nutricion.contenido.unidad.charAt(0)}
+                                                    calories={item.nutricion.calorias+'kcal'}
                                                     onPress={() => handleCheck(item)}
                                                 />
                                             </View>
@@ -156,7 +158,7 @@ const NewOrderScreen = () => {
                         </ScrollView>
                     </SafeAreaView>
                 </PaperProvider>
-                <TouchableOpacity className='flex-row items-center justify-center py-3 bg-indigo-800 mx-5 my-3 rounded-full' onPress={()=> handleModal()}>
+                <TouchableOpacity className='flex-row items-center justify-center py-3 bg-indigo-800 mx-10 my-3 rounded-full' onPress={()=> handleModal()}>
                     <Icon name="cart-check" color='#c7d2fe' size={24} />
                     <Text className='ml-4 text-indigo-200 font-medium text-lg'>Ir al carrito</Text>
                 </TouchableOpacity>
