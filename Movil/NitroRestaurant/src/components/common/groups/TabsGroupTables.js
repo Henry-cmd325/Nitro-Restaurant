@@ -24,7 +24,7 @@ const TabsTables = ({data}) => {
                 <Svg height="120" width="40">
                 <Defs>
                     <LinearGradient id="gradLeft" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <Stop offset="35%" stopColor="#f1f5f9" stopOpacity="1" />
+                    <Stop offset="50%" stopColor="#f1f5f9" stopOpacity="1" />
                     <Stop offset="100%" stopColor="#f1f5f9" stopOpacity="0" />
                     </LinearGradient>
                 </Defs>
@@ -35,7 +35,7 @@ const TabsTables = ({data}) => {
                 <Svg height="120" width="40">
                     <Defs>
                     <LinearGradient id="grad" x1="100%" y1="0%" x2="0%" y2="0%">
-                        <Stop offset="30%" stopColor="#f8fafc" stopOpacity="1" />
+                        <Stop offset="50%" stopColor="#f8fafc" stopOpacity="1" />
                         <Stop offset="100%" stopColor="#f8fafc" stopOpacity="0" />
                     </LinearGradient>
                     </Defs>

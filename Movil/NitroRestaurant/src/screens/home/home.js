@@ -27,8 +27,11 @@ export default HomeScreen = () => {
                 <Divider className="h-px bg-slate-100 mx-8 my-5 rounded-full" />
                 <SafeAreaView>
                     <ScrollView onScroll={onScroll} showsVerticalScrollIndicator={false}>
-                        <View className="flex-row justify-between mx-10">
-                            <Text className="pt-1 pb-2 font-medium text-sm text-slate-400">Todas las mesas</Text>
+                        <View className="flex-row justify-between mx-10 mt-3 mb-5">
+                            <Text className="font-semibold text-lg text-slate-800">Mesas</Text>
+                            <TouchableOpacity>
+                                <Text className="underline font-normal text-base text-indigo-600">Ver todo({List.length})</Text>
+                            </TouchableOpacity>
                         </View>
                         <TabsTables data={List} />
                     </ScrollView>

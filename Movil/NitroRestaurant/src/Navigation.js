@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import Icon from 'react-native-vector-icons/Octicons';
 
 // Authentication
 import LoadingScreen from './screens/auth/redirect';
@@ -42,21 +42,18 @@ const MainBarScreen=()=>{
                     bottom: 0,
                     left: 0,
                     right: 0,
-                    height:70,  
-                    backgroundColor: '#f1f5f9', 
+                    height: 75,  
+                    backgroundColor: '#f8fafc', 
+                    borderColor: '#fafafa',
+                    elevation: 0,
                     paddingVertical: 15,
-                    elevation: 30, 
-                    shadowOpacity: 0, 
-                    borderTopRightRadius: 30, 
-                    borderTopLeftRadius: 30, 
-                    marginBottom: -5,
                 } 
             }} 
         >
-            <Tab.Screen name="home" component={HomeScreen} options={{ tabBarLabel: '', tabBarIcon: ({ color }) => <Icon name="home-variant" size={30} color={color} /> }}/>
-            <Tab.Screen name="orders" component={NewOrderScreen} options={{ tabBarLabel: '', tabBarIcon: ({ color }) => <Icon name="shopping" size={30} color={color} /> }} />
-            {/*<Tab.Screen name="orders" component={OrdersScreen} options={{ tabBarLabel: '', tabBarIcon: ({ color }) => <Icon name="cart" size={30} color={color} /> }}/>*/}
-            <Tab.Screen name="profile" component={ProfileScreen} options={{ tabBarLabel: '', tabBarIcon: ({ color }) => <Icon name="account" size={30} color={color} /> }}/>
+            <Tab.Screen name="home" component={HomeScreen} options={{ tabBarLabel: '', tabBarIcon: ({ color }) => <Icon name="home" size={26} color={color} /> }}/>
+            <Tab.Screen name="orders" component={NewOrderScreen} options={{ tabBarLabel: '', tabBarIcon: ({ color }) => <Icon name="inbox" size={26} color={color} /> }} />
+            {/*<Tab.Screen name="orders" component={OrdersScreen} options={{ tabBarLabel: '', tabBarIcon: ({ color }) => <Icon name="cart" size={26} color={color} /> }}/>*/}
+            <Tab.Screen name="profile" component={ProfileScreen} options={{ tabBarLabel: '', tabBarIcon: ({ color }) => <Icon name="person" size={26} color={color} /> }}/>
         </Tab.Navigator>
     );
 };
