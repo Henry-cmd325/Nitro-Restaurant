@@ -12,7 +12,7 @@ import LoginScreen from './screens/auth/Login';
 // Main
 import ProfileScreen from './screens/home/Profile';
 import HomeScreen from './screens/home/home';
-//import OrdersScreen from './screens/home/Orders';
+import OrdersScreen from './screens/home/Orders';
 import NewOrderScreen from './screens/home/views/OrdersView/NewOrder';
 
 const AuthStack = createStackNavigator();
@@ -51,8 +51,7 @@ const MainBarScreen=()=>{
             }} 
         >
             <Tab.Screen name="home" component={HomeScreen} options={{ tabBarLabel: '', tabBarIcon: ({ color }) => <Icon name="home" size={26} color={color} /> }}/>
-            <Tab.Screen name="orders" component={NewOrderScreen} options={{ tabBarLabel: '', tabBarIcon: ({ color }) => <Icon name="inbox" size={26} color={color} /> }} />
-            {/*<Tab.Screen name="orders" component={OrdersScreen} options={{ tabBarLabel: '', tabBarIcon: ({ color }) => <Icon name="cart" size={26} color={color} /> }}/>*/}
+            <Tab.Screen name="orders" component={OrdersScreen} options={{ tabBarLabel: '', tabBarIcon: ({ color }) => <Icon name="inbox" size={26} color={color} /> }}/>
             <Tab.Screen name="profile" component={ProfileScreen} options={{ tabBarLabel: '', tabBarIcon: ({ color }) => <Icon name="person" size={26} color={color} /> }}/>
         </Tab.Navigator>
     );
@@ -66,6 +65,7 @@ export default function Navigation() {
                 <Stack.Screen name="loading" component={LoadingScreen} options={{ headerShown: false }} />
                 <Stack.Screen name="auth" component={AuthScreens} options={{ headerShown: false }} />
                 <Stack.Screen name="main" component={MainBarScreen} options={{ headerShown: false }} />
+                <Stack.Screen name="newOrder" component={NewOrderScreen} options={{ headerShown: false }} />
             </Stack.Navigator>
         </NavigationContainer>
     );

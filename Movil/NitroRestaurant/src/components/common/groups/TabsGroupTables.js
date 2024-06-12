@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { View, Text, ScrollView } from 'react-native';
+import React from 'react';
+import { View, ScrollView } from 'react-native';
 import Svg, { Defs, LinearGradient, Stop, Rect } from 'react-native-svg';
 import ItemListCheck from '../ItemList/ItemListCheck';
 
@@ -16,7 +16,7 @@ const TabsTables = ({data}) => {
             <ScrollView className="mx-5" horizontal={true} onScroll={onScroll} showsHorizontalScrollIndicator={false}>
                 {data.map((item, index) => (
                     <View  key={index}>
-                        <ItemListCheck status={item.estado} tables={'Mesa '+item.numero.toString()} />
+                        <ItemListCheck status={item.estado} table={item.numero.toString()} />
                     </View>
                 ))}
             </ScrollView>

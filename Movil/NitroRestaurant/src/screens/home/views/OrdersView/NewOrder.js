@@ -119,7 +119,7 @@ const NewOrderScreen = () => {
 
     return (
         <>
-            <View className="flex-1 bg-slate-50 h-full pb-16">
+            <View className="flex-1 bg-slate-50 h-full pb-8">
                 <Appbar.Header style={{ backgroundColor: '#fafafa'}} mode='center-aligned'>
                     <Appbar.Action icon='chevron-left' size={28} color='#09090b' onPress={() => navigation.goBack()} />
                     <Appbar.Content color='#09090b' title="Pedido" />
@@ -158,7 +158,7 @@ const NewOrderScreen = () => {
                         </ScrollView>
                     </SafeAreaView>
                 </PaperProvider>
-                <TouchableOpacity className='flex-row items-center justify-center py-3 bg-indigo-800 mx-10 my-4 rounded-full' onPress={()=> handleModal()}>
+                <TouchableOpacity className='flex-row items-center justify-center py-3 bg-indigo-800 mx-10 mt-8 rounded-full' onPress={()=> handleModal()}>
                     <Icon name="cart-check" color='#c7d2fe' size={24} />
                     <Text className='ml-4 text-indigo-200 font-medium text-lg'>Ir al carrito</Text>
                 </TouchableOpacity>

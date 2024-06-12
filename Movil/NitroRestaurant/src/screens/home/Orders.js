@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 //React Native
-import { SafeAreaView, ScrollView, View, TouchableOpacity, Text } from 'react-native';
+import { SafeAreaView, ScrollView, View, TouchableOpacity, Text, Image } from 'react-native';
 import {PaperProvider, Divider, Appbar } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 // Componentes
@@ -85,8 +85,9 @@ export default OrdersScreen = () => {
                 <PaperProvider>
                     <SafeAreaView className='flex-grow'>
                         <ScrollView onScroll={onScroll} showsVerticalScrollIndicator={false}>
-                            <Appbar.Header style={{ backgroundColor: '#fafafa', marginHorizontal: 15}} mode='small'>
-                                <Appbar.Content color='#999' title="Lista de pedidos" />
+                            <Appbar.Header style={{ backgroundColor: '#fafafa'}} mode='center-aligned'>
+                                <Appbar.Action icon='chevron-left' size={28} color='#09090b' onPress={() => navigation.goBack()} />
+                                <Appbar.Content color='#09090b' title="Lista de pedidos" />
                             </Appbar.Header>
                             <Text className="pt-1 pb-2 px-7 font-medium text-sm text-neutral-500">Pedidos activos</Text>
                             <Divider className="my-1 bg-slate-200" />
@@ -100,8 +101,8 @@ export default OrdersScreen = () => {
                             {availableTables.map((item, index) => (
                                 <View key={index}>
                                     <TouchableOpacity className="flex-row items-center justify-between py-3 px-6">
-                                        <View className="bg-indigo-100 p-3 rounded-xl">
-                                            <Icon color='#818cf8' name="chair-rolling" size={40} />
+                                        <View className="bg-emerald-100 p-2 rounded-xl">
+                                            <Image className="w-14 h-14" source={{ uri: 'https://firebasestorage.googleapis.com/v0/b/nitro-restaurant.appspot.com/o/static%2FImages%2Ftable_green.png?alt=media&token=6114f472-6b4b-4758-89c4-92ba3383f0d6' }} />
                                         </View>
                                         <View className="flex-col items-start my-3 mr-20" >
                                             <Text className="text-lg font-semibold"># {item.numero}</Text>
@@ -115,10 +116,10 @@ export default OrdersScreen = () => {
                         </ScrollView>
                     </SafeAreaView>
                 </PaperProvider>
-                <View className='my-1 inset-0'>
+                <View className='mb-20'>
                     <TouchableOpacity className='flex-row items-center justify-center py-3 bg-indigo-800 mx-10 my-2 rounded-full' onPress={()=> handleModal()}>
-                        <Icon color='#c7d2fe' name="cart-plus" size={24} />
-                        <Text className='ml-4 text-indigo-200 font-medium text-lg'>Crear pedido</Text>
+                        <Icon color='#f1f5f9' name="cart-plus" size={24} />
+                        <Text className='ml-4 text-indigo-100 font-medium text-lg'>Crear pedido</Text>
                     </TouchableOpacity>
                 </View>
             </View>

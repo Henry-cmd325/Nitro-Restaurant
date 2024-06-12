@@ -68,7 +68,7 @@ const CardInfo = () => {
                             <Icon name="chevron-right" size={30} color='#000000' />
                         </TouchableOpacity>
                     </Card.Content>
-                    <Button className="bg-indigo-800 flex-row items-center justify-center py-1.5 mx-10 my-6 rounded-full" mode="contained" textColor='#c7d2fe' onPress={()=> handleModal()}> LOGOUT </Button>
+                    <Button className="bg-indigo-800 flex-row items-center justify-center py-1.5 mx-10 my-6 rounded-full" mode="contained" textColor='#e2e8f0' onPress={()=> handleModal()}> LOGOUT </Button>
                 </View>
             </ScrollView>
         </SafeAreaView>
