@@ -9,12 +9,15 @@ import { useNavigation } from '@react-navigation/native';
 // Components
 import LocationSnack from '../../components/common/LocationSnack.js';
 import QuickAccess from '../../components/interface/QuickAccess.js';
+//Hooks
+import useTables from '../../hooks/useTables.js';
 
 export default HomeScreen = () => {
+    const { tables, loading, error } = useTables();
     const navigation = useNavigation();
     // Redux
-    const List = useSelector(state => state.business.tables);
-    const Data = List.slice(0, 6);
+    const List = useSelector(state => state.business.tables.length);
+    //const Data = List.slice(0, 6);
     const Products = useSelector(state => state.products.products)
     const branch = useSelector(state => state.business.BranchName);
 
@@ -41,16 +44,36 @@ export default HomeScreen = () => {
                             <Text className="font-semibold text-lg text-slate-800 mb-6">Accesos rápidos</Text>
                             <View className="flex-row">
                                 <QuickAccess icon='repo' iconColor='#818cf8' background='bg-indigo-100' title='Menú' description={'Platos ' + Products.length} shadowColor='#818cf8' />
-                                <QuickAccess icon='credit-card' iconColor='#fbbf24' background='bg-amber-100' title='Pagos/Cuenta' description='Pendientes 10' shadowColor='#fbbf24' />
-                            </View>
+                                <QuickAccess icon='credit-card' iconColor='#818cf8' background='bg-indigo-100' title='Pagos/Cuenta' description='Pendientes 10' shadowColor='#818cf8' />
+                            </View> 
                         </View>
                         <View className="flex-row justify-between mx-10 mt-3 mb-4">
                             <Text className="font-semibold text-lg text-slate-800">Mesas</Text>
                             <TouchableOpacity>
-                                <Text className="underline font-normal text-base text-indigo-600">Ver todo({List.length})</Text>
+                                <Text className="underline font-normal text-base text-indigo-600">Ver todo({List})</Text>
                             </TouchableOpacity>
                         </View>
-                        <TabsTables data={Data} />
+                        <TabsTables data={tables} />
+                        <View className="flex-row mx-9 my-4">
+                            <View className="flex-row">
+                                <View className="mt-0.5 mr-1">
+                                    <Icon name='checkbox-blank-circle' color='#34d399' size={12} />
+                                </View>
+                                <Text className="font-bold text-xs text-emerald-500">Disponible</Text>
+                            </View>
+                            <View className="flex-row ml-6">
+                                <View className="mt-0.5 mr-1">
+                                    <Icon name='checkbox-blank-circle' color='#f59e0b' size={12} />
+                                </View>
+                                <Text className="font-bold text-xs text-amber-500">En espera</Text>
+                            </View>
+                            <View className="flex-row ml-6">
+                                <View className="mt-0.5 mr-1">
+                                    <Icon name='checkbox-blank-circle' color='#ef4444' size={12} />
+                                </View>
+                                <Text className="font-bold text-xs text-red-600">Ocupado</Text>
+                            </View>
+                        </View>
                     </ScrollView>
                 </SafeAreaView>
             </View>

@@ -105,7 +105,6 @@ const NewOrderScreen = () => {
 
                 const ProductsData = await fetchAllProducts();
                 dispatch(updateProducts(ProductsData));
-                //console.log(ProductsData);
 
                 setIsLoading(false);
             } catch (error) {
@@ -122,7 +121,7 @@ const NewOrderScreen = () => {
             <View className="flex-1 bg-slate-50 h-full pb-8">
                 <Appbar.Header style={{ backgroundColor: '#fafafa'}} mode='center-aligned'>
                     <Appbar.Action icon='chevron-left' size={28} color='#09090b' onPress={() => navigation.goBack()} />
-                    <Appbar.Content color='#09090b' title="Pedido" />
+                    <Appbar.Content color='#09090b' title="Nuevo pedido" />
                 </Appbar.Header>
 
                 <PaperProvider>

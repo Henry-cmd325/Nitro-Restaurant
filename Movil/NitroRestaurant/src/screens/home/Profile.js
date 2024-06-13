@@ -3,7 +3,7 @@ import { Card, Button, Divider, Appbar  } from 'react-native-paper';
 import { View, StyleSheet, StatusBar, Text, TouchableOpacity, ScrollView, SafeAreaView, Image } from 'react-native';
 // Firebase Auth
 import { app } from '../../config/firebase';
-import { getAuth, signOut } from "firebase/auth";
+import { signOut, getAuth } from "firebase/auth";
 import Icon from 'react-native-vector-icons/MaterialIcons';
 // React Navigation
 import { useNavigation } from '@react-navigation/native';
@@ -68,7 +68,7 @@ const CardInfo = () => {
                             <Icon name="chevron-right" size={30} color='#000000' />
                         </TouchableOpacity>
                     </Card.Content>
-                    <Button className="bg-indigo-800 flex-row items-center justify-center py-1.5 mx-10 my-6 rounded-full" mode="contained" textColor='#e2e8f0' onPress={()=> handleModal()}> LOGOUT </Button>
+                    <Button className="bg-indigo-800 flex-row items-center justify-center py-1.5 mx-10 mt-5 rounded-full" mode="contained" textColor='#e2e8f0' onPress={()=> handleModal()}> LOGOUT </Button>
                 </View>
             </ScrollView>
         </SafeAreaView>
@@ -98,7 +98,7 @@ export default ProfileScreen = () => {
                 </TouchableOpacity>
             </View>
             <View style={styles.box} className="flex-row justify-center h-1/5 w-4/5 mx-10 rounded-2xl bg-slate-100">
-                <Image className="h-24 w-24 rounded-xl my-5" source={{uri: user.photoURL}} />
+                <Image className="h-24 w-24 rounded-xl my-5" source={{uri: user.photoURL || 'https://i.pinimg.com/280x280_RS/ed/d5/56/edd5560fdc7e7dd87756f75b70b469f5.jpg'}} />
                 <View className="mt-3 mx-1">
                     <Text className="text-xl m-3 font-medium text-gray-800">{user.displayName}</Text>
                     <Text className="text-sm mx-4 mb-1 font-medium text-gray-400">{user.email}</Text>

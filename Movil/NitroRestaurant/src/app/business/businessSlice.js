@@ -6,14 +6,7 @@ const initialState = {
     BusinessName: 'Fahrenheit',
     BranchId: 'PJz0h61p1FszKg00SfVp',
     BranchName: 'Villahermosa',
-    tables: [
-        {id: 1, numero: 1, estado: true, FECHA_HORA: "Mesa para 4 personas"},
-        {id: 2, numero: 2, estado: true, FECHA_HORA: "Mesa para 4 personas"},
-        {id: 3, numero: 3, estado: true, FECHA_HORA: "Mesa para 4 personas"},
-        {id: 4, numero: 4, estado: true, FECHA_HORA: "Mesa para 4 personas"},
-        {id: 5, numero: 5, estado: false, FECHA_HORA: "Mesa para 4 personas"},
-        {id: 6, numero: 6, estado: false, FECHA_HORA: "Mesa para 4 personas"}
-    ],
+    tables: [],
     address: '',
     City: 'Villahermosa'
 };
@@ -22,6 +15,7 @@ export const BusinessSlice = createSlice({
     name: 'business',
     initialState, 
     reducers: {
+        setTablesList: (state, action) => { state.tables = action.payload; },
         setCurrent: (state, action) => { state.current = action.payload; },
         incrementCurrent: (state) => {
             const tables = state.tables;
@@ -63,6 +57,7 @@ export const BusinessSlice = createSlice({
 });
 
 export const { 
+    setTablesList,
     setCurrent, 
     incrementCurrent, 
     decrementCurrent, 

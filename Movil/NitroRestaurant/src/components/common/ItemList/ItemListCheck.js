@@ -10,15 +10,15 @@ const ItemListCheck = ({status, table}) => {
     const check = () => {
         switch (status) {
             case true:
+                background = 'bg-red-100';
+                image = 'https://firebasestorage.googleapis.com/v0/b/nitro-restaurant.appspot.com/o/static%2FImages%2Ftable_red.png?alt=media&token=ba636f34-5a2f-4930-ae17-267a8e198e4f';
+                opacity ='opacity-30';
+                textColor = "text-red-900"
+                break;
+            case false:
                 background = 'bg-emerald-100';
                 image = 'https://firebasestorage.googleapis.com/v0/b/nitro-restaurant.appspot.com/o/static%2FImages%2Ftable_green.png?alt=media&token=6114f472-6b4b-4758-89c4-92ba3383f0d6';
                 textColor = "text-teal-600"
-                break;
-            case false:
-                background = 'bg-red-100';
-                image = 'https://firebasestorage.googleapis.com/v0/b/nitro-restaurant.appspot.com/o/static%2FImages%2Ftable_red.png?alt=media&token=ba636f34-5a2f-4930-ae17-267a8e198e4f';
-                opacity ='opacity-25';
-                textColor = "text-red-900"
                 break;
             default:
                 background = 'bg-slate-100';
