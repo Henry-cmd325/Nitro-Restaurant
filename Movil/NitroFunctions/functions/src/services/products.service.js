@@ -1,7 +1,7 @@
 const { getFirestore } = require('firebase-admin/firestore');
 const admin = require('firebase-admin');
 
-async function createProduct (cantidad, contable, id_sucursal, id_categoria, id_um, imagen, inversion, nombre, precio) {
+async function createProduct (cantidad, contable, id_sucursal, id_categoria, id_um, imagen, inversion, nombre, precio, nutricion) {
     try {
 
         const reference = admin.firestore().collection('productos');
@@ -18,7 +18,8 @@ async function createProduct (cantidad, contable, id_sucursal, id_categoria, id_
             imagen,
             inversion,
             nombre,
-            precio
+            precio,
+            nutricion
         });
 
         return { id: newReference.id, message: 'Producto creado exitosamente' };

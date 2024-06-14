@@ -2,8 +2,8 @@ const ProductService = require('../services/products.service');
 
 async function createProductController (req, res){
     try {
-        const { cantidad, contable, id_sucursal, id_categoria, id_um, imagen, inversion, nombre, precio } = req.body;
-        const result = await ProductService.createProduct(cantidad, contable, id_sucursal, id_categoria, id_um, imagen, inversion, nombre, precio);
+        const { cantidad, contable, id_sucursal, id_categoria, id_um, imagen, inversion, nombre, precio, nutricion } = req.body;
+        const result = await ProductService.createProduct(cantidad, contable, id_sucursal, id_categoria, id_um, imagen, inversion, nombre, precio, nutricion);
 
         return res.status(201).json(result);
     } catch (error) {
