@@ -35,7 +35,7 @@ export default HomeScreen = () => {
                 <View className="flex-row justify-between">
                     <LocationSnack label='Sucursal actual' location={branch} />
                     <TouchableOpacity className="mt-12 mr-8" onPress={() => navigation.navigate('newOrder')}>
-                        <Icon name='cart-plus' color='#cbd5e1' size={35} />
+                        <Icon name='clipboard-plus-outline' color='#cbd5e1' size={35} />
                     </TouchableOpacity>
                 </View>
                 <SafeAreaView className="mt-10">

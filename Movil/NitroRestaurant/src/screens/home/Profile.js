@@ -68,7 +68,9 @@ const CardInfo = () => {
                             <Icon name="chevron-right" size={30} color='#000000' />
                         </TouchableOpacity>
                     </Card.Content>
-                    <Button className="bg-indigo-800 flex-row items-center justify-center py-1.5 mx-10 mt-5 rounded-full" mode="contained" textColor='#e2e8f0' onPress={()=> handleModal()}> LOGOUT </Button>
+                    <TouchableOpacity className="bg-indigo-800 flex-row items-center justify-center h-14 mx-10 mt-5 rounded-full" onPress={()=> handleModal()}>
+                        <Text className="text-indigo-100 font-medium text-base">LOGOUT</Text>
+                    </TouchableOpacity>
                 </View>
             </ScrollView>
         </SafeAreaView>
@@ -117,9 +119,9 @@ const styles = StyleSheet.create({
     box: {
         borderRadius: 10, 
         shadowColor: '#a3a3a3',
-        shadowOffset: { width: 0, height: 10 },
-        shadowOpacity: 0.05,
-        shadowRadius: 20, 
-        elevation: 10,
+        shadowOffset: { width: 0, height: 5 },
+        shadowOpacity: 0.5,
+        shadowRadius: 2, 
+        elevation: 6,
     },
 });

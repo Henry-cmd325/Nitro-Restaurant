@@ -47,22 +47,7 @@ export default LoginScreen = () => {
             const uid = user.uid;
             const userData = {status: true, displayName: displayName, rol: rol, email: email, photoURL: photoURL, uid: uid}
 
-            /*
-            const saveLoginState = async (user) => {
-                try {
-                    const userToSave = user;
-                    //console.log(user);
-
-                    const jsonFirebaseUser = JSON.stringify(userToSave);
-                    await AsyncStorage.setItem('user', jsonFirebaseUser);
-                } catch (error) {
-                    console.error('Error al guardar el estado de inicio de sesión:', error);
-                }
-            };
-            await saveLoginState(userData);
-            */
             dispatch(addUser(userData));
-            console.log(userData);
 
             setEmail('');
             setPassword('');

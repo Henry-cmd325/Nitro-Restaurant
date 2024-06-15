@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 //REACT NATIVE Y TAILWIND CSS
 import { View, ImageBackground, Text, TouchableOpacity, StatusBar } from 'react-native';
 // React Navigation
@@ -9,7 +9,10 @@ export default InputScreen = () => {
     
     return (
         <>
-            <ImageBackground source={{ uri: 'https://firebasestorage.googleapis.com/v0/b/nitro-restaurant.appspot.com/o/static%2FImages%2Ffondo-nitro.png?alt=media&token=d07ba22f-6481-47a9-8996-f4c856b7b13e' }} style={{ flex: 1, resizeMode: 'cover', justifyContent: 'center'}}>
+            <ImageBackground 
+                source={{ uri: 'https://firebasestorage.googleapis.com/v0/b/nitro-restaurant.appspot.com/o/static%2FImages%2Ffondo-nitro.png?alt=media&token=d07ba22f-6481-47a9-8996-f4c856b7b13e' }} 
+                className="flex-1 bg-cover justify-center"
+            >
                 <StatusBar backgroundColor='#fafafa' barStyle="dark-content" />
                 <View className="flex-1 justify-center">
 
@@ -45,21 +48,3 @@ export default InputScreen = () => {
         </>
     );
 };
-
-/*
-
-</ImageBackground>
-<View className="flex-1">
-    <View style={styles.carouselContainer}>
-        <View style={styles.slide}>
-            <Text style={[Fonts.headerTitle, { color: '#fafafa' }]}>Acelera tu servicio</Text>
-            <Text style={[Fonts.labelTitle, { color: '#fafafa' }]}>Atención al cliente optimizada, ágil y eficaz</Text>
-        </View>
-        <View style={styles.indicatorContainer}>
-            <View style={styles.indicator} />
-        </View>
-    </View>
-</View>
- style={[buttonStyles.buttonText, Fonts.buttonTitle]}
- <Video className="w-full h-full" source={{ uri: 'https://firebasestorage.googleapis.com/v0/b/nitro-restaurant.appspot.com/o/static%2Fvideos%2Fvideo.mp4?alt=media&token=3a8b7ba1-22c0-43ea-8256-626daf56f6cc' }} resizeMode="cover" repeat />
-*/

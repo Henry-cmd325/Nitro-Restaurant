@@ -25,7 +25,7 @@ export default QuickAccess;
 
 const styles = StyleSheet.create({
     box: {
-        shadowOffset: { width: 0, height: 4 },
+        shadowOffset: { width: 0, height: 5 },
         shadowOpacity: 0.8,
         shadowRadius: 10, 
         elevation: 9,

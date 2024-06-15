@@ -27,6 +27,7 @@ const useTables = () => {
             });
             setTables(tableList);
             dispatch(setTablesList(tableList));
+            //console.log(tableList);
             setLoading(false);
         }, (error) => {
             console.error('Error listening to mesas:', error);

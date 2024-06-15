@@ -79,5 +79,17 @@ export const CurrentTable = (state) => {
     }
 };
 
+export const CurrentTableId = (state) => {
+    const tables = state.business.tables;
+    const current = state.business.current;
+    const Table = tables.findIndex((table, index) => index >= current && !table.estado);
+
+    if (Table !== -1) {
+        return tables[Table].id;  
+    } else {
+        return null;
+    }
+};
+
 export default BusinessSlice.reducer;
 export { initialState as businessInitialState };

@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import {View, SafeAreaView, ScrollView, TouchableOpacity, Text} from 'react-native';
+import {View, SafeAreaView, ScrollView} from 'react-native';
 import { PaperProvider, Appbar, ActivityIndicator } from 'react-native-paper';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 // Components
 import TabsGroup from '../../../../components/common/groups/TabsGroup';
-import CartModal from '../../../../components/layouts/CartModal';
 import ItemListProduct from '../../../../components/common/ItemList/ItemListProduct';
 // Redux
 import { useSelector, useDispatch  } from 'react-redux';
@@ -56,6 +54,8 @@ const NewOrderScreen = () => {
     const filteredProducts = useSelector(selectFilteredProducts);
 
     const selectedProducts = useSelector(state => state.orders.selectedProducts || {});
+    const order_detail = useSelector(state => state.orders.order_detail);
+    console.log(selectedProducts, 'PRODUCTOS: ', order_detail);
 
     const onScroll = ({ nativeEvent }) => { 
         const currentScrollPosition = Math.floor(nativeEvent?.contentOffset?.y) ?? 0; 
@@ -63,16 +63,7 @@ const NewOrderScreen = () => {
     };
 
     const [isExtended, setIsExtended] = React.useState(false);
-    const [isModalVisible, setModalVisible] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
-
-    const handleModal = async () => {
-        setModalVisible(true);
-    };
-
-    const handleClose = async () => {
-        setModalVisible(false);
-    };
 
     const handleCheck = (item) => {
         dispatch(toggleOrder({
@@ -118,22 +109,22 @@ const NewOrderScreen = () => {
 
     return (
         <>
-            <View className="flex-1 bg-slate-50 h-full pb-8">
-                <Appbar.Header style={{ backgroundColor: '#fafafa'}} mode='center-aligned'>
+            <View className="flex-1 bg-slate-50 h-full">
+                <Appbar.Header className="mt-1 mb-5" style={{ backgroundColor: '#fafafa'}} mode='small'>
                     <Appbar.Action icon='chevron-left' size={28} color='#09090b' onPress={() => navigation.goBack()} />
                     <Appbar.Content color='#09090b' title="Nuevo pedido" />
+                    <Appbar.Action icon="cart-outline" size={33} color='#cbd5e1' onPress={()=> navigation.navigate("checkout")}/>
                 </Appbar.Header>
 
                 <PaperProvider>
                     <SafeAreaView> 
-                        {isModalVisible && <CartModal visible={isModalVisible} close={handleClose} />}
                         <ScrollView onScroll={onScroll} showsVerticalScrollIndicator={false}>
                             <View className="mx-5">
                                 <TabsGroup categories={categories} />
                             </View>
                             <View className='mx-6'>
                                 {isLoading ? (
-                                    <View className="flex-1 justify-center items-center py-40">
+                                    <View className="flex-1 justify-center items-center py-56">
                                         <ActivityIndicator  size="large" color='#E2E8F0' />
                                     </View>
                                 ) : (
@@ -157,10 +148,6 @@ const NewOrderScreen = () => {
                         </ScrollView>
                     </SafeAreaView>
                 </PaperProvider>
-                <TouchableOpacity className='flex-row items-center justify-center py-3 bg-indigo-800 mx-10 mt-8 rounded-full' onPress={()=> handleModal()}>
-                    <Icon name="cart-check" color='#c7d2fe' size={24} />
-                    <Text className='ml-4 text-indigo-200 font-medium text-lg'>Ir al carrito</Text>
-                </TouchableOpacity>
             </View>
         </>
     );

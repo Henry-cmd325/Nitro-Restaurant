@@ -2,10 +2,14 @@
 import React, { useEffect, useState } from 'react';
 import { View } from 'react-native';
 import { ActivityIndicator } from 'react-native-paper';
+import { useNavigation } from '@react-navigation/native';
 // Redux
 import { useSelector } from 'react-redux';
+// Firebase
+import { auth } from '../../config/firebase';
 
-export default LoadingScreen = ({ navigation }) => {
+export default LoadingScreen = () => {
+    const navigation = useNavigation();
     const [isCheckingLogin, setIsCheckingLogin] = useState(true);
     const status = useSelector(state => state.user.status);
 
@@ -25,34 +29,24 @@ export default LoadingScreen = ({ navigation }) => {
     };
 
     useEffect(() => {
-        checkLoginState();
-    }, []);
+        const unsubscribe = auth.onAuthStateChanged(user => {
+            if (user) {
+                //console.log("Usuario autenticado:", user.uid);
+                navigation.navigate('main');
+            } else {
+                //console.log("Usuario no autenticado o sesión expirada");
+                navigation.navigate('auth');
+            }
+        });
+
+        return () => unsubscribe();
+    }, [navigation]);
 
     return (
         <>
-            <View style={[{ backgroundColor: "#fafafa", flex: 1, justifyContent: 'center', alignItems: 'center',  }]}>
+            <View className="bg-slate-50 flex-1 justify-center items-center">
                 {isCheckingLogin && <ActivityIndicator size="large" color='#E2E8F0' />}
             </View>
         </>
     );
 };
-
-/*
-const checkLoginState = async () => {
-    try {
-        const userData = await AsyncStorage.getItem('user');
-        if (userData) {
-            const user = JSON.parse(userData);
-            dispatch(addUser(user));
-            navigation.replace('main');
-        } else {
-            navigation.replace('auth');
-        }
-    } catch (error) {
-        console.log('Error al verificar el estado de inicio de sesión:', error);
-        navigation.replace('entrace');
-    } finally {
-        setIsCheckingLogin(false);
-    }
-};
-*/

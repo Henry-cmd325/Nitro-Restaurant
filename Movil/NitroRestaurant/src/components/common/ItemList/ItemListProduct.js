@@ -35,7 +35,7 @@ export default ItemListProduct = ({ items, price, urlImage, status, content, cal
     return (
         <>
             <View className="flex-row items-center bg-slate-50 my-5 mx-1 rounded-2xl h-28 w-full">
-                <View style={{elevation:2, shadowColor: '#64748b'}} className=" rounded-xl">
+                <View style={{elevation:10, shadowColor: '#64748b', shadowOpacity: 0.3, shadowOffset: { width: 0, height: 4 }, borderRadius: 15}} className=" rounded-xl">
                     <Image className="w-24 h-24 rounded-xl" source={{uri: urlImage }} />
                 </View>
                 <View className='flex-col mx-6'>
@@ -56,7 +56,7 @@ export default ItemListProduct = ({ items, price, urlImage, status, content, cal
                     </View>
                 </View>
             </View>
-            <Divider className="h-px bg-slate-200 mr-5 rounded-full" />
+            <Divider className="h-px bg-slate-200 mx-5 rounded-full" />
         </>
     );
 };

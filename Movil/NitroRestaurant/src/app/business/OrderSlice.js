@@ -25,9 +25,9 @@ export const OrdersSlice = createSlice({
             }
         },
         removeFromOrders: (state, action) => {
-            const index = state.items.findIndex((item) => item.id === action.payload);
+            const index = state.order_detail.findIndex((item) => item.id === action.payload);
             if (index >= 0) {
-                state.items.splice(index, 1);
+                state.order_detail.splice(index, 1);
             } else {
                 console.warn(`Cant remove product (id: ${action.payload}) as its not in product!`);
             }
