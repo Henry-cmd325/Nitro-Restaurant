@@ -52,7 +52,7 @@ export default OrdersScreen = () => {
                             <Divider className="my-1 bg-slate-200" />
                             {orders.map((item, index) => (
                                 <View key={index}>
-                                    <ItemListOrder content={formatDateToString(item.fecha_creacion)} items={"Mesa  "+item.mesa.numero} status={item.estado} price={item.total} urlImage={'https://firebasestorage.googleapis.com/v0/b/nitro-restaurant.appspot.com/o/static%2FImages%2Ftable_red.png?alt=media&token=ba636f34-5a2f-4930-ae17-267a8e198e4f'} />
+                                    <ItemListOrder content={formatDateToString(item.fecha_creacion)} items={"Mesa  "+item.mesa.numero} status={item.estado} price={item.total.toFixed(2)} urlImage={'https://firebasestorage.googleapis.com/v0/b/nitro-restaurant.appspot.com/o/static%2FImages%2Ftable_red.png?alt=media&token=ba636f34-5a2f-4930-ae17-267a8e198e4f'} />
                                 </View>
                             ))}
                             <Text className="pt-5 pb-2 px-7 font-medium text-sm text-slate-500">Mesas disponibles</Text>
@@ -73,7 +73,7 @@ export default OrdersScreen = () => {
                         </ScrollView>
                     </SafeAreaView>
                 </PaperProvider>
-                <View className='mb-20'>
+                <View className='mb-20 bg-transparent'>
                     <TouchableOpacity className='flex-row items-center justify-center py-3 bg-indigo-800 mx-10 my-2 rounded-full' onPress={()=> handleModal()}>
                         <Icon color='#f1f5f9' name="cart-plus" size={24} />
                         <Text className='ml-4 text-indigo-100 font-medium text-lg'>Crear pedido</Text>

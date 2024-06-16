@@ -16,8 +16,7 @@ export default HomeScreen = () => {
     const { tables, loading, error } = useTables();
     const navigation = useNavigation();
     // Redux
-    const List = useSelector(state => state.business.tables.length);
-    //const Data = List.slice(0, 6);
+    const List = useSelector(state => state.business.tables);
     const Products = useSelector(state => state.products.products)
     const branch = useSelector(state => state.business.BranchName);
 
@@ -50,10 +49,10 @@ export default HomeScreen = () => {
                         <View className="flex-row justify-between mx-10 mt-3 mb-4">
                             <Text className="font-semibold text-lg text-slate-800">Mesas</Text>
                             <TouchableOpacity>
-                                <Text className="underline font-normal text-base text-indigo-600">Ver todo({List})</Text>
+                                <Text className="underline font-normal text-base text-indigo-600">Ver todo({List.length})</Text>
                             </TouchableOpacity>
                         </View>
-                        <TabsTables data={tables} />
+                        <TabsTables data={List} />
                         <View className="flex-row mx-9 my-4">
                             <View className="flex-row">
                                 <View className="mt-0.5 mr-1">

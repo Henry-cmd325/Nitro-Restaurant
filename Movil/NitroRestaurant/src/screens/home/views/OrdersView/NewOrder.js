@@ -54,8 +54,6 @@ const NewOrderScreen = () => {
     const filteredProducts = useSelector(selectFilteredProducts);
 
     const selectedProducts = useSelector(state => state.orders.selectedProducts || {});
-    const order_detail = useSelector(state => state.orders.order_detail);
-    console.log(selectedProducts, 'PRODUCTOS: ', order_detail);
 
     const onScroll = ({ nativeEvent }) => { 
         const currentScrollPosition = Math.floor(nativeEvent?.contentOffset?.y) ?? 0; 

@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import {Text, View, SafeAreaView, ScrollView, TouchableOpacity, StatusBar, StyleSheet} from 'react-native';
-import { Divider, Appbar, PaperProvider } from 'react-native-paper';
+import {Text, View, SafeAreaView, ScrollView, TouchableOpacity, StatusBar, StyleSheet, Image} from 'react-native';
+import { Divider, Appbar, PaperProvider, RadioButton } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 // Componentes
 import ItemOrder from '../../../../components/common/ItemList/ItemOrder';
@@ -9,13 +9,32 @@ import ArrowNavigator from '../../../../components/interface/Filters/ArrowNaviga
 import { useNavigation } from '@react-navigation/native';
 // Redux
 import { useSelector, useDispatch } from 'react-redux';
-import { selectOrderTotal } from '../../../../app/business/OrderSlice';
+import { selectOrderTotal, clear } from '../../../../app/business/OrderSlice';
 import { CurrentTable, CurrentTableId } from '../../../../app/business/BusinessSlice';
+// Hooks
+import useOrderTypes from '../../../../hooks/useOrderTypes';
+
+const RadioList = ({title, value, status, onPress}) => {
+    return (
+        <>
+            <View className="flex-row mx-4 my-3">
+                <RadioButton
+                    color='#818cf8'
+                    value={value}
+                    status={status}
+                    onPress={onPress}
+                />
+                <Text className="text-lg font-normal text-black mx-2">{title}</Text>
+            </View>
+            <Divider className="mb-1 bg-slate-200 mx-14" />
+        </>
+    );
+};
 
 const ItemDetail = () => {
     const List = useSelector(state => state.orders.order_detail);
     return (
-        <View style={styles.box} className="bg-indigo-200 w-full rounded-3xl p-1 mt-4 mb-10">
+        <View style={styles.box} className="bg-indigo-200 w-full rounded-3xl p-1 mt-4">
             <ArrowNavigator />
             <Divider className="my-1 bg-indigo-300 mx-5" />
             <View className="mx-4 my-4"> 
@@ -35,8 +54,10 @@ const ItemDetail = () => {
 };
 
 const CheckoutScreen = () => {
-    //
+    // Estate
+    const { orderTypes, loading, error } = useOrderTypes();
     const [current, setCurrent] = useState(1);
+    const [label, setLabel] = useState('SIGUIENTE');
     //
     const dispatch = useDispatch();
     const navigation = useNavigation();
@@ -44,12 +65,13 @@ const CheckoutScreen = () => {
     const BranchId = useSelector((state) => state.business.BranchId);
     const handleNext = () => { 
         setCurrent(current + 1);
-        console.log(current);
+        setLabel("ENVIAR");
     };
+    const [checked, setChecked] = React.useState('EDWISXhBpiSlabKBVRCA');
     const order = List.length;
     const total = useSelector(selectOrderTotal);
     const Table = useSelector(CurrentTable).replace(/\D+/g, "");
-    const TableId = useSelector(CurrentTableId);
+    const TableId = useSelector(CurrentTableId); 
     // Hooks para el estado del scroll
     const [isExtended, setIsExtended] = React.useState(false);
     const onScroll = ({ nativeEvent }) => { 
@@ -57,13 +79,42 @@ const CheckoutScreen = () => {
         setIsExtended(currentScrollPosition <= 0); 
     };
 
-    const handleSave = () => {
+    const handleSave = async () => {
         const detalle_pedido = List.map(item => ({
             cantidad: item.cantidad,
+            modificaciones: item.modificaciones || [],
             precio: item.precio,
             id_producto: item.id
         }));
-        console.log('Detalle: ', detalle_pedido, 'Total: ', total, 'Mesa: ', Table, 'Estado: ', true, 'id_mesa: ', TableId, 'id_sucursal: ', BranchId);
+        //console.log('DETALLE: ', detalle_pedido);
+    
+        const data = {
+            detalle_pedido,
+            estado: true,
+            id_mesa: TableId,
+            id_sucursal: BranchId,
+            total: total.toFixed(2),
+            id_tipo_pedido: checked
+        };
+
+        try {
+            const response = await fetch('https://us-central1-nitro-restaurant.cloudfunctions.net/api/pedido', { 
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            });
+
+            const responseData = await response.json();
+            //console.log('RESPONSE: ' ,responseData);
+
+            dispatch(clear());
+
+            navigation.navigate("main");
+        } catch (error) {
+            console.error('Error en la solicitud:', error.message || error);
+        }
     };
 
     const [isAnyItemSwiped, setIsAnyItemSwiped] = useState(false);
@@ -116,30 +167,51 @@ const CheckoutScreen = () => {
                                             allowSwipe={!isAnyItemSwiped}
                                         />
                                     ))}
-                                    <View className="flex-row mx-5 my-10 justify-between">
+                                </>
+                            )}
+                            {current === 2 && (
+                                <View className="mx-6 ">
+                                    <View className="flex-row items-center mt-10">
+                                        <Text className="mx-4 text-xl font-semibold text-black">Detalle de pedido</Text>
+                                    </View>
+                                    <ItemDetail/>
+                                    <View className="flex-row items-center mt-10">
+                                        <Text className="mx-4 text-xl font-semibold text-black">Tipo de pedido</Text>
+                                    </View>
+                                    <View style={styles.box} className="bg-white h-48 my-5 justify-center w-full rounded-3xl">
+                                        {orderTypes.map((item, index) => (
+                                            <RadioList 
+                                                key={index}
+                                                title={item.nombre}
+                                                value={item.id}
+                                                status={ checked === item.id ? 'checked' : 'unchecked' } onPress={() => setChecked(item.id)} 
+                                            />
+                                        ))}
+                                    </View>
+                                    <View className="flex-row mx-5 my-8 justify-between">
                                         <Text className="text-slate-800 text-2xl font-semibold">Total </Text>
                                         <Text className="text-indigo-500 text-2xl font-semibold">
                                             $ {total.toFixed(2)}
                                         </Text>
                                     </View>
-                                </>
-                            )}
-                            {current === 2 && (
-                                <>
-                                    <Text className="mx-4 mt-8 text-xl font-bold text-black">Detalle</Text>
-                                    <ItemDetail />
-                                </>
+                                </View>
                             )}
                         </ScrollView>
                     </SafeAreaView>
                 </PaperProvider>
             )}
-            <View className="items-center mb-4 mx-6 bg-transparent">
+            <View className="items-center mb-4 mx-8 bg-transparent">
                 <TouchableOpacity 
-                    onPress={()=>handleNext()} 
+                    onPress={()=>{
+                        if (label === "SIGUIENTE") {
+                            return handleNext();
+                        } else if (label === "ENVIAR") {
+                            return handleSave();
+                        }
+                    }} 
                     className="bg-indigo-900 h-14 w-full items-center justify-center rounded-full"
                 >
-                    <Text className="font-medium text-white">CREAR PEDIDO</Text>
+                    <Text className="font-medium text-white">{label}</Text>
                 </TouchableOpacity>
             </View>
         </View>
@@ -151,7 +223,7 @@ export default CheckoutScreen;
 const styles = StyleSheet.create({
     box: {
         shadowOffset: { width: 0, height: 5 },
-        shadowColor: '#94a3b8',
+        shadowColor: '#cbd5e1',
         shadowOpacity: 0.5,
         shadowRadius: 10, 
         elevation: 10

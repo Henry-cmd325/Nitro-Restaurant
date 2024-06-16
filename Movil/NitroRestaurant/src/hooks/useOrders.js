@@ -44,7 +44,6 @@ const useOrders = () => {
                     ...orderData,
                     mesa: tableData
                 };
-                console.log(order);
                 ordersList.push(order);
             }
             setOrders(ordersList);

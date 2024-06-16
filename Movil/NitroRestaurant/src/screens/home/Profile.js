@@ -4,7 +4,7 @@ import { View, StyleSheet, StatusBar, Text, TouchableOpacity, ScrollView, SafeAr
 // Firebase Auth
 import { app } from '../../config/firebase';
 import { signOut, getAuth } from "firebase/auth";
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 // React Navigation
 import { useNavigation } from '@react-navigation/native';
 // Componentes

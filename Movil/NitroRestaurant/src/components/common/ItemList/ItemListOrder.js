@@ -5,7 +5,7 @@ import StatusToggle from '../StatusToggle ';
 export default ItemListOrder = ({ content, items, price, status, urlImage, onPress }) => {
     return (
         <>
-            <TouchableOpacity className="flex-row items-center justify-between py-3 px-6" onPress={onPress}>
+            <TouchableOpacity className="flex-row items-center justify-between pb-3 pt-1 px-6" onPress={onPress}>
             <Image style={[{ borderRadius: 10, width: 70, height: 70 }]} source={{uri: urlImage }} />
                 <View className="flex-col items-start my-5 mr-5" >
                     <Text className="text-lg font-semibold text-slate-500">{items}</Text>

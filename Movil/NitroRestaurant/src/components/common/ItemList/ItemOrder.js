@@ -70,11 +70,11 @@ const ItemOrder = ({ title, amount, price, url, id, onSwipeStart, onSwipeEnd, al
                 <Image className="rounded-2xl w-20 h-20" source={{uri: url }} />
                 <View className='flex-col mx-4'>
                     <View className="flex-row items-start">
-                        <Text className="font-medium text-lg my-2 text-slate-700">{title}</Text>
+                        <Text className="font-semibold text-lg my-2 text-slate-700">{title}</Text>
                     </View>
                     <View className="flex-row justify-between items-center w-60">
-                        <Text className="font-medium text-base text-slate-500">${price}</Text>
-                        <View className="flex-row items-center justify-between bg-indigo-200 rounded-xl mt-2 mr-2">
+                        <Text className="font-medium text-lg text-slate-500">${price}</Text>
+                        <View className="flex-row items-center justify-between bg-indigo-200 rounded-xl mr-2 mb-2">
                             <TouchableOpacity className="px-3 py-2" onPress={()=> handleDecrement(id)}> 
                                 <Icon name="minus" size={20} color='#312e81' />
                             </TouchableOpacity>

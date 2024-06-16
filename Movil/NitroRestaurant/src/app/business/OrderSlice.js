@@ -58,17 +58,21 @@ export const OrdersSlice = createSlice({
                 item.precio_total = item.cantidad * item.precio;
             }
         },
+        clear: state => {
+            Object.assign(state, initialState);
+        },
     },
 });
 
-export const { 
+export const {
     SelectedOrderId, 
     toggleOrder, 
     removeFromOrders, 
     toggleSelectedProduct,
     removeSelectedProduct,
     increment, 
-    decrement 
+    decrement,
+    clear
 } = OrdersSlice.actions;
 
 export default OrdersSlice.reducer;
