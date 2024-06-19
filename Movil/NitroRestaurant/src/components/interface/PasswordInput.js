@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { TextInput, View, TouchableOpacity } from 'react-native';
+import { Divider } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 export default PasswordInput = ({ placeholder, onPasswordChange, passwordValue }) => {
@@ -14,11 +15,19 @@ export default PasswordInput = ({ placeholder, onPasswordChange, passwordValue }
     };
 
     return (
-        <View className="flex-row items-center justify-center">
-            <TextInput className="w-5/6 h-10 bg-gray-200 rounded-xl px-5 mb-5" placeholder={placeholder} value={passwordValue} onChangeText={handlePasswordChange} secureTextEntry={!isPasswordVisible} />
-            <TouchableOpacity style={{ backgroundColor: '#fafafa', paddingHorizontal: '3%', paddingVertical: '1%',borderRadius: 15, marginBottom: '5%', marginLeft: '2%' }} onPress={togglePasswordVisibility}>
-                <Icon name={isPasswordVisible ? 'eye-off' : 'eye'} size={23} color="#bababa" />
-            </TouchableOpacity>
-        </View>
+        <>
+            <View className="my-5 mx-10">
+                <View className="flex-row items-center justify-center">
+                    <View className="px-2 py-1 mb-5">
+                        <Icon name='lock-outline' size={23} color="#bababa" />
+                    </View>
+                    <TextInput className="w-10/12 h-12 text-base bg-gray-100 rounded-xl px-5 mb-3" placeholder={placeholder} value={passwordValue} onChangeText={handlePasswordChange} secureTextEntry={!isPasswordVisible} />
+                    <TouchableOpacity  className="px-2 py-1 mb-5" onPress={togglePasswordVisibility}>
+                        <Icon name={isPasswordVisible ? 'eye-off-outline' : 'eye-outline'} size={23} color="#bababa" />
+                    </TouchableOpacity>
+                </View>
+                <Divider className="h-px w-80 bg-gray-300" />
+            </View>
+        </>
     );
 };

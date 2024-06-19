@@ -1,22 +1,45 @@
 import React, { useState } from 'react';
-import { SafeAreaView, ScrollView, } from "react-native";
+import { SafeAreaView, ScrollView } from "react-native";
 // Components
 import FilterPagesIcon from '../../interface/Filters/FilterPagesIcon';
+// Redux
+import { useDispatch  } from 'react-redux';
+import { setCategory } from '../../../app/business/ProductSlice';
 
-const TabsGroup = ({tabsData}) => {
-    // Hooks para el estado del componente
+const TabsGroup = ({categories}) => {
+    const dispatch = useDispatch();
+
     const [isExtended, setIsExtended] = React.useState(false);
-    const onScroll = ({ nativeEvent }) => { const currentScrollPosition = Math.floor(nativeEvent?.contentOffset?.y) ?? 0; setIsExtended(currentScrollPosition <= 0); };
+    const onScroll = ({ nativeEvent }) => { 
+        const currentScrollPosition = Math.floor(nativeEvent?.contentOffset?.y) ?? 0; 
+        setIsExtended(currentScrollPosition <= 0); 
+    };
 
-    const [selectedOption, setSelectedOption] = useState(tabsData[0].name);
-    const filterContent = (option) => { setSelectedOption(option); };
+    const [selectedOption, setSelectedOption] = useState('Todos');
+
+    const filterContent = (option) => { 
+        setSelectedOption(option); 
+        dispatch(setCategory(option));
+    };
 
     return(
         <>
             <SafeAreaView className='flex-row'>
                 <ScrollView  horizontal={true} onScroll={onScroll} showsHorizontalScrollIndicator={false}>
-                    {tabsData.map((item) => (
-                        <FilterPagesIcon key={item.id} text={item.name} icon={item.icon} isSelected={selectedOption === item.name} onPress={() => filterContent(item.name)} />
+                    <FilterPagesIcon 
+                        text='Todos' 
+                        icon='view-list-outline' 
+                        isSelected={selectedOption === 'Todos'} 
+                        onPress={() => filterContent('Todos')}  
+                    />
+                    {categories.map((item, index) => (
+                        <FilterPagesIcon 
+                            key={index} 
+                            text={item.nombre} 
+                            icon={item.image} 
+                            isSelected={selectedOption === item.nombre} 
+                            onPress={() => filterContent(item.nombre)} 
+                        />
                     ))}
                 </ScrollView>
             </SafeAreaView>

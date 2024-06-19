@@ -1,10 +1,25 @@
 // store.js
-import { configureStore } from '@reduxjs/toolkit';  //getDefaultMiddleware
+import { configureStore, serialize  } from '@reduxjs/toolkit';
+import { thunk } from 'redux-thunk';
+import { persistReducer, persistStore } from 'redux-persist';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import rootReducer from '../app/rootReducer';
 
-const store = configureStore({
-    reducer: rootReducer,
-    //middleware: getDefaultMiddleware(),
-});
+const persistConfig = {
+    key: 'root',
+    storage: AsyncStorage,
+    serialize: serialize,
+}
 
-export default store;
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+export const store = configureStore({
+    reducer: persistedReducer,
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware({
+            serializableCheck: false, 
+        }).concat(thunk),
+})
+
+//devTools: process.env.NODE_ENV !== 'production',
+export const persistor = persistStore(store)
