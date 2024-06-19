@@ -1,0 +1,20 @@
+﻿EscritorioNitroRestaurant
+1.0.0.0
+
+winexe
+C#
+.cs
+D:\Programacion\Uni\Nitro Restaurant\Escritorio\obj\Debug\net8.0-windows\
+EscritorioNitroRestaurant
+none
+false
+TRACE;DEBUG;NET;NET8_0;NETCOREAPP
+D:\Programacion\Uni\Nitro Restaurant\Escritorio\App.xaml
+720293752
+
+151858145050
+2271365618551
+Components\TableReceiptsBtn.xaml;ResourceDictionaries\Buttons.xaml;ResourceDictionaries\Colors.xaml;Views\Login.xaml;Views\MainWindow.xaml;Views\Pages\OrdersPage.xaml;Views\Pages\ReceivesPage.xaml;
+
+True
+

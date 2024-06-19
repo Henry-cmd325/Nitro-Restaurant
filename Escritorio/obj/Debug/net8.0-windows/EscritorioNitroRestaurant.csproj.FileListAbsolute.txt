@@ -1,0 +1,125 @@
+D:\Programacion\Uni\NitroRestaurantNuevo\EscritorioNitroRestaurant\bin\Debug\net8.0-windows\EscritorioNitroRestaurant.exe
+D:\Programacion\Uni\NitroRestaurantNuevo\EscritorioNitroRestaurant\bin\Debug\net8.0-windows\EscritorioNitroRestaurant.deps.json
+D:\Programacion\Uni\NitroRestaurantNuevo\EscritorioNitroRestaurant\bin\Debug\net8.0-windows\EscritorioNitroRestaurant.runtimeconfig.json
+D:\Programacion\Uni\NitroRestaurantNuevo\EscritorioNitroRestaurant\bin\Debug\net8.0-windows\EscritorioNitroRestaurant.dll
+D:\Programacion\Uni\NitroRestaurantNuevo\EscritorioNitroRestaurant\bin\Debug\net8.0-windows\EscritorioNitroRestaurant.pdb
+D:\Programacion\Uni\NitroRestaurantNuevo\EscritorioNitroRestaurant\obj\Debug\net8.0-windows\App.g.cs
+D:\Programacion\Uni\NitroRestaurantNuevo\EscritorioNitroRestaurant\obj\Debug\net8.0-windows\EscritorioNitroRestaurant_MarkupCompile.cache
+D:\Programacion\Uni\NitroRestaurantNuevo\EscritorioNitroRestaurant\obj\Debug\net8.0-windows\EscritorioNitroRestaurant_MarkupCompile.lref
+D:\Programacion\Uni\NitroRestaurantNuevo\EscritorioNitroRestaurant\obj\Debug\net8.0-windows\EscritorioNitroRestaurant.g.resources
+D:\Programacion\Uni\NitroRestaurantNuevo\EscritorioNitroRestaurant\obj\Debug\net8.0-windows\EscritorioNitroRestaurant.GeneratedMSBuildEditorConfig.editorconfig
+D:\Programacion\Uni\NitroRestaurantNuevo\EscritorioNitroRestaurant\obj\Debug\net8.0-windows\EscritorioNitroRestaurant.AssemblyInfoInputs.cache
+D:\Programacion\Uni\NitroRestaurantNuevo\EscritorioNitroRestaurant\obj\Debug\net8.0-windows\EscritorioNitroRestaurant.AssemblyInfo.cs
+D:\Programacion\Uni\NitroRestaurantNuevo\EscritorioNitroRestaurant\obj\Debug\net8.0-windows\EscritorioNitroRestaurant.csproj.CoreCompileInputs.cache
+D:\Programacion\Uni\NitroRestaurantNuevo\EscritorioNitroRestaurant\obj\Debug\net8.0-windows\EscritorioNitroRestaurant.dll
+D:\Programacion\Uni\NitroRestaurantNuevo\EscritorioNitroRestaurant\obj\Debug\net8.0-windows\refint\EscritorioNitroRestaurant.dll
+D:\Programacion\Uni\NitroRestaurantNuevo\EscritorioNitroRestaurant\obj\Debug\net8.0-windows\EscritorioNitroRestaurant.pdb
+D:\Programacion\Uni\NitroRestaurantNuevo\EscritorioNitroRestaurant\obj\Debug\net8.0-windows\EscritorioNitroRestaurant.genruntimeconfig.cache
+D:\Programacion\Uni\NitroRestaurantNuevo\EscritorioNitroRestaurant\obj\Debug\net8.0-windows\ref\EscritorioNitroRestaurant.dll
+D:\Programacion\Uni\NitroRestaurantNuevo\EscritorioNitroRestaurant\bin\Debug\net8.0-windows\FontAwesome.WPF.dll
+D:\Programacion\Uni\NitroRestaurantNuevo\EscritorioNitroRestaurant\obj\Debug\net8.0-windows\EscritorioNitroRestaurant.csproj.AssemblyReference.cache
+D:\Programacion\Uni\NitroRestaurantNuevo\EscritorioNitroRestaurant\obj\Debug\net8.0-windows\EscritorioNitroRestaurant.csproj.CopyComplete
+D:\Programacion\Uni\NitroRestaurantNuevo\EscritorioNitroRestaurant\obj\Debug\net8.0-windows\ResourceDictionaries\Buttons.baml
+D:\Programacion\Uni\NitroRestaurantNuevo\EscritorioNitroRestaurant\obj\Debug\net8.0-windows\App.baml
+D:\Programacion\Uni\NitroRestaurantNuevo\EscritorioNitroRestaurant\obj\Debug\net8.0-windows\ResourceDictionaries\Colors.baml
+D:\Programacion\Uni\NitroRestaurantNuevo\EscritorioNitroRestaurant\obj\Debug\net8.0-windows\Views\MainWindow.g.cs
+D:\Programacion\Uni\NitroRestaurantNuevo\EscritorioNitroRestaurant\obj\Debug\net8.0-windows\Views\MainWindow.baml
+D:\Programacion\Uni\NitroRestaurantNuevo\EscritorioNitroRestaurant\obj\Debug\net8.0-windows\Views\Login.g.cs
+D:\Programacion\Uni\NitroRestaurantNuevo\EscritorioNitroRestaurant\obj\Debug\net8.0-windows\Views\Login.baml
+D:\Programacion\Uni\NitroRestaurantNuevo\EscritorioNitroRestaurant\obj\Debug\net8.0-windows\Views\Pages\OrdersPage.g.cs
+D:\Programacion\Uni\NitroRestaurantNuevo\EscritorioNitroRestaurant\obj\Debug\net8.0-windows\Views\Pages\OrdersPage.baml
+D:\Programacion\Uni\NitroRestaurantNuevo\EscritorioNitroRestaurant\bin\Debug\net8.0-windows\CommunityToolkit.Mvvm.dll
+D:\Programacion\Uni\NitroRestaurantNuevo\EscritorioNitroRestaurant\bin\Debug\net8.0-windows\Microsoft.Extensions.Configuration.dll
+D:\Programacion\Uni\NitroRestaurantNuevo\EscritorioNitroRestaurant\bin\Debug\net8.0-windows\Microsoft.Extensions.Configuration.Abstractions.dll
+D:\Programacion\Uni\NitroRestaurantNuevo\EscritorioNitroRestaurant\bin\Debug\net8.0-windows\Microsoft.Extensions.Configuration.Binder.dll
+D:\Programacion\Uni\NitroRestaurantNuevo\EscritorioNitroRestaurant\bin\Debug\net8.0-windows\Microsoft.Extensions.Configuration.CommandLine.dll
+D:\Programacion\Uni\NitroRestaurantNuevo\EscritorioNitroRestaurant\bin\Debug\net8.0-windows\Microsoft.Extensions.Configuration.EnvironmentVariables.dll
+D:\Programacion\Uni\NitroRestaurantNuevo\EscritorioNitroRestaurant\bin\Debug\net8.0-windows\Microsoft.Extensions.Configuration.FileExtensions.dll
+D:\Programacion\Uni\NitroRestaurantNuevo\EscritorioNitroRestaurant\bin\Debug\net8.0-windows\Microsoft.Extensions.Configuration.Json.dll
+D:\Programacion\Uni\NitroRestaurantNuevo\EscritorioNitroRestaurant\bin\Debug\net8.0-windows\Microsoft.Extensions.Configuration.UserSecrets.dll
+D:\Programacion\Uni\NitroRestaurantNuevo\EscritorioNitroRestaurant\bin\Debug\net8.0-windows\Microsoft.Extensions.DependencyInjection.dll
+D:\Programacion\Uni\NitroRestaurantNuevo\EscritorioNitroRestaurant\bin\Debug\net8.0-windows\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\Programacion\Uni\NitroRestaurantNuevo\EscritorioNitroRestaurant\bin\Debug\net8.0-windows\Microsoft.Extensions.Diagnostics.dll
+D:\Programacion\Uni\NitroRestaurantNuevo\EscritorioNitroRestaurant\bin\Debug\net8.0-windows\Microsoft.Extensions.Diagnostics.Abstractions.dll
+D:\Programacion\Uni\NitroRestaurantNuevo\EscritorioNitroRestaurant\bin\Debug\net8.0-windows\Microsoft.Extensions.FileProviders.Abstractions.dll
+D:\Programacion\Uni\NitroRestaurantNuevo\EscritorioNitroRestaurant\bin\Debug\net8.0-windows\Microsoft.Extensions.FileProviders.Physical.dll
+D:\Programacion\Uni\NitroRestaurantNuevo\EscritorioNitroRestaurant\bin\Debug\net8.0-windows\Microsoft.Extensions.FileSystemGlobbing.dll
+D:\Programacion\Uni\NitroRestaurantNuevo\EscritorioNitroRestaurant\bin\Debug\net8.0-windows\Microsoft.Extensions.Hosting.dll
+D:\Programacion\Uni\NitroRestaurantNuevo\EscritorioNitroRestaurant\bin\Debug\net8.0-windows\Microsoft.Extensions.Hosting.Abstractions.dll
+D:\Programacion\Uni\NitroRestaurantNuevo\EscritorioNitroRestaurant\bin\Debug\net8.0-windows\Microsoft.Extensions.Logging.dll
+D:\Programacion\Uni\NitroRestaurantNuevo\EscritorioNitroRestaurant\bin\Debug\net8.0-windows\Microsoft.Extensions.Logging.Abstractions.dll
+D:\Programacion\Uni\NitroRestaurantNuevo\EscritorioNitroRestaurant\bin\Debug\net8.0-windows\Microsoft.Extensions.Logging.Configuration.dll
+D:\Programacion\Uni\NitroRestaurantNuevo\EscritorioNitroRestaurant\bin\Debug\net8.0-windows\Microsoft.Extensions.Logging.Console.dll
+D:\Programacion\Uni\NitroRestaurantNuevo\EscritorioNitroRestaurant\bin\Debug\net8.0-windows\Microsoft.Extensions.Logging.Debug.dll
+D:\Programacion\Uni\NitroRestaurantNuevo\EscritorioNitroRestaurant\bin\Debug\net8.0-windows\Microsoft.Extensions.Logging.EventLog.dll
+D:\Programacion\Uni\NitroRestaurantNuevo\EscritorioNitroRestaurant\bin\Debug\net8.0-windows\Microsoft.Extensions.Logging.EventSource.dll
+D:\Programacion\Uni\NitroRestaurantNuevo\EscritorioNitroRestaurant\bin\Debug\net8.0-windows\Microsoft.Extensions.Options.dll
+D:\Programacion\Uni\NitroRestaurantNuevo\EscritorioNitroRestaurant\bin\Debug\net8.0-windows\Microsoft.Extensions.Options.ConfigurationExtensions.dll
+D:\Programacion\Uni\NitroRestaurantNuevo\EscritorioNitroRestaurant\bin\Debug\net8.0-windows\Microsoft.Extensions.Primitives.dll
+D:\Programacion\Uni\NitroRestaurantNuevo\EscritorioNitroRestaurant\obj\Debug\net8.0-windows\Components\TableReceiptsBtn.g.cs
+D:\Programacion\Uni\NitroRestaurantNuevo\EscritorioNitroRestaurant\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.cs
+D:\Programacion\Uni\NitroRestaurantNuevo\EscritorioNitroRestaurant\obj\Debug\net8.0-windows\Components\TableReceiptsBtn.baml
+D:\Programacion\Uni\Nitro Restaurant\Escritorio\bin\Debug\net8.0-windows\EscritorioNitroRestaurant.exe
+D:\Programacion\Uni\Nitro Restaurant\Escritorio\bin\Debug\net8.0-windows\EscritorioNitroRestaurant.deps.json
+D:\Programacion\Uni\Nitro Restaurant\Escritorio\bin\Debug\net8.0-windows\EscritorioNitroRestaurant.runtimeconfig.json
+D:\Programacion\Uni\Nitro Restaurant\Escritorio\bin\Debug\net8.0-windows\EscritorioNitroRestaurant.dll
+D:\Programacion\Uni\Nitro Restaurant\Escritorio\bin\Debug\net8.0-windows\EscritorioNitroRestaurant.pdb
+D:\Programacion\Uni\Nitro Restaurant\Escritorio\bin\Debug\net8.0-windows\CommunityToolkit.Mvvm.dll
+D:\Programacion\Uni\Nitro Restaurant\Escritorio\bin\Debug\net8.0-windows\FontAwesome.WPF.dll
+D:\Programacion\Uni\Nitro Restaurant\Escritorio\bin\Debug\net8.0-windows\Microsoft.Extensions.Configuration.dll
+D:\Programacion\Uni\Nitro Restaurant\Escritorio\bin\Debug\net8.0-windows\Microsoft.Extensions.Configuration.Abstractions.dll
+D:\Programacion\Uni\Nitro Restaurant\Escritorio\bin\Debug\net8.0-windows\Microsoft.Extensions.Configuration.Binder.dll
+D:\Programacion\Uni\Nitro Restaurant\Escritorio\bin\Debug\net8.0-windows\Microsoft.Extensions.Configuration.CommandLine.dll
+D:\Programacion\Uni\Nitro Restaurant\Escritorio\bin\Debug\net8.0-windows\Microsoft.Extensions.Configuration.EnvironmentVariables.dll
+D:\Programacion\Uni\Nitro Restaurant\Escritorio\bin\Debug\net8.0-windows\Microsoft.Extensions.Configuration.FileExtensions.dll
+D:\Programacion\Uni\Nitro Restaurant\Escritorio\bin\Debug\net8.0-windows\Microsoft.Extensions.Configuration.Json.dll
+D:\Programacion\Uni\Nitro Restaurant\Escritorio\bin\Debug\net8.0-windows\Microsoft.Extensions.Configuration.UserSecrets.dll
+D:\Programacion\Uni\Nitro Restaurant\Escritorio\bin\Debug\net8.0-windows\Microsoft.Extensions.DependencyInjection.dll
+D:\Programacion\Uni\Nitro Restaurant\Escritorio\bin\Debug\net8.0-windows\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\Programacion\Uni\Nitro Restaurant\Escritorio\bin\Debug\net8.0-windows\Microsoft.Extensions.Diagnostics.dll
+D:\Programacion\Uni\Nitro Restaurant\Escritorio\bin\Debug\net8.0-windows\Microsoft.Extensions.Diagnostics.Abstractions.dll
+D:\Programacion\Uni\Nitro Restaurant\Escritorio\bin\Debug\net8.0-windows\Microsoft.Extensions.FileProviders.Abstractions.dll
+D:\Programacion\Uni\Nitro Restaurant\Escritorio\bin\Debug\net8.0-windows\Microsoft.Extensions.FileProviders.Physical.dll
+D:\Programacion\Uni\Nitro Restaurant\Escritorio\bin\Debug\net8.0-windows\Microsoft.Extensions.FileSystemGlobbing.dll
+D:\Programacion\Uni\Nitro Restaurant\Escritorio\bin\Debug\net8.0-windows\Microsoft.Extensions.Hosting.dll
+D:\Programacion\Uni\Nitro Restaurant\Escritorio\bin\Debug\net8.0-windows\Microsoft.Extensions.Hosting.Abstractions.dll
+D:\Programacion\Uni\Nitro Restaurant\Escritorio\bin\Debug\net8.0-windows\Microsoft.Extensions.Logging.dll
+D:\Programacion\Uni\Nitro Restaurant\Escritorio\bin\Debug\net8.0-windows\Microsoft.Extensions.Logging.Abstractions.dll
+D:\Programacion\Uni\Nitro Restaurant\Escritorio\bin\Debug\net8.0-windows\Microsoft.Extensions.Logging.Configuration.dll
+D:\Programacion\Uni\Nitro Restaurant\Escritorio\bin\Debug\net8.0-windows\Microsoft.Extensions.Logging.Console.dll
+D:\Programacion\Uni\Nitro Restaurant\Escritorio\bin\Debug\net8.0-windows\Microsoft.Extensions.Logging.Debug.dll
+D:\Programacion\Uni\Nitro Restaurant\Escritorio\bin\Debug\net8.0-windows\Microsoft.Extensions.Logging.EventLog.dll
+D:\Programacion\Uni\Nitro Restaurant\Escritorio\bin\Debug\net8.0-windows\Microsoft.Extensions.Logging.EventSource.dll
+D:\Programacion\Uni\Nitro Restaurant\Escritorio\bin\Debug\net8.0-windows\Microsoft.Extensions.Options.dll
+D:\Programacion\Uni\Nitro Restaurant\Escritorio\bin\Debug\net8.0-windows\Microsoft.Extensions.Options.ConfigurationExtensions.dll
+D:\Programacion\Uni\Nitro Restaurant\Escritorio\bin\Debug\net8.0-windows\Microsoft.Extensions.Primitives.dll
+D:\Programacion\Uni\Nitro Restaurant\Escritorio\obj\Debug\net8.0-windows\EscritorioNitroRestaurant.csproj.AssemblyReference.cache
+D:\Programacion\Uni\Nitro Restaurant\Escritorio\obj\Debug\net8.0-windows\ResourceDictionaries\Buttons.baml
+D:\Programacion\Uni\Nitro Restaurant\Escritorio\obj\Debug\net8.0-windows\ResourceDictionaries\Colors.baml
+D:\Programacion\Uni\Nitro Restaurant\Escritorio\obj\Debug\net8.0-windows\App.baml
+D:\Programacion\Uni\Nitro Restaurant\Escritorio\obj\Debug\net8.0-windows\Components\TableReceiptsBtn.g.cs
+D:\Programacion\Uni\Nitro Restaurant\Escritorio\obj\Debug\net8.0-windows\Views\Login.g.cs
+D:\Programacion\Uni\Nitro Restaurant\Escritorio\obj\Debug\net8.0-windows\Views\MainWindow.g.cs
+D:\Programacion\Uni\Nitro Restaurant\Escritorio\obj\Debug\net8.0-windows\Views\Pages\OrdersPage.g.cs
+D:\Programacion\Uni\Nitro Restaurant\Escritorio\obj\Debug\net8.0-windows\Views\Pages\ReceivesPage.g.cs
+D:\Programacion\Uni\Nitro Restaurant\Escritorio\obj\Debug\net8.0-windows\App.g.cs
+D:\Programacion\Uni\Nitro Restaurant\Escritorio\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.cs
+D:\Programacion\Uni\Nitro Restaurant\Escritorio\obj\Debug\net8.0-windows\EscritorioNitroRestaurant_MarkupCompile.cache
+D:\Programacion\Uni\Nitro Restaurant\Escritorio\obj\Debug\net8.0-windows\EscritorioNitroRestaurant_MarkupCompile.lref
+D:\Programacion\Uni\Nitro Restaurant\Escritorio\obj\Debug\net8.0-windows\Components\TableReceiptsBtn.baml
+D:\Programacion\Uni\Nitro Restaurant\Escritorio\obj\Debug\net8.0-windows\Views\Login.baml
+D:\Programacion\Uni\Nitro Restaurant\Escritorio\obj\Debug\net8.0-windows\Views\MainWindow.baml
+D:\Programacion\Uni\Nitro Restaurant\Escritorio\obj\Debug\net8.0-windows\Views\Pages\OrdersPage.baml
+D:\Programacion\Uni\Nitro Restaurant\Escritorio\obj\Debug\net8.0-windows\Views\Pages\ReceivesPage.baml
+D:\Programacion\Uni\Nitro Restaurant\Escritorio\obj\Debug\net8.0-windows\EscritorioNitroRestaurant.g.resources
+D:\Programacion\Uni\Nitro Restaurant\Escritorio\obj\Debug\net8.0-windows\EscritorioNitroRestaurant.GeneratedMSBuildEditorConfig.editorconfig
+D:\Programacion\Uni\Nitro Restaurant\Escritorio\obj\Debug\net8.0-windows\EscritorioNitroRestaurant.AssemblyInfoInputs.cache
+D:\Programacion\Uni\Nitro Restaurant\Escritorio\obj\Debug\net8.0-windows\EscritorioNitroRestaurant.AssemblyInfo.cs
+D:\Programacion\Uni\Nitro Restaurant\Escritorio\obj\Debug\net8.0-windows\EscritorioNitroRestaurant.csproj.CoreCompileInputs.cache
+D:\Programacion\Uni\Nitro Restaurant\Escritorio\obj\Debug\net8.0-windows\EscritorioNitroRestaurant.sourcelink.json
+D:\Programacion\Uni\Nitro Restaurant\Escritorio\obj\Debug\net8.0-windows\EscritorioNitroRestaurant.csproj.CopyComplete
+D:\Programacion\Uni\Nitro Restaurant\Escritorio\obj\Debug\net8.0-windows\EscritorioNitroRestaurant.dll
+D:\Programacion\Uni\Nitro Restaurant\Escritorio\obj\Debug\net8.0-windows\refint\EscritorioNitroRestaurant.dll
+D:\Programacion\Uni\Nitro Restaurant\Escritorio\obj\Debug\net8.0-windows\EscritorioNitroRestaurant.pdb
+D:\Programacion\Uni\Nitro Restaurant\Escritorio\obj\Debug\net8.0-windows\EscritorioNitroRestaurant.genruntimeconfig.cache
+D:\Programacion\Uni\Nitro Restaurant\Escritorio\obj\Debug\net8.0-windows\ref\EscritorioNitroRestaurant.dll

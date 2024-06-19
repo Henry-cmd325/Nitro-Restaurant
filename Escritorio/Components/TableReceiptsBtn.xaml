@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="EscritorioNitroRestaurant.Components.TableReceiptsBtn"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:fa="http://schemas.fontawesome.io/icons/"
+             xmlns:local="clr-namespace:EscritorioNitroRestaurant.Components"
+             mc:Ignorable="d" 
+             d:DesignHeight="80" d:DesignWidth="900">
+    <Button Background="#fff" BorderThickness="0" Height="80">
+        <Grid Width="1000">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width=".1*"/>
+                <ColumnDefinition Width=".15*"/>
+                <ColumnDefinition Width=".15*"/>
+                <ColumnDefinition Width=".01*"/>
+                <ColumnDefinition Width=".55*"/>
+            </Grid.ColumnDefinitions>
+
+            <fa:FontAwesome Grid.Column="0" 
+                        Icon="CreditCard" 
+                        FontSize="50" 
+                        VerticalAlignment="Center" 
+                        Foreground="{StaticResource PrimaryColor}" 
+                        Rotation="350"
+                        HorizontalAlignment="Right"/>
+
+            <Label Grid.Column="1" Content="{Binding Total}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="23"/>
+            <Label Grid.Column="2" Content="con efectivo" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="23"/>
+            <Border Grid.Column="3" BorderBrush="{StaticResource BrushColor}" BorderThickness="0.5" Height="80" Width="1"/>
+
+            <Grid Grid.Column="4">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Text="3WOJz3ImSxdw7Q9mUAQw" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="23" FontWeight="Light"/>
+                <TextBlock Grid.Row="1" Text="10:20 p.m." HorizontalAlignment="Center" FontSize="23" FontWeight="Light" Foreground="#666666"/>
+            </Grid>
+        </Grid>
+    </Button>
+</UserControl>

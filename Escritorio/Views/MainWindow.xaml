@@ -1,0 +1,69 @@
+﻿<Window x:Class="EscritorioNitroRestaurant.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
+        xmlns:local="clr-namespace:EscritorioNitroRestaurant.Views"
+        xmlns:uc="clr-namespace:EscritorioNitroRestaurant.Components"
+        mc:Ignorable="d"
+        xmlns:model="clr-namespace:EscritorioNitroRestaurant.ViewModels"
+        d:DataContext="{d:DesignInstance Type=model:MainViewModel}"
+        Title="MainWindow" Height="1024" Width="1440">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="0.8*"/>
+        </Grid.RowDefinitions>
+        <Border Background="#312E80" Grid.ColumnSpan="2">
+            <Label Content="NitroRestaurant" Foreground="#fff" FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="SemiBold"></Label>
+        </Border>
+
+        <Border Grid.Column="0" Grid.Row="1" BorderBrush="#D9D9D9" BorderThickness="2" Grid.RowSpan="2">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height=".1*"/>
+                    <RowDefinition Height=".9*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBlock Text="Farenheit" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="23" FontWeight="Regular" Foreground="#8D8D8D"/>
+                        <fa:FontAwesome Icon="LongArrowRight" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="23" Margin="10,2,10,0" Foreground="#727375" FontWeight="UltraLight"></fa:FontAwesome>
+                        <TextBlock Text="Vilahermosa" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="23" Margin="0"></TextBlock>
+                    </StackPanel>
+                    <Border BorderBrush="#D9D9D9" BorderThickness="1" VerticalAlignment="Bottom"/>
+                </Grid>
+                <StackPanel Grid.Row="1" VerticalAlignment="Top">
+                    <Button Style="{StaticResource MenuButtonStyle}" Margin="0,100,0,0" Command="{Binding ReceiptClickedCommand}">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Recibos" FontSize="23"/>
+                            <fa:FontAwesome Icon="List" FontSize="23" VerticalAlignment="Center" Margin="10,5,0,0"/>
+                        </StackPanel>
+                    </Button>
+                    <Border BorderBrush="{Binding BtnReceiptColor}" BorderThickness="{Binding BtnReceiptThickness}" Width="290"/>
+
+                    <Button Style="{StaticResource MenuButtonStyle}" Command="{Binding OrdersClickedCommand}">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Comandas" FontSize="23"/>
+                            <fa:FontAwesome Icon="Coffee" FontSize="23" VerticalAlignment="Center" Margin="10,5,0,0"/>
+                        </StackPanel>
+                    </Button>
+                    <Border BorderBrush="{Binding BtnOrdersColor}" BorderThickness="{Binding BtnOrdersThickness}" Width="290"/>
+
+                    <Button Style="{StaticResource MenuButtonStyle}" Command="{Binding SalesClickedCommand}">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Ventas del día" FontSize="23"/>
+                            <fa:FontAwesome Icon="ShoppingCart" FontSize="23" VerticalAlignment="Center" Margin="10,5,0,0"/>
+                        </StackPanel>
+                    </Button>
+                    <Border BorderBrush="{Binding BtnSalesColor}" BorderThickness="{Binding BtnSalesThickness}" Width="290"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+        <Frame Grid.Row="1" Grid.Column="1" Source="/Views/Pages/OrdersPage.xaml" NavigationUIVisibility="Hidden"/>
+    </Grid>
+</Window>

@@ -1,0 +1,78 @@
+﻿<Window x:Class="EscritorioNitroRestaurant.Views.Login"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EscritorioNitroRestaurant.Views"
+        xmlns:model="clr-namespace:EscritorioNitroRestaurant.ViewModels"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance Type=model:LoginViewModel}"
+        Title="Login" Height="1024" Width="1440">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="0.8*"/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" Background="{StaticResource PrimaryColor}">
+            <TextBlock Text="NitroRestaurant" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="SemiBold" Foreground="#fff" FontSize="30"/>
+        </Border>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="4*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Border Grid.Column="1" Grid.Row="1" CornerRadius="25" Background="{StaticResource ThirdColor}">
+                <Grid >
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Text="Iniciar sesión" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="40" FontWeight="Bold"/>
+                    
+                    <StackPanel Grid.Row="1" VerticalAlignment="Center">
+                        <Border Height="50" Background="#FEFDFD" CornerRadius="25" Width="490">
+                            <TextBox Background="Transparent" 
+                                     Height="50" 
+                                     Text="Correo electrónico"  
+                                     BorderThickness="0" 
+                                     TextAlignment="Left" 
+                                     VerticalContentAlignment="Center" 
+                                     Padding="20,0,0,0" 
+                                     FontSize="25"  
+                                     Foreground="#B1AFAF"
+                                     DataContext="{Binding Email, Mode=TwoWay}"/>
+                        </Border>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,40,0,0" Width="490">
+                            <Border Height="50" Background="#FEFDFD" CornerRadius="25" Width="420">
+                                <TextBox Background="Transparent" 
+                                         Text="Contraseña"
+                                         Height="50"
+                                         BorderThickness="0" 
+                                         TextAlignment="Left" 
+                                         VerticalContentAlignment="Center" 
+                                         Padding="20,0,0,0"
+                                         FontSize="25" 
+                                         Foreground="#B1AFAF"
+                                         DataContext="{Binding Password, Mode=TwoWay}"/>
+
+                            </Border>
+                            <fa:FontAwesome Icon="Lock" Height="32" Width="32" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" Margin="20,0,0,0" Foreground="#B1AFAF"/>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <Button Grid.Row="2" Style="{StaticResource PrimaryBtn}" Content="LOG IN" FontSize="23" FontWeight="Regular" Command="{Binding LoginCommand}"/>
+                </Grid>
+            </Border>
+            
+        </Grid>
+    </Grid>
+</Window>
