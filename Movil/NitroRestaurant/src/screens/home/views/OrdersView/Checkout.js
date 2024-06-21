@@ -80,6 +80,7 @@ const CheckoutScreen = () => {
     };
 
     const handleSave = async () => {
+        const OrderTotal = parseInt(total, 2);
         const detalle_pedido = List.map(item => ({
             cantidad: item.cantidad,
             modificaciones: item.modificaciones || [],
@@ -93,7 +94,7 @@ const CheckoutScreen = () => {
             estado: true,
             id_mesa: TableId,
             id_sucursal: BranchId,
-            total: total.toFixed(2),
+            total: OrderTotal,
             id_tipo_pedido: checked
         };
 
