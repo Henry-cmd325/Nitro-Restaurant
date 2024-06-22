@@ -1,4 +1,4 @@
-package com.nitrorestaurant;
+package com.nitrosoftworks.nitrorestaurant;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;

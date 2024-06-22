@@ -1,4 +1,4 @@
-package com.nitrorestaurant;
+package com.nitrosoftworks.nitrorestaurant;
 
 import android.app.Application;
 import com.facebook.react.PackageList;
