@@ -2,11 +2,11 @@ import { View, Text, StyleSheet } from 'react-native';
 import { TouchableRipple } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/Octicons';
 
-const QuickAccess = ({icon, iconColor, background, title, description, shadowColor}) => {
+const QuickAccess = ({icon, iconColor, background, title, description, shadowColor, onPress}) => {
     return (
         <TouchableRipple 
             className="h-44 w-40 bg-slate-100 rounded-3xl items-center justify-center mr-7" 
-            onPress={() => {}} 
+            onPress={onPress} 
             rippleColor='#e2e8f0'
             borderless={true}
         >

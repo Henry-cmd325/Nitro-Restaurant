@@ -11,10 +11,12 @@ import LoginScreen from './screens/auth/Login';
 
 // Main
 import ProfileScreen from './screens/home/Profile';
-import HomeScreen from './screens/home/home';
+import HomeScreen from './screens/home/Home';
 import OrdersScreen from './screens/home/Orders';
 import NewOrderScreen from './screens/home/views/OrdersView/NewOrder';
 import CheckoutScreen from './screens/home/views/OrdersView/Checkout';
+import PaymentsView from './screens/home/views/PaymentsView';
+import BillingView from './screens/home/views/PaymentsView/BillingView';
 
 const AuthStack = createStackNavigator();
 const Stack = createStackNavigator();
@@ -68,6 +70,8 @@ export default function Navigation() {
                 <Stack.Screen name="main" component={MainBarScreen} options={{ headerShown: false }} />
                 <Stack.Screen name="newOrder" component={NewOrderScreen} options={{ headerShown: false }} />
                 <Stack.Screen name="checkout" component={CheckoutScreen} options={{ headerShown: false }} />
+                <Stack.Screen name="announcements" component={PaymentsView} options={{ headerShown: false }} />
+                <Stack.Screen name="billing" component={BillingView} options={{ headerShown: false }} />
             </Stack.Navigator>
         </NavigationContainer>
     );

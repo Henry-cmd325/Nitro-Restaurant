@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import {Text, View, SafeAreaView, ScrollView, TouchableOpacity, StatusBar, StyleSheet, Image} from 'react-native';
 import { Divider, Appbar, PaperProvider, RadioButton } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -7,12 +7,13 @@ import ItemOrder from '../../../../components/common/ItemList/ItemOrder';
 import ArrowNavigator from '../../../../components/interface/Filters/ArrowNavigator';
 // React Navigation
 import { useNavigation } from '@react-navigation/native';
+// Firebase
+import { collection, onSnapshot, query, orderBy } from 'firebase/firestore';
+import { db } from '../../../../config/firebase';
 // Redux
 import { useSelector, useDispatch } from 'react-redux';
 import { selectOrderTotal, clear } from '../../../../app/business/OrderSlice';
 import { CurrentTable, CurrentTableId } from '../../../../app/business/BusinessSlice';
-// Hooks
-import useOrderTypes from '../../../../hooks/useOrderTypes';
 
 const RadioList = ({title, value, status, onPress}) => {
     return (
@@ -54,8 +55,8 @@ const ItemDetail = () => {
 };
 
 const CheckoutScreen = () => {
+    const [orderTypes, setOrderTypes] = useState([]);
     // Estate
-    const { orderTypes, loading, error } = useOrderTypes();
     const [current, setCurrent] = useState(1);
     const [label, setLabel] = useState('SIGUIENTE');
     //
@@ -127,6 +128,28 @@ const CheckoutScreen = () => {
     const handleSwipeEnd = () => {
         setIsAnyItemSwiped(false);
     };
+
+    useEffect(() => {
+        const Query = query(collection(db, 'tipo_pedidos'), orderBy('nombre'));
+
+        const unsubscribe = onSnapshot(Query, (snapshot) => {
+            const List = snapshot.docs.map(doc => {
+                const data = doc.data();
+
+                return {
+                    id: doc.id,
+                    ...data
+                };
+            });
+            setOrderTypes(List);
+        }, (error) => {
+            console.error('Error al escuchar los tipos de pedidos:', error);
+        });
+
+        return () => {
+            unsubscribe();
+        };
+    }, []);
 
     return (
         <View className="flex-1 bg-slate-100 h-screen w-screen">

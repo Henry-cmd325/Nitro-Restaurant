@@ -6,27 +6,10 @@ import TabsGroup from '../../../../components/common/groups/TabsGroup';
 import ItemListProduct from '../../../../components/common/ItemList/ItemListProduct';
 // Redux
 import { useSelector, useDispatch  } from 'react-redux';
-import { updateCategories, updateProducts, selectFilteredProducts, setCategory } from '../../../../app/business/ProductSlice';
+import { updateProducts, selectFilteredProducts } from '../../../../app/business/ProductSlice';
 import { toggleOrder, toggleSelectedProduct, removeSelectedProduct } from '../../../../app/business/OrderSlice';
 // React Navigation
 import { useNavigation } from '@react-navigation/native';
-
-const fetchCategories = async (BranchId) => {
-    try {
-        const response = await fetch(`https://us-central1-nitro-restaurant.cloudfunctions.net/api/categoria/sucursal/${BranchId}`);
-
-        if (!response.ok) {
-            throw new Error('Failed to fetch data');
-        }
-
-        const Data = await response.json();
-
-        return Data;
-    } catch (error) {
-        console.error('Error fetching data:', error);
-        throw error;
-    }
-}
 
 const fetchAllProducts = async () => {
     try {
@@ -49,8 +32,6 @@ const NewOrderScreen = () => {
     const dispatch = useDispatch();
     const navigation = useNavigation();
     const categoryId = useSelector((state) => state.products.currentCategory);
-    const categories = useSelector((state)=> state.products.categories);
-    const BranchId = useSelector((state) => state.business.BranchId);
     const filteredProducts = useSelector(selectFilteredProducts);
 
     const selectedProducts = useSelector(state => state.orders.selectedProducts || {});
@@ -87,10 +68,6 @@ const NewOrderScreen = () => {
     useEffect(() => {
         const loadInitialData = async () => {
             try {
-                if (categories.length === 0) {
-                    const CategoriesData = await fetchCategories(BranchId);
-                    dispatch(updateCategories(CategoriesData));
-                }
 
                 const ProductsData = await fetchAllProducts();
                 dispatch(updateProducts(ProductsData));
@@ -118,7 +95,7 @@ const NewOrderScreen = () => {
                     <SafeAreaView> 
                         <ScrollView onScroll={onScroll} showsVerticalScrollIndicator={false}>
                             <View className="mx-5">
-                                <TabsGroup categories={categories} />
+                                <TabsGroup />
                             </View>
                             <View className='mx-6'>
                                 {isLoading ? (

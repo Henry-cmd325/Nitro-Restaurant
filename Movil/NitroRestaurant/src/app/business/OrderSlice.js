@@ -4,6 +4,9 @@ const initialState = {
     OrderId: '',
     order_detail:[],
     selectedProducts: {},
+    PaymentMethod: '',
+    receipt: [],
+    PaymentMethods: [],
 };
 
 export const OrdersSlice = createSlice({
@@ -14,6 +17,7 @@ export const OrdersSlice = createSlice({
             const { OrderId } = action.payload;
             state.OrderId = OrderId;
         },
+        setPaymentMethod: (state, action) =>{ state.PaymentMethod = action.payload; },
         toggleOrder: (state, action) => {
             const { id } = action.payload;
             const existingProduct = state.order_detail.findIndex(item => item.id === id);
@@ -58,20 +62,27 @@ export const OrdersSlice = createSlice({
                 item.precio_total = item.cantidad * item.precio;
             }
         },
+        setReceipt: (state, action) =>{ state.receipt = action.payload; },
+        setPaymentMethods: (state, action) =>{ state.PaymentMethods = action.payload; },
         clear: state => {
-            Object.assign(state, initialState);
-        },
+            state.OrderId = initialState.OrderId;
+            state.order_detail = initialState.order_detail;
+            state.selectedProducts = initialState.selectedProducts;
+        }
     },
 });
 
 export const {
     SelectedOrderId, 
+    setPaymentMethod,
     toggleOrder, 
     removeFromOrders, 
     toggleSelectedProduct,
     removeSelectedProduct,
     increment, 
     decrement,
+    setReceipt,
+    setPaymentMethods,
     clear
 } = OrdersSlice.actions;
 

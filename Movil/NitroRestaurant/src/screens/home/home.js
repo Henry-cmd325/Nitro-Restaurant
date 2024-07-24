@@ -43,7 +43,7 @@ export default HomeScreen = () => {
                             <Text className="font-semibold text-lg text-slate-800 mb-6">Accesos rápidos</Text>
                             <View className="flex-row">
                                 <QuickAccess icon='repo' iconColor='#818cf8' background='bg-indigo-100' title='Menú' description={'Platos ' + Products.length} shadowColor='#818cf8' />
-                                <QuickAccess icon='credit-card' iconColor='#818cf8' background='bg-indigo-100' title='Pagos/Cuenta' description='Pendientes 10' shadowColor='#818cf8' />
+                                <QuickAccess icon='alert' iconColor='#818cf8' background='bg-indigo-100' title='Avisos' description='Nuevos 6' shadowColor='#818cf8' onPress={()=>navigation.navigate('announcements')} />
                             </View> 
                         </View>
                         <View className="flex-row justify-between mx-10 mt-3 mb-4">

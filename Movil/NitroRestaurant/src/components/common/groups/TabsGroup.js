@@ -1,13 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { SafeAreaView, ScrollView } from "react-native";
 // Components
 import FilterPagesIcon from '../../interface/Filters/FilterPagesIcon';
 // Redux
-import { useDispatch  } from 'react-redux';
-import { setCategory } from '../../../app/business/ProductSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { setCategory, updateCategories } from '../../../app/business/ProductSlice';
+// Firebase
+import { collection, query, where, getDocs, doc } from 'firebase/firestore';
+import { db } from '../../../config/firebase';
 
-const TabsGroup = ({categories}) => {
+const TabsGroup = () => {
     const dispatch = useDispatch();
+    const categories = useSelector((state)=> state.products.categories);
+    const BranchId = useSelector((state) => state.business.BranchId);
 
     const [isExtended, setIsExtended] = React.useState(false);
     const onScroll = ({ nativeEvent }) => { 
@@ -21,6 +26,34 @@ const TabsGroup = ({categories}) => {
         setSelectedOption(option); 
         dispatch(setCategory(option));
     };
+
+    useEffect(() => {
+        if (categories.length === 0) {
+            const fetchCategories = async () => {
+                try {
+                    const branchRef = doc(db, 'sucursales', BranchId);
+                    const categoriesQuery = query(
+                        collection(db, 'categorias'),
+                        where('sucursal_ref', '==', branchRef)
+                    );
+    
+                    const querySnapshot = await getDocs(categoriesQuery);
+        
+                    const fetchedCategories = querySnapshot.docs.map(doc => {
+                        const data = doc.data();
+                        delete data.sucursal_ref;  
+                        return { id: doc.id, ...data };
+                    });
+    
+                dispatch(updateCategories(fetchedCategories));
+                } catch (error) {
+                    console.error('Error fetching categories:', error);
+                }
+            };
+
+            fetchCategories();
+        }
+    }, []);
 
     return(
         <>

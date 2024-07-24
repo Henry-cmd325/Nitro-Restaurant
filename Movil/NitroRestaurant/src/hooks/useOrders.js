@@ -47,7 +47,6 @@ const useOrders = () => {
                 ordersList.push(order);
             }   
             setOrders(ordersList);
-            console.log(orders);
         });
 
         return () => unsubscribe();
