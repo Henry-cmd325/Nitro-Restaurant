@@ -23,7 +23,20 @@ async function updateOrderStateController (req, res) {
     }
 }
 
+async function getOrderController(req, res) {
+    try {
+        const { id_pedido } = req.params;
+
+        const result = await orderService.getOrder(id_pedido);
+        return res.status(200).json(result);
+    } catch (error) {
+        console.error('Error al obtener la orden: ', error);
+        return res.status(500).json({ error: error.message });
+    }
+}
+
 module.exports = {
     createOrderController,
-    updateOrderStateController
+    updateOrderStateController,
+    getOrderController
 };

@@ -1,7 +1,8 @@
 const { getFirestore } = require('firebase-admin/firestore');
+const stripe = require('stripe')('sk_test_51PTyDBCeD6qntPZ1mzsFXj3jagt6m9DLyIfTactwA70N4967rXAmQSyRDoZvDBzE805qviiQbK1FrWrtfXVNVXrz00W2IOF0Om');
 const admin = require('firebase-admin');
 
-async function createProduct (cantidad, contable, id_sucursal, id_categoria, id_um, imagen, inversion, nombre, precio, nutricion) {
+async function createProduct (cantidad, contable, id_sucursal, id_categoria, id_um, imagen, inversion, nombre, precio, nutricion, descripcion) {
     try {
 
         const reference = admin.firestore().collection('productos');
@@ -19,10 +20,48 @@ async function createProduct (cantidad, contable, id_sucursal, id_categoria, id_
             inversion,
             nombre,
             precio,
-            nutricion
+            nutricion,
+            descripcion
         });
 
-        return { id: newReference.id, message: 'Producto creado exitosamente' };
+        const categoryDoc = await categories_ref.get();
+        const categoryName = categoryDoc.exists ? categoryDoc.data().nombre : 'Desconocido';
+
+        const branchDoc = await branch_ref.get();
+        const business_ref = branchDoc.data().negocio_ref;
+        const businessDoc = await business_ref.get();
+        const account_stripe_id = businessDoc.exists ? businessDoc.data().id_stripe_cuenta : null;
+
+        if (!account_stripe_id) {
+            throw new Error('No se pudo encontrar la cuenta de Stripe asociada con la sucursal.');
+        }
+
+        const product = await stripe.products.create({
+                name: nombre,
+                description: descripcion,
+                metadata: {
+                    firebase_product_id:  newReference.id,
+                    category: categoryName
+                },
+                images: [`${imagen}`],
+            }, { 
+                stripeAccount: account_stripe_id 
+            });
+
+        const price = await stripe.prices.create(
+                {
+                product: product.id,
+                unit_amount: precio * 100,
+                currency: 'mxn',
+            }, { 
+                stripeAccount: account_stripe_id 
+            });
+
+        await reference.doc(newReference.id).update({
+            stripe_product_id: product.id
+        });
+
+        return { id: newReference.id, product, price };
     } catch (error) {
         console.error('Error al crear el producto:', error);
         throw new Error('Se produjo un error al crear el producto');

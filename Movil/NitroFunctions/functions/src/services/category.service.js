@@ -15,7 +15,6 @@ async function getCategories(id_sucursal) {
 
             categories.push({ id: categoryId, ...categoryData });
         });
-        
 
         return categories;
     } catch (e) {

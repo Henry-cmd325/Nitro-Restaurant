@@ -1,10 +1,10 @@
 const express = require('express');
-const { createOrderController, updateOrderStateController } = require('../controllers/order.controller');
+const { createOrderController, updateOrderStateController, getOrderController } = require('../controllers/order.controller');
 
 const router = express.Router();
 
 router.post('/', createOrderController);
+router.get('/:id_pedido', getOrderController);
 router.patch('/actualizar/:id_pedido', updateOrderStateController);
-//router.get('/sucursal/:id_sucursal', sseOrdersController);
 
 module.exports = router;

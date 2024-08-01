@@ -1,7 +1,8 @@
 {
   "dependencies": {
     "@google-cloud/firestore": "^7.6.0",
-    "@google-cloud/functions-framework": "^3.3.0"
+    "@google-cloud/functions-framework": "^3.3.0",
+    "stripe": "^16.5.0"
   },
   "devDependencies": {
     "node-firestore-import-export": "^1.1.0"

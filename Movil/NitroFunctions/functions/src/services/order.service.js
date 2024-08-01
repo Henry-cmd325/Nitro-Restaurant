@@ -1,5 +1,6 @@
 const { Timestamp } = require('firebase-admin/firestore');
 const admin = require('firebase-admin');
+const { log } = require('firebase-functions/logger');
 
 async function createOrder (detalle_pedido, estado, id_mesa, id_sucursal, total, id_tipo_pedido) {
     try {
@@ -68,7 +69,36 @@ async function updateOrderState(id_pedido){
     }
 }
 
+async function getOrder(id_pedido) {
+    try {
+        const collection_ref = admin.firestore().collection("pedidos").doc(id_pedido);
+        const docSnapshot = await collection_ref.get();
+
+        const orderData = docSnapshot.data();
+
+        const details = orderData.detalle_pedido;
+
+        const order_detail = await Promise.all(details.map(async (item) => {
+            const productRef = item.producto_ref;
+
+            const uid = productRef.id;
+
+            return { ...item, producto: uid };
+        }));
+
+        delete orderData.mesa_ref;
+        delete orderData.tipo_pedido_ref;
+        delete orderData.sucursal_ref;
+
+        return { ...orderData, detalle_pedido: order_detail };
+    } catch (e) {
+        console.error('Error al consultar el pedido:', e);
+        throw new Error('Se produjo un error al consultar el pedido');
+    }
+}
+
 module.exports = {
     createOrder,
-    updateOrderState
+    updateOrderState,
+    getOrder
 };
